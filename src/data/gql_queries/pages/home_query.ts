@@ -1,4 +1,4 @@
-import { mediaUrl, sectionSEO } from "@/data/constants";
+import { mediaUrl, sectionSEO } from "~/data/constants";
 
 const date = new Date();
 const today = date.toISOString().substring(0, 10);
