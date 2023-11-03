@@ -43,7 +43,9 @@
     "vite-tsconfig-paths": "^4.2.1"
   },
   "dependencies": {
+    "qwik-speak": "^0.16.0",
+    "@modular-forms/qwik": "^0.21.0",
     "@qwikest/icons": "^0.0.13",
-    "qwik-speak": "^0.16.0"
+    "valibot": "^0.20.0"
   }
 }

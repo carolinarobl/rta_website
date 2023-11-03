@@ -3,7 +3,7 @@ import { mediaUrl, sectionSEO } from "~/data/constants";
 const date = new Date();
 const today = date.toISOString().substring(0, 10);
 const time = date.toISOString().substring(11, 19);
-export const homeQuery = (locale) => {
+export const homeQuery = (locale: string) => {
   return `
     query QueryHome{
   pageHome(locale:"${locale}"){

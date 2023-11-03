@@ -1,4 +1,4 @@
-export const layoutQuery = (locale) => `
+export const layoutQuery = (locale: string) => `
 query QueryLayout {
     generalMenu(locale: "${locale}") {
       data {
