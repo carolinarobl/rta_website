@@ -17,7 +17,7 @@ export const Button = component$(
     if (type === "link")
       return (
         <div
-          onClick={onClick}
+          onClick$={onClick}
           class="flex w-fit items-center justify-center gap-1 rounded-full border-2 border-btn-green bg-white p-1 pl-2 font-bold text-btn-green hover:cursor-pointer"
         >
           <span class="text-[13px]">{text}</span>
@@ -27,7 +27,7 @@ export const Button = component$(
     if (type === "action")
       return (
         <div
-          onClick={onClick}
+          onClick$={onClick}
           class="flex w-fit items-center justify-center gap-1 rounded-full bg-button-green p-1 pl-2 font-bold text-white hover:cursor-pointer"
         >
           <span class="text-[13px]">{text}</span>
