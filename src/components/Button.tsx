@@ -13,7 +13,6 @@ export const Button = component$(
     Icon: any;
     subtext?: string;
   }) => {
-    console.log(subtext);
     if (type === "link")
       return (
         <div

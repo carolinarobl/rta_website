@@ -12,7 +12,7 @@ export const useHomeData = routeLoader$(async () => {
 
 export default component$(() => {
   const data = useHomeData();
-  console.log(data);
+
   return (
     <div class="m-1 flex flex-col gap-3">
       {/* <Button type="link" Icon={<LuRocket />} text={"Go to page"} /> */}
