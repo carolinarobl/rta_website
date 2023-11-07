@@ -24,9 +24,11 @@ export const Button = component$(
       return (
         <div
           onClick$={handleClick}
-          class={`flex w-fit items-center justify-center gap-2 rounded-full border-2 border-teal-500 bg-white p-1 pl-2 font-bold text-btn-green hover:cursor-pointer`}
+          class={`flex w-fit items-center justify-center gap-2 rounded-full border-2 border-teal-500 bg-white p-[7px] pl-3 text-btn-green shadow-xl hover:cursor-pointer
+
+          `}
         >
-          <span class="text-[14px] ">{text}</span>
+          <span class="text-[17px] ">{text}</span>
           <Slot />
           {/* <Icon color="#13B295" size={23} class="opacity-60" /> */}
         </div>
@@ -35,7 +37,7 @@ export const Button = component$(
       return (
         <div
           onClick$={handleClick}
-          class="flex w-fit items-center justify-center gap-1 rounded-full bg-button-green p-1 pl-2 font-bold text-white hover:cursor-pointer"
+          class="flex w-fit items-center justify-center gap-1 rounded-full bg-button-green p-1 pl-2 text-white hover:cursor-pointer"
         >
           <span class="text-[13px]">{text}</span>
           {/* <Icon size={23} class="opacity-60" /> */}
