@@ -5,13 +5,14 @@ export const onRequest: RequestHandler = ({ params, locale }) => {
   const supportedLocale = config.supportedLocales.find(
     (value) => value.lang === params.lang,
   );
+  console.log(params);
 
   // Check for 404 error page
   const lang = supportedLocale
     ? supportedLocale.lang
     : !params.lang && config.defaultLocale.lang;
 
-  if (!lang) throw error(404, "Page not found");
+  if (!lang) return;
 
   // Set Qwik locale
   locale(lang);
