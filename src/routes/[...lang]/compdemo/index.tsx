@@ -2,6 +2,10 @@ import { component$ } from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
 // import { Button } from "~/components/Button";
 import { BsArrowUpRightCircleFill } from "@qwikest/icons/bootstrap";
+import { FaCircleArrowRightSolid } from "@qwikest/icons/font-awesome";
+import { Button } from "~/components/Button";
+import { Header } from "~/components/Header";
+import { Paragraph } from "~/components/Paragraph";
 import { layoutQuery } from "~/data/gql_queries/layout_query";
 import { GQLQuery } from "~/services/graphql";
 
@@ -14,9 +18,52 @@ export default component$(() => {
   const data = useHomeData();
 
   return (
-    <div class="m-1 flex flex-col gap-3">
+    <div class="m-1 flex flex-col items-center gap-3">
       {/* <Button type="link" Icon={<LuRocket />} text={"Go to page"} /> */}
-      <div>{JSON.stringify(data.value, null, 2)}</div>
+      <Header />
+      <Header vertical={false} />
+      <Button type="link" text="Watch more">
+        <FaCircleArrowRightSolid
+          color="#13B295"
+          class="text-[18px] opacity-60"
+        />
+      </Button>
+      <Paragraph
+        title="Título"
+        subtitle="Subtítulo"
+        logo="https://strapi.rtatel.com/uploads/gig_FASTTV_mini_c93a89c210.webp"
+        image="https://strapi.rtatel.com/uploads/LP_03_contact_support_woman_8e4bdd490a.png"
+        button="Watch more"
+        text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam quis maiores quisquam blanditiis, pariatur minus aliquid odit modi aperiam sapiente dolorum illo excepturi fugit quas animi hic voluptatibus repellendus et. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam cum rem obcaecati vero ad facilis neque beatae architecto, non nobis, temporibus alias deleniti sint asperiores excepturi animi, nulla minima iure! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo voluptas fugit veritatis impedit quibusdam maxime adipisci exercitationem, architecto odit totam ut voluptatem animi dignissimos, quia possimus minus deleniti et laudantium."
+      />
+      <Paragraph
+        title="Título"
+        subtitle="Subtítulo"
+        logo="https://strapi.rtatel.com/uploads/gig_FASTTV_mini_c93a89c210.webp"
+        image="https://strapi.rtatel.com/uploads/LP_03_contact_support_woman_8e4bdd490a.png"
+        button="Watch more"
+        text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam quis maiores quisquam blanditiis, pariatur minus aliquid odit modi aperiam sapiente dolorum illo excepturi fugit quas animi hic voluptatibus repellendus et. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam cum rem obcaecati vero ad facilis neque beatae architecto, non nobis, temporibus alias deleniti sint asperiores excepturi animi, nulla minima iure! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo voluptas fugit veritatis impedit quibusdam maxime adipisci exercitationem, architecto odit totam ut voluptatem animi dignissimos, quia possimus minus deleniti et laudantium."
+        reverse={true}
+      />
+      <Paragraph
+        title="Título"
+        image="https://strapi.rtatel.com/uploads/LP_03_contact_support_woman_8e4bdd490a.png"
+        button="Watch more"
+        text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam quis maiores quisquam blanditiis, pariatur minus aliquid odit modi aperiam sapiente dolorum illo excepturi fugit quas animi hic voluptatibus repellendus et. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam cum rem obcaecati vero ad facilis neque beatae architecto, non nobis, temporibus alias deleniti sint asperiores excepturi animi, nulla minima iure! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo voluptas fugit veritatis impedit quibusdam maxime adipisci exercitationem, architecto odit totam ut voluptatem animi dignissimos, quia possimus minus deleniti et laudantium."
+      />
+      <Paragraph
+        title="Título"
+        image="https://strapi.rtatel.com/uploads/LP_03_contact_support_woman_8e4bdd490a.png"
+        button="Watch more"
+        text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam quis maiores quisquam blanditiis, pariatur minus aliquid odit modi aperiam sapiente dolorum illo excepturi fugit quas animi hic voluptatibus repellendus et. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam cum rem obcaecati vero ad facilis neque beatae architecto, non nobis, temporibus alias deleniti sint asperiores excepturi animi, nulla minima iure! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo voluptas fugit veritatis impedit quibusdam maxime adipisci exercitationem, architecto odit totam ut voluptatem animi dignissimos, quia possimus minus deleniti et laudantium."
+        reverse={true}
+      />
+      <Paragraph
+        title="Título"
+        button="Watch more"
+        text="Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam quis maiores quisquam blanditiis, pariatur minus aliquid odit modi aperiam sapiente dolorum illo excepturi fugit quas animi hic voluptatibus repellendus et. Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quam cum rem obcaecati vero ad facilis neque beatae architecto, non nobis, temporibus alias deleniti sint asperiores excepturi animi, nulla minima iure! Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo voluptas fugit veritatis impedit quibusdam maxime adipisci exercitationem, architecto odit totam ut voluptatem animi dignissimos, quia possimus minus deleniti et laudantium."
+      />
+      {/* <div>{JSON.stringify(data.value, null, 2)}</div> */}
 
       {/* <Button type={"action"} Icon={<LuRocket />} text={"Action"} /> */}
       <div class="flex w-[650px] flex-col items-center justify-center rounded-[200px] bg-[#1D65C3] px-5 shadow-2xl">
@@ -33,7 +80,7 @@ export default component$(() => {
             Test your speed
           </div>
           <div class="w-[25px] min-w-[25px] max-w-full flex-wrap content-center items-center justify-center self-stretch whitespace-nowrap rounded-[100px] bg-teal-500 bg-opacity-60 py-1.5 pl-1.5 pr-2 text-center text-sm font-black tracking-wide text-white">
-            <BsArrowUpRightCircleFill></BsArrowUpRightCircleFill>
+            <BsArrowUpRightCircleFill class="bg-teal-500 bg-opacity-60"></BsArrowUpRightCircleFill>
           </div>
         </div>
       </div>
