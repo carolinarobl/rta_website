@@ -46,7 +46,7 @@ export const Navbar = component$(({ data }) => {
             return (
               <div
                 key={i}
-                class="bg-primary-blue bg-clip-text text-[13px] font-bold text-transparent"
+                class="bg-primary-blue bg-clip-text text-[15px] font-bold text-transparent"
               >
                 {!hasSubOptions ? (
                   <Link href={e["Link"]}>{e["Text"]}</Link>
