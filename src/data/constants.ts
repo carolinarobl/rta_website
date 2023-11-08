@@ -27,3 +27,14 @@ SEO {
     preventIndexing
 }
 `;
+
+export const sectionBasicContent = `
+data{
+      attributes{
+       	Content{
+          Titles{
+            Text
+          }
+          TextContent
+        }
+`;
