@@ -2,6 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import { Button } from "./Button";
 import { FaCircleArrowRightSolid } from "@qwikest/icons/font-awesome";
 import { setURL } from "~/data/constants";
+import { parse } from "marked";
 
 export const Paragraph = component$(
   ({
@@ -46,19 +47,29 @@ export const Paragraph = component$(
             }  flex-col items-center justify-center gap-4 px-10`}
           >
             {logo && (
-              <div class="w-[70%]">
-                <img src={logo} alt="paragraph-logo" />
+              <div class="max-w-[470px]">
+                <img
+                  src={logo}
+                  alt="paragraph-logo"
+                  width="1230"
+                  height="230"
+                />
               </div>
             )}
             <div class="flex  justify-center gap-2">
-              <span class="text-[36px] font-bold text-[#2E5899]">{title}</span>
+              <span class="text-center text-[38px] font-bold text-[#2E5899]">
+                {title}
+              </span>
               {subtitle && (
                 <span class="text-[20px] font-bold text-[#D20030]">
                   {subtitle}
                 </span>
               )}
             </div>
-            <div class="text-justify text-[22px] text-[#2E5899]">{text}</div>
+            <div
+              dangerouslySetInnerHTML={parse(text)}
+              class="flex !list-disc flex-col gap-3 text-justify text-[20px] text-[#2E5899]"
+            ></div>
             {buttons &&
               buttons.map((button, i) => (
                 <Button key={i} text={button["Text"]} link={button["Link"]}>
@@ -71,7 +82,7 @@ export const Paragraph = component$(
           </div>
           {image && (
             <div class="flex w-[300px] items-center justify-center self-center p-4 min-[800px]:w-[30%]">
-              <img src={image} alt="paragraph-image" width="597" height="743" />
+              <img src={image} alt="paragraph-image" width="597" height="300" />
             </div>
           )}
         </div>
@@ -99,11 +110,11 @@ export const SerializedParagraph = component$(
     return (
       <Paragraph
         logo={
-          data["Logo"]["data"]["attributes"]["url"] &&
+          data["Logo"]["data"] &&
           setURL(data["Logo"]["data"]["attributes"]["url"])
         }
         image={
-          data["Media"]["data"]["attributes"]["url"] &&
+          data["Media"]["data"] &&
           setURL(data["Media"]["data"]["attributes"]["url"])
         }
         title={data["Title"]}

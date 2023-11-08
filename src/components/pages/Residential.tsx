@@ -1,16 +1,16 @@
 import { component$ } from "@builder.io/qwik";
 import { ListedParagraphs } from "../Paragraph";
 
-export const Business = component$(({ data }: { data: any }) => {
+export const Residential = component$(({ data }: { data: any }) => {
   console.log(data);
-  const servicesData = data["pageBusiness"]["data"]["attributes"]["Services"];
+  const servicesData =
+    data["pageResidential"]["data"]["attributes"]["Services"];
   return (
     <div
       onClick$={() => {
-        console.log(servicesData);
+        console.log(data);
       }}
     >
-      {/* aaa */}
       <ListedParagraphs data={servicesData} />
     </div>
   );
