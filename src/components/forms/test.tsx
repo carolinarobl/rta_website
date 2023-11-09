@@ -1,59 +1,31 @@
-import { $, component$ } from "@builder.io/qwik";
-import { routeLoader$ } from "@builder.io/qwik-city";
-import { InitialValues, SubmitHandler, email, formAction$, minLength, useForm, valiForm$ } from "@modular-forms/qwik";
-import { type Input } from 'valibot';
+import { component$ } from '@builder.io/qwik';
+import { Form, globalAction$ } from '@builder.io/qwik-city';
+import { formAction$, useForm } from '@modular-forms/qwik';
 
-const LoginSchema = Object({
-    email: String([
-        minLength(1, 'Please enter your email.'),
-        email('The email address is badly formatted.'),
-    ]),
-    password: String([
-        minLength(1, 'Please enter your password.'),
-        minLength(8, 'Your password must have 8 characters or more.'),
-    ]),
+type TestForm = {
+    name:string;
+    email:string;
+    file:File | null;
+}
+
+export const useSubmitForm = globalAction$(async (data) => {
+    // Handle the form submission here, e.g., send data to the server or perform any other side effects
+    console.log('Form submitted:', data.name);
 });
 
-type LoginForm = Input<typeof LoginSchema>;
 
-export const useFormLoader = routeLoader$<InitialValues<LoginForm>>(() => ({
-    email: '',
-    password: '',
-}));
+export const Test1 = component$(() => {
+    const submitForm = useSubmitForm();
 
-export const useFormAction = formAction$<LoginForm>((values) => {
-    // Runs on server
-}, valiForm$(LoginSchema));
+    const [testForm, { Form, Field}] = useForm<TestForm>({
+        loader: {values:{name:'', email:''}},
+      });
 
-export const Test = component$(() => {
-    const [loginForm, { Form, Field }] = useForm<LoginForm>({
-        loader: useFormLoader(),
-        validate: valiForm$(LoginSchema)
-    });
-
-    const handleSubmit: SubmitHandler<LoginForm> = $(((values:any) => {
-        // Runs on client
-        console.log(values);
-      }));
-
-    return <Form onSubmit$={handleSubmit}>
-        <Field name="email">
-            {(field, props) => (
-                <div>
-                    <input {...props} type="email" value={field.value} />
-                    {field.error && <div>{field.error}</div>}
-                </div>
-            )}
-        </Field>
-        <Field name="password">
-            {(field, props) => (
-                <div>
-                    <input {...props} type="password" value={field.value} />
-                    {field.error && <div>{field.error}</div>}
-                </div>
-
-            )}
-        </Field>
-        <button type="submit">Login</button>
-    </Form>;
+    return (
+        <Form onsubmit={submitForm}>
+            <input name="name" type="text" placeholder="Name" />
+            <input name="email" type="email" placeholder="Email" />
+            <button type="submit">Submit</button>
+        </Form>
+    );
 });
