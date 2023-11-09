@@ -35,9 +35,9 @@ export const Button = component$(
       return (
         <div
           onClick$={handleClick}
-          class="flex w-fit items-center justify-center gap-1 rounded-full bg-button-green p-1 pl-2 text-white hover:cursor-pointer"
+          class="flex w-fit items-center justify-center gap-2 rounded-full bg-button-green p-1 pl-2 text-white hover:cursor-pointer"
         >
-          <span class="text-[13px]">{text}</span>
+          <span class="text-[16px]">{text}</span>
           {/* <Icon size={23} class="opacity-60" /> */}
         </div>
       );
