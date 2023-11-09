@@ -8,6 +8,13 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  ul,
+  ol {
+    list-style: revert;
+  }
+}
+
 /**
  * WHAT IS THIS FILE?
  *

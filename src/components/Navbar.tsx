@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
 import { StrapiImage } from "./StrapiImage";
-
+import { FaBarsSolid } from "@qwikest/icons/font-awesome";
 export const Navbar = component$(({ data }) => {
   return (
     <div class="sticky top-0 shadow-[0_5px_40px_-25px_rgba(0,0,0,0.2)]">
@@ -13,8 +13,8 @@ export const Navbar = component$(({ data }) => {
                 <StrapiImage
                   url={e["Icon"]["data"]["attributes"]["url"]}
                   toWhite={true}
-                  width="20"
-                  height="20"
+                  width="12"
+                  height="12"
                 />
               </div>
               {e["Text"]}
@@ -24,7 +24,7 @@ export const Navbar = component$(({ data }) => {
       </div>
       <div class="grid grid-cols-3 items-center justify-evenly bg-white py-1 min-[1200px]:flex">
         <div class="flex items-center justify-center min-[1200px]:hidden">
-          {/* <FaBars class="min-[1200px]:hidden" /> */}
+          <FaBarsSolid class="min-[1200px]:hidden" />
         </div>
         <div class="flex items-center justify-center">
           <div class="w-[125px] py-1">
@@ -73,7 +73,11 @@ export const Navbar = component$(({ data }) => {
         {data["gigfastOptions"].map((e, i) => (
           <Link key={i} href={e["Link"]}>
             <div class="w-[100px] rounded-md p-1 hover:bg-slate-50">
-              <StrapiImage url={e["Icon"]["data"]["attributes"]["url"]} />
+              <StrapiImage
+                url={e["Icon"]["data"]["attributes"]["url"]}
+                width="310"
+                height="59"
+              />
             </div>
           </Link>
         ))}
