@@ -2,7 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import { Button } from "./Button";
 import { FaCircleArrowRightSolid } from "@qwikest/icons/font-awesome";
 import { setURL } from "~/data/constants";
-import { parse } from "marked";
+import { Markdown } from "./Markdown";
 
 export const Paragraph = component$(
   ({
@@ -26,7 +26,7 @@ export const Paragraph = component$(
   }) => {
     return (
       <div
-        class={`flex min-h-[500px] w-full flex-col items-center justify-center ${
+        class={`flex w-full flex-col items-center justify-center ${
           alt ? "bg-[#e2eefa]" : ""
         }`}
       >
@@ -37,7 +37,7 @@ export const Paragraph = component$(
           </>
         )}
         <div
-          class={`flex ${
+          class={`my-4 flex ${
             reverse ? "flex-row-reverse" : ""
           } max-w-[1200px] items-center justify-center max-[800px]:flex-col`}
         >
@@ -66,10 +66,10 @@ export const Paragraph = component$(
                 </span>
               )}
             </div>
-            <div
-              dangerouslySetInnerHTML={parse(text)}
-              class="flex !list-disc flex-col gap-3 text-justify text-[20px] text-[#2E5899]"
-            ></div>
+            <Markdown
+              text={text}
+              classN={"text-[18px] text-[#2E5899]"}
+            ></Markdown>
             {buttons &&
               buttons.map((button, i) => (
                 <Button key={i} text={button["Text"]} link={button["Link"]}>
@@ -136,7 +136,7 @@ export const ListedParagraphs = component$(({ data }: { data: any }) => {
           key={i}
           data={paragraph}
           reverse={i % 2 === 0}
-          alt={i % 2 === 1}
+          alt={i % 2 === 0}
         />
       ))}
     </>

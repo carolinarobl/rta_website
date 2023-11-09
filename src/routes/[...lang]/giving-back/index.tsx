@@ -2,7 +2,6 @@ import { component$ } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 import { MainLayout } from "~/components/MainLayout";
 import { GivingBack } from "~/components/pages/GivingBack";
-import { Home } from "~/components/pages/Home";
 import { givingBackQuery } from "~/data/gql_queries/pages/givingback_query";
 import { getPageData } from "~/services/graphql";
 
