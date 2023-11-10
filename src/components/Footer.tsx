@@ -20,10 +20,11 @@ export const Footer = component$(({ data }: { data: any }) => {
         <div class="flex flex-col items-center justify-center">
           <div class="mb-4 w-[180px]">
             <StrapiImage
+              width="970" height="359"
               url={data["CorpInfo"]["Media"]["data"]["attributes"]["url"]}
               alt={
                 data["CorpInfo"]["Media"]["data"]["attributes"][
-                  "alternativeText"
+                "alternativeText"
                 ]
               }
             />
@@ -38,9 +39,9 @@ export const Footer = component$(({ data }: { data: any }) => {
           />
         </div>
         <div class="container sm:hidden">
-          {data["Menus"].map((menu:any, i:any) => (
+          {data["Menus"].map((menu: any, i: any) => (
             <AccordionItem key={i} title={menu["Text"]}>
-              {menu["SubOption"].map((subOption:any, index:any) => (
+              {menu["SubOption"].map((subOption: any, index: any) => (
                 <Link
                   key={index}
                   href={subOption["Link"]}
@@ -54,10 +55,10 @@ export const Footer = component$(({ data }: { data: any }) => {
         </div>
 
         <div class="flex justify-around">
-          {data["Menus"].map((menu:any, i:any) => (
+          {data["Menus"].map((menu: any, i: any) => (
             <div key={i} class="hidden w-1/4 sm:block">
               <h2 class="text-xl font-bold">{menu["Text"]}</h2>
-              {menu["SubOption"].map((subOption:any, index:any) => (
+              {menu["SubOption"].map((subOption: any, index: any) => (
                 <Link
                   key={index}
                   href={subOption["Link"]}
@@ -73,7 +74,7 @@ export const Footer = component$(({ data }: { data: any }) => {
       <div class="flex flex-col items-center gap-2 bg-primary-dark-blue px-4 py-4 text-white">
         <p class="text-[14px]">{data["SocialMedia"]["Text"]}</p>
         <div class="flex flex-row gap-4">
-          {data["SocialMedia"]["SubOption"].map((item:any, index:any) => (
+          {data["SocialMedia"]["SubOption"].map((item: any, index: any) => (
             <Link key={index} href={item["Link"]}>
               {item["Link"].includes("facebook") && (
                 <div class="flex h-7 w-7 items-center justify-center rounded-full bg-primary-blue p-2">

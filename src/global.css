@@ -63,3 +63,21 @@ body {
   margin: 0;
   line-height: inherit;
 }
+
+.markdownTitle h2 {
+  @apply mt-4 text-lg md:text-xl font-bold
+}
+
+.markdownh3 h3{
+  @apply mt-2 text-base md:text-lg font-bold
+}
+
+.markdownHyper a {
+  @apply text-secondary-red underline
+}
+
+.markdownol ol {
+  list-style-type: decimal;
+  list-style: decimal;
+  margin-left: 16px;
+}
