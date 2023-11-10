@@ -57,18 +57,18 @@ export const Paragraph = component$(
               </div>
             )}
             <div class="flex  justify-center gap-2">
-              <span class="text-center text-[38px] font-bold text-[#2E5899]">
+              <span class="text-center text-[38px] font-bold text-[#2E5899] max-sm:text-[28px]">
                 {title}
               </span>
               {subtitle && (
-                <span class="text-[20px] font-bold text-[#D20030]">
+                <span class="text-[20px] font-bold text-[#D20030] max-sm:text-[20px]">
                   {subtitle}
                 </span>
               )}
             </div>
             <Markdown
               text={text}
-              classN={"text-[18px] text-[#2E5899]"}
+              classN={"text-[18px] max-sm:text-[15px] text-[#2E5899]"}
             ></Markdown>
             {buttons &&
               buttons.map((button, i) => (
