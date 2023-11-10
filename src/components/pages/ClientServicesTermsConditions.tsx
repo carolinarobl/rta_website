@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 
-export const Cookies = component$(({data}:{data:any}) => {
+export const ClientServicesTermsAndConditions = component$(({data}:{data:any}) => {
   return <div class="px-4 py-2 md:px-10 md:py-2">
     <script type="module" src="https://md-block.verou.me/md-block.js"></script>
     <h1 class="text-primary-blue text-center font-semibold text-lg md:text-2xl mb-4">{data['Titles'][0]['Text']}</h1>

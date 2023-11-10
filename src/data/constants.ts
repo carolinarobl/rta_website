@@ -38,3 +38,23 @@ data{
           TextContent
         }
 `;
+
+// Query for the Members Grid. Used in:
+// - Leadership Team Page
+// - Board of Directors Page
+export const sectionBoardMembers = `
+MembersGrid{
+           Picture{
+         ${mediaUrl}
+        }
+        FirstName
+        LastName
+        Position
+        SocialMedia{
+          Icon{
+            ${mediaUrl}
+          }
+          Link
+        }
+      }
+`;

@@ -1,0 +1,43 @@
+import { component$ } from '@builder.io/qwik';
+import { routeLoader$ } from '@builder.io/qwik-city';
+import { MainLayout } from '~/components/MainLayout';
+import { ClientServicesTermsAndConditions } from '~/components/pages/ClientServicesTermsConditions';
+import { supplementToClientQuery } from '~/data/gql_queries/pages/supplement_to_client_query';
+import { getPageData } from '~/services/graphql';
+
+export const usePageData = routeLoader$(async (req) => {
+    // console.log(req.params);
+    const lang = req.params["lang"] == "" ? "en" : "es-419";
+    return await getPageData(supplementToClientQuery, lang);
+  });
+  
+export default component$(() => {
+  const data = usePageData()
+  const signalData = data.value
+  const pageData = signalData['pageData']['data']['pageSuppleTerms']['data']['attributes']['Content'];
+  return <>
+  <MainLayout data={signalData['layoutData']}>
+    <ClientServicesTermsAndConditions data={pageData}></ClientServicesTermsAndConditions>
+  </MainLayout>
+  </>
+});
+
+export const head: DocumentHead = ({ resolveValue }) => {
+    const pageData = resolveValue(usePageData);
+    const seoData = pageData['pageData']['data']['pageSuppleTerms']['data']['attributes']['SEO']
+    const title = `${seoData['MetaTitle']}`;
+  
+    return {
+      title: title,
+      meta: [
+        {
+          name: "title",
+          content: `${title}` 
+        },
+        {
+          name: "description",
+          content: `${seoData['MetaDescription']}`,
+        },
+      ],
+    };
+  };
