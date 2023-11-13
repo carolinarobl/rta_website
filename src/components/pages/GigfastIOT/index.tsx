@@ -31,7 +31,7 @@ export const GigfastIOT = component$(({ data }: { data: any }) => {
         />
       </div>
       <div class="mx-4 my-8 max-w-[500px]">
-        <StrapiImage url={logo} />
+        <StrapiImage url={logo} width={1230} height={229} />
       </div>
       <div class="mx-10 my-4 flex max-w-[800px] flex-col items-center justify-center gap-2 text-primary-blue">
         <span class="text-center text-[38px] font-bold text-[#2E5899] max-sm:text-[28px]">

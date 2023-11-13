@@ -10,8 +10,8 @@ export const StrapiImage = component$(
     toWhite = false,
   }: {
     url: string;
-    width: number;
-    height: number;
+    width?: number;
+    height?: number;
     alt?: string;
     toWhite?: boolean;
   }) => {

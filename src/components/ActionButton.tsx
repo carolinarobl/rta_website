@@ -2,7 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
 
 export const ActionButton = component$(
-  ({ link, text }: { link: String; text: String }) => {
+  ({ link, text }: { link: string; text: string }) => {
     if (link.includes("tel:")) {
       return (
         <Link href={link}>

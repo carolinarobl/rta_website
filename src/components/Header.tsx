@@ -2,7 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import { Button } from "./Button";
 import { FaCircleArrowRightSolid } from "@qwikest/icons/font-awesome";
 
-export const Header = component$(({ vertical = true }: { vertical: bool }) => {
+export const Header = component$(({ vertical = true }: { vertical: boolean }) => {
   return (
     <div
       class={`flex w-[550px] max-[600px]:w-[400px] ${
