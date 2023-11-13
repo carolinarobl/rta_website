@@ -11,11 +11,12 @@ export const LeadershipTeam = component$(({ data }: { data: any }) => {
                     alt={member['Picture']['data']['attributes']['alternativeText']} />
                 <h1 class="font-bold text-primary-blue text-xl">{member['FirstName']} {member['LastName']}</h1>
                 <p class="text-sm text-primary-blue">{member['Position']}</p>
-                <a href={member['SocialMedia'][0]['Link']}>
+                {member['SocialMedia'].length > 0 && <a href={member['SocialMedia'][0]['Link']}>
                     <div class="h-[30px] w-[30px] flex items-center justify-center bg-white shadow rounded-full p-1.5">
-                        <FaLinkedinIn class="fill-primary-blue"/>
+                        <FaLinkedinIn class="fill-primary-blue" />
                     </div>
-                </a>
+                </a>}
+
             </div>
         ))}
     </div>
