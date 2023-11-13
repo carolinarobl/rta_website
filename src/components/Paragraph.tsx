@@ -21,8 +21,8 @@ export const Paragraph = component$(
     subtitle?: string;
     text: string;
     buttons?: Array<any>;
-    reverse?: bool;
-    alt?: bool;
+    reverse?: boolean;
+    alt?: boolean;
   }) => {
     return (
       <div
@@ -106,8 +106,8 @@ export const SerializedParagraph = component$(
     alt = false,
   }: {
     data: any;
-    reverse: bool;
-    alt: bool;
+    reverse: boolean;
+    alt: boolean;
   }) => {
     return (
       <Paragraph

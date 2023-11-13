@@ -2,6 +2,7 @@ import { Slot, component$, useSignal } from "@builder.io/qwik";
 
 export const AccordionItem = component$(({ title }: { title: string }) => {
   const isOpen = useSignal(false);
+
   return (
     <div class="mb-2 mt-4 w-full border-b-2 border-t-2 border-blue-600">
       <div

@@ -17,7 +17,7 @@ export const PortabilityIntro = component$(({ data }: { data: any }) => {
           {data["Title"]}
         </div>
         <div class="max-w-[470px]">
-          <StrapiImage url={logoSrc} />
+          <StrapiImage url={logoSrc} width={1230} height={230}/>
         </div>
         <div>
           <Markdown
@@ -27,7 +27,7 @@ export const PortabilityIntro = component$(({ data }: { data: any }) => {
         </div>
       </div>
       <div class="flex w-[300px] items-center justify-center self-center p-4 min-[800px]:w-[30%]">
-        <StrapiImage url={mediaSrc} />
+        <StrapiImage url={mediaSrc} width={1000} height={1000}/>
       </div>
     </div>
   );

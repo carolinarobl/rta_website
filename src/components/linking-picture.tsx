@@ -1,5 +1,4 @@
 import { component$ } from '@builder.io/qwik';
-import { StrapiImage } from './StrapiImage';
 import { setURL } from '~/data/constants';
 
 interface Props {

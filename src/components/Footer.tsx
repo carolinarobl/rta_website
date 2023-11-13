@@ -20,7 +20,7 @@ export const Footer = component$(({ data }: { data: any }) => {
         <div class="flex flex-col items-center justify-center">
           <div class="mb-4 w-[180px]">
             <StrapiImage
-              width="970" height="359"
+              width={970} height={359}
               url={data["CorpInfo"]["Media"]["data"]["attributes"]["url"]}
               alt={
                 data["CorpInfo"]["Media"]["data"]["attributes"][
@@ -79,6 +79,8 @@ export const Footer = component$(({ data }: { data: any }) => {
               {item["Link"].includes("facebook") && (
                 <div class="flex h-7 w-7 items-center justify-center rounded-full bg-primary-blue p-2">
                   <StrapiImage
+                  height={20}
+                  width={20}
                     url={item["Icon"]["data"]["attributes"]["url"]}
                     toWhite={true}
                   />
@@ -87,6 +89,8 @@ export const Footer = component$(({ data }: { data: any }) => {
               {!item["Link"].includes("facebook") && (
                 <div class="flex h-7 w-7 items-center justify-center rounded-full bg-primary-blue p-1">
                   <StrapiImage
+                  height={20}
+                  width={20}
                     url={item["Icon"]["data"]["attributes"]["url"]}
                     toWhite={true}
                   />

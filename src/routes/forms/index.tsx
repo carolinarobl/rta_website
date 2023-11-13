@@ -8,7 +8,6 @@ import { Test1 } from '~/components/forms/test';
 
 export default component$(() => {
   return <>
-  {/* <Test1></Test1> */}
   <FormCarrers/>
   <FormPosition></FormPosition>
   <FormSupport></FormSupport>
