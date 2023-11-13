@@ -70,15 +70,17 @@ export const Paragraph = component$(
               text={text}
               classN={"text-[18px] max-sm:text-[15px] text-[#2E5899]"}
             ></Markdown>
-            {buttons &&
-              buttons.map((button, i) => (
-                <Button key={i} text={button["Text"]} link={button["Link"]}>
-                  <FaCircleArrowRightSolid
-                    color="#13B295"
-                    class="text-[21px] opacity-60"
-                  />
-                </Button>
-              ))}
+            <div class="flex gap-4">
+              {buttons &&
+                buttons.map((button, i) => (
+                  <Button key={i} text={button["Text"]} link={button["Link"]}>
+                    <FaCircleArrowRightSolid
+                      color="#13B295"
+                      class="text-[21px] opacity-60"
+                    />
+                  </Button>
+                ))}
+            </div>
           </div>
           {image && (
             <div class="flex w-[300px] items-center justify-center self-center p-4 min-[800px]:w-[30%]">
