@@ -20,10 +20,22 @@ export default component$(() => {
   );
 });
 
-export const head: DocumentHead = ({ resolveValue, params }) => {
+export const head: DocumentHead = ({  resolveValue}) => {
   const pageData = resolveValue(usePageData);
-  const title = "Giving Back";
+  const seoData = pageData['pageData']['data']['pageGivingBack']['data']['attributes']['SEO']
+  const title = `${seoData['MetaTitle']}`;
+
   return {
     title: title,
+    meta: [
+      {
+        name: "title",
+        content: `${title}` 
+      },
+      {
+        name: "description",
+        content: `${seoData['MetaDescription']}`,
+      },
+    ],
   };
 };

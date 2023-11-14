@@ -1,11 +1,10 @@
 import { component$ } from "@builder.io/qwik";
-import { QwikRive } from "qwik-rive";
+// import { QwikRive } from "qwik-rive";
 import { Markdown } from "~/components/Markdown";
 import { StrapiImage } from "~/components/StrapiImage";
-import { setURL } from "~/data/constants";
 
 export const ProsSection = component$(({ data }: { data: any }) => {
-  const { prosData, prosPar, prosPicture } = data;
+  const { prosData, prosPar } = data;
   return (
     <div class="w-full bg-gradient-to-br from-[#3d76c2] to-[#2e599a] px-14 py-6 text-white">
       <div class="flex w-[50%] flex-col text-justify">
@@ -14,7 +13,7 @@ export const ProsSection = component$(({ data }: { data: any }) => {
         </div>
         <div class="text-[18px] max-sm:text-[15px]">{prosPar["Paragraph"]}</div>
         <div class="mt-6 flex flex-col gap-4">
-          {prosData.map((pro, i) => {
+          {prosData.map((pro: any, i: any) => {
             return (
               <div key={i} class="flex gap-4">
                 <div class="h-fit w-fit rounded-full bg-secondary-red p-[9px]">

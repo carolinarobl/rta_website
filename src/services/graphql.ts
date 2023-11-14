@@ -1,7 +1,7 @@
 import { customLocale, gqlURL } from "~/data/constants";
 import { layoutQuery } from "~/data/gql_queries/layout_query";
 
-export async function GQLQuery(query) {
+export async function GQLQuery(query: string) {
   const resp = await fetch(gqlURL, {
     method: "POST",
     cache: "no-cache",
@@ -15,9 +15,9 @@ export async function GQLQuery(query) {
 }
 
 export async function getPageData(
-  query: Function,
-  locale: String = "en",
-  getLayoutData: bool = true,
+  query: any,
+  locale: string = "en",
+  getLayoutData: boolean = true,
 ) {
   let layoutData = {};
   if (getLayoutData) {

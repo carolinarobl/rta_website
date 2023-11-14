@@ -11,7 +11,6 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
       class="relative -z-10 flex max-h-[750px] items-center"
     >
       <video
-        width={"100%"}
         src={setURL(data["VideoBGDesktop"]["data"]["attributes"]["url"])}
         autoPlay
         loop
