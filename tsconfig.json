@@ -21,6 +21,6 @@
       "~/*": ["./src/*"]
     }
   },
-  "files": ["./.eslintrc.cjs", "./src/routes/usePageData.tsx"],
+  "files": ["./.eslintrc.cjs"],
   "include": ["src", "./*.d.ts", "./*.config.ts"]
 }

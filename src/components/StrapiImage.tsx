@@ -8,12 +8,14 @@ export const StrapiImage = component$(
     height,
     alt = "",
     toWhite = false,
+    clasN = "",
   }: {
     url: string;
     width?: number;
     height?: number;
     alt?: string;
     toWhite?: boolean;
+    clasN?: string;
   }) => {
     return (
       <img
@@ -22,9 +24,11 @@ export const StrapiImage = component$(
         src={`${strapiURL}${url}`}
         alt={alt}
         class={
-          toWhite
+          (toWhite
             ? "brightness-110 contrast-100 hue-rotate-[23deg] invert saturate-[7500%] sepia-0 filter"
-            : ""
+            : "") +
+          " " +
+          clasN
         }
       />
     );

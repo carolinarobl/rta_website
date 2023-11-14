@@ -157,6 +157,41 @@ export const homeQuery = (locale: string) => {
       }
     }
   }
+  sectionProsRta {
+    data {
+      attributes {
+        Pros {
+          Icon {
+            data {
+            attributes {
+              url
+              alternativeText
+              caption
+            }
+          }
+          }
+          Title
+          Text
+          Caption
+        }
+      }
+    }
+  }
+  sectionNetwork {
+    data {
+      attributes {
+        Map {
+          MapPicture {
+            data {
+              attributes {
+                url
+              }
+            }
+          }
+        }
+      }
+    }
+  }
 }
 `;
 };

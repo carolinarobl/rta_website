@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 import { MainLayout } from "~/components/MainLayout";
-import { Home } from "~/components/pages/Home";
+import { Home } from "~/components/pages/Home/index";
 import { homeQuery } from "~/data/gql_queries/pages/home_query";
 import { getPageData } from "~/services/graphql";
 
