@@ -22,7 +22,8 @@ export const Button = component$(
     });
     if (type === "link")
       return (
-        <div
+        <a href={link}>
+          <div
           onClick$={handleClick}
           class={`flex w-fit items-center justify-center gap-2 rounded-full border-2 border-teal-500 bg-transparent p-1 px-6 text-btn-green shadow-md transition-all hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white`}
         >
@@ -32,6 +33,7 @@ export const Button = component$(
           {/* <Slot /> */}
           {/* <Icon color="#13B295" size={23} class="opacity-60" /> */}
         </div>
+        </a>
       );
     if (type === "action")
       return (
