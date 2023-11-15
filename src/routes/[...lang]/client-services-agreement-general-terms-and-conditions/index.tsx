@@ -1,5 +1,5 @@
 import { component$ } from '@builder.io/qwik';
-import { DocumentHead, routeLoader$ } from '@builder.io/qwik-city';
+import { type DocumentHead, routeLoader$ } from '@builder.io/qwik-city';
 import { MainLayout } from '~/components/MainLayout';
 import { ClientServicesTermsAndConditions } from '~/components/pages/ClientServicesTermsConditions';
 import { supplementToClientQuery } from '~/data/gql_queries/pages/supplement_to_client_query';

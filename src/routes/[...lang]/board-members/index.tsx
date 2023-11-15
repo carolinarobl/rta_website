@@ -1,5 +1,5 @@
 import { component$ } from '@builder.io/qwik';
-import { DocumentHead, routeLoader$ } from '@builder.io/qwik-city';
+import { type DocumentHead, routeLoader$ } from '@builder.io/qwik-city';
 import { MainLayout } from '~/components/MainLayout';
 import { LeadershipTeam } from '~/components/pages/LeadershipTeam';
 import { boardDirectorsQuery } from '~/data/gql_queries/pages/board_of_directors_query';

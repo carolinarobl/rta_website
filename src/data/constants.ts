@@ -5,7 +5,7 @@ export const setURL = (url: String) => {
   return `${strapiURL}${url}`;
 };
 
-export const customLocale = (locale: String) => {
+export const customLocale = (locale: string) => {
   return locale === "es" ? "es-419" : locale;
 };
 

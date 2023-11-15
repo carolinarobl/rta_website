@@ -1,11 +1,10 @@
 import { component$ } from '@builder.io/qwik';
-import { Form, globalAction$ } from '@builder.io/qwik-city';
-import { formAction$, useForm } from '@modular-forms/qwik';
+import { globalAction$ } from '@builder.io/qwik-city';
+import {  useForm } from '@modular-forms/qwik';
 
 type TestForm = {
     name:string;
     email:string;
-    file:File | null;
 }
 
 export const useSubmitForm = globalAction$(async (data) => {
@@ -17,15 +16,19 @@ export const useSubmitForm = globalAction$(async (data) => {
 export const Test1 = component$(() => {
     const submitForm = useSubmitForm();
 
-    const [testForm, { Form, Field}] = useForm<TestForm>({
-        loader: {values:{name:'', email:''}},
+    const [, { Form}] = useForm<TestForm>({
+        loader: {value:{name:'', email:''}},
       });
 
     return (
-        <Form onsubmit={submitForm}>
+        <Form  onSubmit$={() => submitForm}>
             <input name="name" type="text" placeholder="Name" />
             <input name="email" type="email" placeholder="Email" />
             <button type="submit">Submit</button>
         </Form>
     );
 });
+
+
+
+

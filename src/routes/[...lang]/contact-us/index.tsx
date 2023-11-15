@@ -1,5 +1,5 @@
 import { component$ } from '@builder.io/qwik';
-import { DocumentHead, routeLoader$ } from '@builder.io/qwik-city';
+import { type DocumentHead, routeLoader$ } from '@builder.io/qwik-city';
 import { MainLayout } from '~/components/MainLayout';
 import { ContactUs } from '~/components/pages/ContactUs';
 import { contactUsQuery } from '~/data/gql_queries/pages/contact_us_query';

@@ -3,12 +3,12 @@ import { HomeHeader } from "./HomeHeader";
 import { ListedParagraphs } from "~/components/Paragraph";
 import { ProsSection } from "./ProsSection";
 
-export const Home = component$(({ data }) => {
+export const Home = component$(( {data} : {data: any} ) => {
   // full data
   const pageData = data["pageHome"]["data"]["attributes"];
 
   // Races
-  const racesData = data["zaneRaces"]["data"];
+  // const racesData = data["zaneRaces"]["data"];
 
   // Pros Section
   const prosData = data["sectionProsRta"]["data"]["attributes"]["Pros"];

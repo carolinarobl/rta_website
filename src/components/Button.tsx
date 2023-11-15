@@ -1,23 +1,26 @@
-import { $, Slot, component$ } from "@builder.io/qwik";
+import { $, component$ } from "@builder.io/qwik";
 export const Button = component$(
   ({
     type = "link",
     text,
     link,
-    color = "#13B295",
+    // color = "#13B295",
     onClick,
-    Icon,
-    subtext,
+    // Icon,
+    // subtext,
   }: {
     type?: "link" | "action";
     text: string;
     link?: string;
-    color?: string;
+    // color?: string;
     onClick?: void;
-    Icon?: any;
-    subtext?: string;
+    // Icon?: any;
+    // subtext?: string;
   }) => {
     const handleClick = $(() => {
+      if(link){
+        console.log("Link: link");
+      }
       (onClick ?? (() => {}))();
     });
     if (type === "link")
@@ -35,7 +38,7 @@ export const Button = component$(
         </div>
         </a>
       );
-    if (type === "action")
+    else
       return (
         <div
           onClick$={handleClick}

@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
+import { routeLoader$,  } from "@builder.io/qwik-city";
 import { MainLayout } from "~/components/MainLayout";
 import { Home } from "~/components/pages/Home/index";
 import { homeQuery } from "~/data/gql_queries/pages/home_query";
@@ -20,10 +20,10 @@ export default component$(() => {
   );
 });
 
-export const head: DocumentHead = ({ resolveValue, params }) => {
-  const pageData = resolveValue(usePageData);
-  const title = "titulo";
-  return {
-    title: title,
-  };
-};
+// export const head: DocumentHead = ({}) => {
+//   //const pageData = resolveValue(usePageData);
+//   const title = "titulo";
+//   return {
+//     title: title,
+//   };
+// };

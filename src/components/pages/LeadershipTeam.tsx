@@ -1,6 +1,5 @@
 import { component$ } from "@builder.io/qwik";
 import { Linking_picture } from "../linking-picture";
-import { setURL } from "~/data/constants";
 import { FaLinkedinIn } from "@qwikest/icons/font-awesome"
 
 export const LeadershipTeam = component$(({ data }: { data: any }) => {

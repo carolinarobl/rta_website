@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { AccordionItem } from "./AccordionItem";
 import { StrapiImage } from "./StrapiImage";
-import { ActionButton } from "./ActionButton";
+// import { ActionButton } from "./ActionButton";
 import { Link } from "@builder.io/qwik-city";
 import { Button } from "./Button";
 
