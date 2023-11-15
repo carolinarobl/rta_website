@@ -1,11 +1,10 @@
 import { component$ } from "@builder.io/qwik";
-import { QwikRive } from "qwik-rive";
+// import { QwikRive } from "qwik-rive";
 import { Markdown } from "~/components/Markdown";
 import { StrapiImage } from "~/components/StrapiImage";
-import { setURL } from "~/data/constants";
 
 export const ProsSection = component$(({ data }: { data: any }) => {
-  const { prosData, prosPar, prosPicture } = data;
+  const { prosData, prosPar } = data;
   return (
     <div class="z-20 flex w-full justify-center bg-gradient-to-br from-[#3d76c2] to-[#2e599a] px-14 py-6 text-white">
       <div class="max-w-[1200px]">

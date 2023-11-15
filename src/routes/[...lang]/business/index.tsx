@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import { DocumentHead, routeLoader$ } from "@builder.io/qwik-city";
+import { type DocumentHead, routeLoader$ } from "@builder.io/qwik-city";
 import { MainLayout } from "~/components/MainLayout";
 import { Business } from "~/components/pages/Business";
 import { businessQuery } from "~/data/gql_queries/pages/business_query";
@@ -21,10 +21,22 @@ export default component$(() => {
   );
 });
 
-export const head: DocumentHead = ({ resolveValue, params }) => {
+export const head: DocumentHead = ({ resolveValue,  }) => {
   const pageData = resolveValue(usePageData);
-  const title = "Business";
+  const seoData = pageData['pageData']['data']['pageBusiness']['data']['attributes']['SEO']
+  const title = `${seoData['MetaTitle']}`;
+
   return {
     title: title,
+    meta: [
+      {
+        name: "title",
+        content: `${title}` 
+      },
+      {
+        name: "description",
+        content: `${seoData['MetaDescription']}`,
+      },
+    ],
   };
 };

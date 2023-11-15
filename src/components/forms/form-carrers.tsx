@@ -1,4 +1,4 @@
-import { $, component$ } from "@builder.io/qwik";
+import {component$ } from "@builder.io/qwik";
 import { Form, globalAction$} from "@builder.io/qwik-city";
 import { BsUpload } from "@qwikest/icons/bootstrap";
 

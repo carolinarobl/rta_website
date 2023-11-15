@@ -1,7 +1,7 @@
 import { component$ } from '@builder.io/qwik';
-import { DocumentHead, routeLoader$ } from '@builder.io/qwik-city';
+import { type DocumentHead, routeLoader$ } from '@builder.io/qwik-city';
 import { MainLayout } from '~/components/MainLayout';
-import { Cookies } from '~/components/pages/Cookies';
+import { Cookies } from '~/components/pages/cookies';
 import { cookiesQuery } from '~/data/gql_queries/pages/cookies_query';
 import { getPageData } from '~/services/graphql';
 
