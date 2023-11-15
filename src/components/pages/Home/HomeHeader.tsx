@@ -4,23 +4,15 @@ import { setURL } from "~/data/constants";
 
 export const HomeHeader = component$(({ data }: { data: any }) => {
   return (
-    <div
-      onLoad$={() => {
-        console.log(data);
-      }}
-      class="relative -z-10 flex max-h-[750px] items-center"
-    >
+    <div class="relative flex h-[80vh] max-h-[750px] w-full items-center">
       <video
-        width={"100%"}
+        class="absolute left-0 top-0 -z-10 h-full w-full object-cover"
         src={setURL(data["VideoBGDesktop"]["data"]["attributes"]["url"])}
         autoPlay
         loop
-        onPlay$={() => {
-          console.log(data);
-        }}
         muted
       ></video>
-      <div class="absolute bottom-0 left-0 right-0 top-0 flex items-center justify-between">
+      <div class="flex w-full items-center justify-between">
         <div class="relative flex h-[250px] w-[400px] items-center justify-center rounded-br-full rounded-tr-full bg-white bg-opacity-60">
           <div class="box"></div>
           <div class="carrousel absolute bottom-2 left-0 right-0 flex justify-center gap-2">
