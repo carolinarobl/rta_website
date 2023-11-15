@@ -17,17 +17,6 @@ export const StrapiImage = component$(
     toWhite?: boolean;
     clasN?: string;
   }) => {
-    if (url.includes(".svg")) {
-      return (
-        <object
-          width={width}
-          height={height}
-          data={`${strapiURL}${url}`}
-          alt={alt}
-          class={clasN}
-        />
-      );
-    }
     return (
       <img
         width={width}
