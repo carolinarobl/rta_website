@@ -48,6 +48,26 @@ export const gigfastVoiceQuery = (locale: string) => {
         }
       }
     }
+    sectionPortGfv(locale:"${locale}"){
+        data{
+          attributes{
+            Portability{
+              Title
+              Logo{
+               ${mediaUrl}
+              }
+              Paragraph
+              Media{
+               ${mediaUrl}
+              }
+              Buttons{
+                Text
+                Link
+              }
+            }
+          }
+        }
+      }
   }
     `;
 };
