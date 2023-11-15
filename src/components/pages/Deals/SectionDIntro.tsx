@@ -1,5 +1,4 @@
 import { component$ } from "@builder.io/qwik";
-import { Markdown } from "~/components/Markdown";
 import { SerializedParagraph } from "~/components/Paragraph";
 
 export const SectionDIntro = component$(({ data }: { data: any }) => {

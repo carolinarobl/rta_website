@@ -1,6 +1,5 @@
 import { component$ } from "@builder.io/qwik";
 import { setURL } from "~/data/constants";
-import { Button } from "../Button";
 import { BsCheckCircleFill, BsTagFill } from "@qwikest/icons/bootstrap";
 
 interface Props {
