@@ -4,7 +4,7 @@ import { SectionDIntro } from "./SectionDIntro";
 
 export const Deals = component$(({ data }: { data: any }) => {
   const dealsData = data["pageDeals"]["data"]["attributes"]["Deals"];
-  const introData = data["pageDeals"]["data"]["attributes"]["RefIntro"];
+  const introData = data["pageDeals"]["data"]["attributes"]["RefInfo"];
   const discountsData = data["pageDeals"]["data"]["attributes"]["Discounts"];
   const disclaimer = data["pageDeals"]["data"]["attributes"]["Disclaimer"];
   return (

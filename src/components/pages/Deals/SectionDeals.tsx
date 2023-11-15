@@ -39,7 +39,7 @@ export const SectionDeals = component$(({ data }: { data: any }) => {
           </div>
           <Button text={data["Button"]["Text"]} link={data["Button"]["Link"]} />
         </div>
-        <div class="flex w-[300px] items-center justify-center self-center p-4 min-[800px]:w-[30%]">
+        <div class="flex w-[300px] items-center justify-center self-center p-4 max-[600px]:hidden min-[800px]:w-[30%]">
           <StrapiImage url={data["Media"]["data"]["attributes"]["url"]} />
         </div>
       </div>
