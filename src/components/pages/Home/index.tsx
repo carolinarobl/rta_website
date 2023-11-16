@@ -3,7 +3,7 @@ import { HomeHeader } from "./HomeHeader";
 import { ListedParagraphs } from "~/components/Paragraph";
 import { ProsSection } from "./ProsSection";
 
-export const Home = component$(( {data} : {data: any} ) => {
+export const Home = component$(({ data }: { data: any }) => {
   // full data
   const pageData = data["pageHome"]["data"]["attributes"];
 
@@ -12,10 +12,13 @@ export const Home = component$(( {data} : {data: any} ) => {
 
   // Pros Section
   const prosData = data["sectionProsRta"]["data"]["attributes"]["Pros"];
-  const prosMap =
-    data["sectionNetwork"]["data"]["attributes"]["Map"]["MapPicture"]["data"][
-      "attributes"
-    ]["url"];
+
+  const prosMap = pageData["ProsPicture"]["data"]["attributes"]["url"];
+
+  // const prosMap =
+  //   data["sectionNetwork"]["data"]["attributes"]["Map"]["MapPicture"]["data"][
+  //     "attributes"
+  //   ]["url"];
 
   return (
     <div>

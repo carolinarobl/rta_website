@@ -14,6 +14,7 @@ export const Paragraph = component$(
     buttons,
     reverse = false,
     alt = false,
+    color = "primary-blue",
   }: {
     logo?: string;
     image?: string;
@@ -23,6 +24,7 @@ export const Paragraph = component$(
     buttons?: Array<any>;
     reverse?: boolean;
     alt?: boolean;
+    color?: string;
   }) => {
     return (
       <div
@@ -56,8 +58,8 @@ export const Paragraph = component$(
                 />
               </div>
             )}
-            <div class="flex  justify-center gap-2">
-              <span class="text-center text-[38px] font-bold text-[#2E5899] max-sm:text-[28px]">
+            <div class={`flex justify-center gap-2 text-${color}`}>
+              <span class="text-center text-[38px] font-bold max-sm:text-[28px]">
                 {title}
               </span>
               {subtitle && (
@@ -68,7 +70,7 @@ export const Paragraph = component$(
             </div>
             <Markdown
               text={text}
-              classN={"text-[18px] max-sm:text-[15px] text-[#2E5899]"}
+              classN={`text-[18px] max-sm:text-[15px] text-${color}`}
             ></Markdown>
             <div class="flex gap-4">
               {buttons &&
@@ -104,18 +106,23 @@ export const SerializedParagraph = component$(
     data,
     reverse = false,
     alt = false,
+    color = "primary-blue",
   }: {
     data: any;
     reverse: boolean;
     alt: boolean;
+    color: string;
   }) => {
+    console.log(data);
     return (
       <Paragraph
         logo={
+          data["Logo"] &&
           data["Logo"]["data"] &&
           setURL(data["Logo"]["data"]["attributes"]["url"])
         }
         image={
+          data["Media"] &&
           data["Media"]["data"] &&
           setURL(data["Media"]["data"]["attributes"]["url"])
         }
@@ -124,23 +131,27 @@ export const SerializedParagraph = component$(
         text={data["Paragraph"]}
         buttons={data["Buttons"]}
         reverse={reverse}
+        color={color}
         alt={alt}
       />
     );
   },
 );
 
-export const ListedParagraphs = component$(({ data }: { data: any }) => {
-  return (
-    <>
-      {data.map((paragraph: any, i: number) => (
-        <SerializedParagraph
-          key={i}
-          data={paragraph}
-          reverse={i % 2 === 0}
-          alt={i % 2 === 0}
-        />
-      ))}
-    </>
-  );
-});
+export const ListedParagraphs = component$(
+  ({ data, color = "primary-blue" }: { data: any; color?: string }) => {
+    return (
+      <>
+        {data.map((paragraph: any, i: number) => (
+          <SerializedParagraph
+            key={i}
+            data={paragraph}
+            reverse={i % 2 === 0}
+            alt={i % 2 === 0}
+            color={color}
+          />
+        ))}
+      </>
+    );
+  },
+);

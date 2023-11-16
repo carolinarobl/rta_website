@@ -6,7 +6,7 @@ export const Markdown = component$(
     return (
       <div
         dangerouslySetInnerHTML={parse(text)}
-        class={`flex list-inside markdownol flex-col gap-3 ${classN}`}
+        class={`flex list-inside flex-col gap-3 text-primary-blue [&>h1]:text-[36px] [&>h1]:font-[600] [&>h2]:text-[32px] [&>h3]:text-[26px] ${classN}`}
       ></div>
     );
   },
