@@ -116,8 +116,13 @@ export const SerializedParagraph = component$(
     console.log(data);
     return (
       <Paragraph
-        logo={data["Logo"] && setURL(data["Logo"]["data"]["attributes"]["url"])}
+        logo={
+          data["Logo"] &&
+          data["Logo"]["data"] &&
+          setURL(data["Logo"]["data"]["attributes"]["url"])
+        }
         image={
+          data["Media"] &&
           data["Media"]["data"] &&
           setURL(data["Media"]["data"]["attributes"]["url"])
         }

@@ -15,6 +15,17 @@
   }
 }
 
+/* Hide scrollbar for Chrome, Safari and Opera */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.no-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+}
+
 /**
  * WHAT IS THIS FILE?
  *
@@ -65,15 +76,15 @@ body {
 }
 
 .markdownTitle h2 {
-  @apply mt-4 text-lg md:text-xl font-bold
+  @apply mt-4 text-lg font-bold md:text-xl;
 }
 
-.markdownh3 h3{
-  @apply mt-2 text-base md:text-lg font-bold
+.markdownh3 h3 {
+  @apply mt-2 text-base font-bold md:text-lg;
 }
 
 .markdownHyper a {
-  @apply text-secondary-red underline
+  @apply text-secondary-red underline;
 }
 
 .markdownol ol {

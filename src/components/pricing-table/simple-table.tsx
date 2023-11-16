@@ -1,6 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { setURL } from "~/data/constants";
 import { BsCheckCircleFill, BsTagFill } from "@qwikest/icons/bootstrap";
+import { Markdown } from "../Markdown";
 
 interface Props {
   logo: string;
@@ -46,10 +47,10 @@ export const SimpleTable = component$(
           <div class="mt-5 text-center text-base leading-4 tracking-tighter text-blue-800">
             <span class="text-2xl font-light text-rose-700">$</span>
             <span class="text-2xl font-light text-blue-800">{price}</span>
-            <span class=" text-2xl text-blue-800">/{priceTime}</span>
+            <span class=" text-2xl text-blue-800">{priceTime}</span>
           </div>
           <div class="mt-5 text-center text-base text-blue-800">
-            {description}
+            <Markdown text={description} />
           </div>
           <div class="border-gary-500 my-4 h-[1px] w-full border-t-2"></div>
           <div class="mt-5 text-base text-blue-800">

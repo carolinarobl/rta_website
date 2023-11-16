@@ -26,6 +26,7 @@ export default component$(() => {
         <head>
           <meta charSet="utf-8" />
           <link rel="manifest" href="/manifest.json" />
+          {/* <link ref="icon" href="/favicon.png" /> */}
           <RouterHead />
           <ServiceWorkerRegister />
         </head>
