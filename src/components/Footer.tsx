@@ -40,7 +40,7 @@ export const Footer = component$(({ data }: { data: any }) => {
         </div>
         <div class="container sm:hidden">
           {data["Menus"].map((menu: any, i: any) => (
-            <AccordionItem key={i} title={menu["Text"]}>
+            <AccordionItem key={i} title={menu["Text"]} classContainer="text-xl border-b-2 border-t-2 border-blue-600">
               {menu["SubOption"].map((subOption: any, index: any) => (
                 <Link
                   key={index}
