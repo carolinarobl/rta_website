@@ -92,3 +92,16 @@ body {
   list-style: decimal;
   margin-left: 16px;
 }
+
+@keyframes zoomIn {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+
+.animate-zoomIn {
+  animation: zoomIn 0.5s ease-in-out;
+}

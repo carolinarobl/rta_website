@@ -1,12 +1,12 @@
 import { Slot, component$, useSignal } from "@builder.io/qwik";
 
-export const AccordionItem = component$(({ title }: { title: string }) => {
+export const AccordionItem = component$(({ title, classContainer, classChild }: { title: string, classContainer?:string, classChild?:string }) => {
   const isOpen = useSignal(false);
 
   return (
-    <div class="mb-2 mt-4 w-full border-b-2 border-t-2 border-blue-600">
+    <div class="mb-2 my-8 w-full">
       <div
-        class="flex cursor-pointer flex-row justify-between bg-primary-dark-blue p-2 text-center text-xl text-white"
+        class={`flex cursor-pointer text- flex-row transition justify-between ${classContainer} p-2 `}
         onClick$={() => {
           isOpen.value = !isOpen.value;
         }}
@@ -19,7 +19,7 @@ export const AccordionItem = component$(({ title }: { title: string }) => {
         </span>
       </div>
       {isOpen.value && (
-        <div class="bg-primary-dark-blue p-2 text-center">
+        <div class={`${classChild} duration-500 mx-4 transition-all ease-in-out p-2 text-center`} >
           <Slot />
         </div>
       )}

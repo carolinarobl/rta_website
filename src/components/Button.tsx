@@ -1,4 +1,5 @@
-import { $, component$ } from "@builder.io/qwik";
+import { $, component$, useSignal } from "@builder.io/qwik";
+import { PopupCall } from "./PopupCall";
 export const Button = component$(
   ({
     type = "link",
@@ -20,10 +21,14 @@ export const Button = component$(
       if (link) {
         console.log(`Link: ${link}`);
       }
-      (onClick ?? (() => {}))();
+      (onClick ?? (() => { }))();
     });
-    if (type === "link")
-      return (
+    if (type === "link"){
+      if (link?.startsWith('=') && link) {
+        return <PopupCall link={link} text={text}></PopupCall>
+      }
+      else{
+        return (
         <div
           onClick$={handleClick}
           class={`flex w-fit items-center justify-center gap-2 rounded-full border-2 border-teal-500 bg-white p-1 px-7 text-btn-green opacity-80 shadow-md transition-all hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white`}
@@ -35,6 +40,8 @@ export const Button = component$(
           {/* <Icon color="#13B295" size={23} class="opacity-60" /> */}
         </div>
       );
+      }
+    }
     else
       return (
         <div
