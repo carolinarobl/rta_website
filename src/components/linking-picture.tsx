@@ -2,32 +2,21 @@ import { component$ } from "@builder.io/qwik";
 import { setURL } from "~/data/constants";
 
 interface Props {
-  size?: string;
+  width: string;
+  height: string
   color?: string;
   url: string;
   alt: string;
 }
 
-export const Linking_picture = component$(
-  ({ size = "250px", color = "bg-[#2E5899]", url, alt }: Props) => {
-    return (
-      <div
-        class={`${color} relative overflow-hidden bg-opacity-40 p-7 h-[${size}] w-[${size}] flex items-center justify-center rounded-full`}
-      >
-        <div
-          class={`${color} h-full w-full rounded-full bg-opacity-70 p-7 shadow-sm`}
-        >
-          <div class={`${color} h-full w-full rounded-full shadow-sm`}></div>
-        </div>
+export const Linking_picture = component$(({ width, height, color = "bg-[#2E5899]", url, alt }: Props) => {
+  return <div class={`${color} bg-opacity-40 p-6 ${height} ${width} rounded-full inline-block items-center justify-center`}>
+    <div class={`${color} py-6 px-6 flex items-center bg-opacity-60 justify-center rounded-full overflow-hidden shadow-md w-full h-full`}>
+      <div class={`${color} flex items-center bg-opacity-80 justify-center rounded-full overflow-hidden shadow-md w-full h-full`}>
 
-        <img
-          class="absolute rounded-full"
-          height={size}
-          width={size}
-          src={setURL(url)}
-          alt={alt}
-        />
+        <img class="object-cover h-full w-full rounded-full" height={250} width={250} src={setURL(url)} alt={alt} />
       </div>
-    );
-  },
-);
+
+    </div>
+  </div>
+});
