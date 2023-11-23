@@ -31,3 +31,21 @@ export async function getPageData(
     pageData,
   };
 }
+
+export async function getPageCustomData(
+  query: string,
+  locale: string = "en",
+  getLayoutData: boolean = true,
+) {
+  let layoutData = {};
+  if (getLayoutData) {
+    layoutData = await GQLQuery(layoutQuery(customLocale(locale)));
+  }
+
+  const pageData = await GQLQuery(query);
+
+  return {
+    layoutData,
+    pageData,
+  };
+}

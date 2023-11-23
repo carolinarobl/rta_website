@@ -41,7 +41,12 @@ export const ProsSection = component$(({ data }: { data: any }) => {
           </div>
         </div>
 
-        <StrapiImage width={"50%"} url={prosMap} clasN="px-8  min-w-[250px]" />
+        <StrapiImage
+          width="800"
+          height="800"
+          url={prosMap}
+          clasN="px-8  min-w-[250px]"
+        />
       </div>
     </div>
   );

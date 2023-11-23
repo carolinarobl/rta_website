@@ -1,6 +1,6 @@
 import { mediaUrl, sectionSEO } from "~/data/constants";
 
-export const businessQuery = (locale: String) => {
+export const businessQuery = (locale: string) => {
   return `query QueryBusiness {
     pageBusiness(locale:"${locale}"){    
       data{

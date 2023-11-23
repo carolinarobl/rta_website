@@ -1,6 +1,6 @@
 import { mediaUrl, sectionSEO } from "~/data/constants";
 
-export const givingBackQuery = (locale: String) => {
+export const givingBackQuery = (locale: string) => {
   return `
     query QueryGivingBack {
         pageGivingBack(locale:"${locale}"){    

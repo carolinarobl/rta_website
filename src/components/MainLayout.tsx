@@ -9,7 +9,7 @@ export const MainLayout = component$(
         <div class="absolute left-0 right-0 top-0 -z-10 h-[500px] bg-gradient-to-t from-white to-[#e7eef8]"></div>
         <Navbar data={data["data"]["generalMenu"]["data"]["attributes"]} />
         <div class="">
-          {showHeader && <div class="h-20 w-20">Header</div>}
+          {showHeader && <div class="h-20 w-20"></div>}
           <Slot />
           <Footer data={data["data"]["generalFooter"]["data"]["attributes"]} />
         </div>

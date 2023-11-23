@@ -1,6 +1,6 @@
 import { mediaUrl, sectionSEO } from "~/data/constants";
 
-export const gigfastIOTQuery = (locale: String) => {
+export const gigfastIOTQuery = (locale: string) => {
   return `
   query QueryGFIoT {
     pageGfIoT(locale:"${locale}"){

@@ -6,8 +6,8 @@ export const Button = component$(
     link,
     // color = "#13B295",
     onClick, // Icon,
-    // subtext,
-  }: {
+  } // subtext,
+  : {
     type?: "link" | "action";
     text: string;
     link?: string;
@@ -18,7 +18,7 @@ export const Button = component$(
   }) => {
     const handleClick = $(() => {
       if (link) {
-        console.log("Link: link");
+        console.log(`Link: ${link}`);
       }
       (onClick ?? (() => {}))();
     });

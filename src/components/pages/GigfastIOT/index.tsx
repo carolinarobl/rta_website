@@ -5,7 +5,6 @@ import { StrapiImage } from "~/components/StrapiImage";
 import { Markdown } from "~/components/Markdown";
 
 export const GigfastIOT = component$(({ data }: { data: any }) => {
-  console.log(data);
   const services = data["pageGfIoT"]["data"]["attributes"]["Services"];
   const intro = data["pageGfIoT"]["data"]["attributes"]["Introduction"];
   const logo =
@@ -15,12 +14,7 @@ export const GigfastIOT = component$(({ data }: { data: any }) => {
   const WeatherAnounce =
     data["pageGfIoT"]["data"]["attributes"]["WeatherAnounce"];
   return (
-    <div
-      onClick$={() => {
-        console.log(data);
-      }}
-      class="flex flex-col items-center justify-center "
-    >
+    <div class="flex flex-col items-center justify-center ">
       <div class="m-4 flex items-center justify-center gap-4 rounded-full bg-[#edf6ff] px-8 py-5 shadow-xl max-sm:flex-col">
         <span class="text-center text-[18px] font-[600] text-primary-blue max-md:text-[14px]">
           {WeatherAnounce["Paragraph"]}

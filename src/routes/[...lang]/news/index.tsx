@@ -1,22 +1,23 @@
 import { component$ } from "@builder.io/qwik";
-import { routeLoader$ } from "@builder.io/qwik-city";
+import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 import { MainLayout } from "~/components/MainLayout";
-import { Home } from "~/components/pages/Home/index";
+import { News } from "~/components/pages/News";
 import { headSEO } from "~/data/constants";
-import { homeQuery } from "~/data/gql_queries/pages/home_query";
+import { newsQuery } from "~/data/gql_queries/pages/news_query";
 import { getPageData } from "~/services/graphql";
 
 export const usePageData = routeLoader$(async (req) => {
-  const lang = req.params["lang"] == "es" ? "es-419" : req.params["lang"] == "" ? "en" : req.params["lang"];
-  return await getPageData(homeQuery, lang);
+  // console.log(req.params);
+  const lang = req.params["lang"] == "" ? "en" : "es-419";
+  return await getPageData(newsQuery, lang);
 });
 
 export default component$(() => {
   const signalData = usePageData();
   const data = signalData.value;
   return (
-    <MainLayout data={data["layoutData"]} showHeader={false}>
-      <Home data={data["pageData"]["data"]} />
+    <MainLayout data={data["layoutData"]}>
+      <News data={data["pageData"]["data"]} />
     </MainLayout>
   );
 });
@@ -24,6 +25,7 @@ export default component$(() => {
 export const head: DocumentHead = ({ resolveValue }) => {
   const pageData = resolveValue(usePageData);
   const seoData =
-    pageData["pageData"]["data"]["pageHome"]["data"]["attributes"]["SEO"];
+    pageData["pageData"]["data"]["pageNews"]["data"]["attributes"]["SEO"];
+
   return headSEO(seoData);
 };
