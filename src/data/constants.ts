@@ -3,7 +3,7 @@ import { DocumentHeadValue } from "@builder.io/qwik-city";
 export const strapiURL = "https://strapi.cblsrv43.rtatel.com";
 export const gqlURL = `${strapiURL}/graphql`;
 
-export const setURL = (url: String) => {
+export const setURL = (url: string) => {
   return `${strapiURL}${url}`;
 };
 

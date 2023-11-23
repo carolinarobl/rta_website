@@ -113,7 +113,6 @@ export const SerializedParagraph = component$(
     alt: boolean;
     color: string;
   }) => {
-    console.log(data);
     return (
       <Paragraph
         logo={
