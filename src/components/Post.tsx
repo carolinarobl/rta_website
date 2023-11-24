@@ -52,7 +52,7 @@ export const Post = component$(({ post }: { post: any }) => {
         <Markdown text={post["attributes"]["Description"]} />
       </span>
       <div class="mt-2 self-center">
-        <Button text="Read More" />
+        <Button text="Read More" link={`/${[post["attributes"]["Slug"]]}`} />
       </div>
     </div>
   );
