@@ -20,29 +20,28 @@ export const Button = component$(
     const handleClick = $(() => {
       if (link) {
         console.log(`Link: ${link}`);
+        window.location.href = link;
       }
-      (onClick ?? (() => { }))();
+      (onClick ?? (() => {}))();
     });
-    if (type === "link"){
-      if (link?.startsWith('=') && link) {
-        return <PopupCall link={link} text={text}></PopupCall>
-      }
-      else{
+    if (type === "link") {
+      if (link?.startsWith("=") && link) {
+        return <PopupCall link={link} text={text}></PopupCall>;
+      } else {
         return (
-        <div
-          onClick$={handleClick}
-          class={`flex w-fit items-center justify-center gap-2 rounded-full border-2 border-teal-500 bg-white p-1 px-7 text-btn-green opacity-80 shadow-md transition-all hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white`}
-        >
-          <span class="text-[15px] font-[600] max-md:text-[14px] max-sm:text-[13px] ">
-            {text}
-          </span>
-          {/* <Slot /> */}
-          {/* <Icon color="#13B295" size={23} class="opacity-60" /> */}
-        </div>
-      );
+          <div
+            onClick$={handleClick}
+            class={`flex w-fit items-center justify-center gap-2 rounded-full border-2 border-teal-500 bg-white p-1 px-7 text-btn-green opacity-80 shadow-md transition-all hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white`}
+          >
+            <span class="text-[15px] font-[600] max-md:text-[14px] max-sm:text-[13px] ">
+              {text}
+            </span>
+            {/* <Slot /> */}
+            {/* <Icon color="#13B295" size={23} class="opacity-60" /> */}
+          </div>
+        );
       }
-    }
-    else
+    } else
       return (
         <div
           onClick$={handleClick}

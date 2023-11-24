@@ -1,30 +1,33 @@
 import { component$ } from "@builder.io/qwik";
 import { Button } from "./Button";
 import { FaCircleArrowRightSolid } from "@qwikest/icons/font-awesome";
+import { Markdown } from "./Markdown";
 
-export const Header = component$(({ vertical = true }: { vertical: boolean }) => {
+export const Header = component$(({ data }: { data: any }) => {
+  console.log(data);
+  const slide1 = data["Slide"][0];
   return (
     <div
-      class={`flex w-[550px] max-[600px]:w-[400px] ${
-        vertical ? "flex-col" : ""
-      } items-center justify-between gap-3 rounded-full bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-[#0E4FB0] to-[#1D65C3] px-8 py-4 text-white`}
+      class={`relative mb-4 flex w-[40%] min-w-[350px] max-w-[500px] flex-col items-center justify-center overflow-hidden rounded-full rounded-t-none bg-[#0E4FB0] px-8 py-1 text-white max-[400px]:w-[98%] max-[400px]:min-w-[200px] max-[400px]:pb-10 `}
     >
-      <div
-        class={`flex flex-col ${
-          vertical ? "items-center" : ""
-        } justify-center gap-3`}
-      >
-        <span class="text-[24px] font-semibold">Gigometer</span>
-        <span class="text-[15px] font-light">
-          Wondering how fast your internet really is?
+      <div class="absolute z-10 h-[180px] w-[180px] rounded-full bg-white opacity-5 shadow-2xl"></div>
+
+      <div class="absolute z-10 h-[350px] w-[350px] rounded-full bg-white opacity-10 shadow-2xl"></div>
+
+      <div class={`z-20 mb-1 flex flex-col justify-center`}>
+        <span class="text-center text-[20px] font-semibold">
+          {slide1["Title"]}
+        </span>
+        <span class="text-[14px] font-light">
+          <Markdown classN="text-white" text={slide1["Paragraph"]} />
         </span>
       </div>
-      <Button type="link" text="Test your speed">
-        <FaCircleArrowRightSolid
-          color="#13B295"
-          class="text-[18px] opacity-60"
+      <div class="z-20">
+        <Button
+          link={slide1["Buttons"][0]["Link"]}
+          text={slide1["Buttons"][0]["Text"]}
         />
-      </Button>
+      </div>
     </div>
   );
 });
