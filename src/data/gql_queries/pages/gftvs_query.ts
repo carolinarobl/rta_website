@@ -1,4 +1,4 @@
-import { sectionSEO } from "~/data/constants"
+import { mediaUrl, sectionSEO } from "~/data/constants"
 
 export const gfTvsQuery = (locale:string)=>{
     return `query gfTvSupport {
@@ -7,11 +7,7 @@ export const gfTvsQuery = (locale:string)=>{
             attributes {
               IntroText
               IntroMedia {
-                data {
-                  attributes {
-                    url
-                  }
-                }
+                ${mediaUrl}
               }
               DevicesTitle
               Devices {
@@ -40,6 +36,40 @@ export const gfTvsQuery = (locale:string)=>{
                 }
               }
               ${sectionSEO}
+            }
+          }
+        }
+        sectionChGuide{
+          data{
+            attributes{
+              Logo{
+                data{
+                  attributes{
+                    url
+                  }
+                }
+              }
+              Picture{
+                data{
+                  attributes{
+                    url
+                  }
+                }
+              }
+              Title
+              Paragraph
+              GuideBox{
+                Title
+                BtnText
+                Guide{
+                  data{
+                    attributes{
+                      url
+                      name
+                    }
+                  }
+                }
+              }
             }
           }
         }
