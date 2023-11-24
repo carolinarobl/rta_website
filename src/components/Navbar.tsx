@@ -5,7 +5,7 @@ import { FaBarsSolid } from "@qwikest/icons/font-awesome";
 
 export const Navbar = component$(({ data }: { data: any }) => {
   return (
-    <div class="sticky top-0 z-20 shadow-[0_5px_40px_-25px_rgba(0,0,0,0.2)]">
+    <div class="sticky top-0 z-30 shadow-[0_5px_40px_-25px_rgba(0,0,0,0.2)]">
       <div class="flex h-[28px] flex-row items-center justify-end gap-4 bg-primary-blue px-5 py-[4px] text-[12px] font-bold text-white max-sm:justify-evenly max-sm:text-[10px] max-sm:font-normal max-[400px]:text-[9px]">
         {data["TopOptions"].map((e: any, i: any) => (
           <Link key={i} href={e["Link"]}>

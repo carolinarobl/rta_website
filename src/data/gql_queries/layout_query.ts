@@ -134,5 +134,19 @@ query QueryLayout {
         }
       }
     }
+    generalHeader {
+      data {
+        attributes {
+          Slide {
+            Title
+            Paragraph
+            Buttons {
+              Text
+              Link
+            }
+          }
+        }
+      }
+    }
   } 
 `;

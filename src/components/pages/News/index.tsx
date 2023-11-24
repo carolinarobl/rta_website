@@ -14,6 +14,7 @@ export const News = component$(({ data }: { data: any }) => {
       class="flex flex-col items-center justify-center"
     >
       <PostHeader post={firstNews} />
+      <div class="my-4"></div>
       <PostLoader posts={pageData["Posts"]["data"]} />
     </div>
   );

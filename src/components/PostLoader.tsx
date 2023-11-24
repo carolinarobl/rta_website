@@ -3,7 +3,7 @@ import { Post } from "./Post";
 
 export const PostLoader = component$(
   ({ posts, loadSize = 6 }: { posts: any; loadSize: number }) => {
-    const sPosts = useSignal(posts.slice(0, loadSize));
+    const sPosts = useSignal(posts.slice(1, loadSize + 1));
     return (
       <div
         id="postLoader"
