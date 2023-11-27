@@ -1,6 +1,7 @@
 import { component$, useSignal } from "@builder.io/qwik";
 import { Post } from "./Post";
 import { GQLQuery } from "~/services/graphql";
+import { useLocation } from "@builder.io/qwik-city";
 
 export const PostLoader = component$(
   ({
@@ -12,6 +13,10 @@ export const PostLoader = component$(
     loadSize: number;
     type: string;
   }) => {
+    // get route
+    const route = useLocation();
+    const lang = route.prevUrl?.pathname.includes("/es/") ? "es-419" : "en";
+
     const sPosts = useSignal(posts.slice(1, loadSize + 1));
     const loading = useSignal(false);
     const page = useSignal(1);
@@ -41,11 +46,58 @@ export const PostLoader = component$(
 
           if (lastPostVisible) {
             loading.value = true;
-            const start = (page - 1) * loadSize + 1;
-            const paginationString = `{start: ${{ start }}, limit: ${{
-              itemsPerLoad,
-            }}}`;
-            GQLQuery().then((res) => {});
+            const start = page.value * loadSize + 1;
+            const paginationString = `{start: ${start}, limit: ${loadSize}}`;
+            GQLQuery(`
+            query {
+              page${type} (locale: "${lang}") {
+                data {
+                  attributes {
+                    Posts (sort: "Date:desc", pagination: ${paginationString}) {
+                      data {
+                        attributes {
+                          Title
+                          Date
+                          Cover {
+                            data {
+                              attributes {
+                                url
+                                caption
+                                alternativeText
+                              }
+                            }
+                          }
+                          Gallery {
+                            data {
+                              attributes {
+                                url
+                                caption
+                                alternativeText
+                              }
+                            }
+                          }
+                          Description
+                          Slug
+                          VideoLink
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+            `).then((res) => {
+              const newPosts =
+                res["data"]["page" + type]["data"]["attributes"]["Posts"][
+                  "data"
+                ];
+              if (newPosts.length === 0) {
+                return;
+              }
+              page.value++;
+              sPosts.value = sPosts.value.concat(newPosts);
+              loading.value = false;
+            });
           }
         }}
       >

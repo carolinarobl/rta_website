@@ -46,7 +46,7 @@ export const Post = component$(({ post, id }: { post: any; id: string }) => {
       <StrapiImage
         width="1184"
         height="894"
-        clasN="rounded-2xl self-center"
+        clasN="rounded-2xl self-center object-cover h-[200px] w-[300px]"
         url={post["attributes"]["Cover"]["data"]["attributes"]["url"]}
       />
       <span class="px-3 py-1 font-[600] text-primary-blue opacity-70">
