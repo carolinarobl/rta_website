@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { routeLoader$ } from "@builder.io/qwik-city";
-import { MainLayout } from "~/components/MainLayout";
-import { headSEO } from "~/data/constants";
+// import { MainLayout } from "~/components/MainLayout";
+// import { headSEO } from "~/data/constants";
 import { homeQuery } from "~/data/gql_queries/pages/home_query";
 import { getPageData } from "~/services/graphql";
 
@@ -18,8 +18,8 @@ export const usePageData = routeLoader$(async (req) => {
 });
 
 export default component$(() => {
-  const signalData = usePageData();
-  const data = signalData.value;
+  // const signalData = usePageData();
+  // const data = signalData.value;
   return (
     <div>a</div>
     // <MainLayout data={data["layoutData"]} showHeader={false}>

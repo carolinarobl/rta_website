@@ -1,4 +1,4 @@
-import { Slot, component$, useSignal } from "@builder.io/qwik";
+import {  component$, useSignal } from "@builder.io/qwik";
 import { FormCarrers } from "./forms/form-carrers";
 import { PortabilityRequest } from "./popups/portabilityRequest";
 
@@ -9,7 +9,7 @@ export const PopupCall = component$(({ link, text }: { link: string, text: strin
   const channelLineup = "=pChannelLineup=";
 
   // var popupCall = link;
-  var child = null
+  let child = null
 
   if (link.includes(configurator)) {
     // popupCall = configurator;

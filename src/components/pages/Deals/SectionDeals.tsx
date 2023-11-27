@@ -27,7 +27,7 @@ export const SectionDeals = component$(({ data }: { data: any }) => {
             text={data["Deals_description"]}
           />
           <div class="mb-3 flex items-start justify-evenly gap-4 max-[600px]:flex-col">
-            {data["Services"].map((deal, i) => (
+            {data["Services"].map((deal:any, i:any) => (
               <div key={i} class="flex items-center justify-center gap-1">
                 <StrapiImage
                   url={deal["Icon"]["data"]["attributes"]["url"]}

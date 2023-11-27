@@ -8,8 +8,8 @@ export const PostLoader = component$(
       <div
         id="postLoader"
         class="grid w-full max-w-[1200px] grid-cols-3 justify-evenly gap-4 max-[800px]:grid-cols-1 [&>*]:justify-self-center"
-        document:onscroll$={(e) => {
-          const postLoader = document.getElementById("postLoader");
+        document:onscroll$={() => {
+          // const postLoader = document.getElementById("postLoader");
           const footer = document.getElementById("footer");
 
           console.log(window.scrollY, footer?.scrollHeight);

@@ -21,7 +21,7 @@ export default component$(() => {
     <div class="flex flex-col items-center gap-3">
       {/* <Button type="link" Icon={<LuRocket />} text={"Go to page"} /> */}
      
-      <Header vertical={false} />
+      <Header data={""} />
       <Button type="link" text="Watch more">
         <FaCircleArrowRightSolid
           color="#13B295"

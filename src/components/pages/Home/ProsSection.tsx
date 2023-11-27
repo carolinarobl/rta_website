@@ -16,7 +16,7 @@ export const ProsSection = component$(({ data }: { data: any }) => {
             {prosPar["Paragraph"]}
           </div>
           <div class="mt-6 flex flex-col gap-4">
-            {prosData.map((pro, i) => {
+            {prosData.map((pro:any, i:any) => {
               return (
                 <div key={i} class="flex gap-4">
                   <div class="h-fit w-fit rounded-full bg-secondary-red p-[9px]">

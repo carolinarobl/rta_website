@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { Button } from "./Button";
-import { FaCircleArrowRightSolid } from "@qwikest/icons/font-awesome";
+// import { FaCircleArrowRightSolid } from "@qwikest/icons/font-awesome";
 import { Markdown } from "./Markdown";
 
 export const Header = component$(({ data }: { data: any }) => {

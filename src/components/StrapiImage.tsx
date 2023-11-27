@@ -11,8 +11,8 @@ export const StrapiImage = component$(
     clasN = "",
   }: {
     url: string;
-    width?: number | string;
-    height?: number | string;
+    width?: any;
+    height?: any;
     alt?: string;
     toWhite?: boolean;
     clasN?: string;

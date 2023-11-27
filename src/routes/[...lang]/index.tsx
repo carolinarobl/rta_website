@@ -15,7 +15,7 @@ export const usePageData = routeLoader$(async (req) => {
       : req.params["lang"] == ""
         ? "en"
         : req.params["lang"];
-  let data = {};
+  let data:any = {};
   if (lang == "en" || lang == "es-419") {
     data = await getPageData(homeQuery, lang);
     return {
@@ -26,10 +26,10 @@ export const usePageData = routeLoader$(async (req) => {
   const newLang = lang.includes("es/") ? "es-419" : "en";
   const postSlug = lang.includes("es/") ? lang.split("es/")[1] : lang;
   data = await getPageCustomData(postQuery(postSlug, newLang), newLang);
-  console.log(data["pageData"]["data"]["posts"]["data"].length > 0);
+  // console.log(data["pageData"]["data"]["posts"]["data"].length > 0);
   return {
     ...data,
-    type: data["pageData"]["data"]["posts"]["data"].length > 0 ? "post" : "404",
+    type: (data["pageData"]["data"]["posts"]["data"].length) > 0 ? "post" : "404",
   };
 });
 

@@ -1,5 +1,5 @@
 import { $,component$ } from "@builder.io/qwik";
-import { Button } from "./Button";
+// import { Button } from "./Button";
 import { setURL } from "~/data/constants";
 import { BsDownload } from "@qwikest/icons/bootstrap";
 import { downloadPDF } from "./download-box";
