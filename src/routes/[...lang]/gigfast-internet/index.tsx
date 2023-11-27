@@ -1,5 +1,5 @@
 import { component$ } from '@builder.io/qwik';
-import { DocumentHead, routeLoader$ } from '@builder.io/qwik-city';
+import { type DocumentHead, routeLoader$ } from '@builder.io/qwik-city';
 import { MainLayout } from '~/components/MainLayout';
 import { GigfastInternet } from '~/components/pages/GigfastInternet';
 import { gfInternetQuery } from '~/data/gql_queries/pages/gf_internet_query';

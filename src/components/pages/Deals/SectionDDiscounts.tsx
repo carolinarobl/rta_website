@@ -6,12 +6,14 @@ export const SectionDDiscounts = component$(({ data }: { data: any }) => {
   return (
     <div class="flex w-full items-center justify-center">
       <div class="flex max-w-[1200px] flex-wrap items-start justify-evenly gap-6 p-8">
-        {data.map((discount, i) => (
+        {data.map((discount:any, i: any) => (
           <div key={i} class="flex w-[280px] flex-col items-center gap-2">
             <Linking_picture
               url={discount["Media"]["data"]["attributes"]["url"]}
               color={i % 2 === 0 ? "bg-[#2E5899]" : "bg-secondary-red"}
-              size={"250px"}
+              width={"250px"}
+              height={"a"}
+              alt={discount["Media"]["data"]["attributes"]["alternativeText"]}
             />
             <Markdown
               text={discount["Title"]}

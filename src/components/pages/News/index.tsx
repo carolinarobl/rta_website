@@ -14,7 +14,7 @@ export const News = component$(({ data }: { data: any }) => {
     >
       <PostHeader post={firstNews} />
       <div class="my-4"></div>
-      <PostLoader posts={pageData["Posts"]["data"]} type="News" />
+      <PostLoader posts={pageData["Posts"]["data"]} loadSize={3} type="News" />
     </div>
   );
 });

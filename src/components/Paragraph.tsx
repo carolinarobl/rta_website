@@ -109,8 +109,8 @@ export const SerializedParagraph = component$(
     color = "primary-blue",
   }: {
     data: any;
-    reverse: boolean;
-    alt: boolean;
+    reverse?: boolean;
+    alt?: boolean;
     color: string;
   }) => {
     return (

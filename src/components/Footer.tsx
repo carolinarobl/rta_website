@@ -1,7 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { AccordionItem } from "./AccordionItem";
 import { StrapiImage } from "./StrapiImage";
-// import { ActionButton } from "./ActionButton";
 import { Link } from "@builder.io/qwik-city";
 import { Button } from "./Button";
 
@@ -41,7 +40,7 @@ export const Footer = component$(({ data }: { data: any }) => {
         </div>
         <div class="container sm:hidden">
           {data["Menus"].map((menu: any, i: any) => (
-            <AccordionItem key={i} title={menu["Text"]} classContainer="text-xl border-b-2 border-t-2 border-blue-600">
+            <AccordionItem key={i} inFooter={true} title={menu["Text"]} classContainer="text-xl text-primary-light-blue font-semibold border-b-2 border-t-2 border-primary-light-blue">
               {menu["SubOption"].map((subOption: any, index: any) => (
                 <Link
                   key={index}
@@ -58,7 +57,7 @@ export const Footer = component$(({ data }: { data: any }) => {
         <div class="flex justify-around">
           {data["Menus"].map((menu: any, i: any) => (
             <div key={i} class="hidden w-1/4 sm:block">
-              <h2 class="text-xl font-bold">{menu["Text"]}</h2>
+              <h2 class="text-2xl text-primary-light-blue font-semibold">{menu["Text"]}</h2>
               {menu["SubOption"].map((subOption: any, index: any) => (
                 <Link
                   key={index}

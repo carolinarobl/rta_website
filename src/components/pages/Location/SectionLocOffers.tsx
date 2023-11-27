@@ -22,13 +22,12 @@ export const SectionLocOffers = component$(({ data }: { data: any }) => {
                   ]["Address"]
                 }
                 class="h-full w-full rounded-2xl"
-                allowfullscreen=""
+             
                 loading="lazy"
-                frameborder="0"
               ></iframe>
             </div>
             <div class="flex justify-evenly gap-4 max-[1200px]:flex-wrap min-[1200px]:w-[64%]">
-              {tables.map((table, i) => (
+              {tables.map((table:any, i:any) => (
                 <SimpleTable
                   key={i}
                   btnText={table["Button"]["Text"]}

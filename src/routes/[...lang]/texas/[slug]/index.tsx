@@ -1,12 +1,12 @@
 import { component$ } from "@builder.io/qwik";
-import { routeLoader$ } from "@builder.io/qwik-city";
+import { type DocumentHead, routeLoader$ } from "@builder.io/qwik-city";
 import { MainLayout } from "~/components/MainLayout";
-import { Home } from "~/components/pages/Home/index";
+// import { Home } from "~/components/pages/Home/index";
 import { Location } from "~/components/pages/Location";
 import { customLocale, headSEO } from "~/data/constants";
-import { homeQuery } from "~/data/gql_queries/pages/home_query";
+// import { homeQuery } from "~/data/gql_queries/pages/home_query";
 import { locationQuery } from "~/data/gql_queries/pages/local_page_query";
-import { getPageCustomData, getPageData } from "~/services/graphql";
+import { getPageCustomData} from "~/services/graphql";
 
 export const usePageData = routeLoader$(async (req) => {
   const lang =

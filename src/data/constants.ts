@@ -1,4 +1,4 @@
-import { DocumentHeadValue } from "@builder.io/qwik-city";
+import { type DocumentHeadValue } from "@builder.io/qwik-city";
 
 export const strapiURL = "https://strapi.cblsrv43.rtatel.com";
 export const gqlURL = `${strapiURL}/graphql`;
@@ -21,7 +21,7 @@ data {
 }
 `;
 
-export const headSEO: DocumentHeadValue = (SEOdata: any) => {
+export const headSEO= (SEOdata: any) => {
   return <DocumentHeadValue>{
     title: SEOdata.MetaTitle,
     meta: [

@@ -18,7 +18,7 @@ export const Slider = component$(() => {
 
   return (
     <div>
-      <img class="transition-opacity duration-2000 ease-in-out opacity-100" src={images[index.value]} alt="Slider" />
+      <img class="transition-opacity duration-2000 ease-in-out opacity-100" src={images[index.value]} alt="Slider" width={150} height={150} />
     </div>
   );
 });

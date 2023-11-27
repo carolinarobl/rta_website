@@ -16,7 +16,7 @@ export const GigfastCloud = component$(({data}:{data:any}) => {
         <div class="flex flex-col w-full md:w-1/2 items-center justify-center">
             <Markdown text={dataSecctionNetwork['Description']['Paragraph']} classN="text-primary-blue"></Markdown>
             <AccordionItem title={dataSecctionNetwork['Map']['ServersTitle']} classContainer="rounded-full bg-white text-primary-blue shadow-xl">
-                <div class="flex flex-col m-[-20px] py-4 text-primary-blue bg-white rounded-b-2xl">
+                <div class="flex flex-col py-4 text-primary-blue bg-white rounded-b-2xl">
                     {dataSecctionNetwork['Map']['Servers'].map((server:any, index:any)=>(
                         <a key={index} href={server['Link']} class="hover:text-secondary-red text-primary-blue">{server['Text']}</a>
                     ))}
