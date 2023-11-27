@@ -5,14 +5,14 @@ import { StrapiImage } from "~/components/StrapiImage";
 export const Post = component$(({ data }: { data: any }) => {
   return (
     <div class="flex  w-full flex-col items-center justify-center px-8 text-primary-blue">
-      <div class="flex max-w-[1400px] items-center justify-evenly gap-4 py-16">
-        <span class="w-[40%] text-[42px] font-[600] leading-10">
+      <div class="flex max-w-[1400px] items-center justify-evenly gap-4 py-16 max-[800px]:flex-col">
+        <h1 class="w-[40%] text-center text-[42px] font-[600] leading-10 max-[800px]:w-full">
           {data["Title"]}
-        </span>
+        </h1>
         <StrapiImage
           width="833"
           height="539"
-          clasN="rounded-2xl shadow-xl w-[40%]"
+          clasN=" rounded-2xl shadow-xl w-[40%] max-[800px]:w-full"
           url={data["Cover"]["data"]["attributes"]["url"]}
         />
       </div>

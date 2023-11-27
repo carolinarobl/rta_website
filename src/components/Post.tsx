@@ -3,7 +3,7 @@ import { Button } from "./Button";
 import { StrapiImage } from "./StrapiImage";
 import { Markdown } from "./Markdown";
 
-export const Post = component$(({ post }: { post: any }) => {
+export const Post = component$(({ post, id }: { post: any; id: string }) => {
   const days = [
     "Sunday",
     "Monday",
@@ -28,7 +28,6 @@ export const Post = component$(({ post }: { post: any }) => {
     "December",
   ];
 
-  // Wdnesday, May 10, 2023
   function formatDate(date: Date) {
     const day = days[date.getDay()];
     const monthDay = date.getDate();
@@ -37,8 +36,13 @@ export const Post = component$(({ post }: { post: any }) => {
     return `${day}, ${month} ${monthDay}, ${year}`;
   }
 
+  const limitText = (text: string, limit: number) => {
+    return text.slice(0, limit) + "...";
+  };
+  const limit = 120;
+
   return (
-    <div class="mb-8 flex max-w-[350px] flex-col">
+    <div id={id} class="mb-8 flex max-w-[300px] flex-col">
       <StrapiImage
         width="1184"
         height="894"
@@ -48,8 +52,11 @@ export const Post = component$(({ post }: { post: any }) => {
       <span class="px-3 py-1 font-[600] text-primary-blue opacity-70">
         {formatDate(new Date(post["attributes"]["Date"]))}
       </span>
-      <span class="max-h-[100px] overflow-hidden px-3 text-primary-blue">
-        <Markdown text={post["attributes"]["Description"]} />
+      <span class="px-3 text-primary-blue">
+        <Markdown
+          classN="[&>h1]:text-[16px] [&>h2]:text-[16px] [&>h3]:text-[16px]"
+          text={limitText(post["attributes"]["Description"], limit)}
+        />
       </span>
       <div class="mt-2 self-center">
         <Button text="Read More" link={`/${[post["attributes"]["Slug"]]}`} />
