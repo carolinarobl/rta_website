@@ -32,6 +32,8 @@ export const PostLoader = component$(
             `post-${sPosts.value.length - 1}`,
           );
 
+          if (!lastPost) return;
+
           const rect = lastPost.getBoundingClientRect();
           const viewHeight = Math.max(
             document.documentElement.clientHeight,
