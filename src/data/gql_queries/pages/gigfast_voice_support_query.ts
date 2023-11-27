@@ -1,0 +1,55 @@
+import { mediaUrl, sectionSEO } from "~/data/constants"
+
+export const gfVoicesupportQuery = (locale:string)=>{
+    return `query queryGFTvSupport{
+        pageGfVS(locale:"${locale}"){
+          data{
+            attributes{
+              Introduction{
+                Paragraph
+                Media{
+                  ${mediaUrl}
+                }
+              }
+              GuidesPar{
+                Title
+                Paragraph
+              }
+              Guides{
+                Title
+                BtnText
+                Guide{
+                  data{
+                    attributes{
+                      url
+                      name
+                    }
+                  }
+                }
+              }
+              ${sectionSEO}
+            }
+          }
+        }
+        sectionPortGfv(locale:"${locale}"){
+          data{
+            attributes{
+              Portability{
+                Title
+                Logo{
+                 ${mediaUrl}
+                }
+                Paragraph
+                Media{
+                 ${mediaUrl}
+                }
+                Buttons{
+                  Text
+                  Link
+                }
+              }
+            }
+          }
+        }
+      }` 
+}
