@@ -13,7 +13,7 @@ export const usePageData = routeLoader$(async (req) => {
       : req.params["lang"] == ""
         ? "en"
         : req.params["lang"];
-  console.log(lang);
+
   return await getPageData(homeQuery, lang);
 });
 

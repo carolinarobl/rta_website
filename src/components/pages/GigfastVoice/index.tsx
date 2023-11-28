@@ -15,11 +15,7 @@ export const GigfastVoice = component$(({ data }: { data: any }) => {
     data["sectionPortGfv"]["data"]["attributes"]["Portability"];
 
   return (
-    <div
-      onClick$={() => {
-        console.log(data);
-      }}
-    >
+    <div>
       <SectionGFVIntro data={introData} />
       <div class="mt-6">
         <SectionGFVPacks data={packagesData} />

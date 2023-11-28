@@ -4,7 +4,6 @@ import { Button } from "./Button";
 import { Markdown } from "./Markdown";
 
 export const Header = component$(({ data }: { data: any }) => {
-  console.log(data);
   const slide1 = data["Slide"][0];
   return (
     <div

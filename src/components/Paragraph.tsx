@@ -15,6 +15,9 @@ export const Paragraph = component$(
     reverse = false,
     alt = false,
     color = "primary-blue",
+    hasPricing = true,
+    textPercentage = 70,
+    customComponent,
   }: {
     logo?: string;
     image?: string;
@@ -25,6 +28,9 @@ export const Paragraph = component$(
     reverse?: boolean;
     alt?: boolean;
     color?: string;
+    hasPricing?: boolean;
+    textPercentage?: number;
+    customComponent?: any;
   }) => {
     return (
       <div
@@ -45,7 +51,7 @@ export const Paragraph = component$(
         >
           <div
             class={`flex ${
-              image && "min-[800px]:w-[70%]"
+              image && `min-[800px]:w-[${textPercentage.toString()}%]`
             }  flex-col items-center justify-center gap-4 px-10`}
           >
             {logo && (
@@ -58,14 +64,18 @@ export const Paragraph = component$(
                 />
               </div>
             )}
-            <div class={`flex justify-center gap-2 text-${color}`}>
-              <span class="text-center text-[38px] font-bold max-sm:text-[28px]">
+            <div
+              class={`flex ${
+                !hasPricing && "flex-col"
+              } justify-center gap-2 text-${color}`}
+            >
+              <h2 class="text-center text-[38px] font-bold max-sm:text-[28px]">
                 {title}
-              </span>
+              </h2>
               {subtitle && (
-                <span class="text-[20px] font-bold text-[#D20030] max-sm:text-[20px]">
+                <h3 class="text-[28px] font-bold text-[#D20030] max-sm:text-[20px]">
                   {subtitle}
-                </span>
+                </h3>
               )}
             </div>
             <Markdown
@@ -85,8 +95,21 @@ export const Paragraph = component$(
             </div>
           </div>
           {image && (
-            <div class="flex w-[300px] items-center justify-center self-center p-4 min-[800px]:w-[30%]">
+            <div
+              class={`flex w-[300px] items-center justify-center self-center p-4 min-[800px]:w-[${(
+                100 - textPercentage
+              ).toString()}%]`}
+            >
               <img src={image} alt="paragraph-image" width="597" height="300" />
+            </div>
+          )}
+          {customComponent && (
+            <div
+              class={`flex w-[300px] items-center justify-center self-center p-4 min-[800px]:w-[${(
+                100 - textPercentage
+              ).toString()}%]`}
+            >
+              {customComponent}
             </div>
           )}
         </div>
@@ -107,11 +130,17 @@ export const SerializedParagraph = component$(
     reverse = false,
     alt = false,
     color = "primary-blue",
+    hasPricing = true,
+    textPercentage = 70,
+    customComponent,
   }: {
     data: any;
     reverse?: boolean;
     alt?: boolean;
     color: string;
+    hasPricing?: boolean;
+    textPercentage?: number;
+    customComponent?: any;
   }) => {
     return (
       <Paragraph
@@ -132,6 +161,9 @@ export const SerializedParagraph = component$(
         reverse={reverse}
         color={color}
         alt={alt}
+        hasPricing={hasPricing}
+        textPercentage={textPercentage}
+        customComponent={customComponent}
       />
     );
   },
