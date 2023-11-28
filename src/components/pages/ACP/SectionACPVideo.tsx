@@ -13,9 +13,9 @@ export const SectionACPVideo = component$(
             height={"250px"}
             width={"100%"}
             class="mb-5 rounded-[30px] shadow-md"
-            frameborder="0"
+            frameBorder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
+            allowFullScreen
           />
           <Markdown
             text={video["Paragraph"]}

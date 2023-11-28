@@ -137,7 +137,7 @@ export const SerializedParagraph = component$(
     data: any;
     reverse?: boolean;
     alt?: boolean;
-    color: string;
+    color?: string;
     hasPricing?: boolean;
     textPercentage?: number;
     customComponent?: any;

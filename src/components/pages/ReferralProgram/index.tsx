@@ -4,7 +4,7 @@ import { Stepper } from "~/components/Stepper";
 
 export const ReferralProgram = component$(({ data }: { data: any }) => {
   const pageData = data["pageReferralP"]["data"]["attributes"];
-  const steps = pageData["Steps"]["Bullets"].map((e) => e["Text"]);
+  const steps = pageData["Steps"]["Bullets"].map((e: any) => e["Text"]);
 
   return (
     <div>

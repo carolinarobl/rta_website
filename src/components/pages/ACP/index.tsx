@@ -5,7 +5,7 @@ import { Stepper } from "~/components/Stepper";
 
 export const ACP = component$(({ data }: { data: any }) => {
   const pageData = data["pageAcp"]["data"]["attributes"];
-  const steps = pageData["Steps"]["Bullets"].map((e) => e["Text"]);
+  const steps = pageData["Steps"]["Bullets"].map((e: any) => e["Text"]);
   return (
     <div
       onClick$={() => {

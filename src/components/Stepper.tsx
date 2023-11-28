@@ -8,8 +8,8 @@ export const Stepper = component$(
     direction = "vertical",
   }: {
     steps: string[];
-    align: "start" | "center" | "end";
-    direction: "horizontal" | "vertical";
+    align?: "start" | "center" | "end";
+    direction?: "horizontal" | "vertical";
   }) => {
     const BulletCircle = component$(
       ({
@@ -18,8 +18,8 @@ export const Stepper = component$(
         isLast = false,
       }: {
         caption: string;
-        isFirst: bool;
-        isLast: bool;
+        isFirst?: boolean;
+        isLast?: boolean;
       }) => {
         console.log(isFirst, isLast);
         return (
@@ -118,8 +118,8 @@ export const Stepper = component$(
     else
       return (
         <div class="flex flex-row justify-between">
-          {steps.map((step) => (
-            <div class="flex flex-col items-center">
+          {steps.map((step, i) => (
+            <div key={i} class="flex flex-col items-center">
               <div class="h-2 w-2 rounded-full bg-primary-blue"></div>
               <div class="text-primary-blue">{step}</div>
             </div>
