@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
 
-export const Wholesale = component$(({data}:{data:any}) => {
+export const Wholesale = component$(() => {
   return <div></div>
 });
