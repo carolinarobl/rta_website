@@ -18,10 +18,11 @@ export const Paragraph = component$(
     hasPricing = true,
     textPercentage = 70,
     customComponent,
+    imageLink,
   }: {
     logo?: string;
     image?: string;
-    title: string;
+    title?: string;
     subtitle?: string;
     text: string;
     buttons?: Array<any>;
@@ -31,6 +32,7 @@ export const Paragraph = component$(
     hasPricing?: boolean;
     textPercentage?: number;
     customComponent?: any;
+    imageLink?: string;
   }) => {
     return (
       <div
@@ -69,9 +71,11 @@ export const Paragraph = component$(
                 !hasPricing && "flex-col"
               } justify-center gap-2 text-${color}`}
             >
-              <h2 class="text-center text-[38px] font-bold max-sm:text-[28px]">
-                {title}
-              </h2>
+              {title && (
+                <h2 class="text-center text-[38px] font-bold max-sm:text-[28px]">
+                  {title}
+                </h2>
+              )}
               {subtitle && (
                 <h3 class="text-[28px] font-bold text-[#D20030] max-sm:text-[20px]">
                   {subtitle}
@@ -98,7 +102,12 @@ export const Paragraph = component$(
             <div
               class={`flex w-[300px] items-center justify-center self-center p-4 min-[800px]:w-[${(
                 100 - textPercentage
-              ).toString()}%]`}
+              ).toString()}%] ${imageLink && "cursor-pointer"}`}
+              onClick$={() => {
+                if (imageLink) {
+                  window.open(imageLink, "_blank");
+                }
+              }}
             >
               <img src={image} alt="paragraph-image" width="597" height="300" />
             </div>
@@ -133,6 +142,7 @@ export const SerializedParagraph = component$(
     hasPricing = true,
     textPercentage = 70,
     customComponent,
+    imageLink,
   }: {
     data: any;
     reverse?: boolean;
@@ -141,6 +151,7 @@ export const SerializedParagraph = component$(
     hasPricing?: boolean;
     textPercentage?: number;
     customComponent?: any;
+    imageLink?: string;
   }) => {
     return (
       <Paragraph
@@ -164,6 +175,13 @@ export const SerializedParagraph = component$(
         hasPricing={hasPricing}
         textPercentage={textPercentage}
         customComponent={customComponent}
+        imageLink={
+          data["Media"] &&
+          data["Media"]["data"] &&
+          data["Media"]["data"]["attributes"]["caption"].includes("http")
+            ? data["Media"]["data"]["attributes"]["caption"]
+            : imageLink
+        }
       />
     );
   },

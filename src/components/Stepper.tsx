@@ -21,7 +21,6 @@ export const Stepper = component$(
         isFirst?: boolean;
         isLast?: boolean;
       }) => {
-        console.log(isFirst, isLast);
         return (
           <div class="relative flex h-full w-full items-center justify-center overflow-hidden">
             {!isFirst && (
@@ -68,9 +67,9 @@ export const Stepper = component$(
                     key={i}
                     class={`my-[20px] ${
                       align === "end" && "ml-auto"
-                    } flex w-fit flex-row items-center rounded-[50px] p-6 shadow-xl`}
+                    } flex w-full flex-row items-center justify-center rounded-[50px] bg-white p-6 shadow-xl`}
                   >
-                    <Markdown text={step} />
+                    <Markdown classN="text-center" text={step} />
                   </div>
 
                   {align === "end" && (
@@ -86,9 +85,9 @@ export const Stepper = component$(
                 <>
                   <div
                     key={i}
-                    class="flex w-fit flex-row items-center rounded-[50px] px-6 py-10 shadow-lg"
+                    class="flex w-fit flex-row items-center rounded-[50px] bg-white px-6 py-10 shadow-lg"
                   >
-                    <Markdown text={step} />
+                    <Markdown classN="text-center" text={step} />
                   </div>
                   {i % 2 === 0 ? (
                     <>
