@@ -1,4 +1,4 @@
-import { mediaUrl, sectionSEO } from "~/data/constants"
+import { mediaUrl, sectionNetwork, sectionSEO } from "~/data/constants"
 
 export const wholesaleQuery = (locale:string) =>{
     return `query QueryWholesale {
@@ -57,5 +57,6 @@ export const wholesaleQuery = (locale:string) =>{
             }
           }
         }
+        ${sectionNetwork(locale=locale)}
       }` 
 }
