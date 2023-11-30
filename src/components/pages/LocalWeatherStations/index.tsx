@@ -17,7 +17,6 @@ export const LocalWeatherStations = component$(({ data }: { data: any }) => {
       }}
       class="flex flex-wrap items-center justify-center gap-8 px-8 py-8 text-white"
     >
-      <SEOh1 SEOdata={pageData["SEO"]} />
       {data["weatherData"]["data"].map((weather: any, i: number) => {
         return (
           <div
