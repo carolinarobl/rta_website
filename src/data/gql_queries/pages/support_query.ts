@@ -1,4 +1,5 @@
 import { mediaUrl, sectionSEO } from "~/data/constants"
+import { sectionContactBoxesQuery } from "../sections_queries/section_contact_boxes_query"
 
 export const supportQuery = (locale:string)=>{
     return `query QuerySupport{
@@ -35,5 +36,6 @@ export const supportQuery = (locale:string)=>{
             }
           }
         }
+        ${sectionContactBoxesQuery(locale=locale)}
       }` 
 }
