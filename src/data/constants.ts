@@ -80,3 +80,37 @@ MembersGrid{
         }
       }
 `;
+
+export const sectionNetwork =(locale:string)=> `
+sectionNetwork (locale:"${locale}"){
+  data {
+    attributes {
+      Map {
+        MapPicture {
+          data {
+            attributes {
+              url
+            }
+          }
+        }
+        ServersTitle
+        Servers {
+          Text
+          Link
+          Icon{
+            data{
+              attributes{
+                url
+              }
+            }
+          }
+        }
+      }
+      Description{
+        Title
+        Paragraph
+      }
+    }
+  }
+}
+`

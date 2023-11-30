@@ -1,6 +1,7 @@
 import {  component$, useSignal } from "@builder.io/qwik";
 import { FormCarrers } from "./forms/form-carrers";
 import { PortabilityRequest } from "./popups/portabilityRequest";
+import { FormSupport } from "./forms/form-support";
 
 export const PopupCall = component$(({ link, text }: { link: string, text: string }) => {
   const configurator = "=pConf=";
@@ -18,7 +19,7 @@ export const PopupCall = component$(({ link, text }: { link: string, text: strin
     // link = link.replaceAll(configurator, "");
   } else if (link.includes(contactEmail)) {
     // popupCall = contactEmail;
-    child = <FormCarrers />
+    child = <FormSupport />
 
     // link = link.replaceAll(contactEmail, "");
   } else if (link.includes(iFrame)) {

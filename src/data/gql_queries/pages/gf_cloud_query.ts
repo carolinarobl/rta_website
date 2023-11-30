@@ -39,7 +39,7 @@ export const gfCloudQuery = (locale:string)=>{
             }
           }
         }
-        sectionNetwork {
+        sectionNetwork (locale:"${locale}"){
           data {
             attributes {
               Map {

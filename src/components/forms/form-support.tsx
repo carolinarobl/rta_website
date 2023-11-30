@@ -13,7 +13,7 @@ export const useSubmitFormSupport = globalAction$(async (data)=>{
 export const FormSupport = component$(() => {
     const action = useSubmitFormSupport();
 
-  return <div class="flex flex-col max-w-lg mx-auto rounded-xl p-6">
+  return <div class="flex bg-white flex-col max-w-lg mx-auto rounded-xl p-6">
   <Form class='mt-2' action={action}>
       <div class='flex flex-wrap'>
           <div class="mb-4 w-full sm:w-2/3">
