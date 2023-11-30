@@ -88,7 +88,7 @@ export const Paragraph = component$(
             ></Markdown>
             <div class="flex gap-4">
               {buttons &&
-                buttons.map((button, i) => (
+                buttons.map((button: any, i: number) => (
                   <Button key={i} text={button["Text"]} link={button["Link"]}>
                     <FaCircleArrowRightSolid
                       color="#13B295"

@@ -48,7 +48,7 @@ export const SectionGFInternetHome = component$(
             })}
           </div>
           <div class="flex gap-4">
-            {buttons.map((button, i) => (
+            {buttons.map((button: any, i: number) => (
               <Button
                 key={i}
                 text={button["Text"]}

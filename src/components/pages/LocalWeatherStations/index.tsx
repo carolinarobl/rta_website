@@ -1,7 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { StrapiImage } from "~/components/StrapiImage";
 import { FaLocationArrowSolid } from "@qwikest/icons/font-awesome";
-import { SEOh1 } from "~/components/SEOh1";
 
 export const LocalWeatherStations = component$(({ data }: { data: any }) => {
   const pageData = data["pageLocWeather"]["data"]["attributes"];
@@ -31,7 +30,7 @@ export const LocalWeatherStations = component$(({ data }: { data: any }) => {
                   height="3086"
                   url={
                     pageData["LocTables"].find(
-                      (e) => e["Location"] === weather["city"],
+                      (e: any) => e["Location"] === weather["city"],
                     )["LocationPic"]["data"]["attributes"]["url"]
                   }
                 />

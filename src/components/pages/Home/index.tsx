@@ -1,12 +1,8 @@
 import { component$ } from "@builder.io/qwik";
 import { HomeHeader } from "./HomeHeader";
-import {
-  ListedParagraphs,
-  Paragraph,
-  SerializedParagraph,
-} from "~/components/Paragraph";
+import { ListedParagraphs, SerializedParagraph } from "~/components/Paragraph";
 import { ProsSection } from "./ProsSection";
-import { setURL } from "~/data/constants";
+
 import { SectionGFInternetHome } from "./SectionGFInternetHome";
 import { SectionSugHome } from "./SectionSugHome";
 
