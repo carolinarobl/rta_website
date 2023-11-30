@@ -1,6 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 import { MainLayout } from "~/components/MainLayout";
+import { SEOh1 } from "~/components/SEOh1";
 import { ACP } from "~/components/pages/ACP";
 import { headSEO } from "~/data/constants";
 import { acpQuery } from "~/data/gql_queries/pages/acp_query";
@@ -17,6 +18,11 @@ export default component$(() => {
   const data = signalData.value;
   return (
     <MainLayout data={data["layoutData"]}>
+      <SEOh1
+        SEOdata={
+          data["pageData"]["data"]["pageAcp"]["data"]["attributes"]["SEO"]
+        }
+      />
       <ACP data={data["pageData"]["data"]} />
     </MainLayout>
   );
