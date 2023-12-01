@@ -8,22 +8,34 @@ import { getPageData } from "~/services/graphql";
 
 export const usePageData = routeLoader$(async (req) => {
   const lang = req.params["lang"] == "" ? "en" : "es-419";
-  //   const cityName = "Crystal Beach, TX";
-  //   const weatherResp = await fetch(
-  //     `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}/next7days?unitGroup=us&include=days%2Ccurrent&key=J8MMBMZC9DTQTVGHBPNEWPPGS&contentType=json`,
-  //   );
-  let weatherData = { status: "error" };
-  //   if (weatherResp.ok) {
-  //     weatherData = {
-  //       status: "ok",
-  //       data: await weatherResp.json(),
-  //     };
-  //   }
-  weatherData = { status: "error" };
-
-  console.log(weatherData);
-
   const content = await getPageData(localWeatherQuery, lang);
+  const weatherData: any = { status: "error", data: [] };
+  for (const locTable of content["pageData"]["data"]["pageLocWeather"]["data"][
+    "attributes"
+  ]["LocTables"]) {
+    const cityName: string = locTable["Location"];
+    const weatherResp = await fetch(
+      `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${cityName}/next7days?unitGroup=us&include=days%2Ccurrent&key=J8MMBMZC9DTQTVGHBPNEWPPGS&contentType=json`,
+    );
+    if (weatherResp.ok) {
+      const cityData = await weatherResp.json();
+      weatherData.data.push({
+        city: cityName,
+        data: cityData,
+      });
+      // weatherData = {
+      //   status: "ok",
+      //   data: [
+      //     ...weatherData.data,
+      //     {
+      //       city: cityName,
+      //       data: cityData,
+      //     },
+      //   ],
+      // };
+    }
+  }
+
   return {
     ...content,
     weatherData,

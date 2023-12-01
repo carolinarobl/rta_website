@@ -8,7 +8,12 @@ export const SectionRefIntro = component$(({ data }: { data: any }) => {
       <div class="h-[30px] w-full bg-primary-blue opacity-50"></div>
 
       <div class="min-h-[200px] w-full bg-gradient-to-br from-primary-light-blue to-[#23477f] !text-white">
-        <SerializedParagraph data={data} color="white" reverse />
+        <SerializedParagraph
+          data={data}
+          color="white"
+          reverse
+          hasPricing={false}
+        />
       </div>
       <div class="h-[30px] w-full bg-primary-blue opacity-50"></div>
       <div class="h-[30px] w-full bg-primary-blue opacity-20"></div>

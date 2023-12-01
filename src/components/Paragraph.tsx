@@ -77,7 +77,11 @@ export const Paragraph = component$(
                 </h2>
               )}
               {subtitle && (
-                <h3 class="text-[28px] font-bold text-[#D20030] max-sm:text-[20px]">
+                <h3
+                  class={`text-[28px] font-bold ${
+                    hasPricing ? "text-secondary-red" : "text-center text-white"
+                  } max-sm:text-[20px]`}
+                >
                   {subtitle}
                 </h3>
               )}
@@ -88,7 +92,7 @@ export const Paragraph = component$(
             ></Markdown>
             <div class="flex gap-4">
               {buttons &&
-                buttons.map((button, i) => (
+                buttons.map((button: any, i: number) => (
                   <Button key={i} text={button["Text"]} link={button["Link"]}>
                     <FaCircleArrowRightSolid
                       color="#13B295"
