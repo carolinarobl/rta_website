@@ -7,21 +7,30 @@ export const Navbar = component$(({ data }: { data: any }) => {
   return (
     <div class="sticky top-0 z-30 shadow-[0_5px_40px_-25px_rgba(0,0,0,0.2)]">
       <div class="flex h-[28px] flex-row items-center justify-end gap-4 bg-primary-blue px-5 py-[4px] text-[12px] font-bold text-white max-sm:justify-evenly max-sm:text-[10px] max-sm:font-normal max-[400px]:text-[9px]">
-        {data["TopOptions"].map((e: any, i: any) => (
-          <Link key={i} href={e["Link"]} prefetch>
-            <div class="flex flex-row items-center gap-2">
-              <div class="w-[12px]">
-                <StrapiImage
-                  url={e["Icon"]["data"]["attributes"]["url"]}
-                  toWhite={true}
-                  width={12}
-                  height={12}
-                />
+        {data["TopOptions"].map((e: any, i: any) => {
+          // TEMP FIX
+          // TEMP FIX
+          // TEMP FIX
+          if (e["Link"].includes("=p")) {
+            e["Link"] = "";
+          }
+
+          return (
+            <Link key={i} href={e["Link"]} prefetch>
+              <div class="flex flex-row items-center gap-2">
+                <div class="w-[12px]">
+                  <StrapiImage
+                    url={e["Icon"]["data"]["attributes"]["url"]}
+                    toWhite={true}
+                    width="16"
+                    height="16"
+                  />
+                </div>
+                {e["Text"]}
               </div>
-              {e["Text"]}
-            </div>
-          </Link>
-        ))}
+            </Link>
+          );
+        })}
       </div>
       <div class="grid grid-cols-3 items-center justify-evenly bg-white py-1 min-[1200px]:flex">
         <div class="flex items-center justify-center min-[1200px]:hidden">
@@ -76,8 +85,8 @@ export const Navbar = component$(({ data }: { data: any }) => {
             <div class="w-[130px] rounded-md p-1 hover:bg-slate-50">
               <StrapiImage
                 url={e["Icon"]["data"]["attributes"]["url"]}
-                width={350}
-                // height={59}
+                width="311"
+                height="60"
               />
             </div>
           </Link>

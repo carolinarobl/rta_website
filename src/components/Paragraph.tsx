@@ -77,7 +77,11 @@ export const Paragraph = component$(
                 </h2>
               )}
               {subtitle && (
-                <h3 class="text-[28px] font-bold text-[#D20030] max-sm:text-[20px]">
+                <h3
+                  class={`text-[28px] font-bold ${
+                    hasPricing ? "text-secondary-red" : "text-center text-white"
+                  } max-sm:text-[20px]`}
+                >
                   {subtitle}
                 </h3>
               )}

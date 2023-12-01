@@ -44,10 +44,12 @@ export const Home = component$(({ data }: { data: any }) => {
         reverse
         textPercentage={60}
       />
-      <SectionGFInternetHome
-        data={pageData["ParGFServices"][0]}
-        parGFIPlans={pageData["ParGFIPlans"]}
-      />
+      <div class="flex w-full justify-center">
+        <SectionGFInternetHome
+          data={pageData["ParGFServices"][0]}
+          parGFIPlans={pageData["ParGFIPlans"]}
+        />
+      </div>
       <ListedParagraphs
         data={pageData["ParGFServices"].slice(
           1,
