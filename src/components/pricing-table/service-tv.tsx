@@ -1,99 +1,103 @@
 import { component$ } from "@builder.io/qwik";
+import { BsCheckCircleFill, BsTagFill } from "@qwikest/icons/bootstrap";
+import { setURL } from "~/data/constants";
+import { PopupCall } from "../PopupCall";
 
-export const ServiceTv = component$(() => {
+interface Props {
+  logo: string;
+  title: string;
+  subtitle: string;
+  price: string;
+  priceTime: string;
+  description: string;
+  channels: Array<any>;
+  btnSeeMoreText: string;
+  btnSeeMoreLink: string;
+  features: Array<any>;
+  btnText: string;
+  btnLink: string;
+}
+
+export const ServiceTv = component$(({
+  logo,
+  title,
+  subtitle,
+  price,
+  priceTime,
+  description,
+  channels,
+  btnSeeMoreLink,
+  btnSeeMoreText,
+  features,
+  btnText,
+  btnLink
+}: Props) => {
+
   return (
-    <div class="justify-between items-center shadow-lg bg-white flex flex-col px-5 rounded-[35px]">
+    <div class="justify-between min-h-[670px] w-[300px] items-center shadow-lg bg-white flex flex-col px-5 rounded-[35px]">
       <div class="items-center self-center flex w-[310px] max-w-full flex-col mt-8">
         <div class="items-start self-center flex w-full gap-5">
           <img
             width={80}
             height={80}
             loading="lazy"
-            srcSet="..."
+            src={setURL(logo)}
             class="aspect-square object-contain object-center w-[70px] justify-center items-center overflow-hidden self-stretch max-w-full"
           />
           <div class="self-center flex flex-col my-auto">
             <div class="text-blue-800 text-2xl font-bold leading-6 self-start whitespace-nowrap">
-              Nombre Paquete
+              {title}
             </div>
-            <div class="justify-center text-rose-700 text-xl font-semibold mt-2">
-              Descripción
+            <div class="justify-center text-rose-700 text-xl mt-2">
+              {subtitle}
             </div>
           </div>
         </div>
-        <div class="text-blue-800 text-center text-base leading-4 tracking-tighter mt-5">
-          <span class="font-light text-rose-700">$</span>
-          <span class="font-light text-blue-800">100</span>
-          <span class=" text-blue-800">/month</span>
+        <div class="text-blue-800 flex flex-row mt-5">
+          <span class="font-light text-3xl text-rose-700">$</span>
+          <span class="font-light text-3xl text-blue-800">{price}</span>
+          <span class=" text-blue-800">/{priceTime}</span>
         </div>
         <div class="items-start self-stretch flex flex-col mt-5">
           <div class="justify-between items-start self-stretch flex w-full gap-5">
             <div class="text-blue-800 text-center text-base">
-              Channel Lineup
+              {description}
             </div>
-            <div class="text-teal-500 text-center text-sm font-extrabold leading-4 self-center my-auto whitespace-nowrap">
-              See more &gt;
-            </div>
+            <PopupCall link={btnSeeMoreLink} text={btnSeeMoreText}></PopupCall>
           </div>
           <div class="justify-center items-start self-stretch flex gap-2.5 mt-2.5">
-            <img
-              width={50}
-              height={50}
-              loading="lazy"
-              srcSet="..."
-              class="aspect-square object-contain object-center w-full overflow-hidden flex-1"
-            />
-            <img
-              width={50}
-              height={50}
-              loading="lazy"
-              srcSet="..."
-              class="aspect-square object-contain object-center w-full overflow-hidden flex-1"
-            />
-            <img
-              width={50}
-              height={50}
-              loading="lazy"
-              srcSet="..."
-              class="aspect-square object-contain object-center w-full overflow-hidden flex-1"
-            />
-            <img
-              width={50}
-              height={50}
-              loading="lazy"
-              srcSet="..."
-              class="aspect-square object-contain object-center w-full overflow-hidden flex-1"
-            />
+            {channels.map((channel: any, index: any) => (
+              <img
+                key={index}
+                width={50}
+                height={50}
+                loading="lazy"
+                src={setURL(channel['attributes']['url'])}
+                class="aspect-square object-contain object-center w-full overflow-hidden flex-1"
+              />
+            ))}
           </div>
         </div>
+        <div class="border-gary-500 h-[1px] w-full border-t-2"></div>
+
         <div class="self-stretch w-full h-px mt-5 max-md:mx-0.5"></div>
         <div class="text-blue-800 text-base mt-5">
-          <span class="">eye </span>
-          <span class="">
-            {" "}
-            Feature 1<br />
-          </span>
-          <span class="">eye </span>
-          <span class="">
-            {" "}
-            Feature 2<br />
-          </span>
-          <span class="">eye </span>
-          <span class=""> Feature 3</span>
+          {features.map((feature: any, key: any) => (
+            <span
+              key={key}
+              class="my-1 flex flex-row items-center justify-start"
+            >
+              <BsCheckCircleFill class="mx-2 h-[20px] w-[20px] fill-primary-blue text-primary-blue"></BsCheckCircleFill>
+              <h3 key={key} class="text-sm font-light">
+                {feature["Text"]}
+              </h3>
+            </span>
+          ))}
         </div>
       </div>
-      <div class="justify-center items-center self-center shadow bg-white flex w-[310px] max-w-full flex-col mt-60 mb-8 px-5 py-1.5 rounded-[100px] border-2 border-solid border-teal-500 border-opacity-60 max-md:mt-10">
-        <div class="self-center flex max-w-full items-start gap-2">
-          <div class="text-teal-500 text-base font-bold tracking-wide my-auto">
-            Comprar Ahora
-          </div>
-          <div class="text-white text-center text-sm font-black tracking-wide self-stretch justify-center items-center content-center flex-wrap bg-teal-500 bg-opacity-60 w-[30px] h-[30px] max-w-full p-1 rounded-[100px] whitespace-nowrap">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="w-6 h-6">
-              <path fill-rule="evenodd" d="M5.25 2.25a3 3 0 00-3 3v4.318a3 3 0 00.879 2.121l9.58 9.581c.92.92 2.39 1.186 3.548.428a18.849 18.849 0 005.441-5.44c.758-1.16.492-2.629-.428-3.548l-9.58-9.581a3 3 0 00-2.122-.879H5.25zM6.375 7.5a1.125 1.125 0 100-2.25 1.125 1.125 0 000 2.25z" clip-rule="evenodd" />
-            </svg>
-          </div>
-        </div>
-      </div>
+
+<PopupCall link={btnLink} text={btnText}></PopupCall>
+
     </div>
   );
 });

@@ -4,21 +4,31 @@ import { SectionFeactures } from "./section-feactures";
 import { Markdown } from "~/components/Markdown";
 import { DownloadBoxImage } from "~/components/download-box-image";
 import { SectionChpack } from "./section-chpack";
+import { SectionAdditionalOptions } from "./section_additionalOptions";
+import { SectionPremiumChannels } from "./section-premiumChannels";
 
 export const GigfastTv = component$(({ data }: { data: any }) => {
     const pageData = data['data']['pageGfTv']['data']['attributes']
     const sectionChguide = data['data']['sectionChGuide']['data']['attributes']
 
-    return <div class="flex flex-col">
+    return <div class="flex flex-col justify-around">
         <div class="flex flex-col my-6 items-center justify-center gap-4">
             <img src={setURL(pageData['Logo']['data']['attributes']['url'])} alt={pageData['Logo']['data']['attributes']['alternativeText']}
                 height={200} width={500} />
             <h2 class="text-[40px] font-semibold text-center text-primary-blue">{pageData['Titles'][0]['Text']}</h2>
             <h2 class="text-[40px] font-semibold text-center text-secondary-red">{pageData['Titles'][1]['Text']}</h2>
         </div>
+
         <SectionFeactures data={pageData["Features"]}></SectionFeactures>
-        
-        <SectionChpack data={pageData}></SectionChpack>
+
+        <div class="flex flex-col text-center p-4 items-center justify-center my-8">
+            <h2 class="text-3xl md:text-5xl font-semibold text-primary-blue">{pageData['Feature']['Title']}</h2>
+            <Markdown text={pageData['Feature']['Paragraph']}></Markdown>
+        </div>
+
+        <SectionChpack data={pageData['ChPackTables']} title={pageData['ChPackTitle']}></SectionChpack>
+
+        <SectionPremiumChannels data={pageData['PremiumTables']} title={pageData['PremiumTitle']}></SectionPremiumChannels>
 
         <div class={`flex w-full flex-col items-center justify-center`}>
             <div
@@ -50,6 +60,8 @@ export const GigfastTv = component$(({ data }: { data: any }) => {
                         urlDoc={sectionChguide['GuideBox']['Guide']['data']['attributes']['url']}
                         image={sectionChguide['Picture']['data']['attributes']['url']} title={sectionChguide['GuideBox']['Title']} btnText={sectionChguide['GuideBox']['BtnText']}></DownloadBoxImage>
                 </div>
-            </div></div>
+            </div>
+            <SectionAdditionalOptions data={pageData['Additionals']} disclaimers={pageData['Disclaimers']} title={pageData['AdditionalsTitle']}></SectionAdditionalOptions>
+        </div>
     </div>
 });

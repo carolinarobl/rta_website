@@ -93,6 +93,11 @@ body {
   margin-left: 16px;
 }
 
+.markdownli li{
+  list-style-type: disc;
+  list-style: disc;
+}
+
 @keyframes zoomIn {
   from {
     transform: scale(0);
