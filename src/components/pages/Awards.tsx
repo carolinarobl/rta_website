@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { Markdown } from "../Markdown";
 import { setURL } from "~/data/constants";
-import { Stepper } from "../Stepper";
+// import { Stepper } from "../Stepper";
 
 export const Awards = component$(({ data }: { data: any }) => {
     const pageData = data['data']['pageAward']['data']['attributes']
