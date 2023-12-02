@@ -7,7 +7,7 @@ import { SectionChpack } from "./section-chpack";
 import { SectionAdditionalOptions } from "./section_additionalOptions";
 import { SectionPremiumChannels } from "./section-premiumChannels";
 
-export const GigfastTv = component$(({ data }: { data: any }) => {
+export const GigfastTv = component$(({ data }: { data: any}) => {
     const pageData = data['data']['pageGfTv']['data']['attributes']
     const sectionChguide = data['data']['sectionChGuide']['data']['attributes']
 

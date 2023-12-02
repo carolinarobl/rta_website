@@ -39,7 +39,7 @@ export const PopupCall = component$(({ link, text }: { link: string, text: strin
 
   return <div class="flex relative">
 
-    {link.includes(configurator) ? <div class="my-4 cursor-pointer flex h-[80px] w-full flex-col items-center justify-center">
+    {link.includes(configurator) && text.includes("Buy now" || "Comprar ahora") ? <div class="my-4 cursor-pointer flex h-[80px] w-full flex-col items-center justify-center">
       <div class="border-gary-500 my-4 h-[1px] w-full border-t-2"></div>
       <div class="flex h-[50px] w-full flex-row items-center justify-center rounded-full border-2 border-teal-500 bg-transparent p-1 px-6 text-btn-green hover:bg-teal-500 hover:text-white"
         onClick$={() => showModal.value = true}>
