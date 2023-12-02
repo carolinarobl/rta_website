@@ -35,6 +35,9 @@
  */
 
 :root {
+  --color-primary: #2e5899;
+  --color-secondary: #d20030;
+  --color-tertiary: #13B295;
   --qwik-dark-blue: #006ce9;
   --qwik-light-blue: #18b6f6;
   --qwik-light-purple: #ac7ff4;
@@ -134,4 +137,25 @@ body {
 
 .animated-fadeout-down {
   animation: fadeOutDown 1s ease-in-out;
+}
+
+.splide__arrow {
+  background: var(--color-primary) !important;
+  border: 0 !important;
+  z-index:100;
+  width: 20px !important;
+  height: 20px !important;
+}
+
+.splide__arrow svg{
+  fill: white !important;
+  width: 8px !important;
+}
+
+.splide__pagination__page {
+  background-color: var(--color-primary) !important;
+}
+
+.splide__pagination__page.is-active {
+  background-color: var(--color-tertiary) !important;
 }

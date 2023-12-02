@@ -4,8 +4,8 @@ import { strapiURL } from "~/data/constants";
 export const StrapiImage = component$(
   ({
     url,
-    width,
-    height,
+    width=300,
+    height=300,
     alt = "",
     toWhite = false,
     clasN = "",

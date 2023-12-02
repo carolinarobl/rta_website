@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import { Paragraph, SerializedParagraph } from "~/components/Paragraph";
+import { Paragraph } from "~/components/Paragraph";
 import { setURL } from "~/data/constants";
 
 export const SectionFeactures = component$(({ data }: { data: any }) => {

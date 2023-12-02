@@ -57,6 +57,6 @@ export const wholesaleQuery = (locale:string) =>{
             }
           }
         }
-        ${sectionNetwork(locale=locale)}
+        ${sectionNetwork(locale)}
       }` 
 }

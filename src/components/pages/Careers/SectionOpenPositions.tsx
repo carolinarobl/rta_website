@@ -1,11 +1,12 @@
 import { component$ } from "@builder.io/qwik";
 import { FaLocationArrowSolid } from "@qwikest/icons/font-awesome";
 import { Button } from "~/components/Button";
+import Carousel from "~/components/Carousel";
 import { Markdown } from "~/components/Markdown";
 export const SectionOpenPositions = component$(({ data }: { data: any }) => {
   const PositionCard = component$(({ position }: { position: any }) => {
     return (
-      <div class="flex h-[380px] w-[460px] flex-col items-center justify-between rounded-[30px] bg-white p-6 text-center shadow-lg max-[800px]:h-[280px] max-[800px]:w-[340px]">
+      <div class="flex h-[380px] w-[460px] flex-col rounded-[30px] bg-white p-6 text-center shadow-lg max-[800px]:h-[280px] ">
         <div class="flex-col items-center">
           <div class="flex items-center justify-center gap-2">
             <FaLocationArrowSolid />
@@ -29,13 +30,20 @@ export const SectionOpenPositions = component$(({ data }: { data: any }) => {
       </div>
     );
   });
+
+  const positionsSlides = data['Positions'].map((slideContent: any, i:number) => (
+    <PositionCard position={slideContent['attributes']} key={i}/>
+  ));
   return (
-    <div class="my-8 flex w-full justify-center px-8 text-primary-blue">
-      <div class="flex flex-col gap-4">
+    <div class="my-8 flex justify-center text-primary-blue">
+      <div class="flex flex-col ">
         <h3 class="text-center text-[44px] font-[600]">
           {data["PositionsTitle"]}
         </h3>
-        <PositionCard position={data["Positions"][0]["attributes"]} />
+        {/* <PositionCard position={data["Positions"][0]["attributes"]} /> */}
+       <div class="flex flex-column w-[1200px] ">
+        <Carousel slides={positionsSlides} id={'carPositions'} hasArrows={true} hasPagination={false} slidesQty={3} />
+        </div>
       </div>
     </div>
   );

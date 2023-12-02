@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { Button } from "~/components/Button";
 import { Markdown } from "~/components/Markdown";
-import { StrapiImage } from "~/components/StrapiImage";
+import { StrapiAsset } from "~/components/StrapiAsset";
 
 export const SectionDeals = component$(({ data }: { data: any }) => {
   return (
@@ -29,7 +29,7 @@ export const SectionDeals = component$(({ data }: { data: any }) => {
           <div class="mb-3 flex items-start justify-evenly gap-4 max-[600px]:flex-col">
             {data["Services"].map((deal:any, i:any) => (
               <div key={i} class="flex items-center justify-center gap-1">
-                <StrapiImage
+                <StrapiAsset
                   url={deal["Icon"]["data"]["attributes"]["url"]}
                   clasN="w-[100px] max-[1000px]:w-[80px] "
                 />
@@ -40,7 +40,9 @@ export const SectionDeals = component$(({ data }: { data: any }) => {
           <Button text={data["Button"]["Text"]} link={data["Button"]["Link"]} />
         </div>
         <div class="flex w-[300px] items-center justify-center self-center p-4 max-[600px]:hidden min-[800px]:w-[30%]">
-          <StrapiImage url={data["Media"]["data"]["attributes"]["url"]} />
+          <StrapiAsset url={data["Media"]["data"]["attributes"]["url"]} clasN="rounded-full  mr-[30px]"   autoplay
+          loop
+          muted ={true} />
         </div>
       </div>
     </div>
