@@ -1,5 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { Button } from "~/components/Button";
+import Carousel from "~/components/Carousel";
 import { Markdown } from "~/components/Markdown";
 import { StrapiAsset } from "~/components/StrapiAsset";
 import { StrapiImage } from "~/components/StrapiImage";
@@ -10,19 +11,22 @@ import { setURL } from "~/data/constants";
 // import { Carouseld } from "~/components/Carousel";
 
 export const HomeHeader = component$(({ data }: { data: any }) => {
-  const heroSlides = data["HeroCarSlides"];
+
+  const heroSlidesData = data["HeroCarSlides"];
+
 
   const SlideCard = component$(({ slide }: { slide: any }) => {
     return (
-      <div class="flex">
-        <div class="flex w-[60%] flex-col items-center justify-between gap-1 px-4 text-center">
+      <div class="flex items-center justify-between">
+        <div class=" flex-row gap-1 ">
           <StrapiImage
             clasN="w-[160px]"
             width="1667"
-            height="272"
             url={slide["Logo"]["data"]["attributes"]["url"]}
           />
-          <Markdown classN="text-[15px]" text={slide["Paragraph"]} />
+          <div class="mx-3">
+          <Markdown classN="text-[14px]" text={slide["Paragraph"]} />
+          </div>
           <Button
             text={slide["Buttons"][0]["Text"]}
             link={slide["Buttons"][0]["Link"]}
@@ -33,11 +37,16 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
           url={slide["Media"]["data"]["attributes"]["url"]}
           autoplay
           loop
-          muted
+          muted = {true}
         />
       </div>
     );
   });
+
+  const heroSlides = heroSlidesData.map((slideContent: any, i: number) => (
+    <SlideCard slide={slideContent} key={i}/>
+  ));
+
 
   return (
     <div class="relative flex h-[80vh] max-h-[750px] w-full items-center">
@@ -50,25 +59,8 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
       ></video>
       <div class="flex w-full items-center justify-between">
         <div class="relative flex h-[230px] w-[400px] items-center justify-center overflow-hidden rounded-br-full rounded-tr-full bg-white bg-opacity-60 max-[1000px]:hidden">
-          <SlideCard slide={heroSlides[0]} />
-          {/* <Carouseld /> */}
-          {/* <Slider gap={400} showScrollbar={false} styleClass="overflow-hidden">
-            {heroSlides.map((slide, i) => {
-              return (
-                <div key={i} class="flex flex-col gap-2">
-                  <StrapiImage
-                    url={slide["Logo"]["data"]["attributes"]["url"]}
-                  />
-                  <Markdown text={slide["Paragraph"]} />
-                  <Button
-                    text={slide["Buttons"][0]["Text"]}
-                    link={slide["Buttons"][0]["Link"]}
-                  />
-                </div>
-              );
-            })}
-            <div class="">test</div>
-          </Slider> */}
+          {/* <SlideCard slide={heroSlides[0]} /> */}
+         <Carousel slides={heroSlides} hasArrows={false} />
         </div>
         <div class="flex h-[230px] w-[400px] flex-col items-center justify-center gap-5 rounded-bl-full rounded-tl-full bg-white bg-opacity-60 max-[1000px]:hidden">
           <div class="px-6 text-[22px] font-[600] text-primary-blue">

@@ -74,6 +74,6 @@ export const gfTvQuery =(locale:string)=>{
             }
           }
         }
-        ${sectionChannelGuideQuery(locale=locale)}
+        ${sectionChannelGuideQuery(locale)}
       }` 
 }

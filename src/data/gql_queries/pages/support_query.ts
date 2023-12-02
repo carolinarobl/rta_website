@@ -36,6 +36,6 @@ export const supportQuery = (locale:string)=>{
             }
           }
         }
-        ${sectionContactBoxesQuery(locale=locale)}
+        ${sectionContactBoxesQuery(locale)}
       }` 
 }

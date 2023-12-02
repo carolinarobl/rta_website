@@ -13,16 +13,13 @@ import { translationFn } from "./speak-functions";
 import "./global.css";
 
 export default component$(() => {
-  const analyticsScript = `
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-73FN8JZFH3"></script>
-<script>
+  const analyticsScriptP1 = `https://www.googletagmanager.com/gtag/js?id=G-73FN8JZFH3`;
+
+const analyticsScriptP2 = `
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
-
   gtag('config', 'G-73FN8JZFH3');
-</script>
 `;
   /**
    * The root of a QwikCity site always start with the <QwikCityProvider> component,
@@ -41,7 +38,9 @@ export default component$(() => {
           <link rel="manifest" href="/manifest.json" />
           {/* <link ref="icon" href="/favicon.png" /> */}
           <RouterHead />
-          <script defer async dangerouslySetInnerHTML={analyticsScript}></script>
+          <script defer async src={analyticsScriptP1} ></script>
+          <script defer async dangerouslySetInnerHTML={analyticsScriptP2}></script>
+
           <ServiceWorkerRegister />
         </head>
         <body lang="en" class="max-h-screen">
