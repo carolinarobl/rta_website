@@ -8,6 +8,18 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
 @layer base {
   ul,
   ol {
@@ -37,7 +49,7 @@
 :root {
   --color-primary: #2e5899;
   --color-secondary: #d20030;
-  --color-tertiary: #13B295;
+  --color-tertiary: #13b295;
   --qwik-dark-blue: #006ce9;
   --qwik-light-blue: #18b6f6;
   --qwik-light-purple: #ac7ff4;
@@ -96,7 +108,7 @@ body {
   margin-left: 16px;
 }
 
-.markdownli li{
+.markdownli li {
   list-style-type: disc;
   list-style: disc;
 }
@@ -147,12 +159,12 @@ body {
 .splide__arrow {
   background: var(--color-primary) !important;
   border: 0 !important;
-  z-index:100;
+  z-index: 100;
   width: 20px !important;
   height: 20px !important;
 }
 
-.splide__arrow svg{
+.splide__arrow svg {
   fill: white !important;
   width: 8px !important;
 }

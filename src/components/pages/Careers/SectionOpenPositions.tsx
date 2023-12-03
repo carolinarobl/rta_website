@@ -6,7 +6,7 @@ import { Markdown } from "~/components/Markdown";
 export const SectionOpenPositions = component$(({ data }: { data: any }) => {
   const PositionCard = component$(({ position }: { position: any }) => {
     return (
-      <div class="flex h-[380px] w-[460px] flex-col rounded-[30px] bg-white p-6 text-center shadow-lg max-[800px]:h-[280px] ">
+      <div class="flex h-[380px] w-[460px] flex-col justify-between rounded-[30px] bg-white p-6 text-center shadow-lg max-[800px]:h-[280px] ">
         <div class="flex-col items-center">
           <div class="flex items-center justify-center gap-2">
             <FaLocationArrowSolid />
@@ -25,15 +25,17 @@ export const SectionOpenPositions = component$(({ data }: { data: any }) => {
             <span class="text-btn-green hover:cursor-pointer">Learn more</span>{" "}
             <span class="text-black">or</span>
           </div>
-          <Button text="Submit Resume" />
+          <Button text="Submit Resume" link="=pContactEmail=" />
         </div>
       </div>
     );
   });
 
-  const positionsSlides = data['Positions'].map((slideContent: any, i:number) => (
-    <PositionCard position={slideContent['attributes']} key={i}/>
-  ));
+  const positionsSlides = data["Positions"].map(
+    (slideContent: any, i: number) => (
+      <PositionCard position={slideContent["attributes"]} key={i} />
+    ),
+  );
   return (
     <div class="my-8 flex justify-center text-primary-blue">
       <div class="flex flex-col ">
@@ -41,8 +43,14 @@ export const SectionOpenPositions = component$(({ data }: { data: any }) => {
           {data["PositionsTitle"]}
         </h3>
         {/* <PositionCard position={data["Positions"][0]["attributes"]} /> */}
-       <div class="flex flex-column w-[1200px] ">
-        <Carousel slides={positionsSlides} id={'carPositions'} hasArrows={true} hasPagination={false} slidesQty={3} />
+        <div class="flex-column flex w-[1200px] ">
+          <Carousel
+            slides={positionsSlides}
+            id={"carPositions"}
+            hasArrows={true}
+            hasPagination={false}
+            slidesQty={3}
+          />
         </div>
       </div>
     </div>

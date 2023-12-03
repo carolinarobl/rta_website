@@ -21,7 +21,7 @@ data {
 }
 `;
 
-export const headSEO= (SEOdata: any) => {
+export const headSEO = (SEOdata: any) => {
   return <DocumentHeadValue>{
     title: SEOdata.MetaTitle,
     meta: [
@@ -81,7 +81,7 @@ MembersGrid{
       }
 `;
 
-export const sectionNetwork =(locale:string)=> `
+export const sectionNetwork = (locale: string) => `
 sectionNetwork (locale:"${locale}"){
   data {
     attributes {
@@ -113,4 +113,37 @@ sectionNetwork (locale:"${locale}"){
     }
   }
 }
-`
+`;
+
+const days = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
+const months = [
+  "January",
+  "February",
+  "March",
+  "April",
+  "May",
+  "June",
+  "July",
+  "August",
+  "September",
+  "October",
+  "November",
+  "December",
+];
+
+export function formatDate(dateStr: string, full = true) {
+  const date = new Date(dateStr);
+  const day = days[date.getDay()];
+  const monthDay = date.getDate();
+  const month = months[date.getMonth()];
+  const year = date.getFullYear();
+  return `${full ? day + ", " : ""}${month} ${monthDay}, ${year}`;
+}
