@@ -4,7 +4,7 @@ import { PortabilityRequest } from "./popups/portabilityRequest";
 // import { FormSupport } from "./forms/form-support";
 
 export const PopupCall = component$(
-  ({ link }: { link: string; text: string }) => {
+  ({ link, text }: { link: string; text?: string }) => {
     const configurator = "=pConf=";
     const contactEmail = "=pContactEmail=";
     const iFrame = "=pIFrame=";
@@ -69,17 +69,32 @@ export const PopupCall = component$(
 
     return (
       <div class="relative flex">
-        {/* {link.includes(configurator) && text.includes("Buy now" || "Comprar ahora") ? <div class="my-4 cursor-pointer flex h-[80px] w-full flex-col items-center justify-center">
-      <div class="border-gary-500 my-4 h-[1px] w-full border-t-2"></div>
-      <div class="flex h-[50px] w-full flex-row items-center justify-center rounded-full border-2 border-teal-500 bg-transparent p-1 px-6 text-btn-green hover:bg-teal-500 hover:text-white"
-        onClick$={() => showModal.value = true}>
-        <p class="mx-4 font-bold">{text}</p>
-        <div class="flex h-[25px] w-[25px] items-center justify-center rounded-full bg-teal-500 ">
-          <BsTagFill class="fill-white" />
-        </div>
-      </div>
-    </div> : <button class={`flex w-fit items-center justify-center gap-2 ${link.includes(channelLineup) ? "" : "border-2 border-teal-500 p-1 px-7 rounded-full shadow-md transition-all  hover:text-white hover:cursor-pointer hover:border-transparent hover:bg-teal-500"}  bg-white  text-btn-green opacity-80  text-[15px] font-[600] max-md:text-[14px] max-sm:text-[13px] `}
-      onClick$={() => showModal.value = true}>{text}</button>} */}
+        {link.includes(configurator) &&
+        text.includes("Buy now" || "Comprar ahora") ? (
+          <div class="my-4 flex h-[80px] w-full cursor-pointer flex-col items-center justify-center">
+            <div class="border-gary-500 my-4 h-[1px] w-full border-t-2"></div>
+            <div
+              class="flex h-[50px] w-full flex-row items-center justify-center rounded-full border-2 border-teal-500 bg-transparent p-1 px-6 text-btn-green hover:bg-teal-500 hover:text-white"
+              onClick$={() => (showModal.value = true)}
+            >
+              <p class="mx-4 font-bold">{text}</p>
+              <div class="flex h-[25px] w-[25px] items-center justify-center rounded-full bg-teal-500 ">
+                <BsTagFill class="fill-white" />
+              </div>
+            </div>
+          </div>
+        ) : (
+          <button
+            class={`flex w-fit items-center justify-center gap-2 ${
+              link.includes(channelLineup)
+                ? ""
+                : "rounded-full border-2 border-teal-500 p-1 px-7 shadow-md transition-all  hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white"
+            }  bg-white  text-[15px] font-[600]  text-btn-green opacity-80 max-md:text-[14px] max-sm:text-[13px] `}
+            onClick$={() => (showModal.value = true)}
+          >
+            {text}
+          </button>
+        )}
 
         {showModal.value && (
           <div class="fixed inset-0 z-50 flex flex-col items-end justify-center bg-blue-700 bg-opacity-40">
