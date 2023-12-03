@@ -1,10 +1,10 @@
-import { JSXChildren, component$ } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import { AccordionItem } from "~/components/AccordionItem";
 import { BsCheck } from "@qwikest/icons/bootstrap"
-import { JSX } from "@builder.io/qwik/jsx-runtime";
+import { type JSX } from "@builder.io/qwik/jsx-runtime";
 
 export const SectionPremiumChannels = component$(({ data, title }: { data: any, title: string }) => {
-    var listChannels: Array<JSX.Element> = []
+    let listChannels: Array<JSX.Element> = []
 
     return <div class="flex flex-col items-center justify-center">
         <h2 class="text-3xl text-center md:text-5xl my-3 font-semibold text-primary-blue">{title}</h2>
