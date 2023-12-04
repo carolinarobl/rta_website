@@ -2,9 +2,10 @@ import { component$, useSignal } from "@builder.io/qwik";
 import { FormCarrers } from "./forms/form-carrers";
 import { PortabilityRequest } from "./popups/portabilityRequest";
 import { BsTagFill } from "@qwikest/icons/bootstrap";
+import { FormSupport } from "./forms/form-support";
 // import { FormSupport } from "./forms/form-support";
 
-export const PopupCall = component$(({ link }: { link: string, text: string }) => {
+export const PopupCall = component$(({ link, text }: { link: string, text?: string }) => {
   const configurator = "=pConf=";
   const contactEmail = "=pContactEmail=";
   const iFrame = "=pIFrame=";
@@ -105,4 +106,4 @@ export const PopupCall = component$(({ link }: { link: string, text: string }) =
       </div>
     )}
   </div>
-});
+)});

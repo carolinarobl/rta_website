@@ -1,4 +1,5 @@
 import { component$, useSignal } from "@builder.io/qwik";
+import { FaXmarkSolid } from "@qwikest/icons/font-awesome";
 import { Button } from "~/components/Button";
 import Carousel from "~/components/Carousel";
 import { Markdown } from "~/components/Markdown";
