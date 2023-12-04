@@ -4,38 +4,37 @@ import { PortabilityRequest } from "./popups/portabilityRequest";
 import { BsTagFill } from "@qwikest/icons/bootstrap";
 // import { FormSupport } from "./forms/form-support";
 
-export const PopupCall = component$(
-  ({ link, text }: { link: string; text?: string }) => {
-    const configurator = "=pConf=";
-    const contactEmail = "=pContactEmail=";
-    const iFrame = "=pIFrame=";
-    const channelLineup = "=pChannelLineup=";
+export const PopupCall = component$(({ link }: { link: string, text: string }) => {
+  const configurator = "=pConf=";
+  const contactEmail = "=pContactEmail=";
+  const iFrame = "=pIFrame=";
+  const channelLineup = "=pChannelLineup=";
 
-    // var popupCall = link;
-    let child = null;
+  // var popupCall = link;
+  let child = null
 
-    if (link.includes(configurator)) {
-      // popupCall = configurator;
-      child = <FormCarrers />;
+  if (link.includes(configurator)) {
+    // popupCall = configurator;
+    child = <FormCarrers />
 
-      // link = link.replaceAll(configurator, "");
-    } else if (link.includes(contactEmail)) {
-      // popupCall = contactEmail;
-      child = <FormCarrers />;
-      // child = <FormSupport />
+    // link = link.replaceAll(configurator, "");
+  } else if (link.includes(contactEmail)) {
+    // popupCall = contactEmail;
+    child = <FormSupport />
 
-      // link = link.replaceAll(contactEmail, "");
-    } else if (link.includes(iFrame)) {
-      const linkClean = link.replaceAll(iFrame, "");
-      child = <PortabilityRequest link={linkClean} />;
-    } else if (link.includes(channelLineup)) {
-      // popupCall = channelLineup;
-      child = <FormCarrers />;
+    // link = link.replaceAll(contactEmail, "");
+  } else if (link.includes(iFrame)) {
+    const linkClean = link.replaceAll(iFrame, "");
+    child = <PortabilityRequest link={linkClean} />
+  } else if (link.includes(channelLineup)) {
+    // popupCall = channelLineup;
+    child = <FormCarrers />
 
-      // link = link.replaceAll(channelLineup, "");
-    }
+    // link = link.replaceAll(channelLineup, "");
+  }
 
-    const showModal = useSignal(false);
+
+  const showModal = useSignal(false);
 
     // return (
     //   <div class="relative flex">
@@ -97,20 +96,13 @@ export const PopupCall = component$(
           </button>
         )}
 
-        {showModal.value && (
-          <div class="fixed inset-0 z-50 flex flex-col items-end justify-center bg-blue-700 bg-opacity-40">
-            <button
-              onClick$={() => (showModal.value = false)}
-              class="rounded-full bg-secondary-red px-4 py-2 text-white"
-            >
-              X
-            </button>
-            <div class="animate-zoomIn flex w-full flex-wrap items-center justify-center overflow-hidden p-8">
-              {child}
-            </div>
-          </div>
-        )}
+    {showModal.value && (
+      <div class="fixed inset-0 z-50 flex flex-col items-end justify-center bg-blue-700 bg-opacity-40">
+        <button onClick$={() => showModal.value = false} class="bg-secondary-red text-white px-4 py-2 rounded-full">X</button>
+        <div class="flex p-8 flex-wrap overflow-hidden items-center justify-center w-full animate-zoomIn">
+          {child}
+        </div>
       </div>
-    );
-  },
-);
+    )}
+  </div>
+});
