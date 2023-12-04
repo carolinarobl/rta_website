@@ -9,7 +9,7 @@ export const AppreciationLead = component$(({ data }: { data: any }) => {
     return <div class="flex flex-wrap px-8 items-center justify-center">
         <div class="flex flex-col items-center justify-center w-full md:w-1/2">
             <div class="relative h-[600px] w-[80%] flex flex-col items-center justify-center">
-                <img class="" src={setURL(pageData['zane_lead']['bg_pic']['data']['attributes']['url'])} alt=""
+                <img class="" src={setURL(pageData['zane_lead']['bg_pic']['data']['attributes']['url'])} alt={pageData['zane_lead']['bg_pic']['data']['attributes']['alternativeText']} title={pageData['zane_lead']['bg_pic']['data']['attributes']['caption']}
                     width="650" height="650" />
                 <img class="absolute flex rounded-full h-3/4 w-auto" src={setURL(pageData['zane_lead']['zane_pic']['data']['attributes']['url'])}
                     height={250}
@@ -35,6 +35,7 @@ export const AppreciationLead = component$(({ data }: { data: any }) => {
                             width={20}
                             height={20}
                             url={pageData['zane_lead']['give_pic']['data']['attributes']['url']}
+                            alt={pageData['zane_lead']['give_pic']['data']['attributes']['alternativeText']}
                         />
                     </div >
                     Price
@@ -47,6 +48,7 @@ export const AppreciationLead = component$(({ data }: { data: any }) => {
                             width={20}
                             height={20}
                             url={pageData['zane_lead']['auto_pic']['data']['attributes']['url']}
+                            alt={pageData['zane_lead']['auto_pic']['data']['attributes']['alternativeText']}
                         />
                     </div >
                     Live Events
@@ -59,6 +61,8 @@ export const AppreciationLead = component$(({ data }: { data: any }) => {
                             width={20}
                             height={20}
                             url={pageData['zane_lead']['cota_pic']['data']['attributes']['url']}
+                            alt={pageData['zane_lead']['cota_pic']['data']['attributes']['alternativeText']}
+
                         />
                     </div >
                     Discounts
@@ -71,6 +75,8 @@ export const AppreciationLead = component$(({ data }: { data: any }) => {
                             width={20}
                             height={20}
                             url={pageData['zane_lead']['auto_pic']['data']['attributes']['url']}
+                            alt={pageData['zane_lead']['auto_pic']['data']['attributes']['alternativeText']}
+
                         />
                     </div >
                     Live Events

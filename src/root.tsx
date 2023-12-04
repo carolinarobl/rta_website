@@ -36,6 +36,7 @@ const analyticsScriptP2 = `
         
           <meta charSet="utf-8" />
           <link rel="manifest" href="/manifest.json" />
+          <meta name="robots" content="noindex"/>
           {/* <link ref="icon" href="/favicon.png" /> */}
           <RouterHead />
           <script defer async src={analyticsScriptP1} ></script>

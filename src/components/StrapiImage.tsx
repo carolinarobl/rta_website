@@ -23,6 +23,7 @@ export const StrapiImage = component$(
         height={height}
         src={`${strapiURL}${url}`}
         alt={alt}
+        title={alt}
         class={
           (toWhite
             ? "brightness-110 contrast-100 hue-rotate-[23deg] invert saturate-[7500%] sepia-0 filter"

@@ -39,6 +39,8 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
             clasN="w-[160px]"
             width="1667"
             url={slide["Logo"]["data"]["attributes"]["url"]}
+            alt={slide["Logo"]["data"]["attributes"]["alternativeText"]}
+
           />
           <div class="mx-3">
           <Markdown classN="text-[14px]" text={slide["Paragraph"]} />
@@ -51,6 +53,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
         <StrapiAsset
           clasN="rounded-full h-[150px] w-[150px] mr-[30px]"
           url={slide["Media"]["data"]["attributes"]["url"]}
+          alt={slide["Media"]["data"]["attributes"]["alternativeText"]}
           autoplay
           loop
           muted = {true}

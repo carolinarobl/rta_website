@@ -18,12 +18,12 @@ export const ProsSection = component$(({ data }: { data: any }) => {
           <div class="mt-6 flex flex-col gap-4">
             {prosData.map((pro:any, i:any) => {
               return (
-                <div key={i} class="flex gap-4">
-                  <div class="h-fit w-fit rounded-full bg-secondary-red p-[9px]">
+                <div key={i} class="flex-row ">
+                  <div class=" bg-secondary-red h-fit w-fit rounded-full p-2">
                     <StrapiImage
                       toWhite
-                      width={42}
-                      height={42}
+                      width={20}
+                      height={20}
                       url={pro["Icon"]["data"]["attributes"]["url"]}
                     />
                   </div>

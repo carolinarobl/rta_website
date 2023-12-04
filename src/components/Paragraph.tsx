@@ -20,8 +20,8 @@ export const Paragraph = component$(
     customComponent,
     imageLink,
   }: {
-    logo?: string;
-    image?: string;
+    logo?: any;
+    image?: any;
     title?: string;
     subtitle?: string;
     text: string;
@@ -59,8 +59,9 @@ export const Paragraph = component$(
             {logo && (
               <div class="max-w-[470px]">
                 <img
-                  src={logo}
-                  alt="paragraph-logo"
+                  src={setURL(logo["url"])}
+                  alt={logo["alternativeText"]}
+                  title={logo["caption"]}
                   width="1230"
                   height="230"
                 />
@@ -113,7 +114,8 @@ export const Paragraph = component$(
                 }
               }}
             >
-              <img src={image} alt="paragraph-image" width="597" height="300" />
+              <img src={setURL(image["url"])} alt={image["alternativeText"]} title={image["caption"]}
+ width="597" height="300" />
             </div>
           )}
           {customComponent && (
@@ -162,12 +164,12 @@ export const SerializedParagraph = component$(
         logo={
           data["Logo"] &&
           data["Logo"]["data"] &&
-          setURL(data["Logo"]["data"]["attributes"]["url"])
+          data["Logo"]["data"]["attributes"]
         }
         image={
           data["Media"] &&
           data["Media"]["data"] &&
-          setURL(data["Media"]["data"]["attributes"]["url"])
+          data["Media"]["data"]["attributes"]
         }
         title={data["Title"]}
         subtitle={data["Subtitle"]}
