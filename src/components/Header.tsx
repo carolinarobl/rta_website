@@ -4,6 +4,7 @@ import { Button } from "./Button";
 import { Markdown } from "./Markdown";
 import Carousel from "./Carousel";
 
+
 export const Header = component$(({ data }: { data: any }) => {
 
   const SlideElement = component$(({ slide }: { slide: any }) => {
@@ -39,7 +40,7 @@ export const Header = component$(({ data }: { data: any }) => {
 
       <div class="absolute z-10 h-[350px] w-[350px] rounded-full bg-white opacity-10 shadow-2xl"></div>
 
-      <Carousel slides= {headerSlides}  hasPagination = {false} addSpace={false} duration={4000}/>
+      <Carousel slides= {headerSlides}  hasPagination = {false} addSpace={false} duration={4000} id={"headerCarousel"}/>
     </div>
   );
 });

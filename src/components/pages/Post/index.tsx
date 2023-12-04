@@ -6,7 +6,7 @@ export const Post = component$(({ data }: { data: any }) => {
   return (
     <div class="flex  w-full flex-col items-center justify-center px-8 text-primary-blue">
       <div class="flex max-w-[1400px] items-center justify-evenly gap-4 py-16 max-[800px]:flex-col">
-        <h1 class="w-[40%] text-center text-[42px] font-[600] leading-10 max-[800px]:w-full">
+        <h1 class="w-[40%] text-center text-[42px] font-[600]  max-sm:text-[28px] leading-10 max-[800px]:w-full">
           {data["Title"]}
         </h1>
         <StrapiImage
@@ -17,7 +17,7 @@ export const Post = component$(({ data }: { data: any }) => {
         />
       </div>
       <div class="mb-8 max-w-[1400px]">
-        <Markdown text={data["Description"]} />
+        <Markdown text={data["Description"]} classN={"text-justify"} />
       </div>
     </div>
   );

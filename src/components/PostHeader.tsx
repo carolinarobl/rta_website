@@ -17,7 +17,7 @@ export const PostHeader = component$(({ post }: { post: any }) => {
           </div>
           <div>
             <Markdown
-              classN={"max-sm:text-[13px] text-[16px] text-[#2E5899] "}
+              classN={"max-sm:text-[13px] text-[16px] text-[#2E5899] text-justify "}
               text={limitText(post["Description"], limit)}
             />
           </div>

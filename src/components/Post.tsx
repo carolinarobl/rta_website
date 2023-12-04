@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { Button } from "./Button";
 import { StrapiImage } from "./StrapiImage";
-import { Markdown } from "./Markdown";
+import { parse } from "marked";
 
 export const Post = component$(({ post, id }: { post: any; id: string }) => {
   const days = [
@@ -53,10 +53,11 @@ export const Post = component$(({ post, id }: { post: any; id: string }) => {
         {formatDate(new Date(post["attributes"]["Date"]))}
       </span>
       <span class="px-3 text-primary-blue">
-        <Markdown
-          classN="[&>h1]:text-[16px] [&>h2]:text-[16px] [&>h3]:text-[16px]"
-          text={limitText(post["attributes"]["Description"], limit)}
-        />
+     
+          <div
+        dangerouslySetInnerHTML={parse(limitText(post["attributes"]["Description"], limit))}
+        class={`flex list-inside flex-col gap-3 text-justify text-sm`}
+      ></div>
       </span>
       <div class="mt-2 self-center">
         <Button text="Read More" link={`/${[post["attributes"]["Slug"]]}`} />

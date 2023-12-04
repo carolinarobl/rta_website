@@ -13,6 +13,7 @@ export const Navbar = component$(({ data }: { data: any }) => {
           // TEMP FIX
           if (e["Link"].includes("=p")) {
             e["Link"] = "";
+
           }
 
           return (

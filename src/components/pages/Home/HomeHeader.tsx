@@ -1,4 +1,4 @@
-import { $, component$, useSignal } from "@builder.io/qwik";
+import { component$, useSignal } from "@builder.io/qwik";
 import { Button } from "~/components/Button";
 import Carousel from "~/components/Carousel";
 import { Markdown } from "~/components/Markdown";
@@ -13,21 +13,22 @@ import { FaXmarkSolid } from "@qwikest/icons/font-awesome";
 
 export const HomeHeader = component$(({ data }: { data: any }) => {
   const heroSlidesData = data["HeroCarSlides"];
-  const streetRef = useSignal<Element>();
-  const zipRef = useSignal<Element>();
+  const streetRef = useSignal<HTMLInputElement>();
+  const zipRef = useSignal<HTMLInputElement>();
   const fullFrameSource = useSignal<string>("");
   const modalIsOpen = useSignal<boolean>(false);
 
-  const handleModal = $(() => {
-    modalIsOpen.value = !modalIsOpen.value;
-    console.log(streetRef.value.value);
+
+
+  const handleModal = (): void => {
+
     if (!modalIsOpen.value) return;
     fullFrameSource.value = data["HeroForm"]["ActionButton"]["Link"]
       .replace("=pConf=", "")
-      .replace("streetInput", streetRef.value.value)
-      .replace("zipInput", zipRef.value.value);
+      .replace("streetInput", streetRef.value?.value)
+      .replace("zipInput", zipRef.value?.value);
     console.log(modalIsOpen.value);
-  });
+  };
 
   const SlideCard = component$(({ slide }: { slide: any }) => {
     return (
@@ -70,7 +71,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
         }  transition-all duration-1000 ease-in-out`}
       >
         <FaXmarkSolid
-          onClick$={handleModal}
+          onClick={handleModal()}
           class="text-md absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-secondary-red text-white hover:cursor-pointer"
         />
         {/* <span
@@ -82,7 +83,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
         <iframe
           src={fullFrameSource.value}
           class="h-full w-full"
-          frameborder="0"
+          frameBorder="0"
         ></iframe>
       </div>
       {/* MODAL */}
@@ -123,7 +124,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
           <Button
             text={data["HeroForm"]["ActionButton"]["Text"]}
             // link={data["HeroForm"]["ActionButton"]["Link"]}
-            onClick={handleModal}
+            onClick={handleModal()}
           />
         </div>
       </div>

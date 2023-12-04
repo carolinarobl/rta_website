@@ -83,7 +83,7 @@ export const WinnersCircle = component$(({ data }: { data: any }) => {
             srcDoc={pageData["TwitterFeedLink"]}
             width={"100%"}
             height={"100%"}
-            frameborder="0"
+            frameBorder="0"
           ></iframe>
         </div>
       </div>

@@ -1,6 +1,7 @@
 import { component$, useSignal } from "@builder.io/qwik";
 import { FormCarrers } from "./forms/form-carrers";
 import { PortabilityRequest } from "./popups/portabilityRequest";
+import { BsTagFill } from "@qwikest/icons/bootstrap";
 // import { FormSupport } from "./forms/form-support";
 
 export const PopupCall = component$(
@@ -70,7 +71,7 @@ export const PopupCall = component$(
     return (
       <div class="relative flex">
         {link.includes(configurator) &&
-        text.includes("Buy now" || "Comprar ahora") ? (
+        (text?.includes("Buy now") || text?.includes("Comprar ahora")) ? (
           <div class="my-4 flex h-[80px] w-full cursor-pointer flex-col items-center justify-center">
             <div class="border-gary-500 my-4 h-[1px] w-full border-t-2"></div>
             <div
