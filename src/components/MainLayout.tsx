@@ -10,7 +10,7 @@ export const MainLayout = component$(
     return (
       <div
         class="relative overflow-x-hidden transition-all duration-500"
-        style={mobMenuOpen.value && { perspective: "9000px" }}
+        style={mobMenuOpen.value ? { perspective: "9000px" } : {}}
       >
         <div class="absolute inset-0 -z-[200] bg-gradient-to-l from-[#2e599a] to-[#182d4d]">
           <MenuMobile
@@ -20,10 +20,13 @@ export const MainLayout = component$(
         <div
           class="relative transition-all duration-500"
           style={
-            mobMenuOpen.value && {
-              transform: "rotateY(-30deg) translateX(250px) translateY(200px)",
-              transformStyle: "preserve-3d",
-            }
+            mobMenuOpen.value
+              ? {
+                  transform:
+                    "rotateY(-30deg) translateX(250px) translateY(200px)",
+                  transformStyle: "preserve-3d",
+                }
+              : {}
           }
         >
           <div class="absolute bottom-0 left-0 right-0 top-0 -z-10 bg-[#e2ebf6]"></div>
