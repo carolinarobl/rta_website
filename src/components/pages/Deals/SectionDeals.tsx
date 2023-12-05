@@ -32,6 +32,7 @@ export const SectionDeals = component$(({ data }: { data: any }) => {
                 <StrapiAsset
                   url={deal["Icon"]["data"]["attributes"]["url"]}
                   clasN="w-[100px] max-[1000px]:w-[80px] "
+                  muted={true}
                 />
                 <span class="font-[600]">{deal["Title"]}</span>
               </div>

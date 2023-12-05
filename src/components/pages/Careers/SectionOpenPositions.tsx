@@ -1,9 +1,15 @@
-import { component$ } from "@builder.io/qwik";
+import { $, component$, useSignal } from "@builder.io/qwik";
 import { FaLocationArrowSolid } from "@qwikest/icons/font-awesome";
 import { Button } from "~/components/Button";
 import Carousel from "~/components/Carousel";
 import { Markdown } from "~/components/Markdown";
+import { Modal } from "~/components/Modal";
+import { FormCarrers } from "~/components/forms/form-carrers";
+import { PopupLearnMore } from "./PopupLearnMore";
 export const SectionOpenPositions = component$(({ data }: { data: any }) => {
+  const formSignal = useSignal(false);
+  const infoSignal = useSignal(false);
+  const selected = useSignal(data["Positions"][0]["attributes"]);
   const PositionCard = component$(({ position }: { position: any }) => {
     return (
       <div class="flex h-[380px] w-[460px] flex-col justify-between rounded-[30px] bg-white p-6 text-center shadow-lg max-[800px]:h-[280px] ">
@@ -22,10 +28,25 @@ export const SectionOpenPositions = component$(({ data }: { data: any }) => {
         </div>
         <div class="flex flex-col items-center gap-2">
           <div class="flex gap-1 text-[15px]">
-            <span class="text-btn-green hover:cursor-pointer">Learn more</span>{" "}
+            <span
+              class="text-btn-green hover:cursor-pointer"
+              onClick$={() => {
+                selected.value = position;
+                infoSignal.value = true;
+                console.log("a1");
+              }}
+            >
+              Learn more
+            </span>{" "}
             <span class="text-black">or</span>
           </div>
-          <Button text="Submit Resume" link="=pContactEmail=" />
+          <Button
+            text="Submit Resume"
+            onClick={$(() => {
+              formSignal.value = true;
+              console.log("a");
+            })}
+          />
         </div>
       </div>
     );
@@ -38,6 +59,13 @@ export const SectionOpenPositions = component$(({ data }: { data: any }) => {
   );
   return (
     <div class="my-8 flex justify-center text-primary-blue">
+      <Modal showSignal={formSignal}>
+        <FormCarrers />
+      </Modal>
+      <Modal showSignal={infoSignal}>
+        <PopupLearnMore data={selected.value} />
+      </Modal>
+
       <div class="flex flex-col ">
         <h3 class="text-center text-[44px] font-[600]">
           {data["PositionsTitle"]}

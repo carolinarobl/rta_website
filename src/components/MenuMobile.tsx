@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
-import { Link } from "@builder.io/qwik-city";
 import { MenuSuboptions } from "./MenuSuboptions";
 import { StrapiImage } from "./StrapiImage";
+import { ActionLink } from "./ActionLink";
 
 export const MenuMobile = component$(({ data }: { data: any }) => {
   return (
@@ -14,7 +14,7 @@ export const MenuMobile = component$(({ data }: { data: any }) => {
         return (
           <div key={i} class="">
             {!hasSubOptions ? (
-              <Link href={e["Link"]}>{e["Text"]}</Link>
+              <ActionLink link={e["Link"]}>{e["Text"]}</ActionLink>
             ) : (
               <MenuSuboptions
                 // classContainer="w-[200px] h-[50px] text-"
@@ -24,18 +24,18 @@ export const MenuMobile = component$(({ data }: { data: any }) => {
                   {e["SubOption"].map((el: any, i: number) => {
                     const subOpt = el["MenuOption"]["data"];
                     return !subOpt ? (
-                      <Link prefetch key={i} href={el["Link"]}>
+                      <ActionLink key={i} link={el["Link"]}>
                         {el["Text"]}
-                      </Link>
+                      </ActionLink>
                     ) : (
                       <MenuSuboptions title={el["Text"]}>
                         <div class="flex flex-col gap-2 rounded-md bg-white p-3 font-[600] text-primary-blue shadow-md">
                           {subOpt["attributes"]["SubOption"].map(
                             (sub: any, i: number) => {
                               return (
-                                <Link prefetch key={i} href={sub["Link"]}>
+                                <ActionLink key={i} link={sub["Link"]}>
                                   {sub["Text"]}
-                                </Link>
+                                </ActionLink>
                               );
                             },
                           )}
@@ -52,11 +52,10 @@ export const MenuMobile = component$(({ data }: { data: any }) => {
       <div class="w-full border border-white border-opacity-40"></div>
       <div class="flex w-fit flex-col gap-5">
         {data["gigfastOptions"].map((e: any, i: any) => (
-          <Link
+          <ActionLink
             key={i}
-            href={e["Link"]}
-            prefetch
-            class="rounded-full bg-white px-4 py-1 shadow-lg"
+            link={e["Link"]}
+            classN="rounded-full bg-white px-4 py-1 shadow-lg"
           >
             <div class="w-[130px] rounded-md p-1">
               <StrapiImage
@@ -65,7 +64,7 @@ export const MenuMobile = component$(({ data }: { data: any }) => {
                 height="60"
               />
             </div>
-          </Link>
+          </ActionLink>
         ))}
       </div>
     </div>
