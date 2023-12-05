@@ -1,8 +1,9 @@
 import { mediaUrl, sectionSEO } from "~/data/constants"
 import { sectionChannelGuideQuery } from "../sections_queries/section_channel_guide_query"
+import { sectionChannelLinueupQuery } from "../sections_queries/section_channel_lineup_query"
 
-export const gfTvQuery =(locale:string)=>{
-    return `query {
+export const gfTvQuery = (locale: string) => {
+  return `query {
         pageGfTv(locale:"${locale}"){
           data {
             attributes {
@@ -74,6 +75,26 @@ export const gfTvQuery =(locale:string)=>{
             }
           }
         }
+        
         ${sectionChannelGuideQuery(locale)}
-      }` 
+
+        channelLineups (pagination:{limit:250}){
+          data{
+            attributes{
+              Channel_name
+              Image{
+                ${mediaUrl}
+              }
+              Category
+              package_tvs{
+                data{
+                  attributes{
+                    package
+                  }
+                }
+              }
+            }
+        }
+        }
+      }`
 }

@@ -16,6 +16,7 @@ interface Props {
   features: Array<any>;
   btnText: string;
   btnLink: string;
+  dataChannels: any;
 }
 
 export const ServiceTv = component$(({
@@ -30,7 +31,8 @@ export const ServiceTv = component$(({
   btnSeeMoreText,
   features,
   btnText,
-  btnLink
+  btnLink,
+  dataChannels
 }: Props) => {
 
   return (
@@ -63,7 +65,11 @@ export const ServiceTv = component$(({
             <div class="text-blue-800 text-center text-base">
               {description}
             </div>
-            <PopupCall link={btnSeeMoreLink} text={btnSeeMoreText}></PopupCall>
+            <PopupCall link={btnSeeMoreLink} 
+            dataChannels={dataChannels}
+            planId={title} 
+            channels={subtitle}
+            text={btnSeeMoreText}></PopupCall>
           </div>
           <div class="justify-center items-start self-stretch flex gap-2.5 mt-2.5">
             {channels.map((channel: any, index: any) => (
@@ -96,7 +102,7 @@ export const ServiceTv = component$(({
         </div>
       </div>
 
-<PopupCall link={btnLink} text={btnText}></PopupCall>
+      <PopupCall link={btnLink} text={btnText}></PopupCall>
 
     </div>
   );

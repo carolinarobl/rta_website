@@ -1,7 +1,7 @@
 import { mediaUrl } from "~/data/constants"
 
-export const sectionChannelGuideQuery =(locale:string)=>{
-    return `sectionChGuide(locale:"${locale}"){
+export const sectionChannelGuideQuery = (locale: string) => {
+  return `sectionChGuide(locale:"${locale}"){
         data{
           attributes{
             Logo{
@@ -13,7 +13,12 @@ export const sectionChannelGuideQuery =(locale:string)=>{
             GuideBox{
               BtnText
               Guide{
-                ${mediaUrl}
+                data{
+                  attributes{
+                    name
+                    url
+                  }
+                }
               }
             }
             
