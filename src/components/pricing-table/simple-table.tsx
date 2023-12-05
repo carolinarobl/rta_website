@@ -4,7 +4,7 @@ import { BsCheckCircleFill, BsTagFill } from "@qwikest/icons/bootstrap";
 import { Markdown } from "../Markdown";
 
 interface Props {
-  logo: string;
+  logo: any;
   title: string;
   price: string;
   priceTime: string;
@@ -30,7 +30,9 @@ export const SimpleTable = component$(
           <div class="flex w-full items-start gap-5 self-center">
             <img
               loading="lazy"
-              src={setURL(logo)}
+              src={setURL(logo['url'])}
+              alt={logo['alternativeText']}
+              title={logo['caption']}
               height={100}
               width={100}
               class="aspect-square w-[70px] max-w-full items-center justify-center self-stretch overflow-hidden object-contain object-center"

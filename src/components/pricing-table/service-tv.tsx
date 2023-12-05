@@ -4,7 +4,7 @@ import { setURL } from "~/data/constants";
 import { PopupCall } from "../PopupCall";
 
 interface Props {
-  logo: string;
+  logo: any;
   title: string;
   subtitle: string;
   price: string;
@@ -43,7 +43,10 @@ export const ServiceTv = component$(({
             width={80}
             height={80}
             loading="lazy"
-            src={setURL(logo)}
+            src={setURL(logo['url'])}
+            alt={setURL(logo['alternativeText'])}
+            title={setURL(logo['caption'])}
+
             class="aspect-square object-contain object-center w-[70px] justify-center items-center overflow-hidden self-stretch max-w-full"
           />
           <div class="self-center flex flex-col my-auto">
@@ -79,6 +82,8 @@ export const ServiceTv = component$(({
                 height={50}
                 loading="lazy"
                 src={setURL(channel['attributes']['url'])}
+                alt={setURL(channel['attributes']['alternativeText'])}
+                title={setURL(channel['attributes']['caption'])}
                 class="aspect-square object-contain object-center w-full overflow-hidden flex-1"
               />
             ))}

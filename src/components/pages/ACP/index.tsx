@@ -9,7 +9,6 @@ export const ACP = component$(({ data }: { data: any }) => {
   return (
     <div
       onClick$={() => {
-        console.log(data);
       }}
     >
       <SerializedParagraph

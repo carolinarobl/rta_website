@@ -11,8 +11,6 @@ export const LocalWeatherStations = component$(({ data }: { data: any }) => {
   return (
     <div
       onClick$={() => {
-        console.log(pageData);
-        console.log(data["weatherData"]);
       }}
       class="flex flex-wrap items-center justify-center gap-8 px-8 py-8 text-white"
     >
@@ -33,6 +31,12 @@ export const LocalWeatherStations = component$(({ data }: { data: any }) => {
                       (e: any) => e["Location"] === weather["city"],
                     )["LocationPic"]["data"]["attributes"]["url"]
                   }
+                  alt={pageData["LocTables"].find(
+                    (e: any) => e["Location"] === weather["city"],
+                  )["LocationPic"]["data"]["attributes"]["alternativeText"]}
+                  title={pageData["LocTables"].find(
+                    (e: any) => e["Location"] === weather["city"],
+                  )["LocationPic"]["data"]["attributes"]["caption"]}
                 />
               </div>
               <div class="absolute bottom-0 left-0 right-0 top-0 -z-[5] h-full w-full bg-black opacity-30" />
@@ -53,6 +57,8 @@ export const LocalWeatherStations = component$(({ data }: { data: any }) => {
                   height="50"
                   src={iconURL(weather["data"]["days"][0]["icon"])}
                   alt={`icon-${weather["data"]["days"][0]["icon"]}`}
+                  title={`icon-${weather["data"]["days"][0]["icon"]}`}
+
                 />
               </div>
               <div class="flex w-full justify-evenly">
@@ -101,6 +107,8 @@ export const LocalWeatherStations = component$(({ data }: { data: any }) => {
                         height="30"
                         src={iconURL(weather["data"]["days"][dayN]["icon"])}
                         alt={`icon-${weather["data"]["days"][dayN]["icon"]}`}
+                        title={`icon-${weather["data"]["days"][dayN]["icon"]}`}
+
                       />
                       <span class="">Thursday</span>
                       <span class="font-[600]">

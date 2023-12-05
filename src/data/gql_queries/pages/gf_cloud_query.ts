@@ -1,4 +1,4 @@
-import { sectionSEO } from "~/data/constants"
+import { mediaUrl, sectionSEO } from "~/data/constants"
 
 export const gfCloudQuery = (locale:string)=>{
     return `query QueryGFCloud {
@@ -6,28 +6,16 @@ export const gfCloudQuery = (locale:string)=>{
           data{
             attributes{
               GNetworkLogo{
-                data{
-                  attributes{
-                    url
-                  }
-                }
+                ${mediaUrl}
               }
             GFCloud{
               Title
               Logo{
-                data{
-                  attributes{
-                    url
-                  }
-                }
+                ${mediaUrl}
               }
               Paragraph
               Media{
-                data{
-                  attributes{
-                    url
-                  }
-                }
+                ${mediaUrl}
               }
               Buttons{
                 Text
@@ -44,11 +32,7 @@ export const gfCloudQuery = (locale:string)=>{
             attributes {
               Map {
                 MapPicture {
-                  data {
-                    attributes {
-                      url
-                    }
-                  }
+                  ${mediaUrl}
                 }
                 ServersTitle
                 Servers {

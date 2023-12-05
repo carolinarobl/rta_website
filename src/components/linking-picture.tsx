@@ -7,6 +7,7 @@ interface Props {
   color?: string;
   url: string;
   alt?: string;
+  title?: string;
 }
 
 export const Linking_picture = component$(
@@ -16,6 +17,7 @@ export const Linking_picture = component$(
     color = "bg-[#2E5899]",
     url,
     alt = "",
+    title = "",
   }: Props) => {
     return (
       <div
@@ -33,6 +35,7 @@ export const Linking_picture = component$(
               width={250}
               src={setURL(url)}
               alt={alt}
+              title={title}
             />
           </div>
         </div>

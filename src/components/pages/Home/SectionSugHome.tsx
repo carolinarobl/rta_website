@@ -13,6 +13,9 @@ export const SectionSugHome = component$(({ data }: { data: any }) => {
           >
             <Linking_picture
               url={sugPage["Media"]["data"]["attributes"]["url"]}
+              alt={sugPage["Media"]["data"]["attributes"]["alternativeText"]}
+              title={sugPage["Media"]["data"]["attributes"]["caption"]}
+
               //   height="h-[36/0px]"
               width="w-[360px]"
               color="bg-primary-blue"

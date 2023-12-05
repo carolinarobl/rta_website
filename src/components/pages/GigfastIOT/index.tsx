@@ -8,9 +8,7 @@ export const GigfastIOT = component$(({ data }: { data: any }) => {
   const services = data["pageGfIoT"]["data"]["attributes"]["Services"];
   const intro = data["pageGfIoT"]["data"]["attributes"]["Introduction"];
   const logo =
-    data["pageGfIoT"]["data"]["attributes"]["Logo"]["data"]["attributes"][
-      "url"
-    ];
+    data["pageGfIoT"]["data"]["attributes"]["Logo"]["data"]["attributes"]
   const WeatherAnounce =
     data["pageGfIoT"]["data"]["attributes"]["WeatherAnounce"];
   return (
@@ -25,7 +23,7 @@ export const GigfastIOT = component$(({ data }: { data: any }) => {
         />
       </div>
       <div class="mx-4 my-8 max-w-[500px]">
-        <StrapiImage url={logo} width={1230} height={229} />
+        <StrapiImage url={logo['url']} alt={logo['alternativeText']} title={logo['caption']} width={1230} height={229} />
       </div>
       <div class="mx-10 my-4 flex max-w-[800px] flex-col items-center justify-center gap-2 text-primary-blue">
         <span class="text-center text-[38px] font-bold text-[#2E5899] max-sm:text-[28px]">

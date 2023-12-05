@@ -47,6 +47,7 @@ export const Support = component$(({ data }: { data: any }) => {
                 <div key={index} class="h-[290px] w-full md:w-[305px] rounded-3xl shadow-2xl flex p-6 flex-col items-center justify-between">
                     <img src={setURL(support['Media']['data']['attributes']['url'])}
                         alt={support['Media']['data']['attributes']['alternativeText']}
+                        title={support['Media']['data']['attributes']['caption']}
                         height={150}
                         width={310} />
                     <h2 class="text-2xl md:text-3xl text-center font-semibold text-primary-blue">{support['Title']}</h2>

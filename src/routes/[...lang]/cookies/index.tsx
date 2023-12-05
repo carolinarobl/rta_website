@@ -13,7 +13,6 @@ export const usePageData = routeLoader$(async (req) => {
 export default component$(() => {
   const signalData = usePageData();
   const data = signalData.value;
-  // console.log(data)
   const dataPage =data['pageData']['data']['pageCookies']['data']['attributes']['Content'];
   return <>
   <MainLayout data={data["layoutData"]}>

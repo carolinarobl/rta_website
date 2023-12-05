@@ -12,6 +12,7 @@ export const SectionRefIntro = component$(({ data }: { data: any }) => {
           data={data}
           color="white"
           reverse
+          backgroundColor="primary-blue"
           hasPricing={false}
         />
       </div>

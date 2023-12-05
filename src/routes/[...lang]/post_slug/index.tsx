@@ -6,7 +6,6 @@ import { homeQuery } from "~/data/gql_queries/pages/home_query";
 import { getPageData } from "~/services/graphql";
 
 export const usePageData = routeLoader$(async (req) => {
-  console.log(req.params);
   const lang =
     req.params["lang"] == "es"
       ? "es-419"

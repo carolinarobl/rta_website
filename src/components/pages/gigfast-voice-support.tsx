@@ -14,13 +14,13 @@ export const GigfastVoiceSupport = component$(({ data }: { data: any }) => {
             <div class="h-full absolute rounded-full w-1/4 bg-blue-600"></div>
             <div class="absolute w-full h-full flex flex-row p-5 justify-between items-center" >
                 <h1 class="text-primary-blue lg:text-3xl md:text-2xl font-bold text-center text-xl">{dataPage['Introduction']['Paragraph']}</h1>
-                <img src={setURL(dataPage['Introduction']['Media']['data']['attributes']['url'])} width={200} height={150} alt={dataPage['Introduction']['Media']['data']['attributes']['alternativeText']} />
+                <img src={setURL(dataPage['Introduction']['Media']['data']['attributes']['url'])} width={200} height={150} alt={dataPage['Introduction']['Media']['data']['attributes']['alternativeText']} title={dataPage['Introduction']['Media']['data']['attributes']['caption']} />
 
             </div>
         </div>
         <div class="flex flex-col mt-10 justify-center px-8 items-center">
             <div class="w-full md:w-2/3 flex flex-col items-center">
-                <h1 class="text-3xl md:text-4xl text-center font-bold text-primary-blue">{dataPage['GuidesPar']['Title']}</h1>
+                <h2 class="text-3xl md:text-4xl text-center font-bold text-primary-blue">{dataPage['GuidesPar']['Title']}</h2>
                 <Markdown classN="text-center" text={dataPage['GuidesPar']['Paragraph']}></Markdown>
             </div>
             <div class="flex flex-wrap items-center justify-center gap-10 my-5">
@@ -33,8 +33,8 @@ export const GigfastVoiceSupport = component$(({ data }: { data: any }) => {
         </div>
         <div>
             <Paragraph title={secctionPort['Title']} text={secctionPort['Paragraph']}
-                logo={setURL(secctionPort['Logo']['data']['attributes']['url'])}
-                image={setURL(secctionPort['Media']['data']['attributes']['url'])}
+                logo={secctionPort['Logo']['data']['attributes']}
+                image={secctionPort['Media']['data']['attributes']}
                 buttons={secctionPort['Buttons']}></Paragraph>
         </div>
     </div>

@@ -9,7 +9,7 @@ import { type TimelineDefinition, stagger, timeline } from "motion";
 export default component$(
   ({
     slides,
-    slidesQty = 1,
+    slidesQty,
     duration = 7000,
     hasPagination = true,
     hasArrows = true,
@@ -28,14 +28,15 @@ export default component$(
     id?: string;
     // bgColor?: string;
   }) => {
-    const numberOfSlides = useSplide();
+    const numberOfSlides = useSplide({ slidesQty: slidesQty });
 
     useVisibleTask$(({ track }) => {
       track(numberOfSlides);
 
       setTimeout(() => {
+ 
         const options = {
-          perPage: slidesQty,
+          perPage: numberOfSlides.value,
           interval: duration,
           pagination: hasPagination,
           arrows: hasArrows,

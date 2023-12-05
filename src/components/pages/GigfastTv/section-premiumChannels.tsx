@@ -11,7 +11,7 @@ export const SectionPremiumChannels = component$(({ data, title }: { data: any, 
         <div class="flex flex-wrap items-start justify-center my-6 gap-5">
             {data.map((channel: any, key: any) => (
                 <div key={key} class="w-[290px] min-h-[300px] py-6 px-2 flex-col items-center justify-center flex rounded-3xl bg-primary-blue">
-                    <h1 class="text-3xl font-semibold text-white">{channel['Title']}</h1>
+                    <h2 class="text-3xl font-semibold text-white">{channel['Title']}</h2>
                     <div class="flex flex-row">
                         <h2 class="text-white text-2xl">$ {channel['Price']}</h2>
                         <p class="text-white"> {channel['Pricetime']}</p>

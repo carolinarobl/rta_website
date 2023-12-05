@@ -8,8 +8,8 @@ type TestForm = {
 }
 
 export const useSubmitForm = globalAction$(async (data) => {
+    console.log(data)
     // Handle the form submission here, e.g., send data to the server or perform any other side effects
-    console.log('Form submitted:', data.name);
 });
 
 

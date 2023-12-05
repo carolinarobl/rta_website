@@ -8,7 +8,7 @@ export const SectionChpack = component$(({data, dataChannels, title}:{data:any, 
     <div class="flex flex-wrap items-center justify-center gap-4 my-6">
       
     {data.map((table:any,key:any)=>(
-      <ServiceTv key={key} logo={table['Logo']['data']['attributes']['url']}
+      <ServiceTv key={key} logo={table['Logo']['data']['attributes']}
       title={table['Title']}
       subtitle={table['Subtitle']}
       price={table['Price']}
