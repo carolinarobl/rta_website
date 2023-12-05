@@ -1,4 +1,4 @@
-import { sectionSEO } from "~/data/constants";
+import { mediaUrl, sectionSEO } from "~/data/constants";
 
 export const gfInternetQuery = (locale:string)=>{
     return `query QueryGFInternet {
@@ -6,12 +6,7 @@ export const gfInternetQuery = (locale:string)=>{
           data {
             attributes {
               Logo {
-                data {
-                  attributes {
-                    url
-                    alternativeText
-                  }
-                }
+                ${mediaUrl}
               }
               Introduction {
                 Paragraph
@@ -22,12 +17,7 @@ export const gfInternetQuery = (locale:string)=>{
               }
               PackTables {
                 Logo {
-                  data {
-                    attributes {
-                      url
-                      alternativeText
-                    }
-                  }
+                  ${mediaUrl}
                 }
                 Title
                 Subtitle
@@ -49,20 +39,10 @@ export const gfInternetQuery = (locale:string)=>{
                 Subtitle
                 Paragraph
                 Logo {
-                  data {
-                    attributes {
-                      url
-                      alternativeText
-                    }
-                  }
+                  ${mediaUrl}
                 }
                 Media {
-                  data {
-                    attributes {
-                      url
-                      alternativeText
-                    }
-                  }
+                  ${mediaUrl}
                 }
                 Buttons {
                   Text

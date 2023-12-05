@@ -1,3 +1,5 @@
+import { mediaUrl } from "../constants";
+
 export const layoutQuery = (locale: string) => `
 query QueryLayout {
     generalMenu(locale: "${locale}") {
@@ -5,11 +7,7 @@ query QueryLayout {
         attributes {
           TopOptions {
             Icon {
-              data {
-                attributes {
-                  url
-                }
-              }
+              ${mediaUrl}
             }
             Text
             Link
@@ -32,21 +30,13 @@ query QueryLayout {
   
           MainMenu {
             Logo {
-              data {
-                attributes {
-                  url
-                }
-              }
+              ${mediaUrl}
             }
             Switcher {
               Text
               Link
               Icon {
-                data {
-                  attributes {
-                    url
-                  }
-                }
+                ${mediaUrl}
               }
             }
           }
@@ -76,11 +66,7 @@ query QueryLayout {
             Text
             Link
             Icon {
-              data {
-                attributes {
-                  url
-                }
-              }
+              ${mediaUrl}
             }
           }
         }
@@ -99,11 +85,7 @@ query QueryLayout {
           }
           CorpInfo {
             Media {
-              data {
-                attributes {
-                  url
-                }
-              }
+              ${mediaUrl}
             }
             Paragraph
             Buttons {
@@ -122,11 +104,7 @@ query QueryLayout {
             Text
             SubOption {
               Icon {
-                data {
-                  attributes {
-                    url
-                  }
-                }
+                ${mediaUrl}
               }
               Link
             }

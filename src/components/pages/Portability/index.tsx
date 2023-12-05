@@ -3,7 +3,6 @@ import { ListedParagraphs } from "../../Paragraph";
 import { PortabilityIntro } from "./PortabilityIntro";
 
 export const Portability = component$(({ data }: { data: any }) => {
-  console.log(data);
   const portabilityActs =
     data["pagePortability"]["data"]["attributes"]["PortabilityActs"];
   const portabilityIntro =

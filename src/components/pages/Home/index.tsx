@@ -16,7 +16,7 @@ export const Home = component$(({ data }: { data: any }) => {
   // Pros Section
   const prosData = data["sectionProsRta"]["data"]["attributes"]["Pros"];
 
-  const prosMap = pageData["ProsPicture"]["data"]["attributes"]["url"];
+  const prosMap = pageData["ProsPicture"]["data"]["attributes"]
 
   // const prosMap =
   //   data["sectionNetwork"]["data"]["attributes"]["Map"]["MapPicture"]["data"][
@@ -25,9 +25,8 @@ export const Home = component$(({ data }: { data: any }) => {
 
   return (
     <div
-      class="relative"
+      class="relative "
       onClick$={() => {
-        console.log(pageData);
       }}
     >
       <div class="absolute bottom-0 left-0 right-0 top-[100vh] -z-10 bg-white" />
@@ -44,7 +43,7 @@ export const Home = component$(({ data }: { data: any }) => {
         reverse
         textPercentage={60}
       />
-      <div class="flex w-full justify-center">
+      <div class="flex w-full justify-center bg-[#ebf4fc]">
         <SectionGFInternetHome
           data={pageData["ParGFServices"][0]}
           parGFIPlans={pageData["ParGFIPlans"]}
@@ -56,7 +55,9 @@ export const Home = component$(({ data }: { data: any }) => {
           pageData["ParGFServices"].length,
         )}
       />
+      <div class="bg-[#ebf4fc]">
       <SectionSugHome data={pageData["SugsPages"]} />
+      </div>
     </div>
   );
 });

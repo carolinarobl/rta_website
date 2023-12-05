@@ -6,8 +6,7 @@ import {
 } from "@qwikest/icons/bootstrap"
 
 export const useSubmitForm = globalAction$(async (data) => {
-    console.log('Submitted:', data)
-
+    console.log(data)
     return { success: true };
 });
 

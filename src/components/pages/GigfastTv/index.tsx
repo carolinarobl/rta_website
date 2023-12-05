@@ -13,7 +13,7 @@ export const GigfastTv = component$(({ data }: { data: any}) => {
 
     return <div class="flex flex-col justify-around">
         <div class="flex flex-col my-6 items-center justify-center gap-4">
-            <img src={setURL(pageData['Logo']['data']['attributes']['url'])} alt={pageData['Logo']['data']['attributes']['alternativeText']}
+            <img src={setURL(pageData['Logo']['data']['attributes']['url'])} alt={pageData['Logo']['data']['attributes']['alternativeText']} title={pageData['Logo']['data']['attributes']['caption']}
                 height={200} width={500} />
             <h2 class="text-[40px] font-semibold text-center text-primary-blue">{pageData['Titles'][0]['Text']}</h2>
             <h2 class="text-[40px] font-semibold text-center text-secondary-red">{pageData['Titles'][1]['Text']}</h2>
@@ -39,7 +39,8 @@ export const GigfastTv = component$(({ data }: { data: any}) => {
                     <div class="max-w-[470px]">
                         <img
                             src={setURL(sectionChguide['Logo']['data']['attributes']['url'])}
-                            alt="paragraph-logo"
+                            alt={sectionChguide['Logo']['data']['attributes']['alternativeText']}
+                            title={sectionChguide['Logo']['data']['attributes']['caption']}
                             width="1230"
                             height="230"
                         />
@@ -58,7 +59,7 @@ export const GigfastTv = component$(({ data }: { data: any}) => {
                     <DownloadBoxImage
                         nameDoc={sectionChguide['GuideBox']['Guide']['data']['attributes']['name']}
                         urlDoc={sectionChguide['GuideBox']['Guide']['data']['attributes']['url']}
-                        image={sectionChguide['Picture']['data']['attributes']['url']} title={sectionChguide['GuideBox']['Title']} btnText={sectionChguide['GuideBox']['BtnText']}></DownloadBoxImage>
+                        image={sectionChguide['Picture']['data']['attributes']} title={sectionChguide['GuideBox']['Title']} btnText={sectionChguide['GuideBox']['BtnText']}></DownloadBoxImage>
                 </div>
             </div>
             <SectionAdditionalOptions data={pageData['Additionals']} disclaimers={pageData['Disclaimers']} title={pageData['AdditionalsTitle']}></SectionAdditionalOptions>

@@ -1,9 +1,11 @@
 import { $, component$ } from "@builder.io/qwik";
 import { useLocation } from "@builder.io/qwik-city";
 
-export const LangSwitch = component$(({ data }: { data: any }) => {
+export const LangSwitch = component$((
+  { data }: { data: any }
+  ) => {
+    console.log(data);
   const location = useLocation();
-  console.log(data);
   const handleClick = $(() => {
     const isES = window.location.pathname.includes("/es/");
     let newPath = "";

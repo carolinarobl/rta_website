@@ -1,6 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 import { MainLayout } from "~/components/MainLayout";
+import { SEOh1 } from "~/components/SEOh1";
 import { LocalWeatherStations } from "~/components/pages/LocalWeatherStations";
 import { headSEO } from "~/data/constants";
 import { localWeatherQuery } from "~/data/gql_queries/pages/weather_query";
@@ -47,6 +48,7 @@ export default component$(() => {
   const data = signalData.value;
   return (
     <MainLayout data={data["layoutData"]}>
+      <SEOh1 SEOdata={data["pageData"]["data"]["pageLocWeather"]["data"]["attributes"]["SEO"]} />
       <LocalWeatherStations
         data={{
           pageLocWeather: data["pageData"]["data"]["pageLocWeather"],

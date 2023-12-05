@@ -9,7 +9,6 @@ export const Careers = component$(({ data }: { data: any }) => {
   return (
     <div
       onClick$={() => {
-        console.log(data);
       }}
     >
       <SectionCareersHeader

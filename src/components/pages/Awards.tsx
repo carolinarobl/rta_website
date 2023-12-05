@@ -10,31 +10,33 @@ export const Awards = component$(({ data }: { data: any }) => {
 
     const AwardCard = component$(({ award }: { award: any }) => {
         return (
-          <div class="">
-              <div class="w-full relative flex h-4/5">
-                        <img class="object-contain w-full h-full" src={setURL(award['Background']['data']['attributes']['url'])}
-                            alt={award['Background']['data']['attributes']['alternativeText']}
-                            width="200" height="200" />
-                        <div class="h-full w-full absolute flex flex-col items-center px-10 justify-around">
-                            <img src={setURL(award['Icon']['data']['attributes']['url'])} alt={award['Icon']['data']['attributes']['alternativeText']}
-                                height={60} width={60} />
+
+            //             <h2 class="text-3xl font-semibold text-primary-blue">{award['Year']}</h2>
+            //   </div>
+            <div class="text-center">
+                <div class={`bg-primary-blue bg-opacity-40 p-6 h-[310px] w-[310px] inline-block items-center justify-center rounded-full`}>
+                    <div class={`bg-primary-blue flex h-full w-full items-center justify-center  rounded-full bg-opacity-60 px-6 py-6 shadow-md`}>
+                        <div class={`bg-primary-blue flex flex-col h-full w-full items-center justify-around rounded-full shadow-md`}>
                             <div class="flex flex-col items-center">
-                                <h2 class="text-xl text-white font-semibold text-center">{award['Title']}</h2>
-                                <p class="text-center text-white">{award['Award']}</p>
+                                <img src={setURL(award['Icon']['data']['attributes']['url'])} alt={award['Icon']['data']['attributes']['alternativeText']} title={award['Icon']['data']['attributes']['caption']} height={40} width={40} />
+
+                                <h2 class="text-l text-white font-semibold text-center">{award['Title']}</h2>
+                                <p class="text-center text-sm font-light text-white leading-8">{award['Award']}</p>
                             </div>
                             <a class="text-white font-semibold" target="_blank" href={award['Button']['Link']}>{award['Button']['Text']}</a>
                         </div>
                     </div>
-                    <h2 class="text-3xl font-semibold text-primary-blue">{award['Year']}</h2>
-          </div>
+                </div>
+                <h2 class="text-3xl font-semibold text-primary-blue">{award['Year']}</h2>
+            </div>
         );
-      });
-    
-      const awardsSlides = pageData["Awards"].map(
+    });
+
+    const awardsSlides = pageData["Awards"].map(
         (slideContent: any, i: number) => (
-          <AwardCard award={slideContent} key={i} />
+            <AwardCard award={slideContent} key={i} />
         ),
-      );
+    );
 
 
     return <div class="flex flex-col items-center justify-center">
@@ -48,8 +50,8 @@ export const Awards = component$(({ data }: { data: any }) => {
             </div>
             <div class="h-full w-full flex items-center justify-center absolute">
                 {/* COMPONENTE CARRUSEL */}
-             
-                <Carousel slides={awardsSlides} id={"awardsSlider"} slidesQty={3} hasPagination={true} duration={3000}/>
+
+                <Carousel slides={awardsSlides} id={"awardsSlider"} hasPagination={true} duration={3000} />
 
             </div>
         </div>

@@ -29,7 +29,7 @@ export const MainLayout = component$(
               : {}
           }
         >
-          <div class="absolute bottom-0 left-0 right-0 top-0 -z-10 bg-[#e2ebf6]"></div>
+          <div class="absolute bottom-0 left-0 right-0 top-0 -z-10 bg-gradient-to-l from-[#FFFFFF] to-[#C8D8ED]"></div>
           <Navbar
             data={data["data"]["generalMenu"]["data"]["attributes"]}
             mobMenuOpen={mobMenuOpen}

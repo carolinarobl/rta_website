@@ -2,6 +2,7 @@ import { component$ } from '@builder.io/qwik';
 import { type DocumentHead, routeLoader$ } from '@builder.io/qwik-city';
 import { MainLayout } from '~/components/MainLayout';
 import { Faq } from '~/components/pages/Faq';
+import { headSEO } from '~/data/constants';
 import { faqQuery } from '~/data/gql_queries/pages/faq_query';
 import { getPageData } from '~/services/graphql';
 
@@ -25,19 +26,6 @@ export default component$(() => {
 export const head: DocumentHead = ({ resolveValue }) => {
   const pageData = resolveValue(usePageData);
   const seoData = pageData['pageData']['data']['pageFaq']['data']['attributes']['SEO']
-  const title = `${seoData['MetaTitle']}`;
 
-  return {
-    title: title,
-    meta: [
-      {
-        name: "title",
-        content: `${title}` 
-      },
-      {
-        name: "description",
-        content: `${seoData['MetaDescription']}`,
-      },
-    ],
-  };
+  return headSEO(seoData)
 };

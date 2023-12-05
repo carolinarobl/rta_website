@@ -26,7 +26,6 @@ export const PostLoader = component$(
         class="grid w-full max-w-[1200px] grid-cols-3 justify-evenly gap-4 max-[800px]:grid-cols-1 [&>*]:justify-self-center"
         document:onscroll$={() => {
           if (loading.value) return;
-          console.log(`post-${sPosts.value.length - 1}`);
 
           const lastPost = document.getElementById(
             `post-${sPosts.value.length - 1}`,
@@ -43,8 +42,6 @@ export const PostLoader = component$(
           const lastPostVisible = !(
             rect.bottom < 0 || rect.top - viewHeight >= 0
           );
-
-          console.log(lastPostVisible);
 
           if (lastPostVisible) {
             loading.value = true;

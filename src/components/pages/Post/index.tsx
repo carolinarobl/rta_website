@@ -14,6 +14,8 @@ export const Post = component$(({ data }: { data: any }) => {
           height="539"
           clasN=" rounded-2xl shadow-xl w-[40%] max-[800px]:w-full"
           url={data["Cover"]["data"]["attributes"]["url"]}
+          alt={data["Cover"]["data"]["attributes"]["alternativeText"]}
+          title={data["Cover"]["data"]["attributes"]["caption"]}
         />
       </div>
       <div class="mb-8 max-w-[1400px]">

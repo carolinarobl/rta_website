@@ -26,7 +26,6 @@ export const usePageData = routeLoader$(async (req) => {
   const newLang = lang.includes("es/") ? "es-419" : "en";
   const postSlug = lang.includes("es/") ? lang.split("es/")[1] : lang;
   data = await getPageCustomData(postQuery(postSlug, newLang), newLang);
-  // console.log(data["pageData"]["data"]["posts"]["data"].length > 0);
   return {
     ...data,
     type: (data["pageData"]["data"]["posts"]["data"].length) > 0 ? "post" : "404",
@@ -36,9 +35,10 @@ export const usePageData = routeLoader$(async (req) => {
 export default component$(() => {
   const signalData = usePageData();
   const data = signalData.value;
-  console.log(data.type);
   return (
     <MainLayout data={data["layoutData"]} showHeader={false}>
+    <h1 class="absolute opacity-0">Rural Telecommunications of America Inc.</h1>
+      
       {data.type == "home" ? (
         <Home data={data["pageData"]["data"]} />
       ) : data.type == "post" ? (

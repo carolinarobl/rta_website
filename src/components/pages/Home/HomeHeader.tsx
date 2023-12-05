@@ -24,7 +24,6 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
       .replace("=pConf=", "")
       .replace("streetInput", streetRef.value?.value)
       .replace("zipInput", zipRef.value?.value);
-    console.log(modalIsOpen.value);
   };
 
   const SlideCard = component$(({ slide }: { slide: any }) => {
@@ -35,6 +34,8 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
             clasN="w-[160px]"
             width="1667"
             url={slide["Logo"]["data"]["attributes"]["url"]}
+            alt={slide["Logo"]["data"]["attributes"]["alternativeText"]}
+            title={slide["Logo"]["data"]["attributes"]["caption"]}
           />
           <div class="mx-3">
             <Markdown classN="text-[14px]" text={slide["Paragraph"]} />
@@ -47,6 +48,8 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
         <StrapiAsset
           clasN="rounded-full h-[150px] w-[150px] mr-[30px]"
           url={slide["Media"]["data"]["attributes"]["url"]}
+          alt={slide["Media"]["data"]["attributes"]["alternativeText"]}
+          title={slide["Media"]["data"]["attributes"]["caption"]}
           autoplay
           loop
           muted={true}
@@ -95,7 +98,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
       <div class="flex w-full items-center justify-between">
         <div class="relative flex h-[230px] w-[400px] items-center justify-center overflow-hidden rounded-br-full rounded-tr-full bg-white bg-opacity-60 max-[1000px]:hidden">
           {/* <SlideCard slide={heroSlides[0]} /> */}
-          <Carousel slides={heroSlides} hasArrows={false} />
+          <Carousel slides={heroSlides} hasArrows={false} slidesQty={1} />
         </div>
         <div class="flex h-[230px] w-[400px] flex-col items-center justify-center gap-5 rounded-bl-full rounded-tl-full bg-white bg-opacity-60 max-[1000px]:hidden">
           <div class="px-6 text-[22px] font-[600] text-primary-blue">

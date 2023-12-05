@@ -1,12 +1,13 @@
 import { component$ } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 import { MainLayout } from "~/components/MainLayout";
+import { SEOh1 } from "~/components/SEOh1";
 import { GigfastIOT } from "~/components/pages/GigfastIOT";
+import { headSEO } from "~/data/constants";
 import { gigfastIOTQuery } from "~/data/gql_queries/pages/gigfast_iot_query";
 import { getPageData } from "~/services/graphql";
 
 export const usePageData = routeLoader$(async (req) => {
-  // console.log(req.params);
   const lang = req.params["lang"] == "" ? "en" : "es-419";
   return await getPageData(gigfastIOTQuery, lang);
 });
@@ -16,6 +17,7 @@ export default component$(() => {
   const data = signalData.value;
   return (
     <MainLayout data={data["layoutData"]}>
+      <SEOh1 SEOdata={data["pageData"]["data"]["pageGfIoT"]["data"]["attributes"]["SEO"]}/>
       <GigfastIOT data={data["pageData"]["data"]} />
     </MainLayout>
   );
@@ -24,19 +26,6 @@ export default component$(() => {
 export const head: DocumentHead = ({ resolveValue}) => {
   const pageData = resolveValue(usePageData);
   const seoData = pageData['pageData']['data']['pageGfIoT']['data']['attributes']['SEO']
-  const title = `${seoData['MetaTitle']}`;
 
-  return {
-    title: title,
-    meta: [
-      {
-        name: "title",
-        content: `${title}` 
-      },
-      {
-        name: "description",
-        content: `${seoData['MetaDescription']}`,
-      },
-    ],
-  };
+  return headSEO(seoData)
 };

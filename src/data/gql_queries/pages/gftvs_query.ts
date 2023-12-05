@@ -43,18 +43,10 @@ export const gfTvsQuery = (locale:string)=>{
           data{
             attributes{
               Logo{
-                data{
-                  attributes{
-                    url
-                  }
-                }
+                ${mediaUrl}
               }
               Picture{
-                data{
-                  attributes{
-                    url
-                  }
-                }
+                ${mediaUrl}
               }
               Title
               Paragraph

@@ -18,10 +18,11 @@ export const Paragraph = component$(
     hasPricing = true,
     textPercentage = 70,
     customComponent,
+    backgroundColor,
     imageLink,
   }: {
-    logo?: string;
-    image?: string;
+    logo?: any;
+    image?: any;
     title?: string;
     subtitle?: string;
     text: string;
@@ -32,18 +33,18 @@ export const Paragraph = component$(
     hasPricing?: boolean;
     textPercentage?: number;
     customComponent?: any;
+    backgroundColor?: string;
     imageLink?: string;
   }) => {
     return (
       <div
-        class={`flex w-full flex-col items-center justify-center ${
-          alt ? "bg-[#e2eefa]" : ""
-        }`}
+        class={`flex w-full flex-col items-center justify-center ${ alt ? "bg-white" : "bg-[#e2eefa]" }
+        ${backgroundColor && `bg-${backgroundColor}` }`}
       >
         {alt && (
           <>
-            <div class="h-8 w-full bg-[#f7fafe]"></div>
             <div class="h-8 w-full bg-[#ebf4fc]"></div>
+            <div class="h-8 w-full bg-[#f7fafe]"></div>
           </>
         )}
         <div
@@ -59,8 +60,9 @@ export const Paragraph = component$(
             {logo && (
               <div class="max-w-[470px]">
                 <img
-                  src={logo}
-                  alt="paragraph-logo"
+                  src={setURL(logo["url"])}
+                  alt={logo["alternativeText"]}
+                  title={logo["caption"]}
                   width="1230"
                   height="230"
                 />
@@ -72,15 +74,15 @@ export const Paragraph = component$(
               } justify-center gap-2 text-${color}`}
             >
               {title && (
-                <h2 class="text-center text-[38px] font-bold max-sm:text-[28px]">
+                <h2 class="text-center text-[38px]  font-bold max-sm:text-[28px]">
                   {title}
                 </h2>
               )}
               {subtitle && (
                 <h3
-                  class={`text-[28px] font-bold ${
-                    hasPricing ? "text-secondary-red" : "text-center text-white"
-                  } max-sm:text-[20px]`}
+                  class={`text-[28px] font-bold
+                  ${ backgroundColor && backgroundColor.trim() !== "" ? "text-white": "text-secondary-red"}
+                  ${ hasPricing ? "" : "text-center "} max-sm:text-[20px]`}
                 >
                   {subtitle}
                 </h3>
@@ -113,7 +115,8 @@ export const Paragraph = component$(
                 }
               }}
             >
-              <img src={image} alt="paragraph-image" width="597" height="300" />
+              <img src={setURL(image["url"])} alt={image["alternativeText"]} title={image["caption"]}
+ width="597" height="300" />
             </div>
           )}
           {customComponent && (
@@ -128,8 +131,8 @@ export const Paragraph = component$(
         </div>
         {alt && (
           <>
-            <div class="h-8 w-full bg-[#ebf4fc]"></div>
             <div class="h-8 w-full bg-[#f7fafe]"></div>
+            <div class="h-8 w-full bg-[#ebf4fc]"></div>
           </>
         )}
       </div>
@@ -146,6 +149,7 @@ export const SerializedParagraph = component$(
     hasPricing = true,
     textPercentage = 70,
     customComponent,
+    backgroundColor,
     imageLink,
   }: {
     data: any;
@@ -155,6 +159,7 @@ export const SerializedParagraph = component$(
     hasPricing?: boolean;
     textPercentage?: number;
     customComponent?: any;
+    backgroundColor?: string;
     imageLink?: string;
   }) => {
     return (
@@ -162,12 +167,12 @@ export const SerializedParagraph = component$(
         logo={
           data["Logo"] &&
           data["Logo"]["data"] &&
-          setURL(data["Logo"]["data"]["attributes"]["url"])
+          data["Logo"]["data"]["attributes"]
         }
         image={
           data["Media"] &&
           data["Media"]["data"] &&
-          setURL(data["Media"]["data"]["attributes"]["url"])
+          data["Media"]["data"]["attributes"]
         }
         title={data["Title"]}
         subtitle={data["Subtitle"]}
@@ -179,6 +184,7 @@ export const SerializedParagraph = component$(
         hasPricing={hasPricing}
         textPercentage={textPercentage}
         customComponent={customComponent}
+        backgroundColor={backgroundColor}
         imageLink={
           data["Media"] &&
           data["Media"]["data"] &&

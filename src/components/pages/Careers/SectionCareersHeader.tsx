@@ -22,18 +22,26 @@ export const SectionCareersHeader = component$(({ data }: { data: any }) => {
         <StrapiImage
           clasN="w-[300px] max-[1000px]:hidden"
           url={data["HeaderPictures"]["data"][0]["attributes"]["url"]}
+          alt={data["HeaderPictures"]["data"][0]["attributes"]["alternativeText"]}
+          title={data["HeaderPictures"]["data"][0]["attributes"]["caption"]}
+
         />
         <div class="flex flex-col">
           <span>Join the</span>
           <StrapiImage
             clasN="w-[200px]"
             url={data["HeaderLogo"]["data"]["attributes"]["url"]}
+            alt={data["HeaderLogo"]["data"]["attributes"]["alternativeText"]}
+            title={data["HeaderLogo"]["data"]["attributes"]["caption"]}
+
           />
           <span>Family</span>
         </div>
         <StrapiImage
           clasN="w-[300px]"
           url={data["HeaderPictures"]["data"][1]["attributes"]["url"]}
+          alt={data["HeaderPictures"]["data"][1]["attributes"]["alternativeText"]}
+          title={data["HeaderPictures"]["data"][1]["attributes"]["caption"]}
         />
       </div>
     </div>

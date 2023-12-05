@@ -1,9 +1,16 @@
 import { $, useOnWindow, useSignal, useVisibleTask$ } from '@builder.io/qwik'
 
-const getNumberOfSlides = () => {
+const getNumberOfSlides = ({
+    qty,
+  }: {
+    qty?: number;
+  }) => {
+    if(qty !== undefined){
+        return qty
+    }
 
-    if (typeof window !== 'undefined') {
-        const width = window.outerWidth
+    else if (typeof window !== 'undefined') {
+        const width = window.innerWidth
 
         if (width > 1200) {
             return 3
@@ -14,20 +21,26 @@ const getNumberOfSlides = () => {
             return 1
         }
     } else  {
-        return 3
+
+        return 1
     }  
 }
 
-export const useSplide = () => {
-    const numberOfSlides = useSignal(getNumberOfSlides)
+export const useSplide = ({
+    slidesQty,
+  }: {
+    slidesQty?: number;
+  }) => {
+    const numberOfSlides = useSignal(getNumberOfSlides({ qty: slidesQty }))
 
     const handleResize = $(() => {
-        numberOfSlides.value = getNumberOfSlides()
+        numberOfSlides.value = getNumberOfSlides({ qty: slidesQty })
     })
 
     useVisibleTask$(() => {
         handleResize()
     })
+
 
     useOnWindow(
         'resize',

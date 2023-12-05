@@ -21,6 +21,8 @@ export const ContactUs = component$(({ data }: { data: any }) => {
                             <div class="flex w-[50px] h-[50px] items-center justify-center rounded-full bg-primary-blue p-4">
                                 <StrapiImage
                                     url={item["Icon"]["data"]["attributes"]["url"]}
+                                    alt={item["Icon"]["data"]["attributes"]["alternativeText"]}
+                                    title={item["Icon"]["data"]["attributes"]["caption"]}
                                     toWhite={true}
                                 />
                             </div>
@@ -29,6 +31,8 @@ export const ContactUs = component$(({ data }: { data: any }) => {
                             <div class="flex w-[50px] h-[50px] items-center justify-center rounded-full bg-primary-blue p-3">
                                 <StrapiImage
                                     url={item["Icon"]["data"]["attributes"]["url"]}
+                                    alt={item["Icon"]["data"]["attributes"]["alternativeText"]}
+                                    title={item["Icon"]["data"]["attributes"]["caption"]}
                                     toWhite={true}
                                 />
                             </div>
@@ -37,17 +41,17 @@ export const ContactUs = component$(({ data }: { data: any }) => {
                 ))}
             </div>
         </div>
-<div class="flex flex-col items-center justify-center">
-<h1 class="text-xl sm:text-2xl font-bold text-primary-blue">{data['OfficesTitle']}</h1>
-<div class="flex flex-wrap gap-8 mt-5 justify-center items-start">
-    {officesLocation.map((item:any, index:any)=>(
-        <div class="flex flex-col w-[200px]" key={index}>
-            <a class="font-bold text-secondary-red" href={item['Buttons'][0]['Link']}>{item['Buttons'][0]['Text']}</a>
-            <a class="font-bold text-primary-blue" href={item['Buttons'][1]['Link']}>{item['Buttons'][1]['Text']}</a>
-            <p class="tracking-wide font-normal text-sm text-primary-blue">{item['Paragraph']}</p>
+        <div class="flex flex-col items-center justify-center">
+            <h2 class="text-xl sm:text-2xl font-bold text-primary-blue">{data['OfficesTitle']}</h2>
+            <div class="flex flex-wrap gap-8 mt-5 justify-center items-start">
+                {officesLocation.map((item: any, index: any) => (
+                    <div class="flex flex-col w-[200px]" key={index}>
+                        <a class="font-bold text-secondary-red" href={item['Buttons'][0]['Link']}>{item['Buttons'][0]['Text']}</a>
+                        <a class="font-bold text-primary-blue" href={item['Buttons'][1]['Link']}>{item['Buttons'][1]['Text']}</a>
+                        <p class="tracking-wide font-normal text-sm text-primary-blue">{item['Paragraph']}</p>
+                    </div>
+                ))}
+            </div>
         </div>
-    ))}
-</div>
-</div>
     </div>
 });

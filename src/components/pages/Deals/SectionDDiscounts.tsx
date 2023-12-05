@@ -14,6 +14,8 @@ export const SectionDDiscounts = component$(({ data }: { data: any }) => {
               width={"250px"}
               height={"a"}
               alt={discount["Media"]["data"]["attributes"]["alternativeText"]}
+              title={discount["Media"]["data"]["attributes"]["caption"]}
+
             />
             <Markdown
               text={discount["Title"]}

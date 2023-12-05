@@ -8,6 +8,7 @@ export const StrapiAsset = component$(
     width,
     height,
     alt = "",
+    title="",
     toWhite = false,
     clasN = "",
     autoplay = false,
@@ -19,6 +20,7 @@ export const StrapiAsset = component$(
     width?: any;
     height?: any;
     alt?: string;
+    title?:string;
     toWhite?: boolean;
     clasN?: string;
     autoplay?: boolean;
@@ -53,6 +55,7 @@ export const StrapiAsset = component$(
         width={width}
         height={height}
         alt={alt}
+        title={title}
         toWhite={toWhite}
         clasN={clasN}
       ></StrapiImage>
