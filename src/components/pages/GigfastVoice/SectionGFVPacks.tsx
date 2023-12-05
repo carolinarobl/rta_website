@@ -14,7 +14,7 @@ export const SectionGFVPacks = component$(({ data }: { data: any }) => {
             description={pack["Description"]}
             price={pack["Price"].toString()}
             features={pack["Features"]}
-            logo={pack["Logo"]["data"]["attributes"]["url"]}
+            logo={pack["Logo"]["data"]["attributes"]}
             priceTime={pack["Pricetime"]}
           />
         );

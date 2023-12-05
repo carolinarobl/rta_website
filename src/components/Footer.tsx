@@ -26,6 +26,13 @@ export const Footer = component$(({ data }: { data: any }) => {
                 data["CorpInfo"]["Media"]["data"]["attributes"][
                   "alternativeText"
                 ]
+              
+              }
+              title={
+                data["CorpInfo"]["Media"]["data"]["attributes"][
+                  "caption"
+                ]
+              
               }
             />
           </div>
@@ -82,6 +89,8 @@ export const Footer = component$(({ data }: { data: any }) => {
                     height={20}
                     width={20}
                     url={item["Icon"]["data"]["attributes"]["url"]}
+                    alt={item["Icon"]["data"]["attributes"]["alternativeText"]}
+                    title={item["Icon"]["data"]["attributes"]["caption"]}
                     toWhite={true}
                   />
                 </div>
@@ -92,6 +101,8 @@ export const Footer = component$(({ data }: { data: any }) => {
                     height={20}
                     width={20}
                     url={item["Icon"]["data"]["attributes"]["url"]}
+                    alt={item["Icon"]["data"]["attributes"]["alternativeText"]}
+                    title={item["Icon"]["data"]["attributes"]["caption"]}
                     toWhite={true}
                   />
                 </div>

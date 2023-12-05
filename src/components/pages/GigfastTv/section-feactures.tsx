@@ -1,6 +1,5 @@
 import { component$ } from "@builder.io/qwik";
 import { Paragraph } from "~/components/Paragraph";
-import { setURL } from "~/data/constants";
 
 export const SectionFeactures = component$(({ data }: { data: any }) => {
     return <div class="gap-10 w-ful flex flex-col">
@@ -9,13 +8,14 @@ export const SectionFeactures = component$(({ data }: { data: any }) => {
                 <div class="bg-primary-blue bg-opacity-60 py-10">
                     <div class="bg-primary-blue">
                         <Paragraph key={key} color="white" reverse={true} text={feature['Paragraph']}
-                            image={setURL(feature['Media']['data']['attributes']['url'])}
-                            title={feature['Title'] != null ? feature['Title'] : ""}></Paragraph>
+                            image={feature['Media']['data']['attributes']}
+                            title={feature['Title'] != null ? feature['Title'] : ""}
+                            backgroundColor={"primary-blue"}></Paragraph>
                     </div>
                 </div>
             </div>
                 : <Paragraph key={key} reverse={false} text={feature['Paragraph']}
-                    image={setURL(feature['Media']['data']['attributes']['url'])}
+                    image={feature['Media']['data']['attributes']}
                     title={feature['Title'] != null ? feature['Title'] : ""}></Paragraph>)
 
         ))}

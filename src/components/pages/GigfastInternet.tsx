@@ -3,13 +3,12 @@ import { StrapiImage } from "../StrapiImage";
 import { Markdown } from "../Markdown";
 import { Button } from "../Button";
 import { Paragraph } from "../Paragraph";
-import { setURL } from "~/data/constants";
 import { SimpleTable } from "../pricing-table/simple-table";
 
 export const GigfastInternet = component$(({ data }: { data: any }) => {
     return <div class="flex flex-col items-center justify-around">
         <div class="mx-4 my-8 max-w-[500px]">
-            <StrapiImage url={data['Logo']['data']['attributes']['url']} alt={data['Logo']['data']['attributes']['alternativeText']} width={1230} height={229} />
+            <StrapiImage url={data['Logo']['data']['attributes']['url']} alt={data['Logo']['data']['attributes']['alternativeText']} title={data['Logo']['data']['attributes']['caption']} width={1230} height={229} />
         </div>
         <div class="mx-10 my-4 flex max-w-[800px] flex-col items-center justify-center gap-2 text-primary-blue">
             <span class="text-center text-[38px] font-bold text-[#2E5899] max-sm:text-[28px]">
@@ -20,7 +19,7 @@ export const GigfastInternet = component$(({ data }: { data: any }) => {
         </div>
         <div class="flex flex-wrap gap-10 justify-center mx-4 my-8 items-center">
             {data['PackTables'].map((item: any, index: any) => (
-                <SimpleTable key={index} title={item['Title']} logo={item['Logo']['data']['attributes']['url']}
+                <SimpleTable key={index} title={item['Title']} logo={item['Logo']['data']['attributes']}
                 description={item['Description']}
                 features={item['Features']} price={item['Price']} priceTime={item['Pricetime']}
                 btnLink={item['Button']['Link']} btnText={item['Button']['Text']}></SimpleTable>
@@ -28,8 +27,8 @@ export const GigfastInternet = component$(({ data }: { data: any }) => {
         </div>
         <Markdown classN="text-primary-blue text-center mx-4 my-8" text={data['Disclaimer']}></Markdown>
         <Paragraph text={data['GFInternetSupport']['Paragraph']} title={data['GFInternetSupport']['Title']}
-        logo={setURL(data['GFInternetSupport']['Logo']['data']['attributes']['url'])}
+        logo={data['GFInternetSupport']['Logo']['data']['attributes']}
         buttons={data['GFInternetSupport']['Buttons']}
-        image={setURL(data['GFInternetSupport']['Media']['data']['attributes']['url'])}></Paragraph>
+        image={data['GFInternetSupport']['Media']['data']['attributes']}></Paragraph>
     </div>
 });

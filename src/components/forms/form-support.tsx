@@ -4,7 +4,7 @@ import {BsChatSquareTextFill, BsPersonFill, BsGeoAltFill, BsEnvelopeAtFill,
 BsTelephoneFill} from "@qwikest/icons/bootstrap"
 
 export const useSubmitFormSupport = globalAction$(async (data)=>{
-    console.log(data);
+    console.log(data)
     return{
         success:true
     }

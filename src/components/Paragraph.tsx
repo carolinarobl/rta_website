@@ -18,6 +18,7 @@ export const Paragraph = component$(
     hasPricing = true,
     textPercentage = 70,
     customComponent,
+    backgroundColor,
     imageLink,
   }: {
     logo?: any;
@@ -32,18 +33,18 @@ export const Paragraph = component$(
     hasPricing?: boolean;
     textPercentage?: number;
     customComponent?: any;
+    backgroundColor?: string;
     imageLink?: string;
   }) => {
     return (
       <div
-        class={`flex w-full flex-col items-center justify-center ${
-          alt ? "bg-[#e2eefa]" : ""
-        }`}
+        class={`flex w-full flex-col items-center justify-center ${ alt ? "bg-white" : "bg-[#e2eefa]" }
+        ${backgroundColor && `bg-${backgroundColor}` }`}
       >
         {alt && (
           <>
-            <div class="h-8 w-full bg-[#f7fafe]"></div>
             <div class="h-8 w-full bg-[#ebf4fc]"></div>
+            <div class="h-8 w-full bg-[#f7fafe]"></div>
           </>
         )}
         <div
@@ -73,15 +74,15 @@ export const Paragraph = component$(
               } justify-center gap-2 text-${color}`}
             >
               {title && (
-                <h2 class="text-center text-[38px] font-bold max-sm:text-[28px]">
+                <h2 class="text-center text-[38px]  font-bold max-sm:text-[28px]">
                   {title}
                 </h2>
               )}
               {subtitle && (
                 <h3
-                  class={`text-[28px] font-bold ${
-                    hasPricing ? "text-secondary-red" : "text-center text-white"
-                  } max-sm:text-[20px]`}
+                  class={`text-[28px] font-bold
+                  ${ backgroundColor && backgroundColor.trim() !== "" ? "text-white": "text-secondary-red"}
+                  ${ hasPricing ? "" : "text-center "} max-sm:text-[20px]`}
                 >
                   {subtitle}
                 </h3>
@@ -130,8 +131,8 @@ export const Paragraph = component$(
         </div>
         {alt && (
           <>
-            <div class="h-8 w-full bg-[#ebf4fc]"></div>
             <div class="h-8 w-full bg-[#f7fafe]"></div>
+            <div class="h-8 w-full bg-[#ebf4fc]"></div>
           </>
         )}
       </div>
@@ -148,6 +149,7 @@ export const SerializedParagraph = component$(
     hasPricing = true,
     textPercentage = 70,
     customComponent,
+    backgroundColor,
     imageLink,
   }: {
     data: any;
@@ -157,6 +159,7 @@ export const SerializedParagraph = component$(
     hasPricing?: boolean;
     textPercentage?: number;
     customComponent?: any;
+    backgroundColor?: string;
     imageLink?: string;
   }) => {
     return (
@@ -181,6 +184,7 @@ export const SerializedParagraph = component$(
         hasPricing={hasPricing}
         textPercentage={textPercentage}
         customComponent={customComponent}
+        backgroundColor={backgroundColor}
         imageLink={
           data["Media"] &&
           data["Media"]["data"] &&

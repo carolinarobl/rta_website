@@ -2,7 +2,6 @@ import { component$ } from "@builder.io/qwik";
 import { SectionSupportTips } from "./SectionSupportTips";
 import { SectionInternetInfo } from "./SectionInternetInfo";
 import { Paragraph, SerializedParagraph } from "~/components/Paragraph";
-import { setURL } from "~/data/constants";
 import { Stepper } from "~/components/Stepper";
 
 export const GigfastInternetSupport = component$(({ data }: { data: any }) => {
@@ -16,7 +15,6 @@ export const GigfastInternetSupport = component$(({ data }: { data: any }) => {
   return (
     <div
       onClick$={() => {
-        console.log(data);
       }}
       class="flex w-full flex-col items-center justify-center"
     >
@@ -36,7 +34,7 @@ export const GigfastInternetSupport = component$(({ data }: { data: any }) => {
       <Paragraph
         title={pageData["WiFiListing"]["Title"]}
         text={wifiText}
-        image={setURL(pageData["WiFiPicture"]["data"]["attributes"]["url"])}
+        image={pageData["WiFiPicture"]["data"]["attributes"]}
         textPercentage={50}
         reverse
       />
@@ -48,9 +46,9 @@ export const GigfastInternetSupport = component$(({ data }: { data: any }) => {
       />
       <Paragraph
         text={pageData["TestGlossary"]["Paragraph"]}
-        image={setURL(
-          pageData["TestGlossary"]["Media"]["data"]["attributes"]["url"],
-        )}
+        image={
+          pageData["TestGlossary"]["Media"]["data"]["attributes"]
+        }
         textPercentage={60}
       />
       {/* TROUBLESHOOTING */}

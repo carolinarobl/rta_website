@@ -25,6 +25,9 @@ export const ProsSection = component$(({ data }: { data: any }) => {
                       width={20}
                       height={20}
                       url={pro["Icon"]["data"]["attributes"]["url"]}
+                      alt={pro["Icon"]["data"]["attributes"]["alternativeText"]}
+                      title={pro["Icon"]["data"]["attributes"]["caption"]}
+
                     />
                   </div>
                   <div class="flex flex-col">
@@ -44,7 +47,9 @@ export const ProsSection = component$(({ data }: { data: any }) => {
         <StrapiImage
           width="800"
           height="800"
-          url={prosMap}
+          url={prosMap['url']}
+          alt={prosMap['alternativeText']}
+          title={prosMap['caption']}
           clasN="px-8  min-w-[250px]"
         />
       </div>

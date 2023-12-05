@@ -8,6 +8,9 @@ export const SectionCareersOffers = component$(({ data }: { data: any }) => {
         <StrapiImage
           clasN="h-[80px] w-[100%] object-cover rounded-[16px] bg-primary-blue bg-opacity-10"
           url={offer["Media"]["data"]["attributes"]["url"]}
+          alt={offer["Media"]["data"]["attributes"]["alternativeText"]}
+          title={offer["Media"]["data"]["attributes"]["caption"]}
+
           width="240"
           height="120"
         />

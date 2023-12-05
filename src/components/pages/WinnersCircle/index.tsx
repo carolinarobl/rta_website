@@ -9,7 +9,6 @@ export const WinnersCircle = component$(({ data }: { data: any }) => {
   return (
     <div
       onClick$={() => {
-        console.log(pageData);
       }}
       class="relative flex w-full flex-col items-center justify-center"
     >
@@ -19,6 +18,10 @@ export const WinnersCircle = component$(({ data }: { data: any }) => {
           height="603"
           clasN="max-w-[1000px] w-fit z-10 object-cover"
           url={pageData["WinnersBG"]["data"]["attributes"]["url"]}
+          alt={pageData["WinnersBG"]["data"]["attributes"]["alternativeText"]}
+          title={pageData["WinnersBG"]["data"]["attributes"]["caption"]}
+
+
         />
         <div class="absolute z-20 mb-[160px] h-[370px] w-[290px] overflow-hidden  rounded-[10px] border border-gray-500 bg-gray-900 p-2">
           <div

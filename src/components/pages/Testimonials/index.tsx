@@ -28,15 +28,14 @@ export const Testimonials = component$(({ data }: { data: any }) => {
   return (
     <div
       onClick$={() => {
-        console.log(pageData);
       }}
       class="flex w-full items-center justify-center px-8"
     >
       <div class="my-16 flex max-w-[1400px] items-center justify-center max-[800px]:flex-col">
         <div class="flex w-[60%] flex-col items-center justify-center gap-2 max-[800px]:w-full">
-          <h1 class="text-[36px] max-[800px]:text-[20px] font-[600] text-primary-dark-blue">
+          <h2 class="text-[36px] max-[800px]:text-[20px] font-[600] text-primary-dark-blue">
             {pageData["VideoTitle"]}
-          </h1>
+          </h2>
           <video
             class="rounded-[30px] max-[800px]:max-w-[400px]"
             src={setURL(pageData["Video"]["data"]["attributes"]["url"])}
@@ -45,7 +44,7 @@ export const Testimonials = component$(({ data }: { data: any }) => {
           ></video>
         </div>
         <div class="items-center w-[40%] flex-col px-1 justify-center max-[800px]:w-full max-h-[500px]  ">
-          <Carousel slides={testimonialsSlides} id={'carTestimonials'} hasArrows={false} hasPagination={true}  />
+          <Carousel slides={testimonialsSlides} id={'carTestimonials'} hasArrows={false} hasPagination={true} slidesQty={1}  />
         </div>
       </div>
     </div>

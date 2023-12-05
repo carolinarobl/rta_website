@@ -17,7 +17,7 @@ export const GigfastTVSupport = component$(({ data }: { data: any }) => {
                 loop
                 muted></video>
                 <img class="absolute z-0" src={setURL(pageData['IntroMedia']['data'][0]['attributes']['url'])} 
-                width="1082" height="786" alt={pageData['IntroMedia']['data'][0]['attributes']['alternativeText']} />
+                width="1082" height="786" alt={pageData['IntroMedia']['data'][0]['attributes']['alternativeText']} title={pageData['IntroMedia']['data'][0]['attributes']['caption']} />
             </div>
         </div>
         <div class="flex my-20 w-full py-10 bg-primary-blue bg-opacity-40">
@@ -29,7 +29,7 @@ export const GigfastTVSupport = component$(({ data }: { data: any }) => {
                             <div key={index} class="h-[300px] w-[300px] p-5 rounded-full bg-white bg-opacity-40">
                                 <div class="h-full w-full p-5 rounded-full bg-white bg-opacity-60">
                                     <div class="h-full w-full object-cover flex flex-col p-8 justify-center items-center rounded-full bg-white">
-                                        <h1 class="text-center font-semibold text-2xl text-primary-blue">{device['Title']}</h1>
+                                        <h2 class="text-center font-semibold text-2xl text-primary-blue">{device['Title']}</h2>
                                         <Markdown classN="text-s text-primary-dark-blue" text={device['Paragraph']}></Markdown>
                                     </div>
                                 </div>
@@ -65,7 +65,8 @@ export const GigfastTVSupport = component$(({ data }: { data: any }) => {
                     <div class="max-w-[470px]">
                         <img
                             src={setURL(sectionChguide['Logo']['data']['attributes']['url'])}
-                            alt="paragraph-logo"
+                            alt={sectionChguide['Logo']['data']['attributes']['alternativeText']}
+                            title={sectionChguide['Logo']['data']['attributes']['caption']}
                             width="1230"
                             height="230"
                         />
@@ -84,7 +85,7 @@ export const GigfastTVSupport = component$(({ data }: { data: any }) => {
                     <DownloadBoxImage
                      nameDoc={sectionChguide['GuideBox']['Guide']['data']['attributes']['name']}
                      urlDoc={sectionChguide['GuideBox']['Guide']['data']['attributes']['url']}
-                     image={sectionChguide['Picture']['data']['attributes']['url']} title={sectionChguide['GuideBox']['Title']} btnText={sectionChguide['GuideBox']['BtnText']}></DownloadBoxImage>
+                     image={sectionChguide['Picture']['data']['attributes']} title={sectionChguide['GuideBox']['Title']} btnText={sectionChguide['GuideBox']['BtnText']}></DownloadBoxImage>
                 </div>
             </div>
         </div>

@@ -39,7 +39,7 @@ export const SectionGFInternetHome = component$(
             {parGFIPlans.map((plan: any, i: number) => {
               return (
                 <div key={i} class="text-[22px]">
-                  <AccordionItem title={plan["Title"]}>
+                  <AccordionItem title={plan["Title"]} classContainer={"bg-white shadow-xl"}>
                     <Markdown
                       classN="text-[16px] text-justify"
                       text={plan["Paragraph"]}

@@ -3,9 +3,9 @@ import { Form, globalAction$} from "@builder.io/qwik-city";
 import { BsUpload } from "@qwikest/icons/bootstrap";
 
 
-export const useSubmitFormCarrers = globalAction$(async (data) => {
-    console.log('Form submitted:', data);
-
+export const useSubmitFormCarrers = globalAction$(
+    async (data) => {
+console.log(data)
     return {
         success: true,
     };

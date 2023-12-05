@@ -7,7 +7,6 @@ import { gfiSupportQuery } from "~/data/gql_queries/pages/gfi_support_query";
 import { getPageData } from "~/services/graphql";
 
 export const usePageData = routeLoader$(async (req) => {
-  // console.log(req.params);
   const lang = req.params["lang"] == "" ? "en" : "es-419";
   return await getPageData(gfiSupportQuery, lang);
 });

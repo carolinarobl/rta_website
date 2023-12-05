@@ -1,4 +1,4 @@
-import { sectionSEO } from "~/data/constants";
+import { mediaUrl, sectionSEO } from "~/data/constants";
 
 export const winnersCircleQuery = (locale: string) => {
   return `query queryWinnerCircle{
@@ -8,26 +8,14 @@ export const winnersCircleQuery = (locale: string) => {
           WinnersTitle
   
           WinnersBG{
-            data{
-              attributes{
-                url
-              }
-            }
+            ${mediaUrl}
           }
           
           WinnersCarBG{
-            data{
-              attributes{
-                url
-              }
-            }
+           ${mediaUrl}
           }
           Winners{
-            data{
-              attributes{
-                url
-              }
-            }
+            ${mediaUrl}
           }
          
           GiveawayCarTitle

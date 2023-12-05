@@ -24,6 +24,8 @@ export const Navbar = component$(
                   <div class="w-[12px]">
                     <StrapiImage
                       url={e["Icon"]["data"]["attributes"]["url"]}
+                      alt={e["Icon"]["data"]["attributes"]["alternativeText"]}
+                      title={e["Icon"]["data"]["attributes"]["caption"]}
                       toWhite={true}
                       width="16"
                       height="16"
@@ -49,6 +51,8 @@ export const Navbar = component$(
               <Link prefetch href="/">
                 <StrapiImage
                   url={data["MainMenu"]["Logo"]["data"]["attributes"]["url"]}
+                  alt={data["MainMenu"]["Logo"]["data"]["attributes"]["alternativeText"]}
+                  title={data["MainMenu"]["Logo"]["data"]["attributes"]["caption"]}
                   width={774}
                   height={282}
                 />
@@ -127,6 +131,9 @@ export const Navbar = component$(
               <div class="w-[130px] rounded-md p-1 hover:bg-slate-50">
                 <StrapiImage
                   url={e["Icon"]["data"]["attributes"]["url"]}
+                  alt={e["Icon"]["data"]["attributes"]["alternativeText"]}
+                  title={e["Icon"]["data"]["attributes"]["caption"]}
+
                   width="311"
                   height="60"
                 />

@@ -2,11 +2,11 @@ import { component$ } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 import { MainLayout } from "~/components/MainLayout";
 import { Deals } from "~/components/pages/Deals";
+import { headSEO } from "~/data/constants";
 import { dealsQuery } from "~/data/gql_queries/pages/deals_query";
 import { getPageData } from "~/services/graphql";
 
 export const usePageData = routeLoader$(async (req) => {
-  // console.log(req.params);
   const lang = req.params["lang"] == "" ? "en" : "es-419";
   return await getPageData(dealsQuery, lang);
 });
@@ -23,18 +23,8 @@ export default component$(() => {
 
 export const head: DocumentHead = ({ resolveValue }) => {
   const pageData = resolveValue(usePageData);
-  console.log(pageData);
-  const SEO =
+  const seoData =
     pageData["pageData"]["data"]["pageDeals"]["data"]["attributes"]["SEO"];
 
-  return {
-    title: SEO["MetaTitle"],
-    description: SEO["MetaDescription"],
-    meta: [
-      {
-        name: "keywords",
-        content: SEO["MetaKeywords"],
-      },
-    ],
-  };
+  return headSEO(seoData);
 };
