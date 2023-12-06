@@ -13,7 +13,7 @@ export const Button = component$(
     text: string;
     link?: string;
     // color?: string;
-    onClick?: void;
+    onClick?: any | void;
     // Icon?: any;
     // subtext?: string;
   }) => {

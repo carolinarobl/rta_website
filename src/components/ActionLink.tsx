@@ -2,7 +2,7 @@ import { Slot, component$ } from "@builder.io/qwik";
 import { Link } from "@builder.io/qwik-city";
 
 export const ActionLink = component$(
-  ({ link, classN }: { link: string; classN: string }) => {
+  ({ link, classN="" }: { link: string; classN?: string }) => {
     if (link.startsWith("/") || link.startsWith("http"))
       return (
         <Link
