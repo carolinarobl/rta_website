@@ -1,4 +1,4 @@
-import { $, component$, useSignal } from "@builder.io/qwik";
+import { component$, useSignal } from "@builder.io/qwik";
 import { FaLocationArrowSolid } from "@qwikest/icons/font-awesome";
 import { Button } from "~/components/Button";
 import Carousel from "~/components/Carousel";
@@ -42,10 +42,10 @@ export const SectionOpenPositions = component$(({ data }: { data: any }) => {
           </div>
           <Button
             text="Submit Resume"
-            onClick={$(() => {
+            onClick={() => {
               formSignal.value = true;
               console.log("a");
-            })}
+            }}
           />
         </div>
       </div>

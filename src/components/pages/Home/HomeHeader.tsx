@@ -1,5 +1,5 @@
-import { component$, useSignal } from "@builder.io/qwik";
-import { FaXmarkSolid } from "@qwikest/icons/font-awesome";
+import { component$, useSignal, $ } from "@builder.io/qwik";
+import { FaXmarkSolid, FaLocationPinSolid } from "@qwikest/icons/font-awesome";
 import { Button } from "~/components/Button";
 import Carousel from "~/components/Carousel";
 import { Markdown } from "~/components/Markdown";
@@ -13,18 +13,24 @@ import { setURL } from "~/data/constants";
 
 export const HomeHeader = component$(({ data }: { data: any }) => {
   const heroSlidesData = data["HeroCarSlides"];
-  const streetRef = useSignal<HTMLInputElement>();
-  const zipRef = useSignal<HTMLInputElement>();
+  const streetRef = useSignal<HTMLInputElement>(<input></input>);
+  const zipRef = useSignal<HTMLInputElement>(<input></input>);
   const fullFrameSource = useSignal<string>("");
   const modalIsOpen = useSignal<boolean>(false);
+  const typingTimer = useSignal<any>();
+  const suggestions = useSignal([]);
+  const suggStatus = useSignal<"none" | "notfound" | "success" | "selected">(
+    "none",
+  );
 
-  const handleModal = (): void => {
+  const handleModal = $((): void => {
+    modalIsOpen.value = !modalIsOpen.value;
     if (!modalIsOpen.value) return;
     fullFrameSource.value = data["HeroForm"]["ActionButton"]["Link"]
       .replace("=pConf=", "")
-      .replace("streetInput", streetRef.value?.value)
-      .replace("zipInput", zipRef.value?.value);
-  };
+      .replace("streetInput", streetRef.value.value)
+      .replace("zipInput", zipRef.value.value);
+  });
 
   const SlideCard = component$(({ slide }: { slide: any }) => {
     return (
@@ -62,6 +68,24 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
     <SlideCard slide={slideContent} key={i} />
   ));
 
+  const handleSearch = $(() => {
+    clearTimeout(typingTimer.value);
+    typingTimer.value = setTimeout(() => {
+      if (streetRef.value.value.length > 2)
+        fetch(`/api/get-streets?q=${encodeURIComponent(streetRef.value.value)}`)
+          .then((res) => res.json())
+          .then((data) => {
+            const items = data["data"];
+            if (items.length === 0) {
+              suggStatus.value = "notfound";
+            } else {
+              suggStatus.value = "success";
+            }
+            suggestions.value = items;
+          });
+    }, 1000);
+  });
+
   return (
     <div class="relative flex h-[80vh] max-h-[750px] w-full items-center">
       {/* MODAL */}
@@ -71,7 +95,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
         }  transition-all duration-1000 ease-in-out`}
       >
         <FaXmarkSolid
-          onClick={handleModal()}
+          onClick$={handleModal}
           class="text-md absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-secondary-red text-white hover:cursor-pointer"
         />
         {/* <span
@@ -100,7 +124,32 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
           {/* <SlideCard slide={heroSlides[0]} /> */}
           <Carousel slides={heroSlides} hasArrows={false} slidesQty={1} />
         </div>
-        <div class="flex h-[230px] w-[400px] flex-col items-center justify-center gap-5 rounded-bl-full rounded-tl-full bg-white bg-opacity-60 max-[1000px]:hidden">
+        <div class="relative flex h-[230px] w-[400px] flex-col items-center justify-center gap-5 rounded-bl-full rounded-tl-full bg-white bg-opacity-60 max-[1000px]:hidden">
+          <div
+            class={`absolute left-10 right-10 top-[90%] flex max-h-[200px] flex-col gap-3 overflow-y-auto rounded-xl bg-white p-6 text-primary-blue shadow-lg ${
+              suggStatus.value === "none" || suggStatus.value === "selected"
+                ? "hidden"
+                : ""
+            }`}
+          >
+            {suggestions.value.length === 0 ? "Not found" : ""}
+            {suggestions.value.map((sugg: any, i: number) => {
+              return (
+                <div
+                  key={i}
+                  class="flex items-center gap-4 hover:cursor-pointer"
+                  onClick$={() => {
+                    streetRef.value.value = sugg["address"].split(", ")[0];
+                    zipRef.value.value = sugg["zip"];
+                    suggStatus.value = "selected";
+                  }}
+                >
+                  <FaLocationPinSolid class="text-secondary-red" />
+                  <span>{sugg["address"]}</span>
+                </div>
+              );
+            })}
+          </div>
           <div class="px-6 text-[22px] font-[600] text-primary-blue">
             {data["HeroForm"]["Title"]}
           </div>
@@ -108,18 +157,21 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
             <input
               class="w-[50%] rounded-full px-3 py-2 placeholder-primary-blue"
               placeholder="Address Search"
+              onKeyUp$={handleSearch}
+              ref={streetRef}
               type="text"
             />
             <input
               class="w-[50%] rounded-full px-3 py-2 placeholder-primary-blue"
               placeholder="Zip Code"
+              ref={zipRef}
               type="text"
             />
           </div>
           <Button
             text={data["HeroForm"]["ActionButton"]["Text"]}
             // link={data["HeroForm"]["ActionButton"]["Link"]}
-            onClick={handleModal()}
+            onClick={handleModal}
           />
         </div>
       </div>

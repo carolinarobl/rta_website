@@ -43,6 +43,12 @@ export const Navbar = component$(
               class="min-[1200px]:hidden"
               onClick$={() => {
                 mobMenuOpen.value = !mobMenuOpen.value;
+                const body = document.getElementsByTagName("body")[0];
+                if (mobMenuOpen.value) {
+                  body.classList.add("overflow-y-hidden");
+                } else {
+                  body.classList.remove("overflow-y-hidden");
+                }
               }}
             />
           </div>
@@ -51,8 +57,14 @@ export const Navbar = component$(
               <ActionLink link="/">
                 <StrapiImage
                   url={data["MainMenu"]["Logo"]["data"]["attributes"]["url"]}
-                  alt={data["MainMenu"]["Logo"]["data"]["attributes"]["alternativeText"]}
-                  title={data["MainMenu"]["Logo"]["data"]["attributes"]["caption"]}
+                  alt={
+                    data["MainMenu"]["Logo"]["data"]["attributes"][
+                      "alternativeText"
+                    ]
+                  }
+                  title={
+                    data["MainMenu"]["Logo"]["data"]["attributes"]["caption"]
+                  }
                   width={774}
                   height={282}
                 />
@@ -132,7 +144,6 @@ export const Navbar = component$(
                   url={e["Icon"]["data"]["attributes"]["url"]}
                   alt={e["Icon"]["data"]["attributes"]["alternativeText"]}
                   title={e["Icon"]["data"]["attributes"]["caption"]}
-
                   width="311"
                   height="60"
                 />
