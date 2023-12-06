@@ -13,8 +13,8 @@ export const StrapiAsset = component$(
     clasN = "",
     autoplay = false,
     controls = false,
-    loop = false,
-    muted = false,
+    loop = true,
+    muted = true,
   }: {
     url: string;
     width?: any;

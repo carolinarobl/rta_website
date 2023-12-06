@@ -1,9 +1,9 @@
 import { type Signal, component$ } from "@builder.io/qwik";
-import { Link } from "@builder.io/qwik-city";
 import { StrapiImage } from "./StrapiImage";
 import { FaBarsSolid } from "@qwikest/icons/font-awesome";
 import { MenuSuboptions } from "./MenuSuboptions";
 import { LangSwitch } from "./LangSwitch";
+import { ActionLink } from "./ActionLink";
 
 export const Navbar = component$(
   ({ data, mobMenuOpen }: { data: any; mobMenuOpen: Signal<boolean> }) => {
@@ -19,7 +19,7 @@ export const Navbar = component$(
             }
 
             return (
-              <Link key={i} href={e["Link"]} prefetch>
+              <ActionLink key={i} link={e["Link"]}>
                 <div class="flex flex-row items-center gap-2">
                   <div class="w-[12px]">
                     <StrapiImage
@@ -33,7 +33,7 @@ export const Navbar = component$(
                   </div>
                   {e["Text"]}
                 </div>
-              </Link>
+              </ActionLink>
             );
           })}
         </div>
@@ -48,7 +48,7 @@ export const Navbar = component$(
           </div>
           <div class="flex items-center justify-center">
             <div class="w-[125px] py-1">
-              <Link prefetch href="/">
+              <ActionLink link="/">
                 <StrapiImage
                   url={data["MainMenu"]["Logo"]["data"]["attributes"]["url"]}
                   alt={data["MainMenu"]["Logo"]["data"]["attributes"]["alternativeText"]}
@@ -56,7 +56,7 @@ export const Navbar = component$(
                   width={774}
                   height={282}
                 />
-              </Link>
+              </ActionLink>
             </div>
           </div>
           {/* Main options */}
@@ -70,9 +70,9 @@ export const Navbar = component$(
               return (
                 <div key={i} class="text-[15px] font-bold text-primary-blue ">
                   {!hasSubOptions ? (
-                    <Link class="text-primary-blue" href={e["Link"]}>
+                    <ActionLink classN="text-primary-blue" link={e["Link"]}>
                       {e["Text"]}
-                    </Link>
+                    </ActionLink>
                   ) : (
                     <MenuSuboptions
                       // classContainer="w-[200px] h-[50px] text-"
@@ -82,23 +82,22 @@ export const Navbar = component$(
                         {e["SubOption"].map((el: any, i: number) => {
                           const subOpt = el["MenuOption"]["data"];
                           return !subOpt ? (
-                            <Link
-                              class="text-primary-blue"
-                              prefetch
+                            <ActionLink
+                              classN="text-primary-blue"
                               key={i}
-                              href={el["Link"]}
+                              link={el["Link"]}
                             >
                               {el["Text"]}
-                            </Link>
+                            </ActionLink>
                           ) : (
                             <MenuSuboptions title={el["Text"]}>
                               <div class="flex flex-col gap-2 rounded-md bg-white p-3 font-[600] text-primary-blue shadow-md">
                                 {subOpt["attributes"]["SubOption"].map(
                                   (sub: any, i: number) => {
                                     return (
-                                      <Link prefetch key={i} href={sub["Link"]}>
+                                      <ActionLink key={i} link={sub["Link"]}>
                                         {sub["Text"]}
-                                      </Link>
+                                      </ActionLink>
                                     );
                                   },
                                 )}
@@ -120,14 +119,14 @@ export const Navbar = component$(
         </div>
         <div class="flex h-[32px] flex-row items-center justify-center gap-6 bg-secondary-red py-[2px] text-[14px] font-semibold tracking-[1px] text-white max-sm:text-[11px]">
           {data["ClientOptions"].map((e: any, i: any) => (
-            <Link key={i} href={e["Link"]} prefetch>
+            <ActionLink key={i} link={e["Link"]}>
               {e["Text"]}
-            </Link>
+            </ActionLink>
           ))}
         </div>
         <div class="flex flex-row items-center justify-evenly bg-white py-1 max-[1200px]:hidden">
           {data["gigfastOptions"].map((e: any, i: any) => (
-            <Link key={i} href={e["Link"]} prefetch>
+            <ActionLink key={i} link={e["Link"]}>
               <div class="w-[130px] rounded-md p-1 hover:bg-slate-50">
                 <StrapiImage
                   url={e["Icon"]["data"]["attributes"]["url"]}
@@ -138,7 +137,7 @@ export const Navbar = component$(
                   height="60"
                 />
               </div>
-            </Link>
+            </ActionLink>
           ))}
         </div>
       </div>

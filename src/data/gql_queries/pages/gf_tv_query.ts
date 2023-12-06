@@ -1,6 +1,5 @@
 import { mediaUrl, sectionSEO } from "~/data/constants"
 import { sectionChannelGuideQuery } from "../sections_queries/section_channel_guide_query"
-import { sectionChannelLinueupQuery } from "../sections_queries/section_channel_lineup_query"
 
 export const gfTvQuery = (locale: string) => {
   return `query {

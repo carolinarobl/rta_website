@@ -1,35 +1,22 @@
 import { $, component$, useSignal } from "@builder.io/qwik";
-import { JSX } from "@builder.io/qwik/jsx-runtime";
-import { channel } from "diagnostics_channel";
-import { includes } from "valibot";
 import { setURL } from "~/data/constants";
-import news from "~/routes/[...lang]/news";
 
 export const PopupChannelsLineup = component$(({ data, planId, channels }: { data: any, planId?: string, channels?: string }) => {
     const uniqueCategories = new Set(data.map((pack: any) => pack['attributes']['Category']));
 
-    var sportsChannels: Array<any> = []
-    var moviesChannels: Array<any> = []
-    var newsChannels: Array<any> = []
-    var musicChannels: Array<any> = []
-    var kidsChannels: Array<any> = []
+    const sportsChannels: Array<any> = []
+    const moviesChannels: Array<any> = []
+    const newsChannels: Array<any> = []
+    const musicChannels: Array<any> = []
+    const kidsChannels: Array<any> = []
 
     const IdPackage = planId?.slice(0, 2)
-
-    var movil = false;
-
-    window.onresize = () => {
-        const width = window.innerWidth;
-        console.log(width)
-        if (width < 500)
-            movil = true
-    };
 
 
 
     const selectedTab = useSignal(0);
 
-    const category = data.map((channel: any, index: any) => {
+    data.map((channel: any) => {
         if (channel['attributes']['Category'] == "Sports") {
             sportsChannels.push(channel)
         }
@@ -46,8 +33,8 @@ export const PopupChannelsLineup = component$(({ data, planId, channels }: { dat
     })
 
     const channelsPack = (data: any) => (data.map((channel: any, index: any) => {
-        var include = false;
-        var commingSoon = false;
+        let include = false;
+        let commingSoon = false;
 
         channel['attributes']['package_tvs']['data'].map((pack: any) => {
             if (pack['attributes']['package'].includes(IdPackage)) {
@@ -72,7 +59,7 @@ export const PopupChannelsLineup = component$(({ data, planId, channels }: { dat
     }))
 
     const slides = Array.from(uniqueCategories).map((category: any, key: any) => {
-        return <div key={key} class={`grid grid-cols-3 py-4 xl:grid-cols-8 lg:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 gap-2`}>
+        return <div key={key} class="grid grid-cols-3 py-4 xl:grid-cols-8 lg:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 gap-2">
             {category == "General"
                 ? channelsPack(data)
                 : category == "Sports" ? channelsPack(sportsChannels)

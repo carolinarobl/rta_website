@@ -12,17 +12,13 @@ import { setURL } from "~/data/constants";
 // import { Carouseld } from "~/components/Carousel";
 
 export const HomeHeader = component$(({ data }: { data: any }) => {
-
   const heroSlidesData = data["HeroCarSlides"];
   const streetRef = useSignal<HTMLInputElement>();
   const zipRef = useSignal<HTMLInputElement>();
   const fullFrameSource = useSignal<string>("");
   const modalIsOpen = useSignal<boolean>(false);
 
-
-
   const handleModal = (): void => {
-
     if (!modalIsOpen.value) return;
     fullFrameSource.value = data["HeroForm"]["ActionButton"]["Link"]
       .replace("=pConf=", "")
@@ -40,11 +36,9 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
             url={slide["Logo"]["data"]["attributes"]["url"]}
             alt={slide["Logo"]["data"]["attributes"]["alternativeText"]}
             title={slide["Logo"]["data"]["attributes"]["caption"]}
-
-
           />
           <div class="mx-3">
-          <Markdown classN="text-[14px]" text={slide["Paragraph"]} />
+            <Markdown classN="text-[14px]" text={slide["Paragraph"]} />
           </div>
           <Button
             text={slide["Buttons"][0]["Text"]}
@@ -58,16 +52,15 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
           title={slide["Media"]["data"]["attributes"]["caption"]}
           autoplay
           loop
-          muted = {true}
+          muted={true}
         />
       </div>
     );
   });
 
   const heroSlides = heroSlidesData.map((slideContent: any, i: number) => (
-    <SlideCard slide={slideContent} key={i}/>
+    <SlideCard slide={slideContent} key={i} />
   ));
-
 
   return (
     <div class="relative flex h-[80vh] max-h-[750px] w-full items-center">
@@ -105,7 +98,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
       <div class="flex w-full items-center justify-between">
         <div class="relative flex h-[230px] w-[400px] items-center justify-center overflow-hidden rounded-br-full rounded-tr-full bg-white bg-opacity-60 max-[1000px]:hidden">
           {/* <SlideCard slide={heroSlides[0]} /> */}
-         <Carousel slides={heroSlides} hasArrows={false} slidesQty={1} />
+          <Carousel slides={heroSlides} hasArrows={false} slidesQty={1} />
         </div>
         <div class="flex h-[230px] w-[400px] flex-col items-center justify-center gap-5 rounded-bl-full rounded-tl-full bg-white bg-opacity-60 max-[1000px]:hidden">
           <div class="px-6 text-[22px] font-[600] text-primary-blue">

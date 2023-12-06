@@ -38,9 +38,6 @@ export const PopupCall = component$((
     const linkClean = link.replaceAll(iFrame, "");
     child = <PortabilityRequest link={linkClean} />
   } else if (link.includes(channelLineup)) {
-    var p1: Array<any>;
-    var p2: any;
-    var p3: any;
 
     child = <PopupChannelsLineup
       channels={channels}
