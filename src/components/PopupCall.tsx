@@ -7,12 +7,14 @@ import { PopupChannelsLineup } from "./popups/popup_channels_lineup";
 // import { FormSupport } from "./forms/form-support";
 
 export const PopupCall = component$((
-  { link, dataChannels, planId, channels, text }: 
-  { link: string, 
-    dataChannels?: any, 
-    planId?: string, 
-    channels?:string,
-    text?: string }) => {
+  { link, dataChannels, planId, channels, text }:
+    {
+      link: string,
+      dataChannels?: any,
+      planId?: string,
+      channels?: string,
+      text?: string
+    }) => {
 
   const configurator = "=pConf=";
   const contactEmail = "=pContactEmail=";
@@ -40,10 +42,10 @@ export const PopupCall = component$((
     var p2: any;
     var p3: any;
 
-    child = <PopupChannelsLineup 
-    channels={channels}
-    planId={planId}
-    data={dataChannels} />
+    child = <PopupChannelsLineup
+      channels={channels}
+      planId={planId}
+      data={dataChannels} />
 
   }
 
@@ -82,7 +84,7 @@ export const PopupCall = component$((
   //     )}
 
   return (
-    <div class="relative flex">
+    <div class={`relative flex`}>
       {link.includes(configurator) &&
         (text?.includes("Buy now") || text?.includes("Comprar ahora")) ? (
         <div class="my-4 flex h-[80px] w-full cursor-pointer flex-col items-center justify-center">
@@ -100,8 +102,8 @@ export const PopupCall = component$((
       ) : (
         <button
           class={`flex w-fit items-center justify-center gap-2 ${link.includes(channelLineup)
-              ? ""
-              : "rounded-full border-2 border-teal-500 p-1 px-7 shadow-md transition-all  hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white"
+            ? ""
+            : "rounded-full border-2 border-teal-500 p-1 px-7 shadow-md transition-all  hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white"
             }  bg-white  text-[15px] font-[600]  text-btn-green opacity-80 max-md:text-[14px] max-sm:text-[13px] `}
           onClick$={() => (showModal.value = true)}
         >
@@ -110,9 +112,15 @@ export const PopupCall = component$((
       )}
 
       {showModal.value && (
-        <div class="fixed inset-0 z-50 flex flex-col items-end justify-center bg-blue-700 bg-opacity-40">
-          <button onClick$={() => showModal.value = false} class="bg-secondary-red text-white px-4 py-2 rounded-full">X</button>
-          <div class="flex p-8 flex-wrap overflow-hidden items-center justify-center w-full animate-zoomIn">
+        // <div class="fixed inset-0 z-50 flex flex-col items-end justify-center bg-blue-700 p-6 bg-opacity-40">
+        //   <button onClick$={() => showModal.value = false} class="bg-secondary-red text-white p-4 rounded-full">X</button>
+        //   <div class="flex p-4 flex-wrap overflow-hidden items-center justify-center w-full animate-zoomIn">
+        //     {child}
+        //   </div>
+        // </div>
+        <div role="dialog" aria-modal="true" tabIndex={-1} class="fixed inset-0 z-50 flex flex-col items-end justify-center bg-gray-700 p-6 bg-opacity-40 rounded-lg shadow-md">
+          <button aria-label="Close popup" onClick$={() => showModal.value = false} class="bg-secondary-red flex items-center justify-center text-white p-4 rounded-full w-[30px] h-[30px] focus:outline-none">X</button>
+          <div class="flex p-4 flex-wrap overflow-hidden items-center justify-center w-full animate-zoomIn">
             {child}
           </div>
         </div>
