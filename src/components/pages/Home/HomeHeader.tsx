@@ -13,8 +13,8 @@ import { setURL } from "~/data/constants";
 
 export const HomeHeader = component$(({ data }: { data: any }) => {
   const heroSlidesData = data["HeroCarSlides"];
-  const streetRef = useSignal<HTMLInputElement>(<input></input>);
-  const zipRef = useSignal<HTMLInputElement>(<input></input>);
+  const streetRef = useSignal<HTMLInputElement>(<input></input> as unknown as HTMLInputElement);
+  const zipRef = useSignal<HTMLInputElement>(<input></input> as unknown as HTMLInputElement);
   const fullFrameSource = useSignal<string>("");
   const modalIsOpen = useSignal<boolean>(false);
   const typingTimer = useSignal<any>();
@@ -120,11 +120,11 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
         muted
       ></video>
       <div class="flex w-full items-center justify-between">
-        <div class="relative flex h-[230px] w-[400px] items-center justify-center overflow-hidden rounded-br-full rounded-tr-full bg-white bg-opacity-60 max-[1000px]:hidden">
+        <div class="relative flex h-[230px] w-[420px] items-center justify-center overflow-hidden rounded-br-full rounded-tr-full bg-white bg-opacity-60 max-[1000px]:hidden">
           {/* <SlideCard slide={heroSlides[0]} /> */}
           <Carousel slides={heroSlides} hasArrows={false} slidesQty={1} />
         </div>
-        <div class="relative flex h-[230px] w-[400px] flex-col items-center justify-center gap-5 rounded-bl-full rounded-tl-full bg-white bg-opacity-60 max-[1000px]:hidden">
+        <div class="relative flex h-[230px] w-[420px] flex-col items-center justify-center gap-5 rounded-bl-full rounded-tl-full bg-white bg-opacity-60 max-[1000px]:hidden">
           <div
             class={`absolute left-10 right-10 top-[90%] flex max-h-[200px] flex-col gap-3 overflow-y-auto rounded-xl bg-white p-6 text-primary-blue shadow-lg ${
               suggStatus.value === "none" || suggStatus.value === "selected"

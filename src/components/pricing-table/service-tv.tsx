@@ -2,6 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import { BsCheckCircleFill, } from "@qwikest/icons/bootstrap";
 import { setURL } from "~/data/constants";
 import { PopupCall } from "../PopupCall";
+import { Button } from "../Button";
 
 interface Props {
   logo: any;
@@ -92,7 +93,8 @@ export const ServiceTv = component$(({
               key={key}
               class="my-1 flex flex-row items-center justify-start"
             >
-              <BsCheckCircleFill class="mx-2 h-[20px] w-[20px] fill-primary-blue text-primary-blue"></BsCheckCircleFill>
+              <div><BsCheckCircleFill class="mx-2 h-[20px] w-[20px] fill-primary-blue text-primary-blue"></BsCheckCircleFill></div>
+              
               <h3 key={key} class="text-sm font-light">
                 {feature["Text"]}
               </h3>
@@ -100,9 +102,9 @@ export const ServiceTv = component$(({
           ))}
         </div>
       </div>
-
-<PopupCall link={btnLink} text={btnText}></PopupCall>
-
+      <div class="py-5">
+      <Button text={btnText} link={btnLink}></Button>
+      </div>
     </div>
   );
 });
