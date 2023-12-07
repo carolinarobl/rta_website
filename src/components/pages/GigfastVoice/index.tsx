@@ -21,7 +21,7 @@ export const GigfastVoice = component$(({ data }: { data: any }) => {
         <SectionGFVPacks data={packagesData} />
       </div>
       <div class="mt-6">
-        <SerializedParagraph data={portabilityData} color={"primary-blue"} />
+        <SerializedParagraph data={portabilityData} color={"primary-blue"} backgroundColor="transparent"/>
       </div>
     </div>
   );

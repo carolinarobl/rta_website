@@ -98,7 +98,8 @@ export const ServiceTv = component$(({
               key={key}
               class="my-1 flex flex-row items-center justify-start"
             >
-              <BsCheckCircleFill class="mx-2 h-[20px] w-[20px] fill-primary-blue text-primary-blue"></BsCheckCircleFill>
+              <div><BsCheckCircleFill class="mx-2 h-[20px] w-[20px] fill-primary-blue text-primary-blue"></BsCheckCircleFill></div>
+              
               <h3 key={key} class="text-sm font-light">
                 {feature["Text"]}
               </h3>

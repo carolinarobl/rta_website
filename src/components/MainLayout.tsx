@@ -9,16 +9,24 @@ export const MainLayout = component$(
     const mobMenuOpen = useSignal(false);
     return (
       <div
-        class="relative overflow-x-hidden transition-all duration-500"
+        class={`relative overflow-x-hidden transition-all duration-500 ${
+          mobMenuOpen.value ? "overflow-y-hidden" : ""
+        }`}
         style={mobMenuOpen.value ? { perspective: "9000px" } : {}}
       >
-        <div class="absolute inset-0 -z-[200] bg-gradient-to-l from-[#2e599a] to-[#182d4d]">
+        <div
+          class={`absolute inset-0 -z-[200] bg-gradient-to-l from-[#2e599a] to-[#182d4d] ${
+            mobMenuOpen.value ? "overflow-y-hidden" : ""
+          }`}
+        >
           <MenuMobile
             data={data["data"]["generalMenu"]["data"]["attributes"]}
           />
         </div>
         <div
-          class="relative transition-all duration-500"
+          class={`relative transition-all duration-500 ${
+            mobMenuOpen.value ? "overflow-y-hidden" : ""
+          }`}
           style={
             mobMenuOpen.value
               ? {
@@ -34,7 +42,7 @@ export const MainLayout = component$(
             data={data["data"]["generalMenu"]["data"]["attributes"]}
             mobMenuOpen={mobMenuOpen}
           />
-          <div class="">
+          <div class={`${mobMenuOpen.value ? "overflow-y-hidden" : ""}`}>
             {showHeader && (
               <div class="flex w-full items-center justify-center">
                 <Header

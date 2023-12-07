@@ -5,6 +5,16 @@ export const blogQuery = (locale: string) => {
         pageBlog(locale:"${locale}"){    
           data{
           attributes{
+            Tips{
+              Title
+              TechTips(sort: "Date:desc", pagination: { limit: 10 }){
+                data{
+                  attributes{
+                    Content
+                  }
+                }
+              }
+            }
             Posts(sort: "Date:desc", pagination: { limit: 100 }){
                 data{
                   attributes{
@@ -22,16 +32,7 @@ export const blogQuery = (locale: string) => {
                   }
                 }
               }
-            SugPages{
-              Title
-              Pages{
-              Title
-              Link
-              Picture{
-                ${mediaUrl}
-              }
-              }
-            }
+          
             ${sectionSEO}
           }
         }
