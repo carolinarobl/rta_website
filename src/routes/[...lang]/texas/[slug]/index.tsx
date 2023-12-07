@@ -6,7 +6,7 @@ import { Location } from "~/components/pages/Location";
 import { customLocale, headSEO } from "~/data/constants";
 // import { homeQuery } from "~/data/gql_queries/pages/home_query";
 import { locationQuery } from "~/data/gql_queries/pages/local_page_query";
-import { getPageCustomData} from "~/services/graphql";
+import { getPageCustomData } from "~/services/graphql";
 
 export const usePageData = routeLoader$(async (req) => {
   const lang =
@@ -47,5 +47,11 @@ export const head: DocumentHead = ({ resolveValue }) => {
   }
   const seoData =
     pageData["pageData"]["data"]["locations"]["data"][0]["attributes"]["SEO"];
+
+  seoData["schema"] =
+    pageData["pageData"]["data"]["locations"]["data"][0]["attributes"][
+      "office"
+    ]["data"]["attributes"]["Schema"];
+
   return headSEO(seoData);
 };
