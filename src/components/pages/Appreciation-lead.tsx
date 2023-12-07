@@ -1,10 +1,12 @@
-import { component$ } from "@builder.io/qwik";
+import { component$, useSignal } from "@builder.io/qwik";
 import { setURL } from "~/data/constants";
 import { Button } from "../Button";
 import { StrapiImage } from "../StrapiImage";
+import { Spinner } from "../Spinner";
 
 export const AppreciationLead = component$(({ data }: { data: any }) => {
     const pageData = data['data']['pageAprLead']['data']['attributes']
+    const isLoading = useSignal(true);
 
     return <div class="flex flex-wrap px-8 items-center justify-center">
         <div class="flex flex-col items-center justify-center w-full md:w-1/2">
@@ -98,7 +100,10 @@ export const AppreciationLead = component$(({ data }: { data: any }) => {
             </div>
         </div>
         <div class="w-full md:w-2/6 shadow-2xl rounded-2xl h-[500px]">
-            <iframe loading="lazy" class="w-full  rounded-2xl h-full" src={pageData['iFrame_link']}></iframe>
+            {isLoading.value ?
+                <Spinner></Spinner>
+                : null}
+            <iframe onLoad$={() => { isLoading.value = false }} loading="lazy" class="w-full  rounded-2xl h-full" src={pageData['iFrame_link']}></iframe>
         </div>
     </div>
 });
