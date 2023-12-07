@@ -14,6 +14,7 @@ export const locationQuery = (locale: string, slug: string) => {
                 data {
                   attributes {
                     Address
+                    Schema
                   }
                 }
               }

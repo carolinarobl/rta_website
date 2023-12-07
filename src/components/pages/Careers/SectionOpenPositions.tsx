@@ -1,4 +1,4 @@
-import { component$, useSignal } from "@builder.io/qwik";
+import { $, component$, useSignal } from "@builder.io/qwik";
 import { FaLocationArrowSolid } from "@qwikest/icons/font-awesome";
 import { Button } from "~/components/Button";
 import Carousel from "~/components/Carousel";
@@ -10,6 +10,9 @@ export const SectionOpenPositions = component$(({ data }: { data: any }) => {
   const formSignal = useSignal(false);
   const infoSignal = useSignal(false);
   const selected = useSignal(data["Positions"][0]["attributes"]);
+  const formClick = $(() => {
+    formSignal.value = true;
+  });
   const PositionCard = component$(({ position }: { position: any }) => {
     return (
       <div class="flex h-[380px] w-[460px] flex-col justify-between rounded-[30px] bg-white p-6 text-center shadow-lg max-[800px]:h-[280px] ">
@@ -40,13 +43,7 @@ export const SectionOpenPositions = component$(({ data }: { data: any }) => {
             </span>{" "}
             <span class="text-black">or</span>
           </div>
-          <Button
-            text="Submit Resume"
-            onClick={() => {
-              formSignal.value = true;
-              console.log("a");
-            }}
-          />
+          <Button text="Submit Resume" onClick={formClick} />
         </div>
       </div>
     );

@@ -137,15 +137,18 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
               return (
                 <div
                   key={i}
-                  class="flex items-center gap-4 hover:cursor-pointer"
+                  class="grid items-center gap-4 hover:cursor-pointer"
+                  style={{
+                    gridTemplateColumns: "20px 1fr",
+                  }}
                   onClick$={() => {
                     streetRef.value.value = sugg["address"].split(", ")[0];
                     zipRef.value.value = sugg["zip"];
                     suggStatus.value = "selected";
                   }}
                 >
-                  <FaLocationPinSolid class="text-secondary-red" />
-                  <span>{sugg["address"]}</span>
+                  <FaLocationPinSolid class="w-6 text-secondary-red" />
+                  <span class="text-[14px]">{sugg["address"]}</span>
                 </div>
               );
             })}
