@@ -1,7 +1,8 @@
 import { component$ } from "@builder.io/qwik";
 import { setURL } from "~/data/constants";
-import { BsCheckCircleFill, BsTagFill } from "@qwikest/icons/bootstrap";
+import { BsCheckCircleFill } from "@qwikest/icons/bootstrap";
 import { Markdown } from "../Markdown";
+import { Button } from "../Button";
 
 interface Props {
   logo: any;
@@ -61,7 +62,10 @@ export const SimpleTable = component$(
                 key={index}
                 class="my-1 flex flex-row items-center justify-start"
               >
+                <div>
                 <BsCheckCircleFill class="mx-2 h-[20px] w-[20px] fill-primary-blue text-primary-blue"></BsCheckCircleFill>
+                </div>
+                
                 <h3 key={index} class="text-sm font-light">
                   {item["Text"]}
                 </h3>
@@ -72,14 +76,15 @@ export const SimpleTable = component$(
 
         <div class="my-4 flex h-[80px] w-full flex-col items-center justify-center">
           <div class="border-gary-500 my-4 h-[1px] w-full border-t-2"></div>
-          <a href={btnLink} class="w-full">
+          <Button text={btnText} link={btnLink}/>
+          {/* <a href={btnLink} class="w-full">
             <div class="flex h-[50px] w-full flex-row items-center justify-center rounded-full border-2 border-teal-500 bg-transparent p-1 px-6 text-btn-green hover:bg-teal-500 hover:text-white">
               <p class="mx-4 font-bold">{btnText}</p>
               <div class="flex h-[25px] w-[25px] items-center justify-center rounded-full bg-teal-500 ">
                 <BsTagFill class="fill-white" />
               </div>
             </div>
-          </a>
+          </a> */}
         </div>
       </div>
     );

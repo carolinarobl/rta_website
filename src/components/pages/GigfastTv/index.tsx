@@ -10,6 +10,7 @@ import { SectionPremiumChannels } from "./section-premiumChannels";
 export const GigfastTv = component$(({ data }: { data: any}) => {
     const pageData = data['data']['pageGfTv']['data']['attributes']
     const sectionChguide = data['data']['sectionChGuide']['data']['attributes']
+    const sectionChLineup = data['data']['channelLineups']['data']
 
     return <div class="flex flex-col justify-around">
         <div class="flex flex-col my-6 items-center justify-center gap-4">
@@ -26,7 +27,9 @@ export const GigfastTv = component$(({ data }: { data: any}) => {
             <Markdown text={pageData['Feature']['Paragraph']}></Markdown>
         </div>
 
-        <SectionChpack data={pageData['ChPackTables']} title={pageData['ChPackTitle']}></SectionChpack>
+        <SectionChpack 
+        dataChannels={sectionChLineup} 
+        data={pageData['ChPackTables']} title={pageData['ChPackTitle']}></SectionChpack>
 
         <SectionPremiumChannels data={pageData['PremiumTables']} title={pageData['PremiumTitle']}></SectionPremiumChannels>
 

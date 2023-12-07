@@ -15,6 +15,9 @@ export const usePageData = routeLoader$(async (req)=>{
 export default component$(() => {
     const signalData = usePageData();
     const data = signalData.value
+
+    console.log(data['pageData'])
+    
   return <>
   <MainLayout data={data['layoutData']}>
   <SEOh1 SEOdata={data["pageData"]["data"]["pageGfTv"]["data"]["attributes"]["SEO"]}/>

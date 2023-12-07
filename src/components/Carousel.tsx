@@ -48,7 +48,7 @@ export default component$(
           drag: true,
           rewind: true,
           speed: 800,
-          padding: "5%",
+          padding: "0%",
           direction: direction as "ltr" | "rtl" | "ttb" | undefined,
         };
 
@@ -100,15 +100,15 @@ export default component$(
           aria-label="Componente Carousel"
         >
           <div class={` splide__track  ${addSpace ? "p-8" : ""}`}>
-            <div class="splide__list justify-between">
+            <div class="splide__list justify-between ">
               {slides.map((element: any, index: number) => (
                 <div
-                  class="splide__slide items-center bg-transparent"
+                  class="splide__slide w-full items-center"
                   key={index}
                 >
                   <div
                     class={` flex items-center object-center ${
-                      addSpace ? "mx-2" : ""
+                      addSpace ? "mx-10" : ""
                     }  justify-center`}
                   >
                     {element}
