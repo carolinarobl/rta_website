@@ -1,7 +1,7 @@
 import { type DocumentHeadValue } from "@builder.io/qwik-city";
 
-export const strapiURL = "https://strapi.cblsrv43.rtatel.com";
-// export const strapiURL = "https://strapi.rtatel.com";
+// export const strapiURL = "https://strapi.cblsrv43.rtatel.com";
+export const strapiURL = "https://strapi.rtatel.com";
 export const gqlURL = `${strapiURL}/graphql`;
 
 export const setURL = (url: string) => {
@@ -23,8 +23,34 @@ data {
 `;
 
 export const headSEO = (SEOdata: any) => {
+  let schemaScripts = [];
+  if (SEOdata.schema) {
+    schemaScripts = SEOdata.schema
+      .split(`<script type="application/ld+json">`)
+      .flatMap((scr: string) =>
+        scr.split(`<script type='application/ld+json'>`),
+      )
+      .flatMap((script: string) => {
+        if (!script || script === "") {
+          return false;
+        }
+        return script.replace("</script>", "");
+      })
+      .filter((script: string) => script !== false);
+  }
+
   return <DocumentHeadValue>{
     title: SEOdata.MetaTitle,
+    scripts: [
+      ...schemaScripts.map((script: string) => {
+        return {
+          props: {
+            type: "application/ld+json",
+          },
+          script: script,
+        };
+      }),
+    ],
     meta: [
       {
         name: "description",
@@ -48,6 +74,7 @@ SEO {
     MetaDescription
     Keywords
     preventIndexing
+    schema
 }
 `;
 
