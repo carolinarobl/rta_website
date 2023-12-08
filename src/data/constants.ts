@@ -1,6 +1,6 @@
 import { type DocumentHeadValue } from "@builder.io/qwik-city";
 
-// export const strapiURL = "https://strapi.cblsrv43.rtatel.com";
+// export const strapiURL = "https://strapi42.rtatel.com";
 export const strapiURL = "https://strapi.rtatel.com";
 export const gqlURL = `${strapiURL}/graphql`;
 
@@ -31,12 +31,9 @@ export const headSEO = (SEOdata: any) => {
         scr.split(`<script type='application/ld+json'>`),
       )
       .flatMap((script: string) => {
-        if (!script || script === "") {
-          return false;
-        }
         return script.replace("</script>", "");
       })
-      .filter((script: string) => script !== false);
+      // .filter((script: string) => script !== null);
   }
 
   return <DocumentHeadValue>{

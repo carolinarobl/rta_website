@@ -1,9 +1,10 @@
-import { component$, useSignal } from "@builder.io/qwik";
+import { Slot, component$, useSignal } from "@builder.io/qwik";
 import { FormCarrers } from "./forms/form-carrers";
 import { PortabilityRequest } from "./popups/portabilityRequest";
 import { BsTagFill } from "@qwikest/icons/bootstrap";
 import { FormSupport } from "./forms/form-support";
 import { PopupChannelsLineup } from "./popups/popup_channels_lineup";
+import { PopupLoginForm } from "./popups/popup_login_form";
 // import { FormSupport } from "./forms/form-support";
 
 export const PopupCall = component$((
@@ -17,6 +18,7 @@ export const PopupCall = component$((
     }) => {
 
   const configurator = "=pConf=";
+  const login = "=pLogin"
   const contactEmail = "=pContactEmail=";
   const iFrame = "=pIFrame=";
   const channelLineup = "=pChannelLineup=";
@@ -44,6 +46,9 @@ export const PopupCall = component$((
       planId={planId}
       data={dataChannels} />
 
+  }
+  else if(link.includes(login)){
+    child=<PopupLoginForm></PopupLoginForm>
   }
 
 
@@ -96,7 +101,7 @@ export const PopupCall = component$((
             </div>
           </div>
         </div>
-      ) : (
+      ) : link.includes(login)? <div onClick$={() => (showModal.value = true)}><Slot/> </div>:(
         <button
           class={`flex w-fit items-center justify-center gap-2 ${link.includes(channelLineup)
             ? ""
@@ -109,12 +114,6 @@ export const PopupCall = component$((
       )}
 
       {showModal.value && (
-        // <div class="fixed inset-0 z-50 flex flex-col items-end justify-center bg-blue-700 p-6 bg-opacity-40">
-        //   <button onClick$={() => showModal.value = false} class="bg-secondary-red text-white p-4 rounded-full">X</button>
-        //   <div class="flex p-4 flex-wrap overflow-hidden items-center justify-center w-full animate-zoomIn">
-        //     {child}
-        //   </div>
-        // </div>
         <div role="dialog" aria-modal="true" tabIndex={-1} class="fixed inset-0 z-50 flex flex-col items-end justify-center bg-gray-700 p-6 bg-opacity-40 rounded-lg shadow-md">
           <button aria-label="Close popup" onClick$={() => showModal.value = false} class="bg-secondary-red flex items-center justify-center text-white p-4 rounded-full w-[30px] h-[30px] focus:outline-none">X</button>
           <div class="flex p-4 flex-wrap overflow-hidden items-center justify-center w-full animate-zoomIn">

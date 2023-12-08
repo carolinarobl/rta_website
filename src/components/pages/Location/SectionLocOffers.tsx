@@ -33,11 +33,12 @@ export const SectionLocOffers = component$(({ data }: { data: any }) => {
                   btnText={table["Button"]["Text"]}
                   btnLink={table["Button"]["Link"]}
                   description={table["Description"]}
-                  logo={table["Logo"]["data"]["attributes"]["url"]}
+                  logo={table["Logo"]["data"]["attributes"]}
                   features={table["Features"]}
                   price={table["Price"].toString()}
                   priceTime={table["Pricetime"]}
                   title={table["Title"]}
+                  isFullLogo={true}
                 />
               ))}
             </div>
