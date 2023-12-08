@@ -68,8 +68,9 @@ export const Wholesale = component$(({ data }: { data: any }) => {
     </div>
 
     <Paragraph text={pageData['NetworkCircuits']['Paragraph']}
+    backgroundColor="transparent"
       title={pageData['NetworkCircuits']['Title']}
-      image={setURL(pageData['NetworkCircuits']['Media']['data']['attributes']['url'])}></Paragraph>
+      image={pageData['NetworkCircuits']['Media']['data']['attributes']}></Paragraph>
     <div class="flex flex-wrap-reverse px-8 py-6 my-4 items-center justify-center">
       <div class="h-[450px] w-full md:w-1/2"></div>
       <div class="flex flex-col w-full md:w-1/2 items-center justify-center">
