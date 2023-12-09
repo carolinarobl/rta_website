@@ -15,6 +15,8 @@ export const PopupChannelsLineup = component$(({ data, planId, channels }: { dat
 
 
     const selectedTab = useSignal(0);
+    let include = false;
+    let commingSoon = false;
 
     data.map((channel: any) => {
         if (channel['attributes']['Category'] == "Sports") {
@@ -33,8 +35,7 @@ export const PopupChannelsLineup = component$(({ data, planId, channels }: { dat
     })
 
     const channelsPack = (data: any) => (data.map((channel: any, index: any) => {
-        let include = false;
-        let commingSoon = false;
+
 
         channel['attributes']['package_tvs']['data'].map((pack: any) => {
             if (pack['attributes']['package'].includes(IdPackage)) {

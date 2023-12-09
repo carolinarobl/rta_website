@@ -44,7 +44,7 @@ const analyticsScriptP2 = `
 
           <ServiceWorkerRegister />
         </head>
-        <body lang="en" class="max-h-screen">
+        <body lang="en" class="max-h-screen overflow-x-hidden">
           <RouterOutlet />
         </body>
       </QwikCityProvider>

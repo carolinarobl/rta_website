@@ -13,6 +13,7 @@ interface Props {
   features: Array<any>;
   btnLink: string;
   btnText: string;
+  isFullLogo?: boolean;
 }
 export const SimpleTable = component$(
   ({
@@ -24,10 +25,27 @@ export const SimpleTable = component$(
     features,
     btnLink,
     btnText,
+    isFullLogo = false,
   }: Props) => {
     return (
-      <div class="flex h-fit w-fit max-w-[300px] flex-col items-center justify-between rounded-[35px] bg-white px-5">
+      <div class="flex h-full w-fit max-w-[300px] flex-col items-center justify-between rounded-[35px] bg-white px-5">
         <div class="mt-8 flex w-fit max-w-full flex-col items-center self-center">
+          {isFullLogo ?
+          <div class="flex flex-col justify-center items-center self-center gap-2 ">
+          <img
+            loading="lazy"
+            src={setURL(logo['url'])}
+            alt={logo['alternativeText']}
+            title={logo['caption']}
+            height={100}
+            width={300}
+            class=" w-full  overflow-hidden object-center"
+          />
+            <div class=" text-2xl font-bold leading-6 text-primary-blue">
+              {title}      
+          </div>
+        </div>
+          :
           <div class="flex w-full items-start gap-5 self-center">
             <img
               loading="lazy"
@@ -42,17 +60,16 @@ export const SimpleTable = component$(
               <div class="self-start whitespace-nowrap text-2xl font-bold leading-6 text-primary-blue">
                 {title}
               </div>
-              {/* <div class="justify-center text-secondary-red text-xl font-semibold mt-2">
-                            {description}
-                        </div> */}
             </div>
           </div>
-          <div class="mt-5 text-center text-base leading-4 tracking-tighter text-primary-blue">
+           }  
+          
+          <div class="mt-2 text-center text-base leading-4 tracking-tighter text-primary-blue">
             <span class="text-2xl font-light text-secondary-red">$</span>
             <span class="text-2xl font-light text-primary-blue">{price}</span>
             <span class=" text-2xl text-primary-blue">{priceTime}</span>
           </div>
-          <div class="mt-5 text-center text-base text-primary-blue">
+          <div class="mt-5 text-center text-base text-primary-blue text-sm">
             <Markdown text={description} />
           </div>
           <div class="border-gary-500 my-4 h-[1px] w-full border-t-2"></div>

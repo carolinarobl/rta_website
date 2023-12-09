@@ -31,12 +31,9 @@ export const headSEO = (SEOdata: any) => {
         scr.split(`<script type='application/ld+json'>`),
       )
       .flatMap((script: string) => {
-        if (!script || script === "") {
-          return false;
-        }
         return script.replace("</script>", "");
       })
-      .filter((script: string) => script !== false);
+      // .filter((script: string) => script !== null);
   }
 
   return <DocumentHeadValue>{
