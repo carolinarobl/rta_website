@@ -13,11 +13,10 @@ console.log(data)
 
 export const FormCarrers = component$(() => {
     const submitForm = useSubmitFormCarrers();
-
-    return <div class="flex flex-col max-w-lg mx-auto bg-blue-100 rounded-xl p-6">
+    return <div class="flex flex-col w-full md:w-1/2 h-[560px] bg-blue-100 rounded-2xl p-4">
         <p class='text-center font-medium text-color-Primary'>Fill out the form below and attach your resume to contact us today</p>
-        <Form class='mt-2' action={submitForm}>
-            <div class='flex-row flex justify-between'>
+        <Form class='mt-2 overflow-y-auto' action={submitForm}>
+            <div class='flex-col sm:flex-row flex justify-between'>
                 <div class="mb-4 gap-2 flex flex-col">
                     <label for="name" class="block font-medium text-color-Primary">Name</label>
                     <input type="text" name="name"
@@ -48,6 +47,7 @@ export const FormCarrers = component$(() => {
                 type="file"
                 accept='.pdf, .doc'
                 name='file'
+                class="w-full"
             />
             {/* <FileUpload id="load_file"/> */}
             <button type="submit" class="mt-4 bg-secondary-red text-white w-full font-semibold px-4 py-2 rounded-xl hover:bg-blue-600 focus:outline-none">

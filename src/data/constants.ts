@@ -1,6 +1,6 @@
 import { type DocumentHeadValue } from "@builder.io/qwik-city";
 
-// export const strapiURL = "https://strapi.cblsrv43.rtatel.com";
+// export const strapiURL = "https://strapi42.rtatel.com";
 export const strapiURL = "https://strapi.rtatel.com";
 export const gqlURL = `${strapiURL}/graphql`;
 

@@ -1,5 +1,4 @@
-export const loginPopupQuery = (zipCode:string)=>{
-    return `  query {
+export const loginPopupQuery = (zipCode:string) => `query {
         offices (filters:{locations:{ZipCode:{eq:${zipCode}}}}) {
           data {
             attributes {
@@ -8,4 +7,3 @@ export const loginPopupQuery = (zipCode:string)=>{
           }
         }
       }`
-}
