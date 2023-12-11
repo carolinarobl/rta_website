@@ -32,8 +32,8 @@ export const headSEO = (SEOdata: any) => {
       )
       .flatMap((script: string) => {
         return script.replace("</script>", "");
-      })
-      // .filter((script: string) => script !== null);
+      });
+    // .filter((script: string) => script !== null);
   }
 
   return <DocumentHeadValue>{
@@ -141,13 +141,13 @@ sectionNetwork (locale:"${locale}"){
 `;
 
 const days = [
-  "Sunday",
   "Monday",
   "Tuesday",
   "Wednesday",
   "Thursday",
   "Friday",
   "Saturday",
+  "Sunday",
 ];
 const months = [
   "January",
@@ -170,5 +170,7 @@ export function formatDate(dateStr: string, full = true) {
   const monthDay = date.getDate();
   const month = months[date.getMonth()];
   const year = date.getFullYear();
-  return `${full ? day + ", " : ""}${month} ${monthDay}, ${year}`;
+  return `${full ? day + ", " : ""}${
+    full ? month : month.slice(0, 3)
+  } ${monthDay}, ${year}`;
 }
