@@ -1,10 +1,11 @@
 import { Slot, component$, useSignal } from "@builder.io/qwik";
 import { FormCarrers } from "./forms/form-carrers";
 import { PortabilityRequest } from "./popups/portabilityRequest";
-import { BsTagFill } from "@qwikest/icons/bootstrap";
 import { FormSupport } from "./forms/form-support";
 import { PopupChannelsLineup } from "./popups/popup_channels_lineup";
 import { PopupLoginForm } from "./popups/popup_login_form";
+import { BsTagFill } from "@qwikest/icons/bootstrap";
+import { useLocation } from "@builder.io/qwik-city";
 // import { FormSupport } from "./forms/form-support";
 
 export const PopupCall = component$((
@@ -22,6 +23,10 @@ export const PopupCall = component$((
   const contactEmail = "=pContactEmail=";
   const iFrame = "=pIFrame=";
   const channelLineup = "=pChannelLineup=";
+  const locationNumber ="=pOfficeCall";
+
+  const location = useLocation();
+  const isES = location.prevUrl?.pathname.includes("/es/");
 
   // var popupCall = link;
   let child = null
@@ -48,7 +53,18 @@ export const PopupCall = component$((
 
   }
   else if(link.includes(login)){
-    child=<PopupLoginForm></PopupLoginForm>
+    child=<PopupLoginForm title={isES?"Inicia sesión en el portal de tu zona":"Log into the portal of your area"}
+    description={isES?"Simplemente ingrese su código postal.":"Just enter your Zip code."}
+    btnText={isES?"Ir ahora":"Go Now"}
+    popup="login"></PopupLoginForm>
+  }
+  else if(link.includes(locationNumber)){
+    child=<PopupLoginForm popup="location"
+    title={isES?"Llame a su oficina local":"Call your local office"}
+    description={isES?"Descubra exactamente qué servicios ofrece RTA en su ciudad natal. Ingrese su código postal para el número de teléfono de su oficina local."
+    :"Find out exactly what services RTA has to offer in your hometown. Input your zip code for your local office phone number."}
+    notFountText={isES?"Desafortunadamente, RTA no está disponible actualmente en su área. Sin embargo, RTA continúa expandiéndose en todo Estados Unidos. Si está interesado en los servicios de RTA en su área, envíenos un correo electrónico o llame a nuestra oficina principal.":"Find out exactly what services RTA has to offer in your hometown. Input your zip code for your local office phone number."}
+    btnText={isES?"Comprobar ahora":"Check Now"}></PopupLoginForm>
   }
 
 

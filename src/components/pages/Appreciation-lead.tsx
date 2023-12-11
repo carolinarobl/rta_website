@@ -101,7 +101,7 @@ export const AppreciationLead = component$(({ data }: { data: any }) => {
         </div>
         <div class="w-full md:w-2/6 shadow-2xl rounded-2xl h-[500px]">
             {isLoading.value ?
-                <Spinner></Spinner>
+                <Spinner size="250px"></Spinner>
                 : null}
             <iframe onLoad$={() => { isLoading.value = false }} loading="lazy" class="w-full  rounded-2xl h-full" src={pageData['iFrame_link']}></iframe>
         </div>
