@@ -1,76 +1,129 @@
 import { component$ } from "@builder.io/qwik";
-import { Form, globalAction$ } from "@builder.io/qwik-city";
-import {BsChatSquareTextFill, BsPersonFill, BsGeoAltFill, BsEnvelopeAtFill,
-BsTelephoneFill} from "@qwikest/icons/bootstrap"
-
-export const useSubmitFormSupport = globalAction$(async (data)=>{
-    console.log(data)
-    return{
-        success:true
-    }
-});
+import {
+  BsChatSquareTextFill,
+  BsPersonFill,
+  BsGeoAltFill,
+  BsEnvelopeAtFill,
+  BsTelephoneFill,
+} from "@qwikest/icons/bootstrap";
 
 export const FormSupport = component$(() => {
-    const action = useSubmitFormSupport();
+  //   const handleSubmit = $();
 
-  return <div class="flex bg-white flex-col max-w-lg mx-auto rounded-xl p-6">
-  <Form class='mt-2' action={action}>
-      <div class='flex flex-wrap'>
+  return (
+    <div class="mx-auto flex max-w-lg flex-col rounded-xl bg-white p-6">
+      <form class="mt-2" id="s_form">
+        <div class="flex flex-wrap">
           <div class="mb-4 w-full sm:w-2/3">
-              <label for="name" class="block font-medium text-[#2e5899]">Name <strong class='font-bold text-red-600 text-xl'>*</strong> </label>
-              <div class="flex items-center p-2 rounded">
-                  <div class="mr-2">
-                    <BsPersonFill style={{color: '#2e5899'}}></BsPersonFill>
-                  </div>
-                  <input type="text" name="name"
-                      class="w-full border border-[#2e5899] p-2 rounded-xl focus:outline-none focus:border-blue-500"
-                      required/>
-              </div>
-          </div>
-          <div class="w-2/3 sm:w-1/3 mb-4">
-              <label for="zip-code" class="block font-medium text-[#2e5899]">Zip Code <strong class='font-bold text-red-600 text-xl'>*</strong> </label>
-              <div class="flex items-center p-2 rounded">
-                  <div class="mr-2">
-                    <BsGeoAltFill style={{color: '#2e5899'}}></BsGeoAltFill>
-                  </div>
-                  <input type="tel" name="zip_code" class="w-full border border-[#2e5899] p-2 rounded-xl focus:outline-none focus:border-blue-500" maxLength={5} required />
-              </div>
-          </div>
-      </div>
-      <div class='flex flex-wrap md:flex-row items-center'>
-          <div class="mb-4 w-full sm:w-1/2">
-              <label for="email" class="block font-medium text-[#2e5899]">Email <strong class='font-bold text-red-600'>*</strong></label>
-              <div class="flex items-center p-2 rounded">
-                  <div class="mr-2">
-                    <BsEnvelopeAtFill style={{color: '#2e5899'}}></BsEnvelopeAtFill>
-                  </div>
-                  <input type="email" name="email" class="w-full border border-[#2e5899] p-2 rounded-xl focus:outline-none focus:border-blue-500" required />
-              </div>
-          </div>
-          <div class="w-full md:w-1/2 mb-4">
-              <label for="phone" class="block font-medium text-[#2e5899]">Phone</label>
-              <div class="flex items-center p-2 rounded">
-                  <div class="mr-2">
-                    <BsTelephoneFill style={{color: '#2e5899'}}></BsTelephoneFill>
-                  </div>
-                  <input type="tel" name="phoneSupport"
-                  maxLength={14}
-                  class="w-full border border-[#2e5899] p-2 rounded-xl focus:outline-none focus:border-blue-500" />
-              </div>
-          </div>
-      </div>
-      <div class="mb-4">
-          <label for="message" class="block  font-medium text-[#2e5899]">Message<strong class='font-bold text-red-600 text-xl'>*</strong></label>
-          <div class="flex items-center p-2 rounded">
+            <label for="name" class="block font-medium text-[#2e5899]">
+              Name <strong class="text-xl font-bold text-red-600">*</strong>{" "}
+            </label>
+            <div class="flex items-center rounded p-2">
               <div class="mr-2">
-                <BsChatSquareTextFill style={{color: '#2e5899'}}></BsChatSquareTextFill>
+                <BsPersonFill style={{ color: "#2e5899" }}></BsPersonFill>
               </div>
-              <textarea name="message" class="w-full border border-[#2e5899] p-2 rounded-xl focus:outline-none focus:border-blue-500" rows={4} required></textarea>
+              <input
+                type="text"
+                name="from_name"
+                class="w-full rounded-xl border border-[#2e5899] p-2 focus:border-blue-500 focus:outline-none"
+                required
+              />
+            </div>
           </div>
-      </div>
-      <button type="submit" class="bg-secondary-red text-white w-full font-semibold px-4 py-2 rounded-xl hover:bg-blue-600 focus:outline-none">
+          <div class="mb-4 w-2/3 sm:w-1/3">
+            <label for="zip_code" class="block font-medium text-[#2e5899]">
+              Zip Code <strong class="text-xl font-bold text-red-600">*</strong>{" "}
+            </label>
+            <div class="flex items-center rounded p-2">
+              <div class="mr-2">
+                <BsGeoAltFill style={{ color: "#2e5899" }}></BsGeoAltFill>
+              </div>
+              <input
+                type="tel"
+                name="zip_code"
+                class="w-full rounded-xl border border-[#2e5899] p-2 focus:border-blue-500 focus:outline-none"
+                maxLength={5}
+                required
+              />
+            </div>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center md:flex-row">
+          <div class="mb-4 w-full sm:w-1/2">
+            <label for="email" class="block font-medium text-[#2e5899]">
+              Email <strong class="font-bold text-red-600">*</strong>
+            </label>
+            <div class="flex items-center rounded p-2">
+              <div class="mr-2">
+                <BsEnvelopeAtFill
+                  style={{ color: "#2e5899" }}
+                ></BsEnvelopeAtFill>
+              </div>
+              <input
+                type="email"
+                name="from_email"
+                class="w-full rounded-xl border border-[#2e5899] p-2 focus:border-blue-500 focus:outline-none"
+                required
+              />
+            </div>
+          </div>
+          <div class="mb-4 w-full md:w-1/2">
+            <label for="tel" class="block font-medium text-[#2e5899]">
+              Phone
+            </label>
+            <div class="flex items-center rounded p-2">
+              <div class="mr-2">
+                <BsTelephoneFill style={{ color: "#2e5899" }}></BsTelephoneFill>
+              </div>
+              <input
+                type="tel"
+                name="tel"
+                maxLength={14}
+                class="w-full rounded-xl border border-[#2e5899] p-2 focus:border-blue-500 focus:outline-none"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="mb-4">
+          <label for="message" class="block  font-medium text-[#2e5899]">
+            Message<strong class="text-xl font-bold text-red-600">*</strong>
+          </label>
+          <div class="flex items-center rounded p-2">
+            <div class="mr-2">
+              <BsChatSquareTextFill
+                style={{ color: "#2e5899" }}
+              ></BsChatSquareTextFill>
+            </div>
+            <textarea
+              name="message"
+              class="w-full rounded-xl border border-[#2e5899] p-2 focus:border-blue-500 focus:outline-none"
+              rows={4}
+              required
+            ></textarea>
+          </div>
+        </div>
+        <button
+          type="button"
+          class="w-full rounded-xl bg-secondary-red px-4 py-2 font-semibold text-white hover:bg-blue-600 focus:outline-none"
+          onClick$={() => {
+            const formData = new FormData(document.getElementById("s_form"));
+            const data = Object.fromEntries(formData);
+            data["template_id"] = "template_o9rn4rx";
+            console.log(data);
+            fetch("/api/emailjs/", {
+              method: "POST",
+              body: JSON.stringify(data),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            })
+              .then((res) => res.json())
+              .then((res) => console.log(res));
+          }}
+        >
           Submit
-      </button>
-  </Form>
-</div>
+        </button>
+      </form>
+    </div>
+  );
 });
