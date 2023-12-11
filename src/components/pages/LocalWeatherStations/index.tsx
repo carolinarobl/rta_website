@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { StrapiImage } from "~/components/StrapiImage";
 import { FaLocationArrowSolid } from "@qwikest/icons/font-awesome";
-
+import { formatDate } from "~/data/constants";
 export const LocalWeatherStations = component$(({ data }: { data: any }) => {
   const pageData = data["pageLocWeather"]["data"]["attributes"];
 
@@ -10,8 +10,7 @@ export const LocalWeatherStations = component$(({ data }: { data: any }) => {
   };
   return (
     <div
-      onClick$={() => {
-      }}
+      onClick$={() => {}}
       class="flex flex-wrap items-center justify-center gap-8 px-8 py-8 text-white"
     >
       {data["weatherData"]["data"].map((weather: any, i: number) => {
@@ -31,18 +30,35 @@ export const LocalWeatherStations = component$(({ data }: { data: any }) => {
                       (e: any) => e["Location"] === weather["city"],
                     )["LocationPic"]["data"]["attributes"]["url"]
                   }
-                  alt={pageData["LocTables"].find(
-                    (e: any) => e["Location"] === weather["city"],
-                  )["LocationPic"]["data"]["attributes"]["alternativeText"]}
-                  title={pageData["LocTables"].find(
-                    (e: any) => e["Location"] === weather["city"],
-                  )["LocationPic"]["data"]["attributes"]["caption"]}
+                  alt={
+                    pageData["LocTables"].find(
+                      (e: any) => e["Location"] === weather["city"],
+                    )["LocationPic"]["data"]["attributes"]["alternativeText"]
+                  }
+                  title={
+                    pageData["LocTables"].find(
+                      (e: any) => e["Location"] === weather["city"],
+                    )["LocationPic"]["data"]["attributes"]["caption"]
+                  }
                 />
               </div>
               <div class="absolute bottom-0 left-0 right-0 top-0 -z-[5] h-full w-full bg-black opacity-30" />
               <div class="flex flex-col">
-                <span class="text-[20px] font-[700]">Thursday</span>
-                <span class="text-[12px]">Nov 30, 2023</span>
+                <span
+                  class="text-[20px] font-[700]"
+                  onClick$={() => {
+                    console.log(weather["data"]["days"][0]);
+                  }}
+                >
+                  {
+                    formatDate(weather["data"]["days"][0]["datetime"]).split(
+                      ", ",
+                    )[0]
+                  }
+                </span>
+                <span class="text-[12px]">
+                  {formatDate(weather["data"]["days"][0]["datetime"], false)}
+                </span>
                 <div class="mt-2 flex items-center gap-3">
                   <FaLocationArrowSolid class="text-[15px] text-white" />
                   <span class="text-[17px] font-[600] max-[1200px]:text-[15px]">
@@ -51,14 +67,15 @@ export const LocalWeatherStations = component$(({ data }: { data: any }) => {
                 </div>
               </div>
               <div>
-                <span class="text-[18px] font-[700]">Rain, Overcast</span>
+                <span class="text-[18px] font-[700]">
+                  {weather["data"]["days"][0]["conditions"]}
+                </span>
                 <img
                   width="50"
                   height="50"
                   src={iconURL(weather["data"]["days"][0]["icon"])}
                   alt={`icon-${weather["data"]["days"][0]["icon"]}`}
                   title={`icon-${weather["data"]["days"][0]["icon"]}`}
-
                 />
               </div>
               <div class="flex w-full justify-evenly">
@@ -108,9 +125,14 @@ export const LocalWeatherStations = component$(({ data }: { data: any }) => {
                         src={iconURL(weather["data"]["days"][dayN]["icon"])}
                         alt={`icon-${weather["data"]["days"][dayN]["icon"]}`}
                         title={`icon-${weather["data"]["days"][dayN]["icon"]}`}
-
                       />
-                      <span class="">Thursday</span>
+                      <span class="">
+                        {
+                          formatDate(
+                            weather["data"]["days"][dayN]["datetime"],
+                          ).split(", ")[0]
+                        }
+                      </span>
                       <span class="font-[600]">
                         {weather["data"]["days"][dayN]["tempmax"]}°F
                       </span>
