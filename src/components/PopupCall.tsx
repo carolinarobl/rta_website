@@ -107,7 +107,7 @@ export const PopupCall = component$((
             ? ""
             : "rounded-full border-2 border-teal-500 p-1 px-7 shadow-md transition-all  hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white"
             }  bg-white  text-[15px] font-[600]  text-btn-green opacity-80 max-md:text-[14px] max-sm:text-[13px] `}
-          onClick$={() => (showModal.value = true)}
+          onClick$={() => {showModal.value = true}}
         >
           {text}
         </button>
