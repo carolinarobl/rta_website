@@ -6,7 +6,7 @@ export const AppreciationGiveaway = component$(({ data }: { data: any }) => {
 
   return <div class="h-[550px] w-full  flex flex-col items-center justify-center">
     {isLoading.value ?
-      <Spinner></Spinner>
+      <Spinner size="250px"></Spinner>
       : null}
     <iframe onLoad$={() => {
       isLoading.value = false
