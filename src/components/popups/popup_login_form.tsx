@@ -73,7 +73,7 @@ export const PopupLoginForm = component$(({ title, description, btnText, popup, 
                     <button class="py-2 w-full border-2 text-teal-500 px-4 bg-white font-bold border-teal-500 rounded-full hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white">
                         Go to portal
                     </button></a>
-                </div> : urlPortal == null && submitForm.isRunning == false && getData.value ? <p class="text-2xl text-secondary-red">Portal not found</p> : null
+                </div> : getData.value && !urlPortal && !submitForm.isRunning ? <p class="text-2xl text-secondary-red">{notFountText}</p> : null
                 : submitForm.isRunning ? <Spinner size="50px"></Spinner> : urlPortal != null ? <div class="flex flex-col items-center justify-center">
                     <p>{urlPortal['Location'].toString()}</p>
                     <a href={urlPortal['Phone']['Link'].toString()}>

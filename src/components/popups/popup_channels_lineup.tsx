@@ -1,5 +1,4 @@
 import { $, component$, useSignal } from "@builder.io/qwik";
-import { useLocation } from "@builder.io/qwik-city";
 import { setURL } from "~/data/constants";
 
 export const PopupChannelsLineup = component$(({ data, planId, channels }: { data: any, planId?: string, channels?: string }) => {
@@ -61,7 +60,7 @@ export const PopupChannelsLineup = component$(({ data, planId, channels }: { dat
     }))
 
     const slides = Array.from(uniqueCategories).map((category: any, key: any) => {
-        return <div key={key} class="grid grid-cols-3 py-4 xl:grid-cols-8 lg:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 gap-2 w-full">
+        return <div key={key} class="grid grid-cols-3 py-4 xl:grid-cols-8 lg:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 w-full gap-4">
             {category == "General"
                 ? channelsPack(data)
                 : category == "Sports" ? channelsPack(sportsChannels)
@@ -74,7 +73,7 @@ export const PopupChannelsLineup = component$(({ data, planId, channels }: { dat
     })
 
 
-    return <div class="h-full md:h-[500px] p-5 md:p-10 w-full md:w-3/4 rounded-3xl bg-blue-700">
+    return <div class="h-[800px] md:h-[500px] p-5 md:p-10 w-full md:w-3/4 rounded-3xl bg-blue-700">
         <div class="flex flex-col md:flex-row items-center justify-start md:justify-between">
             <h1 class="text-white font-semibold text-2xl md:text-4xl">{planId}</h1>
 
@@ -88,7 +87,7 @@ export const PopupChannelsLineup = component$(({ data, planId, channels }: { dat
                 })}>{category}</button>
             ))}
         </div>
-        <div class="flex h-3/4 w-full items-center justify-center p-6 bg-white rounded-b-3xl">
+        <div class="h-3/4 w-full flex items-center justify-center p-6 bg-white rounded-b-3xl">
             {Array.from(uniqueCategories).map((category1: any, key: any) => (
                 selectedTab.value == key ? (
                     <div key={key} class={`flex h-full py-4 w-full bg-white overflow-y-auto border-2 rounded-2xl border-primary-blue`}>

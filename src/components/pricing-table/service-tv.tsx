@@ -36,7 +36,7 @@ export const ServiceTv = component$(({
 }: Props) => {
 
   return (
-    <div class="justify-between min-h-[670px] w-[300px] items-center shadow-lg bg-white flex flex-col px-5 rounded-[35px]">
+    <div class="justify-between min-h-[670px] w-[300px] items-center shadow-lg bg-white flex flex-col px-5 pb-4 rounded-[35px]">
       <div class="items-center self-center flex w-[310px] max-w-full flex-col mt-8">
         <div class="items-start self-center flex w-full gap-5">
           <img

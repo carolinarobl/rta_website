@@ -56,6 +56,7 @@ export const PopupCall = component$((
     child=<PopupLoginForm title={isES?"Inicia sesión en el portal de tu zona":"Log into the portal of your area"}
     description={isES?"Simplemente ingrese su código postal.":"Just enter your Zip code."}
     btnText={isES?"Ir ahora":"Go Now"}
+    notFountText={isES?"Portal no encontrado":"Portal not found"}
     popup="login"></PopupLoginForm>
   }
   else if(link.includes(locationNumber)){
@@ -98,7 +99,7 @@ export const PopupCall = component$((
         </button>
       )}
 
-      {showModal.value && (
+      {/* {showModal.value && (
         <div role="dialog" aria-modal="true" tabIndex={-1} class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gray-700 p-6 bg-opacity-40 rounded-lg shadow-md">
           <div  class={` ${link.includes(configurator) ? "w-full h-full flex-row-reverse" : "w-fit"} animate-zoomIn flex flex-row`}>
           <div class="flex p-4 flex-wrap overflow-hidden items-center justify-center ">
@@ -107,7 +108,15 @@ export const PopupCall = component$((
           <button aria-label="Close popup" onClick$={() => showModal.value = false} class="bg-secondary-red flex items-center justify-center text-white p-4 rounded-full w-[30px] h-[30px] focus:outline-none z-[600]">X</button>
           </div>
         </div>
-      )}
+      )} */}
+      {showModal.value && (
+      <div class="fixed inset-0 z-50 flex flex-col items-end justify-center bg-blue-700 bg-opacity-40">
+        <button onClick$={() => showModal.value = false} class="bg-secondary-red text-white px-4 py-2 rounded-full">X</button>
+        <div class="flex p-8 flex-wrap overflow-hidden items-center justify-center w-full animate-zoomIn">
+          {child}
+        </div>
+      </div>
+    )}
     </div>
   )
 });
