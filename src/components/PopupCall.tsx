@@ -77,7 +77,7 @@ export const PopupCall = component$((
         (!(text?.includes("Check")) || !(text?.includes("Buscar"))) ? (
         <div
         onClick$={() => (showModal.value = true)}
-        class={`flex w-fit items-center justify-center rounded-full border-2 border-teal-500 border-opacity-70 bg-white p-0.5 px-1 text-btn-green opacity-90 shadow-md transition-all hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white transition ease-in-out delay-150`}
+        class={`flex w-fit items-center justify-center rounded-full border-2 border-teal-500 border-opacity-70 bg-white p-0.5 px-1 text-btn-green opacity-90 shadow-md transition-all hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white ease-in-out delay-150`}
       >
         <p class="mx-2 tracking-wide text-[15px] font-[600] max-md:text-[14px] min-sm:text-[13px] ">
           {text}
