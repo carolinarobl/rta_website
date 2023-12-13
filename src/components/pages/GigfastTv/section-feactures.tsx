@@ -10,12 +10,14 @@ export const SectionFeactures = component$(({ data }: { data: any }) => {
                         <Paragraph key={key} color="white" reverse={true} text={feature['Paragraph']}
                             image={feature['Media']['data']['attributes']}
                             title={feature['Title'] != null ? feature['Title'] : ""}
+                            textPercentage={50}
                             backgroundColor={"primary-blue"}></Paragraph>
                     </div>
                 </div>
             </div>
                 : <Paragraph key={key} reverse={false} text={feature['Paragraph']}
                     image={feature['Media']['data']['attributes']}
+                    textPercentage={50}
                     title={feature['Title'] != null ? feature['Title'] : ""}></Paragraph>)
 
         ))}

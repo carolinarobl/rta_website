@@ -1,4 +1,5 @@
 import { $, component$, useSignal } from "@builder.io/qwik";
+import { useLocation } from "@builder.io/qwik-city";
 import { setURL } from "~/data/constants";
 
 export const PopupChannelsLineup = component$(({ data, planId, channels }: { data: any, planId?: string, channels?: string }) => {
@@ -35,8 +36,8 @@ export const PopupChannelsLineup = component$(({ data, planId, channels }: { dat
     })
 
     const channelsPack = (data: any) => (data.map((channel: any, index: any) => {
-
-
+        include = false
+        commingSoon = false
         channel['attributes']['package_tvs']['data'].map((pack: any) => {
             if (pack['attributes']['package'].includes(IdPackage)) {
                 include = true;
@@ -60,7 +61,7 @@ export const PopupChannelsLineup = component$(({ data, planId, channels }: { dat
     }))
 
     const slides = Array.from(uniqueCategories).map((category: any, key: any) => {
-        return <div key={key} class="grid grid-cols-3 py-4 xl:grid-cols-8 lg:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 gap-2">
+        return <div key={key} class="grid grid-cols-3 py-4 xl:grid-cols-8 lg:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 gap-2 w-full">
             {category == "General"
                 ? channelsPack(data)
                 : category == "Sports" ? channelsPack(sportsChannels)
