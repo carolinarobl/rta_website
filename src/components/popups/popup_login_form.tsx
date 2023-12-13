@@ -1,5 +1,5 @@
 import { component$, useSignal } from "@builder.io/qwik";
-import { Form, globalAction$ } from "@builder.io/qwik-city";
+import { Form, globalAction$, useLocation } from "@builder.io/qwik-city";
 import { BsGeoAltFill } from "@qwikest/icons/bootstrap";
 import { loginPopupQuery } from "~/data/gql_queries/popups_queries/login_popup_query";
 import { getPageCustomData } from "~/services/graphql";
@@ -45,6 +45,8 @@ export const PopupLoginForm = component$(({ title, description, btnText, popup, 
     const submitForm = useSubmitFormTel()
     const urlPortal = submitForm.value
     const getData = useSignal(false);
+    const location = useLocation();
+    const isES = location.prevUrl?.pathname.includes("/es/");
 
 
     return <div class=" w-[600px] h-fit rounded-full p-8 flex flex-col gap-4 bg-blue-100 items-center justify-center z-[800]">
@@ -71,9 +73,9 @@ export const PopupLoginForm = component$(({ title, description, btnText, popup, 
                 <p>Portal found</p>
                 <a href={urlPortal.toString()}>
                     <button class="py-2 w-full border-2 text-teal-500 px-4 bg-white font-bold border-teal-500 rounded-full hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white">
-                        Go to portal
+                        {isES?"Ir al portal":"Go to portal"}
                     </button></a>
-                </div> : getData.value && !urlPortal && !submitForm.isRunning ? <p class="text-2xl text-secondary-red">{notFountText}</p> : null
+                </div> :urlPortal == null && submitForm.isRunning == false && getData.value ? <p class="text-2xl text-secondary-red">{isES?"Portal no encontrado":"Portal not found"}</p> : null
                 : submitForm.isRunning ? <Spinner size="50px"></Spinner> : urlPortal != null ? <div class="flex flex-col items-center justify-center">
                     <p>{urlPortal['Location'].toString()}</p>
                     <a href={urlPortal['Phone']['Link'].toString()}>
