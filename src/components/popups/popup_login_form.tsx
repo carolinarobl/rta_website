@@ -47,7 +47,7 @@ export const PopupLoginForm = component$(({ title, description, btnText, popup, 
     const getData = useSignal(false);
 
 
-    return <div class="w-1/2 h-fit rounded-full p-8 flex flex-col gap-4 bg-blue-100 items-center justify-center">
+    return <div class=" w-[600px] h-fit rounded-full p-8 flex flex-col gap-4 bg-blue-100 items-center justify-center z-[800]">
         <h1 class="text-center text-primary-blue font-bold text-4xl">{title}</h1>
         <p class="font-light">{description}</p>
         <Form class="w-full" action={submitForm} onSubmit$={() => { }}>

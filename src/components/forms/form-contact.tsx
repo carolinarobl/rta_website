@@ -7,7 +7,7 @@ import {
   BsTelephoneFill,
 } from "@qwikest/icons/bootstrap";
 
-export const FormSupport = component$(() => {
+export const FormContact = component$(({ templateID }: { templateID: any }) => {
   //   const handleSubmit = $();
 
   return (
@@ -108,7 +108,7 @@ export const FormSupport = component$(() => {
           onClick$={() => {
             const formData = new FormData(document.getElementById("s_form") as HTMLFormElement);
             const data = Object.fromEntries(formData);
-            data["template_id"] = "template_o9rn4rx";
+            data["template_id"] = templateID;
             console.log(data);
             fetch("/api/emailjs/", {
               method: "POST",
