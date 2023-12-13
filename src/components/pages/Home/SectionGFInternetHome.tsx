@@ -12,9 +12,9 @@ export const SectionGFInternetHome = component$(
     const mediaSrc = data["Media"]["data"]["attributes"]["url"];
     const mediaAlt = data["Media"]["data"]["attributes"]["alternativeText"];
     return (
-      <div class="mb-4 flex max-w-[1200px] items-center justify-center gap-4 self-center px-8 max-[800px]:flex-col">
+      <div class="mb-4 flex flex-row-reverse max-w-[1200px] items-center justify-center gap-4 self-center px-8 max-[800px]:flex-col-reverse">
         <div class="flex w-[300px] items-center justify-center self-center p-4 min-[800px]:w-[40%]">
-          <StrapiImage url={mediaSrc} width={1000} height={1000} alt={mediaAlt}/>
+          <StrapiImage url={mediaSrc} width={800} height={800} alt={mediaAlt}/>
         </div>
         <div class="flex flex-col items-center justify-center gap-4 min-[800px]:w-[60%]">
           <div class="max-w-[470px]">

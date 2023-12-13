@@ -106,7 +106,7 @@ export const FormSupport = component$(() => {
           type="button"
           class="w-full rounded-xl bg-secondary-red px-4 py-2 font-semibold text-white hover:bg-blue-600 focus:outline-none"
           onClick$={() => {
-            const formData = new FormData(document.getElementById("s_form"));
+            const formData = new FormData(document.getElementById("s_form") as HTMLFormElement);
             const data = Object.fromEntries(formData);
             data["template_id"] = "template_o9rn4rx";
             console.log(data);

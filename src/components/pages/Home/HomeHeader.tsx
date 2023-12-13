@@ -147,7 +147,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
           muted
         ></video>
         <div class="flex h-full w-full items-center justify-between max-[1000px]:flex-col-reverse max-[1000px]:px-4">
-          <HeroCarousel />
+          {/* <HeroCarousel /> */}
           <div class="relative flex w-[420px] flex-col items-center justify-center gap-5 rounded-bl-full rounded-tl-full bg-white bg-opacity-60 max-[1000px]:mb-8 max-[1000px]:w-full max-[1000px]:max-w-[420px] max-[1000px]:rounded-full max-[1000px]:py-8 min-[1000px]:h-[230px]">
             <div
               class={`absolute left-10 right-10 top-[90%] z-20 flex max-h-[200px] flex-col gap-3 overflow-y-auto rounded-xl bg-white p-6 text-primary-blue shadow-lg ${

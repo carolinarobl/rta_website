@@ -65,8 +65,8 @@ export const Navbar = component$(
                   title={
                     data["MainMenu"]["Logo"]["data"]["attributes"]["caption"]
                   }
-                  width={774}
-                  height={282}
+                  width={150}
+                  height={80}
                 />
               </ActionLink>
             </div>

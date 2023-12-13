@@ -1,4 +1,4 @@
-import { component$, useSignal, useTask$ } from "@builder.io/qwik";
+import { component$, useSignal } from "@builder.io/qwik";
 import { Form, globalAction$ } from "@builder.io/qwik-city";
 import { BsGeoAltFill } from "@qwikest/icons/bootstrap";
 import { loginPopupQuery } from "~/data/gql_queries/popups_queries/login_popup_query";
@@ -21,12 +21,12 @@ export const useSubmitFormZip = globalAction$(
 export const useSubmitFormTel = globalAction$(
     async (data) => {
         let tel = null;
-        let location = null;
+        // let location = null;
         const office = await getPageCustomData(telPopupQuery(data['zip-code'].toString()))
 
         if (office.pageData['data']['offices']['data'].length > 0) {
             tel = await office.pageData['data']['offices']['data'][0]['attributes']
-            location = await office.pageData['data']['offices']['data'][0]['attributes']
+            // location = await office.pageData['data']['offices']['data'][0]['attributes']
         }
 
         return tel
@@ -44,7 +44,7 @@ interface Props {
 export const PopupLoginForm = component$(({ title, description, btnText, popup, notFountText }: Props) => {
     const submitForm = useSubmitFormTel()
     const urlPortal = submitForm.value
-    let getData = useSignal(false);
+    const getData = useSignal(false);
 
 
     return <div class="w-1/2 h-fit rounded-full p-8 flex flex-col gap-4 bg-blue-100 items-center justify-center">
