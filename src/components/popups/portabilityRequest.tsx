@@ -8,6 +8,6 @@ export const PortabilityRequest = component$(({ link }: { link: string }) => {
         {
             isLoading.value ? <Spinner size="250px"></Spinner> : null
         }
-        <iframe onLoad$={() => { isLoading.value = false }} class="w-full h-full overflow-x-visible overflow-y-visible" src={link}></iframe>
+        <iframe id="portability-request" onLoad$={() => { isLoading.value = false }} class="w-full h-full overflow-x-visible overflow-y-visible" src={link}></iframe>
     </div>
 });

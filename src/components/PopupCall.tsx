@@ -5,7 +5,6 @@ import { PopupChannelsLineup } from "./popups/popup_channels_lineup";
 import { PopupLoginForm } from "./popups/popup_login_form";
 import { BsTagFill } from "@qwikest/icons/bootstrap";
 import { useLocation } from "@builder.io/qwik-city";
-import { PopupConfigurator } from "./popups/popup_configurator";
 
 export const PopupCall = component$(
   ({
@@ -88,54 +87,22 @@ export const PopupCall = component$(
 
     const showModal = useSignal(false);
 
-    // return (
-    //   <div class="relative flex">
-    //     {link.includes(configurator) &&
-    //     text.includes("Buy now" || "Comprar ahora") ? (
-    //       <div class="my-4 flex h-[80px] w-full cursor-pointer flex-col items-center justify-center">
-    //         <div class="border-gary-500 my-4 h-[1px] w-full border-t-2"></div>
-    //         <div
-    //           class="flex h-[50px] w-full flex-row items-center justify-center rounded-full border-2 border-teal-500 bg-transparent p-1 px-6 text-btn-green hover:bg-teal-500 hover:text-white"
-    //           onClick$={() => (showModal.value = true)}
-    //         >
-    //           <p class="mx-4 font-bold">{text}</p>
-    //           <div class="flex h-[25px] w-[25px] items-center justify-center rounded-full bg-teal-500 ">
-    //             <BsTagFill class="fill-white" />
-    //           </div>
-    //         </div>
-    //       </div>
-    //     ) : (
-    //       <button
-    //         class={`flex w-fit items-center justify-center gap-2 ${
-    //           link.includes(channelLineup)
-    //             ? ""
-    //             : "rounded-full border-2 border-teal-500 p-1 px-7 shadow-md transition-all  hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white"
-    //         }  bg-white  text-[15px] font-[600]  text-btn-green opacity-80 max-md:text-[14px] max-sm:text-[13px] `}
-    //         onClick$={() => {
-    //           showModal.value = true;
-    //         }}
-    //       >
-    //         {text}
-    //       </button>
-    //     )}
-
     return (
       <div class={`relative flex`}>
         {link.includes(configurator) &&
-        (text?.includes("Buy now") || text?.includes("Comprar ahora")) ? (
-          <div class="my-4 flex h-[80px] w-full cursor-pointer flex-col items-center justify-center">
-            <div class="border-gary-500 my-4 h-[1px] w-full border-t-2"></div>
-            <div
-              class="flex h-[50px] w-full flex-row items-center justify-center rounded-full border-2 border-teal-500 bg-transparent p-1 px-6 text-btn-green hover:bg-teal-500 hover:text-white"
-              onClick$={() => (showModal.value = true)}
-            >
-              <p class="mx-4 font-bold">{text}</p>
-              <div class="flex h-[25px] w-[25px] items-center justify-center rounded-full bg-teal-500 ">
-                <BsTagFill class="fill-white" />
-              </div>
+        (!text?.includes("Check") || !text.includes("Buscar")) ? (
+          <div
+            onClick$={() => (showModal.value = true)}
+            class={`flex w-fit items-center justify-center rounded-full border-2 border-teal-500 border-opacity-70 bg-white p-0.5 px-1 text-btn-green opacity-90 shadow-md transition-all delay-150 ease-in-out hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white`}
+          >
+            <p class="min-sm:text-[13px] mx-2 text-[15px] font-[600] tracking-wide max-md:text-[14px] ">
+              {text}
+            </p>
+            <div class="flex h-[25px] w-[25px] items-center justify-center rounded-full bg-teal-500 p-0 opacity-70 ">
+              <BsTagFill class="fill-white font-bold" />
             </div>
           </div>
-        ) : link.includes(login) ? (
+        ) : !hasStyle ? (
           <div onClick$={() => (showModal.value = true)}>
             <Slot />{" "}
           </div>
@@ -155,20 +122,14 @@ export const PopupCall = component$(
         )}
 
         {showModal.value && (
-          <div
-            role="dialog"
-            aria-modal="true"
-            tabIndex={-1}
-            class="fixed inset-0 z-50 flex flex-col items-end justify-center rounded-lg bg-gray-700 bg-opacity-40 p-6 shadow-md"
-          >
+          <div class="fixed inset-0 z-50 flex flex-col items-end justify-center bg-blue-700 bg-opacity-40">
             <button
-              aria-label="Close popup"
               onClick$={() => (showModal.value = false)}
-              class="flex h-[30px] w-[30px] items-center justify-center rounded-full bg-secondary-red p-4 text-white focus:outline-none"
+              class="rounded-full bg-secondary-red px-4 py-2 text-white"
             >
               X
             </button>
-            <div class="animate-zoomIn flex w-full flex-wrap items-center justify-center overflow-hidden p-4">
+            <div class="animate-zoomIn flex w-full flex-wrap items-center justify-center overflow-hidden p-8">
               {child}
             </div>
           </div>

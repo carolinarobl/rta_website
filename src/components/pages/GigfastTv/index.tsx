@@ -16,14 +16,14 @@ export const GigfastTv = component$(({ data }: { data: any}) => {
         <div class="flex flex-col my-6 items-center justify-center gap-4">
             <img src={setURL(pageData['Logo']['data']['attributes']['url'])} alt={pageData['Logo']['data']['attributes']['alternativeText']} title={pageData['Logo']['data']['attributes']['caption']}
                 height={200} width={500} />
-            <h2 class="text-[40px] font-semibold text-center text-primary-blue">{pageData['Titles'][0]['Text']}</h2>
-            <h2 class="text-[40px] font-semibold text-center text-secondary-red">{pageData['Titles'][1]['Text']}</h2>
+            <h2 class="text-[50px] font-bold text-center text-primary-blue">{pageData['Titles'][0]['Text']}</h2>
+            <h2 class="text-[50px] font-bold text-center text-secondary-red">{pageData['Titles'][1]['Text']}</h2>
         </div>
 
         <SectionFeactures data={pageData["Features"]}></SectionFeactures>
 
         <div class="flex flex-col text-center p-4 items-center justify-center my-8">
-            <h2 class="text-3xl md:text-5xl font-semibold text-primary-blue">{pageData['Feature']['Title']}</h2>
+            <h2 class="text-3xl md:text-5xl font-semibold text-primary-blue my-6">{pageData['Feature']['Title']}</h2>
             <Markdown text={pageData['Feature']['Paragraph']}></Markdown>
         </div>
 

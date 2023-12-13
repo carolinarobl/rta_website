@@ -8,7 +8,7 @@ export const AppreciationGiveaway = component$(({ data }: { data: any }) => {
     {isLoading.value ?
       <Spinner size="250px"></Spinner>
       : null}
-    <iframe onLoad$={() => {
+    <iframe id="iframe-appre-giveaway" onLoad$={() => {
       isLoading.value = false
     }} class="w-3/4 my-4 h-full rounded-3xl" src={data['iFrame_link']} loading="lazy"></iframe>
   </div>
