@@ -73,8 +73,6 @@ export const SectionOpenPositions = component$(({ data }: { data: any }) => {
             slides={positionsSlides}
             id={"carPositions"}
             hasArrows={true}
-            hasPagination={false}
-            slidesQty={3}
           />
         </div>
       </div>

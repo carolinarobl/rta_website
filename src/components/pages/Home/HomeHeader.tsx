@@ -73,7 +73,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
   ));
 
   const HeroCarousel = component$(
-    ({ isMobile = false }: { isMobile: boolean }) => {
+    ({ isMobile = false }: { isMobile?: boolean }) => {
       return (
         <div
           class={`flex h-[230px] items-center  justify-center overflow-hidden bg-white   ${
@@ -125,12 +125,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
             onClick$={handleModal}
             class="text-md absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-secondary-red text-white hover:cursor-pointer"
           />
-          {/* <span
-          onClick$={handleModal}
-          class="absolute right-2 top-2 flex h-8 w-8 items-center justify-center rounded-full bg-secondary-red text-lg text-white hover:cursor-pointer"
-        >
-          x
-        </span> */}
+        
           <iframe
             src={fullFrameSource.value}
             class="h-full w-full"

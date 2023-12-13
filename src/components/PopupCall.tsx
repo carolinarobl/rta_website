@@ -1,21 +1,21 @@
 import { Slot, component$, useSignal } from "@builder.io/qwik";
-import { FormCarrers } from "./forms/form-carrers";
 import { PortabilityRequest } from "./popups/portabilityRequest";
-import { FormSupport } from "./forms/form-support";
+import { FormContact } from "./forms/form-contact";
 import { PopupChannelsLineup } from "./popups/popup_channels_lineup";
 import { PopupLoginForm } from "./popups/popup_login_form";
 import { BsTagFill } from "@qwikest/icons/bootstrap";
 import { useLocation } from "@builder.io/qwik-city";
-// import { FormSupport } from "./forms/form-support";
+import { PopupConfigurator } from "./popups/popup_configurator";
 
 export const PopupCall = component$((
-  { link, dataChannels, planId, channels, text }:
+  { link, dataChannels, planId, channels, text, hasStyle= true}:
     {
       link: string,
       dataChannels?: any,
       planId?: string,
       channels?: string,
-      text?: string
+      text?: string,
+      hasStyle?: boolean
     }) => {
 
   const configurator = "=pConf=";
@@ -32,13 +32,13 @@ export const PopupCall = component$((
   let child = null
 
   if (link.includes(configurator)) {
-    // popupCall = configurator;
-    child = <FormCarrers />
-
-    // link = link.replaceAll(configurator, "");
-  } else if (link.includes(contactEmail)) {
+    const frameRoute = link.replace(configurator,"");
+    child = <PopupConfigurator route={frameRoute}/>
+  }
+   else if (link.includes(contactEmail)) {
     // popupCall = contactEmail;
-    child = <FormSupport />
+    const templateID = link.replace(contactEmail, "");
+    child = <FormContact templateID={templateID}/>
 
     // link = link.replaceAll(contactEmail, "");
   } else if (link.includes(iFrame)) {
@@ -70,54 +70,23 @@ export const PopupCall = component$((
 
   const showModal = useSignal(false);
 
-  // return (
-  //   <div class="relative flex">
-  //     {link.includes(configurator) &&
-  //     text.includes("Buy now" || "Comprar ahora") ? (
-  //       <div class="my-4 flex h-[80px] w-full cursor-pointer flex-col items-center justify-center">
-  //         <div class="border-gary-500 my-4 h-[1px] w-full border-t-2"></div>
-  //         <div
-  //           class="flex h-[50px] w-full flex-row items-center justify-center rounded-full border-2 border-teal-500 bg-transparent p-1 px-6 text-btn-green hover:bg-teal-500 hover:text-white"
-  //           onClick$={() => (showModal.value = true)}
-  //         >
-  //           <p class="mx-4 font-bold">{text}</p>
-  //           <div class="flex h-[25px] w-[25px] items-center justify-center rounded-full bg-teal-500 ">
-  //             <BsTagFill class="fill-white" />
-  //           </div>
-  //         </div>
-  //       </div>
-  //     ) : (
-  //       <button
-  //         class={`flex w-fit items-center justify-center gap-2 ${
-  //           link.includes(channelLineup)
-  //             ? ""
-  //             : "rounded-full border-2 border-teal-500 p-1 px-7 shadow-md transition-all  hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white"
-  //         }  bg-white  text-[15px] font-[600]  text-btn-green opacity-80 max-md:text-[14px] max-sm:text-[13px] `}
-  //         onClick$={() => {
-  //           showModal.value = true;
-  //         }}
-  //       >
-  //         {text}
-  //       </button>
-  //     )}
-
   return (
     <div class={`relative flex`}>
       {link.includes(configurator) &&
-        (text?.includes("Buy now") || text?.includes("Comprar ahora")) ? (
-        <div class="my-4 flex h-[80px] w-full cursor-pointer flex-col items-center justify-center">
-          <div class="border-gary-500 my-4 h-[1px] w-full border-t-2"></div>
-          <div
-            class="flex h-[50px] w-full flex-row items-center justify-center rounded-full border-2 border-teal-500 bg-transparent p-1 px-6 text-btn-green hover:bg-teal-500 hover:text-white"
-            onClick$={() => (showModal.value = true)}
-          >
-            <p class="mx-4 font-bold">{text}</p>
-            <div class="flex h-[25px] w-[25px] items-center justify-center rounded-full bg-teal-500 ">
-              <BsTagFill class="fill-white" />
-            </div>
-          </div>
+        (!(text?.includes("Check")) || !(text?.includes("Buscar"))) ? (
+        <div
+        onClick$={() => (showModal.value = true)}
+        class={`flex w-fit items-center justify-center rounded-full border-2 border-teal-500 border-opacity-70 bg-white p-0.5 px-1 text-btn-green opacity-90 shadow-md transition-all hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white transition ease-in-out delay-150`}
+      >
+        <p class="mx-2 tracking-wide text-[15px] font-[600] max-md:text-[14px] min-sm:text-[13px] ">
+          {text}
+        </p>
+        <div class="flex h-[25px] w-[25px] items-center p-0 justify-center rounded-full opacity-70 bg-teal-500 ">
+          <BsTagFill class="fill-white font-bold" />
         </div>
-      ) : link.includes(login)? <div onClick$={() => (showModal.value = true)}><Slot/> </div>:(
+      </div>
+      ) : !hasStyle ? <div onClick$={() => (showModal.value = true)}><Slot/> </div>:
+      (
         <button
           class={`flex w-fit items-center justify-center gap-2 ${link.includes(channelLineup)
             ? ""
@@ -130,10 +99,12 @@ export const PopupCall = component$((
       )}
 
       {showModal.value && (
-        <div role="dialog" aria-modal="true" tabIndex={-1} class="fixed inset-0 z-50 flex flex-col items-end justify-center bg-gray-700 p-6 bg-opacity-40 rounded-lg shadow-md">
-          <button aria-label="Close popup" onClick$={() => showModal.value = false} class="bg-secondary-red flex items-center justify-center text-white p-4 rounded-full w-[30px] h-[30px] focus:outline-none">X</button>
-          <div class="flex p-4 flex-wrap overflow-hidden items-center justify-center w-full animate-zoomIn">
+        <div role="dialog" aria-modal="true" tabIndex={-1} class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-gray-700 p-6 bg-opacity-40 rounded-lg shadow-md">
+          <div  class={` ${link.includes(configurator) ? "w-full h-full flex-row-reverse" : "w-fit"} animate-zoomIn flex flex-row`}>
+          <div class="flex p-4 flex-wrap overflow-hidden items-center justify-center ">
             {child}
+          </div>
+          <button aria-label="Close popup" onClick$={() => showModal.value = false} class="bg-secondary-red flex items-center justify-center text-white p-4 rounded-full w-[30px] h-[30px] focus:outline-none z-[600]">X</button>
           </div>
         </div>
       )}
