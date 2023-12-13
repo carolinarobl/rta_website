@@ -1,4 +1,4 @@
-import { component$, useSignal, $ } from "@builder.io/qwik";
+import { component$, useSignal, $, useVisibleTask$ } from "@builder.io/qwik";
 import { FaXmarkSolid, FaLocationPinSolid } from "@qwikest/icons/font-awesome";
 import { Button } from "~/components/Button";
 import Carousel from "~/components/Carousel";
@@ -26,6 +26,16 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
   const suggStatus = useSignal<"none" | "notfound" | "success" | "selected">(
     "none",
   );
+
+  const screenW = useSignal<number>(1000);
+
+  useVisibleTask$(() => {
+    screenW.value = window.innerWidth;
+
+    window.addEventListener("resize", () => {
+      screenW.value = window.innerWidth;
+    });
+  });
 
   const handleModal = $((): void => {
     modalIsOpen.value = !modalIsOpen.value;
@@ -125,7 +135,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
             onClick$={handleModal}
             class="text-md absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-secondary-red text-white hover:cursor-pointer"
           />
-        
+
           <iframe
             src={fullFrameSource.value}
             class="h-full w-full"
@@ -136,7 +146,11 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
         {/* {modalIsOpen.value && "aaaaaaaaaa"} */}
         <video
           class="absolute left-0 top-0 -z-10 h-full w-full object-cover"
-          src={setURL(data["VideoBGDesktop"]["data"]["attributes"]["url"])}
+          src={setURL(
+            data[
+              `${screenW.value <= 800 ? "VideoBGMobile" : "VideoBGDesktop"}`
+            ]["data"]["attributes"]["url"],
+          )}
           autoPlay
           loop
           muted
