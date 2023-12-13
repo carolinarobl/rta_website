@@ -4,7 +4,7 @@ export const Modal = component$(
   ({ showSignal }: { showSignal: Signal<boolean> }) => {
     return (
       <div
-        class={`fixed inset-0 z-[500] flex items-center justify-center bg-primary-dark-blue bg-opacity-20 transition-all duration-300 ${
+        class={`fixed left-0 right-0 top-0 z-[500] flex h-screen items-center justify-center bg-primary-dark-blue bg-opacity-20 transition-all duration-300 ${
           showSignal.value ? "" : "hidden"
         }`}
       >
