@@ -9,7 +9,7 @@ export const MainLayout = component$(
     const mobMenuOpen = useSignal(false);
     return (
       <div
-        class={`relative overflow-x-hidden transition-all duration-500 ${
+        class={`relative overflow-hidden transition-all duration-500 ${
           mobMenuOpen.value ? "overflow-y-hidden" : "z-50"
         }`}
         style={mobMenuOpen.value ? { perspective: "9000px" } : {}}
