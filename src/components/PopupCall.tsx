@@ -23,25 +23,24 @@ export const PopupCall = component$(
     text?: string;
     hasStyle?: boolean;
   }) => {
+    const configurator = "=pConf=";
+    const login = "=pLogin";
+    const contactEmail = "=pContactEmail=";
+    const iFrame = "=pIFrame=";
+    const channelLineup = "=pChannelLineup=";
+    const locationNumber = "=pOfficeCall";
+
     const location = useLocation();
     const isES = location.prevUrl?.pathname.includes("/es/");
 
     // var popupCall = link;
     let child = null;
 
-    if (link.includes(configurator)) {
-      // popupCall = configurator;
-      child = <FormCarrers />;
-
-      // link = link.replaceAll(configurator, "");
-    } else if (link.includes(contactEmail)) {
-      // popupCall = contactEmail;
-      child = <FormSupport />;
-
-      // link = link.replaceAll(contactEmail, "");
-    } else if (link.includes(iFrame)) {
+    if (link.includes(iFrame)) {
       const linkClean = link.replaceAll(iFrame, "");
       child = <PortabilityRequest link={linkClean} />;
+    } else if (link.includes(contactEmail)) {
+      child = <FormContact templateID={link.split("=")[2]} />;
     } else if (link.includes(channelLineup)) {
       child = (
         <PopupChannelsLineup
