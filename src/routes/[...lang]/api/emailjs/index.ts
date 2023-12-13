@@ -1,7 +1,7 @@
 import type { RequestHandler } from "@builder.io/qwik-city";
 
 export const onPost: RequestHandler = async (request) => {
-  const body = await request.parseBody();
+  const body = await request.parseBody() as any;
   const url = "https://api.emailjs.com/api/v1.0/email/send/";
   console.log(body);
 

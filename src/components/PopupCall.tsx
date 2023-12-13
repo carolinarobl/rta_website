@@ -1,12 +1,11 @@
 import { Slot, component$, useSignal } from "@builder.io/qwik";
-import { FormCarrers } from "./forms/form-carrers";
 import { PortabilityRequest } from "./popups/portabilityRequest";
-import { FormSupport } from "./forms/form-support";
+import { FormContact } from "./forms/form-contact";
 import { PopupChannelsLineup } from "./popups/popup_channels_lineup";
 import { PopupLoginForm } from "./popups/popup_login_form";
 import { BsTagFill } from "@qwikest/icons/bootstrap";
 import { useLocation } from "@builder.io/qwik-city";
-// import { FormSupport } from "./forms/form-support";
+import { PopupConfigurator } from "./popups/popup_configurator";
 
 export const PopupCall = component$(
   ({
@@ -15,20 +14,15 @@ export const PopupCall = component$(
     planId,
     channels,
     text,
+    hasStyle = true,
   }: {
     link: string;
     dataChannels?: any;
     planId?: string;
     channels?: string;
     text?: string;
+    hasStyle?: boolean;
   }) => {
-    const configurator = "=pConf=";
-    const login = "=pLogin";
-    const contactEmail = "=pContactEmail=";
-    const iFrame = "=pIFrame=";
-    const channelLineup = "=pChannelLineup=";
-    const locationNumber = "=pOfficeCall";
-
     const location = useLocation();
     const isES = location.prevUrl?.pathname.includes("/es/");
 

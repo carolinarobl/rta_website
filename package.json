@@ -54,6 +54,7 @@
     "@modular-forms/qwik": "^0.21.0",
     "@qwikest/icons": "^0.0.13",
     "@splidejs/splide": "^4.1.4",
+    "esbuild": "^0.19.9",
     "marked": "^9.1.5",
     "motion": "^10.16.2",
     "qwik-speak": "^0.16.0",

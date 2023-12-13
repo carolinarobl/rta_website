@@ -11,15 +11,8 @@ export const Navbar = component$(
       <div class="sticky top-0 z-30 shadow-[0_5px_40px_-25px_rgba(0,0,0,0.2)]">
         <div class="flex h-[28px] flex-row items-center justify-end gap-4 bg-primary-blue px-5 py-[4px] text-[12px] font-bold text-white max-sm:justify-evenly max-sm:text-[10px] max-sm:font-normal max-[400px]:text-[9px]">
           {data["TopOptions"].map((e: any, i: any) => {
-            // TEMP FIX
-            // TEMP FIX
-            // TEMP FIX
-            if (e["Link"].includes("=p")) {
-              e["Link"] = "";
-            }
-
             return (
-              <ActionLink key={i} link={e["Link"]}>
+              <ActionLink key={i} link={e["Link"]} hasStyle={false} text={e["Text"]} >
                 <div class="flex flex-row items-center gap-2">
                   <div class="w-[12px]">
                     <StrapiImage
@@ -65,8 +58,8 @@ export const Navbar = component$(
                   title={
                     data["MainMenu"]["Logo"]["data"]["attributes"]["caption"]
                   }
-                  width={774}
-                  height={282}
+                  width={150}
+                  height={80}
                 />
               </ActionLink>
             </div>
@@ -82,7 +75,7 @@ export const Navbar = component$(
               return (
                 <div key={i} class="text-[15px] font-bold text-primary-blue ">
                   {!hasSubOptions ? (
-                    <ActionLink classN="text-primary-blue" link={e["Link"]}>
+                    <ActionLink classN="text-primary-blue" link={e["Link"]} hasStyle={false}>
                       {e["Text"]}
                     </ActionLink>
                   ) : (
@@ -98,6 +91,7 @@ export const Navbar = component$(
                               classN="text-primary-blue"
                               key={i}
                               link={el["Link"]}
+                              hasStyle={false}
                             >
                               {el["Text"]}
                             </ActionLink>

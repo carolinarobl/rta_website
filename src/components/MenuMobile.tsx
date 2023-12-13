@@ -58,7 +58,7 @@ export const MenuMobile = component$(({ data }: { data: any }) => {
                           {el["Text"]}
                         </div>
                       ) : (
-                        <ActionLink key={i} link={el["Link"]}>
+                        <ActionLink key={i} link={el["Link"]} hasStyle={false}>
                           {el["Text"]}
                         </ActionLink>
                       )
@@ -68,7 +68,11 @@ export const MenuMobile = component$(({ data }: { data: any }) => {
                           {subOpt["attributes"]["SubOption"].map(
                             (sub: any, i: number) => {
                               return (
-                                <ActionLink key={i} link={sub["Link"]}>
+                                <ActionLink
+                                  key={i}
+                                  link={sub["Link"]}
+                                  hasStyle={false}
+                                >
                                   {sub["Text"]}
                                 </ActionLink>
                               );

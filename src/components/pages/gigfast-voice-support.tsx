@@ -35,6 +35,7 @@ export const GigfastVoiceSupport = component$(({ data }: { data: any }) => {
             <Paragraph title={secctionPort['Title']} text={secctionPort['Paragraph']}
                 logo={secctionPort['Logo']['data']['attributes']}
                 image={secctionPort['Media']['data']['attributes']}
+                backgroundColor="transparent"
                 buttons={secctionPort['Buttons']}></Paragraph>
         </div>
     </div>
