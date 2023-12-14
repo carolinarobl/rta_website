@@ -9,14 +9,14 @@ export const MainLayout = component$(
     const mobMenuOpen = useSignal(false);
     return (
       <div
-        class={`relative overflow-x-hidden transition-all duration-500 ${
-          mobMenuOpen.value ? "overflow-y-hidden" : ""
+        class={`relative overflow-hidden transition-all duration-500 ${
+          mobMenuOpen.value ? "overflow-y-hidden" : "z-50"
         }`}
         style={mobMenuOpen.value ? { perspective: "9000px" } : {}}
       >
         <div
-          class={`absolute inset-0 -z-[200] bg-gradient-to-l from-[#2e599a] to-[#182d4d] ${
-            mobMenuOpen.value ? "overflow-y-hidden" : ""
+          class={`absolute inset-0 bg-gradient-to-l from-[#2e599a] to-[#182d4d] ${
+            mobMenuOpen.value ? "overflow-y-hidden" : "z-50"
           }`}
         >
           <MenuMobile
@@ -25,7 +25,7 @@ export const MainLayout = component$(
         </div>
         <div
           class={`relative transition-all duration-500 ${
-            mobMenuOpen.value ? "overflow-y-hidden" : ""
+            mobMenuOpen.value ? "overflow-y-hidden" : "z-50"
           }`}
           style={
             mobMenuOpen.value

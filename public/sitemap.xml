@@ -66,10 +66,10 @@
         <loc>https://website42.rtatel.com/gigfast-tv-support/</loc>
         <priority>0.80</priority>
     </url>
-    <url>
+    <!-- <url>
         <loc>https://website42.rtatel.com/gfsn/</loc>
         <priority>0.80</priority>
-    </url>
+    </url> -->
     <url>
         <loc>https://website42.rtatel.com/portability/</loc>
         <priority>0.80</priority>
@@ -86,10 +86,10 @@
         <loc>https://website42.rtatel.com/testimonials/</loc>
         <priority>0.80</priority>
     </url>
-    <url>
+    <!-- <url>
         <loc>https://website42.rtatel.com/zane-smith-sponsorship/</loc>
         <priority>0.80</priority>
-    </url>
+    </url> -->
     <url>
         <loc>https://website42.rtatel.com/referral-program/</loc>
         <priority>0.70</priority>
@@ -226,10 +226,10 @@
         <loc>https://website42.rtatel.com/es/gigfast-tv-support/</loc>
         <priority>0.80</priority>
     </url>
-    <url>
+    <!-- <url>
         <loc>https://website42.rtatel.com/es/gfsn/</loc>
         <priority>0.80</priority>
-    </url>
+    </url> -->
     <url>
         <loc>https://website42.rtatel.com/es/portability/</loc>
         <priority>0.80</priority>
@@ -246,10 +246,10 @@
         <loc>https://website42.rtatel.com/es/testimonials/</loc>
         <priority>0.80</priority>
     </url>
-    <url>
+    <!-- <url>
         <loc>https://website42.rtatel.com/es/zane-smith-sponsorship/</loc>
         <priority>0.80</priority>
-    </url>
+    </url> -->
     <url>
         <loc>https://website42.rtatel.com/es/referral-program/</loc>
         <priority>0.70</priority>
@@ -2314,7 +2314,7 @@
         <loc>https://website42.rtatel.com/es/how-internet-access-is-revolutionizing-rural-medicine/</loc>
         <priority>0.85</priority>
     </url>
-    <url>
+    <!-- <url>
         <loc>https://website42.rtatel.com/es/guide-to-bridging-the-internet-divide-in-underserved-areas/</loc>
         <priority>0.85</priority>
     </url>
@@ -2361,28 +2361,28 @@
     <url>
         <loc>https://website42.rtatel.com/es/a-breakdown-of-different-types-of-internet-packages-and-pricing-plans/</loc>
         <priority>0.85</priority>
-    </url>
+    </url> -->
     <url>
         <loc>https://website42.rtatel.com/es/zane-smith-and-the-no-38-rta-gig-fast-internet-ford-f-150-team-kansas-speedway-competition-notes/</loc>
         <priority>0.85</priority>
     </url>
-    <url>
+    <!-- <url>
         <loc>https://website42.rtatel.com/es/internet-traffic-trends-analyzing-the-growth-and-future-projections/</loc>
         <priority>0.85</priority>
     </url>
     <url>
         <loc>https://website42.rtatel.com/es/the-ultimate-tv-experience-pause-live-tv-and-never-miss-a-moment/</loc>
         <priority>0.85</priority>
-    </url>
-    <url>
+    </url> -->
+    <!-- <url>
         <loc>https://website42.rtatel.com/es/the-evolution-of-tv-services-from-cable-boxes-to-streaming-platforms/</loc>
         <priority>0.85</priority>
-    </url>
+    </url> -->
     <url>
         <loc>https://website42.rtatel.com/es/front-row-motorsports-and-zane-smith-ready-to-conquer-kansas-speedway/</loc>
         <priority>0.85</priority>
     </url>
-    <url>
+    <!-- <url>
         <loc>https://website42.rtatel.com/es/mastering-simultaneous-streaming-with-your-tv-service/</loc>
         <priority>0.85</priority>
     </url>
@@ -2461,7 +2461,7 @@
     <url>
         <loc>https://website42.rtatel.com/es/empowering-employees-strategies-for-a-motivated-and-productive-workforce/</loc>
         <priority>0.85</priority>
-    </url>
+    </url> -->
     <!-- END | POSTS (SPANISH) -->
     <!-- END | POSTS (SPANISH) -->
 </urlset>

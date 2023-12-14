@@ -1,5 +1,6 @@
-import { component$, useSignal, $ } from "@builder.io/qwik";
-import { FaXmarkSolid, FaLocationPinSolid } from "@qwikest/icons/font-awesome";
+import { component$, useSignal, $, useVisibleTask$ } from "@builder.io/qwik";
+import { BsHouseFill } from "@qwikest/icons/bootstrap";
+import {  FaLocationPinSolid } from "@qwikest/icons/font-awesome";
 import { Button } from "~/components/Button";
 import Carousel from "~/components/Carousel";
 import { Markdown } from "~/components/Markdown";
@@ -26,6 +27,16 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
   const suggStatus = useSignal<"none" | "notfound" | "success" | "selected">(
     "none",
   );
+
+  const screenW = useSignal<number>(1000);
+
+  useVisibleTask$(() => {
+    screenW.value = window.innerWidth;
+
+    window.addEventListener("resize", () => {
+      screenW.value = window.innerWidth;
+    });
+  });
 
   const handleModal = $((): void => {
     modalIsOpen.value = !modalIsOpen.value;
@@ -121,22 +132,28 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
             modalIsOpen.value ? "0 z-[200]" : "[100vh] -z-[200]"
           }  transition-all duration-1000 ease-in-out`}
         >
-          <FaXmarkSolid
+          {/* <FaXmarkSolid
             onClick$={handleModal}
             class="text-md absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-secondary-red text-white hover:cursor-pointer"
-          />
+          /> */}
         
+          <button aria-label="Close popup" onClick$={handleModal} class={`absolute right-2  mt-2 mx-0" bg-secondary-red flex items-center justify-center text-white rounded-full h-[30px] focus:outline-none z-[600]`} ><div class="px-3 flex flex-row items-center text-xs gap-2">Back to site <BsHouseFill/></div></button>
           <iframe
             src={fullFrameSource.value}
             class="h-full w-full"
             frameBorder="0"
           ></iframe>
+      
         </div>
         {/* MODAL */}
         {/* {modalIsOpen.value && "aaaaaaaaaa"} */}
         <video
           class="absolute left-0 top-0 -z-10 h-full w-full object-cover"
-          src={setURL(data["VideoBGDesktop"]["data"]["attributes"]["url"])}
+          src={setURL(
+            data[
+              `${screenW.value <= 800 ? "VideoBGMobile" : "VideoBGDesktop"}`
+            ]["data"]["attributes"]["url"],
+          )}
           autoPlay
           loop
           muted
