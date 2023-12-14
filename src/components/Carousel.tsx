@@ -15,6 +15,7 @@ export default component$(
     hasArrows = true,
     direction = "ltr",
     addSpace = true,
+    fillSlide=false,
     id,
   } // bgColor = "transparent",
   : {
@@ -25,6 +26,7 @@ export default component$(
     hasArrows?: boolean;
     direction?: string;
     addSpace?: boolean;
+    fillSlide?:boolean;
     id?: string;
     // bgColor?: string;
   }) => {
@@ -107,7 +109,7 @@ export default component$(
                   key={index}
                 >
                   <div
-                    class={` flex items-center object-center ${
+                    class={`${fillSlide?"w-full h-full object-cover":"object-center"} flex items-center  ${
                       addSpace ? "mx-10" : ""
                     }  justify-center`}
                   >
