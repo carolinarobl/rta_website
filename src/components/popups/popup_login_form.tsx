@@ -47,7 +47,7 @@ interface Props {
 
 export const PopupLoginForm = component$(
   ({ title, description, btnText, popup, notFountText }: Props) => {
-    const submitForm = useSubmitFormTel();
+    const submitForm = useSubmitFormZip();
     const urlPortal = submitForm.value;
     const getData = useSignal(false);
     const location = useLocation();

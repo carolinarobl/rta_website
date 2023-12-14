@@ -238,3 +238,8 @@ body {
 .splide__pagination__page.is-active {
   background-color: var(--color-tertiary) !important;
 }
+
+input, textarea {
+  color: var(--color-primary) !important;
+  font-weight: 400;
+}

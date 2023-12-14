@@ -3,8 +3,9 @@ import { PortabilityRequest } from "./popups/portabilityRequest";
 import { FormContact } from "./forms/form-contact";
 import { PopupChannelsLineup } from "./popups/popup_channels_lineup";
 import { PopupLoginForm } from "./popups/popup_login_form";
-import { BsTagFill } from "@qwikest/icons/bootstrap";
+import { BsHouseFill, BsTagFill, BsXLg } from "@qwikest/icons/bootstrap";
 import { useLocation } from "@builder.io/qwik-city";
+import { PopupConfigurator } from "./popups/popup_configurator";
 
 export const PopupCall = component$(
   ({
@@ -35,7 +36,11 @@ export const PopupCall = component$(
     // var popupCall = link;
     let child = null;
 
-    if (link.includes(iFrame)) {
+    if (link.includes(configurator)) {
+      const frameRoute = link.replace(configurator,"");
+      child = <PopupConfigurator route={frameRoute}/>
+    }
+    else if (link.includes(iFrame)) {
       const linkClean = link.replaceAll(iFrame, "");
       child = <PortabilityRequest link={linkClean} />;
     } else if (link.includes(contactEmail)) {
@@ -122,16 +127,13 @@ export const PopupCall = component$(
         )}
 
         {showModal.value && (
-          <div class="fixed inset-0 z-50 flex flex-col items-end justify-center bg-blue-700 bg-opacity-40">
-            <button
-              onClick$={() => (showModal.value = false)}
-              class="rounded-full bg-secondary-red px-4 py-2 text-white"
-            >
-              X
-            </button>
-            <div class="animate-zoomIn flex w-full flex-wrap items-center justify-center overflow-hidden p-8">
-              {child}
-            </div>
+          <div class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black bg-opacity-40">
+            <div  class={` ${link.includes(configurator) ? "w-full h-full flex-row-reverse " : "flex-col-reverse md:flex-row w-fit"} animate-zoomIn flex `}>
+          <div class="flex p-4 flex-wrap overflow-hidden items-center justify-center ">
+            {child}
+          </div>
+          <button aria-label="Close popup" onClick$={() => showModal.value = false} class={`${link.includes(configurator) ? "mt-2 mx-0" : "w-[30px] p-4"} bg-secondary-red flex items-center justify-center text-white rounded-full h-[30px] focus:outline-none z-[600]`} >{link.includes(configurator) ? <div class="px-3 flex flex-row items-center text-xs gap-2">Back to site <BsHouseFill/></div>:<div><BsXLg/></div>}</button>
+          </div>
           </div>
         )}
       </div>
