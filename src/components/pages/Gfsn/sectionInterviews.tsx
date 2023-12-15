@@ -1,4 +1,4 @@
-import { component$, useSignal } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import Carousel from "~/components/Carousel";
 import { setURL } from "~/data/constants";
 import { StrapiImage } from "~/components/StrapiImage";
