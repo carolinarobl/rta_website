@@ -17,9 +17,8 @@ export const SectionFeatInterview = component$(({ data }: { data: any }) => {
                 </a>
             </div>
         </div>
-        <div>
-            <iframe width="560" height="315" src={data['FeatVideo']} title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
-
+        <div class="p-8">
+            <iframe class="rounded-2xl" width="560" height="315" src={data['FeatVideo']} title="YouTube video player" frameBorder={0} allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowFullScreen></iframe>
         </div>
     </div>
 });
