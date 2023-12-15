@@ -1,6 +1,8 @@
 import { component$ } from "@builder.io/qwik";
 import { SerializedParagraph } from "~/components/Paragraph";
 import { SectionSportsUpdates } from "./SectionSportsUpdates";
+import { SectionFeatInterview } from "./SectionFeatInterview";
+import { SectionInterviews } from "./sectionInterviews";
 
 export const GfSportsNetwork = component$(({ data }: { data: any }) => {
 
@@ -13,5 +15,8 @@ export const GfSportsNetwork = component$(({ data }: { data: any }) => {
             reverse={true}
         />
         <SectionSportsUpdates title={data['UpdatesTitle']} carouselData={carouselSportsData}/>
+        <SectionFeatInterview data={data}></SectionFeatInterview>
+
+        <SectionInterviews data={data['Interviews']}></SectionInterviews>
     </div>
 });
