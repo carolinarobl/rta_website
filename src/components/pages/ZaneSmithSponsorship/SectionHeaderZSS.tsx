@@ -133,11 +133,10 @@ export const SectionHeaderZSS = component$(({ data }: { data: any }) => {
               />
             </section>
             <a
-              href={data["HeaderButtons"][0]["Link"]}
-              target="_blank"
+              href={data["HeaderButtons"][1]["Link"]}
               class="mt-8 w-full rounded-full border-[6px] border-[#e7758f] bg-secondary-red px-8 py-1 text-center text-[14px] font-[600] leading-[18px] text-white shadow-lg"
             >
-              {data["HeaderButtons"][0]["Text"]}
+              {data["HeaderButtons"][1]["Text"]}
             </a>
           </div>
         </div>

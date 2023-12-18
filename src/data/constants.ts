@@ -1,6 +1,6 @@
 import { type DocumentHeadValue } from "@builder.io/qwik-city";
 
-export const strapiURL = "https://strapi42.rtatel.com";
+export const strapiURL = "https://strapi.rtatel.com";
 // Strapi por dominio
 // export const strapiURL = "https://strapi.rtatel.com";
 // Strapi por ip interna
