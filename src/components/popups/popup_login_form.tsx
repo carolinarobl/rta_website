@@ -87,7 +87,7 @@ export const PopupLoginForm = component$(
             </button>
           </div>
         </Form>
-        {popup == "login" ? (
+        {/* {popup == "login" ? (
           submitForm.isRunning ? (
             <Spinner size="50px"></Spinner>
           ) : urlPortal != null ? (
@@ -121,7 +121,48 @@ export const PopupLoginForm = component$(
           submitForm.isRunning == false &&
           getData.value ? (
           <p class="text-xs text-primary-blue">{notFountText}</p>
-        ) : null}
+        ) : null} */}
+
+        {popup === "login" && submitForm.isRunning && (
+  <Spinner size="50px"></Spinner>
+)}
+
+{popup === "login" && !submitForm.isRunning && urlPortal != null && (
+  <div class="flex flex-col items-center justify-center">
+    <p>Portal found</p>
+    <a href={urlPortal.toString()}>
+      <button class="w-full rounded-full border-2 border-teal-500 bg-white px-4 py-2 font-bold text-teal-500 hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white">
+        {isES ? "Ir al portal" : "Go to portal"}
+      </button>
+    </a>
+  </div>
+)}
+
+{popup === "login" && !submitForm.isRunning && urlPortal == null && getData.value && (
+  <p class="text-2xl text-secondary-red">
+    {isES ? "Portal no encontrado" : "Portal not found"}
+  </p>
+)}
+
+{popup !== "login" && submitForm.isRunning && (
+  <Spinner size="50px"></Spinner>
+)}
+
+{popup !== "login" && !submitForm.isRunning && urlPortal != null && (
+  <div class="flex flex-col items-center justify-center">
+    <p>{urlPortal["Location"].toString()}</p>
+    <a href={urlPortal["Phone"]["Link"].toString()}>
+      <button class="w-full rounded-full border-2 border-teal-500 bg-white px-4 py-2 font-bold text-teal-500 hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white">
+        {urlPortal["Phone"]["Text"]}
+      </button>
+    </a>
+  </div>
+)}
+
+{popup !== "login" && !submitForm.isRunning && urlPortal == null && getData.value && (
+  <p class="text-xs text-primary-blue">{notFountText}</p>
+)}
+
       </div>
     );
   },

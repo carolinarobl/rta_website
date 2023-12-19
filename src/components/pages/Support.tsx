@@ -26,7 +26,7 @@ export const Support = component$(({ data }: { data: any }) => {
                         </div>
                     ))}
                     {section['attributes']['BoxContent'].map((box: any, index: any) => (
-                        <div key={index} class="h-[250px] my-4 w-full flex flex-col gap-5 justify-start items-center rounded-2xl shadow-xl">
+                        <div key={index} class="min-h-[250px] my-4 w-full flex flex-col gap-5 justify-start items-center py-4 rounded-2xl shadow-xl">
                             <div class={`w-full flex justify-center py-2 items-center rounded-t-2xl ${i % 2 == 0 ? "bg-primary-blue" : "bg-secondary-red"}`}>
                                 <h2 class="text-center text-2xl text-white font-semibold">{box['Title']}</h2>
                             </div>
