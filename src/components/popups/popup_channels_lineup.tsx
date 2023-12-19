@@ -4,77 +4,51 @@ import { setURL } from "~/data/constants";
 export const PopupChannelsLineup = component$(({ data, planId, channels }: { data: any, planId?: string, channels?: string }) => {
     const uniqueCategories = new Set(data.map((pack: any) => pack['attributes']['Category']));
 
-    const sportsChannels: Array<any> = []
-    const moviesChannels: Array<any> = []
-    const newsChannels: Array<any> = []
-    const musicChannels: Array<any> = []
-    const kidsChannels: Array<any> = []
+    const sportsChannels = data.filter((channel: any) => channel['attributes']['Category'] === "Sports");
+    const moviesChannels = data.filter((channel: any) => channel['attributes']['Category'] === "Movies");
+    const newsChannels = data.filter((channel: any) => channel['attributes']['Category'] === "News");
+    const musicChannels = data.filter((channel: any) => channel['attributes']['Category'] === "Music");
+    const kidsChannels = data.filter((channel: any) => channel['attributes']['Category'] === "Kids");
+
 
     const IdPackage = planId?.slice(0, 2)
-
-
-
     const selectedTab = useSignal(0);
-    let include = false;
-    let commingSoon = false;
 
-    data.map((channel: any) => {
-        if (channel['attributes']['Category'] == "Sports") {
-            sportsChannels.push(channel)
-        }
-        if (channel['attributes']['Category'] == "Movies") {
-            moviesChannels.push(channel)
-        }
-        if (channel['attributes']['Category'] == "News") {
-            newsChannels.push(channel)
-        } if (channel['attributes']['Category'] == "Music") {
-            musicChannels.push(channel)
-        } if (channel['attributes']['Category'] == "Kids") {
-            kidsChannels.push(channel)
-        }
-    })
+    const channelsPack = (channelsData: any) => (
+        channelsData.map((channel: any, index: any) => {
+            const include = channel['attributes']['package_tvs']['data'].some((pack: any) => pack['attributes']['package'].includes(IdPackage));
+            const commingSoon = channel['attributes']['package_tvs']['data'].some((pack: any) => pack['attributes']['package'].includes("comingSoon"));
 
-    const channelsPack = (data: any) => (data.map((channel: any, index: any) => {
-        include = false
-        commingSoon = false
-        channel['attributes']['package_tvs']['data'].map((pack: any) => {
-            if (pack['attributes']['package'].includes(IdPackage)) {
-                include = true;
-            }
-            else if (pack['attributes']['package'].includes("comingSoon")) {
-                commingSoon = true;
-            }
+            return (
+                <div key={index} class="flex flex-col items-center justify-center">
+                    <div class={`h-[40px] md:h-[60px] w-[40px] md:w-[60px] ${include ? "" : "opacity-20"} border-2 p-1 rounded-full flex flex-col`}>
+                        <img height={50} width={50} src={setURL(channel['attributes']['Image']['data']['attributes']['url'])}
+                            alt={channel['attributes']['Image']['data']['attributes']['alterbativeText']}
+                        />
+                    </div>
+                    {commingSoon ? <div class="bg-primary-blue text-center p-0.5 text-xs text-white rounded-full">
+                        Coming Soon
+                    </div> : null}
+                    <p class="text-xs text-center text-primary-blue">{channel['attributes']['Channel_name']}</p>
+                </div>
+            );
         })
+    );
 
-        return <div key={index} class="flex flex-col items-center justify-center">
-            <div class={`h-[50px] md:h-[80px] w-[50px] md:w-[80px] ${include ? "" : "opacity-20"} border-2 p-1 rounded-full flex flex-col`}>
-                <img height={80} width={80} src={setURL(channel['attributes']['Image']['data']['attributes']['url'])}
-                    alt={channel['attributes']['Image']['data']['attributes']['alterbativeText']}
-                />
-            </div>
-            {commingSoon ? <div class="bg-primary-blue text-center p-0.5 text-xs text-white rounded-full">
-                Coomig Soon
-            </div> : null}
-            <p class="text-xs text-center text-primary-blue">{channel['attributes']['Channel_name']}</p>
-        </div>
-    }))
-
-    const slides = Array.from(uniqueCategories).map((category: any, key: any) => {
-        return <div key={key} class="grid grid-cols-3 py-4 xl:grid-cols-8 lg:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 w-full gap-4">
-            {category == "General"
+    const slides = Array.from(uniqueCategories).map((category: any, key: any) => (
+        <div key={key} class="grid grid-cols-3 py-4 xl:grid-cols-8 lg:grid-cols-6 md:grid-cols-5 sm:grid-cols-4 w-full gap-4">
+            {category === "General"
                 ? channelsPack(data)
-                : category == "Sports" ? channelsPack(sportsChannels)
-                    : category == "News" ? channelsPack(newsChannels)
-                        : category == "Music" ? channelsPack(musicChannels)
-                            : category == "Movies" ? channelsPack(moviesChannels)
-                                : category == "Kids" ? channelsPack(kidsChannels) : null}
-
+                : category === "Sports" ? channelsPack(sportsChannels)
+                    : category === "News" ? channelsPack(newsChannels)
+                        : category === "Music" ? channelsPack(musicChannels)
+                            : category === "Movies" ? channelsPack(moviesChannels)
+                                : category === "Kids" ? channelsPack(kidsChannels) : null}
         </div>
-    })
+    ));
 
-
-    return <div class="h-[800px] md:h-[500px] p-5 md:p-10 w-full md:w-3/4 rounded-3xl bg-blue-700">
-        <div class="flex flex-col md:flex-row items-center justify-start md:justify-between">
+    return <div class="h-[800px] md:h-[500px] p-5 md:p-10 w-full md:w-[800px] rounded-3xl bg-blue-700">
+        <div class="flex flex-col md:flex-row items-center content-start justify-start md:justify-between">
             <h1 class="text-white font-semibold text-2xl md:text-4xl">{planId}</h1>
 
             <p class="text-white font-light text-xl md:text-2xl">{channels}</p>
@@ -82,7 +56,7 @@ export const PopupChannelsLineup = component$(({ data, planId, channels }: { dat
         </div>
         <div class="flex flex-row md:overflow-clip overflow-x-auto gap-4 bg-white text-primary-blue font-bold h-fit my-1 rounded-t-2xl py-2 px-2 md:items-center items-start md:justify-between justify-start">
             {Array.from(uniqueCategories).map((category: any, key: any) => (
-                <button key={key} class={`${selectedTab.value == key?"bg-gray-200":""} p-2 rounded-xl`} onClick$={$(() => {
+                <button key={key} class={`${selectedTab.value == key ? "bg-gray-200" : ""} p-2 rounded-xl`} onClick$={$(() => {
                     selectedTab.value = key;
                 })}>{category}</button>
             ))}
