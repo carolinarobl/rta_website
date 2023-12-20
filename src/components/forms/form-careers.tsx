@@ -1,5 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import { Form, globalAction$, useLocation } from "@builder.io/qwik-city";
+import { Form, globalAction$ } from "@builder.io/qwik-city";
 import { BsUpload } from "@qwikest/icons/bootstrap";
 
 
@@ -11,7 +11,7 @@ export const useSubmitFormCarrers = globalAction$(
         };
     });
 
-export const FormCarrers = component$(() => {
+export const FormCareers = component$(() => {
     const submitForm = useSubmitFormCarrers();
 
     return <div class="flex flex-col w-full md:w-1/2 h-[560px] bg-blue-100 rounded-2xl p-4">
