@@ -20,6 +20,28 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #396cb8;
+  border-radius: 10px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2e5899;
+}
+
 @layer base {
   ul,
   ol {
@@ -150,6 +172,7 @@ body {
   padding: 0;
   margin: 0;
   line-height: inherit;
+  overflow: overlay;
 }
 
 .markdownTitle h2 {
@@ -239,7 +262,8 @@ body {
   background-color: var(--color-tertiary) !important;
 }
 
-input, textarea {
+input,
+textarea {
   color: var(--color-primary) !important;
   font-weight: 400;
 }

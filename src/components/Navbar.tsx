@@ -9,121 +9,130 @@ export const Navbar = component$(
   ({ data, mobMenuOpen }: { data: any; mobMenuOpen: Signal<boolean> }) => {
     return (
       <div class="relative z-30 shadow-[0_5px_40px_-25px_rgba(0,0,0,0.2)]">
-        <div class=" w-full fixed top-0 shadow-[0_5px_40px_-25px_rgba(0,0,0,0.2)]">
-        <div class="flex h-[28px] flex-row items-center justify-end gap-4 bg-primary-blue px-5 py-[4px] text-[12px] font-bold text-white max-sm:justify-evenly max-sm:text-[10px] max-sm:font-normal max-[400px]:text-[9px]">
-          {data["TopOptions"].map((e: any, i: any) => {
-            return (
-              <ActionLink key={i} link={e["Link"]} hasStyle={false} text={e["Text"]} >
-                <div class="flex flex-row items-center gap-2">
-                  <div class="w-[12px]">
-                    <StrapiImage
-                      url={e["Icon"]["data"]["attributes"]["url"]}
-                      alt={e["Icon"]["data"]["attributes"]["alternativeText"]}
-                      title={e["Icon"]["data"]["attributes"]["caption"]}
-                      toWhite={true}
-                      width="16"
-                      height="16"
-                    />
-                  </div>
-                  {e["Text"]}
-                </div>
-              </ActionLink>
-            );
-          })}
-        </div>
-        <div class="grid grid-cols-3 items-center justify-evenly bg-white py-1 min-[1200px]:flex">
-          <div class="flex items-center justify-center min-[1200px]:hidden">
-            <FaBarsSolid
-              class="w-[30px] min-[1200px]:hidden"
-              onClick$={() => {
-                mobMenuOpen.value = !mobMenuOpen.value;
-                const body = document.getElementsByTagName("body")[0];
-                if (mobMenuOpen.value) {
-                  body.classList.add("overflow-y-hidden");
-                } else {
-                  body.classList.remove("overflow-y-hidden");
-                }
-              }}
-            />
-          </div>
-          <div class="flex items-center justify-center">
-            <div class="w-[125px] py-1">
-              <ActionLink link="/">
-                <StrapiImage
-                  url={data["MainMenu"]["Logo"]["data"]["attributes"]["url"]}
-                  alt={
-                    data["MainMenu"]["Logo"]["data"]["attributes"][
-                      "alternativeText"
-                    ]
-                  }
-                  title={
-                    data["MainMenu"]["Logo"]["data"]["attributes"]["caption"]
-                  }
-                  width={150}
-                  height={80}
-                />
-              </ActionLink>
-            </div>
-          </div>
-          {/* Main options */}
-          <div class="flex items-center justify-center gap-4 max-[1200px]:hidden">
-            {data["MainOptions"].map(function (e: any, i: any) {
-              const hasSubOptions = e["SubOption"].length > 0;
-              if (hasSubOptions) {
-                //
-              }
-
+        <div class=" fixed top-0 w-full shadow-[0_5px_40px_-25px_rgba(0,0,0,0.2)]">
+          <div class="flex h-[28px] flex-row items-center justify-end gap-4 bg-primary-blue px-5 py-[4px] text-[12px] font-bold text-white max-sm:justify-evenly max-sm:text-[10px] max-sm:font-normal max-[400px]:text-[9px]">
+            {data["TopOptions"].map((e: any, i: any) => {
               return (
-                <div key={i} class="text-[15px] font-bold text-primary-blue ">
-                  {!hasSubOptions ? (
-                    <ActionLink classN="text-primary-blue" link={e["Link"]} hasStyle={false}>
-                      {e["Text"]}
-                    </ActionLink>
-                  ) : (
-                    <MenuSuboptions
-                      // classContainer="w-[200px] h-[50px] text-"
-                      title={e["Text"]}
-                    >
-                      <div class="flex flex-col gap-2 rounded-md bg-white p-3 font-[600] text-primary-blue shadow-md">
-                        {e["SubOption"].map((el: any, i: number) => {
-                          const subOpt = el["MenuOption"]["data"];
-                          return !subOpt ? (
-                            <ActionLink
-                              classN="text-primary-blue"
-                              key={i}
-                              link={el["Link"]}
-                              hasStyle={false}
-                            >
-                              {el["Text"]}
-                            </ActionLink>
-                          ) : (
-                            <MenuSuboptions title={el["Text"]}>
-                              <div class="flex flex-col gap-2 rounded-md bg-white p-3 font-[600] text-primary-blue shadow-md">
-                                {subOpt["attributes"]["SubOption"].map(
-                                  (sub: any, i: number) => {
-                                    return (
-                                      <ActionLink key={i} link={sub["Link"]}>
-                                        {sub["Text"]}
-                                      </ActionLink>
-                                    );
-                                  },
-                                )}
-                              </div>
-                            </MenuSuboptions>
-                          );
-                        })}
-                      </div>
-                    </MenuSuboptions>
-                  )}
-                </div>
+                <ActionLink
+                  key={i}
+                  link={e["Link"]}
+                  hasStyle={false}
+                  text={e["Text"]}
+                >
+                  <div class="flex flex-row items-center gap-2">
+                    <div class="w-[12px]">
+                      <StrapiImage
+                        url={e["Icon"]["data"]["attributes"]["url"]}
+                        alt={e["Icon"]["data"]["attributes"]["alternativeText"]}
+                        title={e["Icon"]["data"]["attributes"]["caption"]}
+                        toWhite={true}
+                        width="16"
+                        height="16"
+                      />
+                    </div>
+                    {e["Text"]}
+                  </div>
+                </ActionLink>
               );
             })}
           </div>
+          <div class="grid grid-cols-3 items-center justify-evenly bg-white py-1 min-[1200px]:flex">
+            <div class="flex items-center justify-center min-[1200px]:hidden">
+              <FaBarsSolid
+                class="w-[30px] min-[1200px]:hidden"
+                onClick$={() => {
+                  mobMenuOpen.value = !mobMenuOpen.value;
+                  const body = document.getElementsByTagName("body")[0];
+                  if (mobMenuOpen.value) {
+                    body.classList.add("overflow-y-hidden");
+                  } else {
+                    body.classList.remove("overflow-y-hidden");
+                  }
+                }}
+              />
+            </div>
+            <div class="flex items-center justify-center">
+              <div class="w-[125px] py-1">
+                <ActionLink link="/">
+                  <StrapiImage
+                    url={data["MainMenu"]["Logo"]["data"]["attributes"]["url"]}
+                    alt={
+                      data["MainMenu"]["Logo"]["data"]["attributes"][
+                        "alternativeText"
+                      ]
+                    }
+                    title={
+                      data["MainMenu"]["Logo"]["data"]["attributes"]["caption"]
+                    }
+                    width={150}
+                    height={80}
+                  />
+                </ActionLink>
+              </div>
+            </div>
+            {/* Main options */}
+            <div class="flex items-center justify-center gap-4 max-[1200px]:hidden">
+              {data["MainOptions"].map(function (e: any, i: any) {
+                const hasSubOptions = e["SubOption"].length > 0;
+                if (hasSubOptions) {
+                  //
+                }
 
-          <div class="flex items-center justify-center">
-            <LangSwitch data={data["MainMenu"]["Switcher"]} />
+                return (
+                  <div key={i} class="text-[15px] font-bold text-primary-blue ">
+                    {!hasSubOptions ? (
+                      <ActionLink
+                        classN="text-primary-blue"
+                        link={e["Link"]}
+                        hasStyle={false}
+                      >
+                        {e["Text"]}
+                      </ActionLink>
+                    ) : (
+                      <MenuSuboptions
+                        // classContainer="w-[200px] h-[50px] text-"
+                        title={e["Text"]}
+                      >
+                        <div class="flex flex-col gap-2 rounded-md bg-white p-3 font-[600] text-primary-blue shadow-md">
+                          {e["SubOption"].map((el: any, i: number) => {
+                            const subOpt = el["MenuOption"]["data"];
+                            return !subOpt ? (
+                              <ActionLink
+                                classN="text-primary-blue"
+                                key={i}
+                                link={el["Link"]}
+                                hasStyle={false}
+                              >
+                                {el["Text"]}
+                              </ActionLink>
+                            ) : (
+                              <MenuSuboptions title={el["Text"]}>
+                                <div class="flex flex-col gap-2 rounded-md bg-white p-3 font-[600] text-primary-blue shadow-md">
+                                  {subOpt["attributes"]["SubOption"].map(
+                                    (sub: any, i: number) => {
+                                      return (
+                                        <ActionLink key={i} link={sub["Link"]}>
+                                          {sub["Text"]}
+                                        </ActionLink>
+                                      );
+                                    },
+                                  )}
+                                </div>
+                              </MenuSuboptions>
+                            );
+                          })}
+                        </div>
+                      </MenuSuboptions>
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+
+            <div class="flex items-center justify-center">
+              <LangSwitch data={data["MainMenu"]["Switcher"]} />
+            </div>
           </div>
-        </div>
         </div>
 
         <div class="mt-[89px] flex h-[32px] flex-row items-center justify-center gap-6 bg-secondary-red py-[2px] text-[14px] font-semibold tracking-[1px] text-white max-sm:text-[11px]">
