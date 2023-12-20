@@ -1,7 +1,7 @@
-import { mediaUrl, sectionNetwork, sectionSEO } from "~/data/constants"
+import { mediaUrl, sectionNetwork, sectionSEO } from "~/data/constants";
 
-export const wholesaleQuery = (locale:string) =>{
-    return `query QueryWholesale {
+export const wholesaleQuery = (locale: string) => {
+  return `query QueryWholesale {
         pageWholesale(locale:"${locale}"){    
           data{
             attributes{
@@ -54,9 +54,24 @@ export const wholesaleQuery = (locale:string) =>{
               }
             }
               ${sectionSEO}
+              NetworkMap {
+                data {
+                  attributes {
+                    Map {
+                      MapPicture {
+                        data {
+                          attributes {
+                            url
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
         ${sectionNetwork(locale)}
-      }` 
-}
+      }`;
+};
