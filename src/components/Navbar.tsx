@@ -9,7 +9,7 @@ export const Navbar = component$(
   ({ data, mobMenuOpen }: { data: any; mobMenuOpen: Signal<boolean> }) => {
     return (
       <div class="relative z-30 shadow-[0_5px_40px_-25px_rgba(0,0,0,0.2)]">
-        <div class=" w-full fixed top-0 overflow-hidden shadow-[0_5px_40px_-25px_rgba(0,0,0,0.2)]">
+        <div class=" w-full fixed top-0 shadow-[0_5px_40px_-25px_rgba(0,0,0,0.2)]">
         <div class="flex h-[28px] flex-row items-center justify-end gap-4 bg-primary-blue px-5 py-[4px] text-[12px] font-bold text-white max-sm:justify-evenly max-sm:text-[10px] max-sm:font-normal max-[400px]:text-[9px]">
           {data["TopOptions"].map((e: any, i: any) => {
             return (
@@ -34,7 +34,7 @@ export const Navbar = component$(
         <div class="grid grid-cols-3 items-center justify-evenly bg-white py-1 min-[1200px]:flex">
           <div class="flex items-center justify-center min-[1200px]:hidden">
             <FaBarsSolid
-              class="h-[30px] min-[1200px]:hidden"
+              class="w-[30px] min-[1200px]:hidden"
               onClick$={() => {
                 mobMenuOpen.value = !mobMenuOpen.value;
                 const body = document.getElementsByTagName("body")[0];

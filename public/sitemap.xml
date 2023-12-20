@@ -66,10 +66,10 @@
         <loc>https://rtatel.com/gigfast-tv-support/</loc>
         <priority>0.80</priority>
     </url>
-    <!-- <url>
+    <url>
         <loc>https://rtatel.com/gfsn/</loc>
         <priority>0.80</priority>
-    </url> -->
+    </url>
     <url>
         <loc>https://rtatel.com/portability/</loc>
         <priority>0.80</priority>
@@ -226,10 +226,10 @@
         <loc>https://rtatel.com/es/gigfast-tv-support/</loc>
         <priority>0.80</priority>
     </url>
-    <!-- <url>
+    <url>
         <loc>https://rtatel.com/es/gfsn/</loc>
         <priority>0.80</priority>
-    </url> -->
+    </url>
     <url>
         <loc>https://rtatel.com/es/portability/</loc>
         <priority>0.80</priority>
