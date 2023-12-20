@@ -15,7 +15,9 @@ export const MainLayout = component$(
         style={mobMenuOpen.value ? { perspective: "9000px" } : {}}
       >
         <div
-          class={`absolute inset-0 bg-gradient-to-l from-[#2e599a] to-[#182d4d] ${
+          class={`absolute inset-0 ${
+            mobMenuOpen.value ? "bg-gradient-to-l from-[#2e599a] to-[#182d4d] " : "bg-white !important"
+          }   ${
             mobMenuOpen.value ? "overflow-y-hidden" : "z-50"
           }`}
         >
@@ -50,7 +52,9 @@ export const MainLayout = component$(
                 />
               </div>
             )}
+            <div class="relative">
             <Slot />
+            </div>
             <Footer
               data={data["data"]["generalFooter"]["data"]["attributes"]}
             />

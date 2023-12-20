@@ -28,7 +28,7 @@ export const SimpleTable = component$(
     isFullLogo = false,
   }: Props) => {
     return (
-      <div class="flex h-full w-fit max-w-[300px] flex-col items-center justify-between rounded-[35px] bg-white px-5">
+      <div class="flex min-h-[600px] w-fit max-w-[300px] flex-col items-center justify-between rounded-[35px] bg-white px-5">
         <div class="mt-8 flex w-fit max-w-full flex-col items-center self-center">
           {isFullLogo ?
           <div class="flex flex-col justify-center items-center self-center gap-2 ">
@@ -69,7 +69,7 @@ export const SimpleTable = component$(
             <span class="text-2xl font-light text-primary-blue">{price}</span>
             <span class=" text-2xl text-primary-blue">{priceTime}</span>
           </div>
-          <div class="mt-5 text-center text-base text-primary-blue text-sm">
+          <div class="mt-5 text-center text-base text-primary-blue">
             <Markdown text={description} />
           </div>
           <div class="border-gary-500 my-4 h-[1px] w-full border-t-2"></div>

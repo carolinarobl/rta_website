@@ -1,10 +1,48 @@
 import { component$ } from "@builder.io/qwik";
 import { Markdown } from "~/components/Markdown";
+import { StrapiImage } from "~/components/StrapiImage";
 
 export const SectionCareerHLZSS = component$(({ data }: { data: any }) => {
   return (
     <div class="flex items-center justify-center gap-10 px-8 max-[800px]:flex-col">
-      <div class="flex min-w-[300px] max-w-[400px] flex-col items-center justify-center rounded-[30px] bg-white p-8 "></div>
+      <div class="flex min-w-[300px] max-w-[400px] flex-col items-center justify-center rounded-[30px] bg-white p-8 text-primary-blue ">
+        <StrapiImage
+          clasN="h-fit w-[180px]"
+          url={data["AboutZane"]["Media"]["data"]["attributes"]["url"]}
+        />
+        <h2 class="mt-4 text-[30px] font-[500] text-secondary-red">
+          {data["AboutZane"]["Title"]}
+        </h2>
+        <Markdown text={data["AboutZane"]["Paragraph"]} />
+        <div class="mb-4 flex w-full items-center justify-evenly gap-2 rounded-full bg-primary-blue p-2">
+          {data["AboutZane"]["Buttons"]
+            .filter((btn: any) => !btn["Text"])
+            .map((btn: any, i: number) => {
+              return (
+                <div key={i}>
+                  <StrapiImage
+                    clasN="h-[20px]"
+                    toWhite={i !== 0}
+                    url={btn["Icon"]["data"]["attributes"]["url"]}
+                  />
+                </div>
+              );
+            })}
+        </div>
+        {data["AboutZane"]["Buttons"]
+          .filter((btn: any) => btn["Text"])
+          .map((btn: any, i: number) => {
+            return (
+              <div key={i} class="flex gap-2 self-start">
+                <StrapiImage
+                  clasN="h-[24px] w-[24px]"
+                  url={btn["Icon"]["data"]["attributes"]["url"]}
+                />
+                <span class="text-[14px] font-[500]">{btn["Text"]}</span>
+              </div>
+            );
+          })}
+      </div>
       <div class="flex flex-col text-white">
         <span class="mb-4 text-[40px] font-[600]">
           {data["Highlights"]["Title"]}
