@@ -21,7 +21,7 @@ export const SectionHeaderZSS = component$(({ data }: { data: any }) => {
 
   const LateralBox1 = component$(({ data }: { data: any }) => {
     return (
-      <div class="flex max-w-[400px] flex-col items-center place-self-center">
+      <div class="flex max-w-[400px] flex-col items-center max-[900px]:place-self-center">
         <section class="flex h-fit w-full flex-col rounded-[35px] bg-white text-center shadow-lg">
           <div class="flex w-full items-center justify-center rounded-t-[35px] bg-gradient-to-r from-[#4caafd] to-[#1a7ee4] px-6 py-3 text-center">
             <StrapiImage
@@ -127,7 +127,7 @@ export const SectionHeaderZSS = component$(({ data }: { data: any }) => {
           <LateralBox1 data={data} />
           {screenW.value > 900 && <MidBox data={data} />}
 
-          <div class="flex max-w-[400px] flex-col items-center place-self-center">
+          <div class="flex max-w-[400px] flex-col items-center max-[900px]:place-self-center">
             <section class="flex h-fit w-full flex-col items-center justify-center rounded-[35px] bg-white p-4 text-center shadow-lg">
               <div class="h-[420px]">
                 <YTVideo
