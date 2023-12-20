@@ -36,7 +36,7 @@ export const Header = component$(({ data }: { data: any }) => {
     >
    
 
-      <Carousel slides= {headerSlides}  hasPagination = {false} addSpace={false} duration={4000} id={"headerCarousel"}/>
+      <Carousel slides= {headerSlides}  hasPagination = {false} addSpace={false} duration={4000} id={"headerCarousel"} slidesQty={1}/>
     </div>
   );
 });
