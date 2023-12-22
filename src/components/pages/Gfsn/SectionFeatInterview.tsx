@@ -5,7 +5,7 @@ import { YTVideo } from "~/components/YTVideo";
 
 export const SectionFeatInterview = component$(({ data }: { data: any }) => {
     return <div class="flex flex-col lg:flex-row w-full px-10 items-center justify-center my-8">
-        <div class="flex flex-col w-full lg:w-1/2 h-full text-center lg:text-end justify-evenly mr-4 my-4">
+        <div class="flex flex-col w-full lg:w-1/3 h-full text-center lg:text-end justify-evenly mr-4 my-4">
             <h2 class="text-2xl font-semibold text-secondary-red">{data['FeatInterview']['Title']}</h2>
             <h3 class="text-2xl font-[350] text-primary-blue">{data['FeatInterview']['Subtitle']}</h3>
             <Markdown classN="my-8 ml-4" text={data['FeatInterview']['Paragraph']}></Markdown>
@@ -18,8 +18,8 @@ export const SectionFeatInterview = component$(({ data }: { data: any }) => {
                 </a>
             </div>
         </div>
-        <div class="p-8">
-            <YTVideo ytURL={data['FeatVideo']} className="rounded-2xl w-[560px] h-[315px]"></YTVideo>
+        <div>
+            <YTVideo ytURL={data['FeatVideo']} classN={"rounded-2xl w-[460px] md:w-[530px] md:h-[350px] m-8"} ></YTVideo>
         </div>
     </div>
 });

@@ -14,7 +14,7 @@ export const SectionCareerHLZSS = component$(({ data }: { data: any }) => {
           {data["AboutZane"]["Title"]}
         </h2>
         <Markdown
-          classN="[&>h2]:text-[22px] [&>h2]:leading-10 [&>h2]:font-[600]"
+          classN="[&>h2]:text-[21px] [&>h2]:leading-10 [&>h2]:font-[600]"
           text={data["AboutZane"]["Paragraph"]}
         />
         <div class="mb-4 flex w-full items-center justify-evenly gap-2 rounded-full bg-primary-blue p-2">
@@ -62,7 +62,7 @@ export const SectionCareerHLZSS = component$(({ data }: { data: any }) => {
         <span class="mb-4 text-[40px] font-[600]">
           {data["Highlights"]["Title"]}
         </span>
-        <Markdown classN="text-white" text={data["Highlights"]["Paragraph"]} />
+        <Markdown classN="text-white text-justify" text={data["Highlights"]["Paragraph"]} />
       </div>
     </div>
   );

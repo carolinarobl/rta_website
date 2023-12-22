@@ -27,13 +27,14 @@ export const SectionSportsUpdates = component$(({ carouselData, title }: { carou
     );
 
     return (
+        <div class="flex w-full items-center justify-center">
         <div class="flex flex-row max-w-[1200px] items-center justify-center max-[800px]:flex-col h-full">
-            <h2 class="text-center text-4xl font-bold text-primary-blue max-[800px]:w-[40%]">{title}</h2>
+            <h2 class="text-center p-5 text-4xl font-bold text-primary-blue max-[800px]:w-[40%]">{title}</h2>
 
             <div class="h-fit w-[60%] flex items-center justify-center ">
                 <Carousel slides={updatesSlides} fillSlide={true} addSpace={false} id={"updatesSlider"} hasPagination={false} />
             </div>
         </div>
-
+</div>
     );
 });
