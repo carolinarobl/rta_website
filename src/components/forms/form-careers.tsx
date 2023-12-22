@@ -1,45 +1,92 @@
-import { component$ } from "@builder.io/qwik";
-import { Form, globalAction$ } from "@builder.io/qwik-city";
+import { component$, useSignal } from "@builder.io/qwik";
 import { BsUpload } from "@qwikest/icons/bootstrap";
 
-
-export const useSubmitFormCarrers = globalAction$(
-    async (data) => {
-        console.log(data)
-        return {
-            success: true,
-        };
-    });
-
 export const FormCareers = component$(() => {
-    const submitForm = useSubmitFormCarrers();
+    const templateID = "template_gwyyy7d";
+
+    const emailState = useSignal<"NONE" | "LOADING" | "ERROR" | "SUCCESS">(
+        "NONE",
+    );
 
     return <div class="flex flex-col w-full md:w-1/2 h-[560px] bg-blue-100 rounded-2xl p-4">
         <p class='text-center font-medium text-color-Primary'>Fill out the form below and attach your resume to contact us today</p>
-        <Form class='mt-2 overflow-y-auto' action={submitForm}>
+        <form id="form_careers" class='mt-2 overflow-y-auto'
+
+            onSubmit$={() => {
+                emailState.value = "LOADING";
+                const formData = new FormData(
+                    document.getElementById("form_careers") as HTMLFormElement,
+                );
+
+                const reader = new FileReader()
+                const resumeFile = formData.get('resume') as File;
+
+                if (resumeFile) {
+                    reader.readAsDataURL(resumeFile);
+                } else {
+                    console.error('No se encontró el archivo adjunto');
+                }
+
+                reader.onload = async (event) => {
+                    if (event.target && event.target.result) {
+                        const result = await event.target.result;
+                        const data = await {
+                            "from_name": formData.get('from_name'),
+                            "tel": formData.get("tel"),
+                            "from_email": formData.get("from_email"),
+                            "message": formData.get("message"),
+                            "resume1": result as string,
+                            "template_id": templateID
+                        }
+
+                        await fetch("/api/emailjs/", {
+                            method: "POST",
+                            body: JSON.stringify(data),
+                            headers: {
+                                "Content-Type": "application/json",
+                            },
+                        })
+                            .then((res) => res.json())
+                            .then((res) => {
+                                if (res["resp"] === "OK") {
+                                    emailState.value = "SUCCESS";
+                                } else {
+                                    console.log(res["resp"])
+                                    emailState.value = "ERROR";
+                                }
+                            })
+                            .catch((err) => {
+                                console.error(err);
+                                emailState.value = "ERROR";
+                            });
+                    } else {
+                        console.error('Error al obtener los datos Base64 del archivo.');
+                    }
+                };
+            }}>
             <div class='flex-col sm:flex-row flex justify-between'>
                 <div class="mb-4 gap-2 w-full flex flex-col mr-0 md:mr-4">
-                    <label for="name" class="block font-medium text-color-Primary">Name</label>
-                    <input type="text" id="name" name="name"
+                    <label for="from_name" class="block font-medium text-color-Primary">Name</label>
+                    <input type="text" id="from_name" name="from_name"
                         class="w-full border border-gray-300 p-2 rounded-xl focus:outline-none focus:border-blue-500" />
                 </div>
                 <div class="mb-4 gap-2 w-full flex flex-col">
-                    <label for="phone" class="block font-medium text-color-Primary">Phone</label>
-                    <input type="tel" id="phone" name="phone"
+                    <label for="tel" class="block font-medium text-color-Primary">Phone</label>
+                    <input type="tel" id="tel" name="tel"
                         maxLength={10}
                         class="w-full border border-gray-300 p-2 rounded-xl focus:outline-none focus:border-blue-500" />
                 </div>
             </div>
             <div class="mb-4 gap-2 flex flex-col">
-                <label for="email" class="block font-medium text-color-Primary">Email</label>
-                <input type="email" id="email" name="email" class="w-full border border-gray-300 p-2 rounded-xl focus:outline-none focus:border-blue-500" required />
+                <label for="from_email" class="block font-medium text-color-Primary">Email</label>
+                <input type="email" id="from_email" name="from_email" class="w-full border border-gray-300 p-2 rounded-xl focus:outline-none focus:border-blue-500" required />
             </div>
             <div class="mb-4 gap-2 flex flex-col">
                 <label for="message" class="block  font-medium text-color-Primary">Message</label>
                 <textarea id="message" name="message" rows={4}
                     class="w-full border border-gray-300 p-2 rounded-xl focus:outline-none focus:border-blue-500" required></textarea>
             </div>
-            <label for="file" class="flex w-[200px] text-color-Primary p-2 justify-evenly rounded-md font-medium">
+            <label for="resume" class="flex w-[200px] text-color-Primary p-2 justify-evenly rounded-md font-medium">
                 Upload resume
                 <BsUpload class="text-center font-bold" />
             </label>
@@ -47,14 +94,14 @@ export const FormCareers = component$(() => {
             <input
                 type="file"
                 required
-                accept='.pdf, .doc'
-                id="file"
-                name='file'
+                accept='.pdf'
+                id="resume"
+                name='resume'
                 class="w-full"
             />
             <button type="submit" class="mt-4 bg-secondary-red text-white w-full font-semibold px-4 py-2 rounded-xl hover:bg-blue-600 focus:outline-none">
                 Submit
             </button>
-        </Form>
+        </form>
     </div>
 });
