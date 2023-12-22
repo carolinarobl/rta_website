@@ -149,15 +149,22 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
         {/* {modalIsOpen.value && "aaaaaaaaaa"} */}
         <video
           class="absolute left-0 top-0 -z-10 h-full w-full object-cover"
-          src={setURL(
+          poster={setURL(
             data[
-              `${screenW.value <= 800 ? "VideoBGMobile" : "VideoBGDesktop"}`
-            ]["data"]["attributes"]["url"],
-          )}
+              // `${screenW.value <= 800 ? "VideoBGMobile" : "VideoBGDesktop"}`
+              'VideoBGDesktop'
+            ]["data"]["attributes"]["caption"])}
+          preload='auto'
           autoPlay
           loop
           muted
-        ></video>
+        >
+        <source  src={setURL(
+            data[
+              `${screenW.value <= 800 ? "VideoBGMobile" : "VideoBGDesktop"}`
+            ]["data"]["attributes"]["url"],
+          )+"#t=0.1"} type="video/mp4"></source>
+        </video>
         <div class="flex h-full w-full items-center justify-between max-[1000px]:flex-col-reverse max-[1000px]:px-4">
           <HeroCarousel />
           <div class="relative flex w-[420px] flex-col items-center justify-center gap-5 rounded-bl-full rounded-tl-full bg-white bg-opacity-60 max-[1000px]:mb-8 max-[1000px]:w-full max-[1000px]:max-w-[420px] max-[1000px]:rounded-full max-[1000px]:py-8 min-[1000px]:h-[230px]">

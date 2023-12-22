@@ -1,23 +1,23 @@
-import { component$, useSignal } from "@builder.io/qwik";
+import { component$ } from "@builder.io/qwik";
 import Carousel from "~/components/Carousel";
-import { Modal } from "~/components/Modal";
+// import { Modal } from "~/components/Modal";
 import { StrapiImage } from "~/components/StrapiImage";
-import { YTVideo } from "~/components/YTVideo";
+// import { YTVideo } from "~/components/YTVideo";
 
 export const SectionCarouselZSS = component$(({ data }: { data: any }) => {
-  const selectedVideo = useSignal("");
-  const modalSignal = useSignal(false);
+  // const selectedVideo = useSignal("");
+  // const modalSignal = useSignal(false);
   return (
     <div class="my-[80px] flex flex-col items-center justify-center text-white">
-      <Modal showSignal={modalSignal}>
+      {/* <Modal showSignal={modalSignal}>
         {selectedVideo.value !== "" && modalSignal.value && (
           <YTVideo
             // eslint-disable-next-line qwik/no-react-props
-            className="h-[70vh] w-[80vw] rounded-3xl"
+            classN="h-[70vh] w-[80vw] rounded-3xl"
             ytURL={selectedVideo.value}
           />
         )}
-      </Modal>
+      </Modal> */}
       <span class="text-center text-[40px] font-[600]">
         {data["CarouselTitle"]}
       </span>
@@ -34,8 +34,7 @@ export const SectionCarouselZSS = component$(({ data }: { data: any }) => {
                 key={i}
                 class="relative overflow-hidden rounded-3xl hover:cursor-pointer"
                 onClick$={() => {
-                  selectedVideo.value = slide["Link"];
-                  modalSignal.value = true;
+                  window.open(slide['Link'], "_blank");
                 }}
               >
                 <div class="absolute inset-0 z-20 flex items-center justify-center bg-black bg-opacity-10 text-[60px] font-[900] text-white">
