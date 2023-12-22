@@ -2,6 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import { type DocumentHead, routeLoader$ } from "@builder.io/qwik-city";
 import { MainLayout } from "~/components/MainLayout";
 import { Home } from "~/components/pages/Home/index";
+import { NotFound } from "~/components/pages/NotFound";
 import { Post } from "~/components/pages/Post";
 import { headSEO } from "~/data/constants";
 import { homeQuery } from "~/data/gql_queries/pages/home_query";
@@ -15,7 +16,7 @@ export const usePageData = routeLoader$(async (req) => {
       : req.params["lang"] == ""
         ? "en"
         : req.params["lang"];
-  let data:any = {};
+  let data: any = {};
   if (lang == "en" || lang == "es-419") {
     data = await getPageData(homeQuery, lang);
     return {
@@ -28,7 +29,7 @@ export const usePageData = routeLoader$(async (req) => {
   data = await getPageCustomData(postQuery(postSlug, newLang), newLang);
   return {
     ...data,
-    type: (data["pageData"]["data"]["posts"]["data"].length) > 0 ? "post" : "404",
+    type: data["pageData"]["data"]["posts"]["data"].length > 0 ? "post" : "404",
   };
 });
 
@@ -37,8 +38,10 @@ export default component$(() => {
   const data = signalData.value;
   return (
     <MainLayout data={data["layoutData"]} showHeader={false}>
-    <h1 class="absolute opacity-0">Rural Telecommunications of America Inc.</h1>
-      
+      <h1 class="absolute opacity-0">
+        Rural Telecommunications of America Inc.
+      </h1>
+
       {data.type == "home" ? (
         <Home data={data["pageData"]["data"]} />
       ) : data.type == "post" ? (
@@ -46,7 +49,7 @@ export default component$(() => {
           data={data["pageData"]["data"]["posts"]["data"][0]["attributes"]}
         />
       ) : (
-        <div>Nor Found</div>
+        <NotFound />
       )}
     </MainLayout>
   );

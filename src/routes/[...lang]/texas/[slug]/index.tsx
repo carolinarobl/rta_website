@@ -3,6 +3,7 @@ import { type DocumentHead, routeLoader$ } from "@builder.io/qwik-city";
 import { MainLayout } from "~/components/MainLayout";
 // import { Home } from "~/components/pages/Home/index";
 import { Location } from "~/components/pages/Location";
+import { NotFound } from "~/components/pages/NotFound";
 import { customLocale, headSEO } from "~/data/constants";
 // import { homeQuery } from "~/data/gql_queries/pages/home_query";
 import { locationQuery } from "~/data/gql_queries/pages/local_page_query";
@@ -25,7 +26,7 @@ export default component$(() => {
   const found = data["pageData"]["data"]["locations"]["data"].length > 0;
 
   const pageContent = !found ? (
-    <div>Not Found</div>
+    <NotFound />
   ) : (
     <Location data={data["pageData"]["data"]} />
   );
