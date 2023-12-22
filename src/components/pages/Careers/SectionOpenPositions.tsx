@@ -4,8 +4,8 @@ import { Button } from "~/components/Button";
 import Carousel from "~/components/Carousel";
 import { Markdown } from "~/components/Markdown";
 import { Modal } from "~/components/Modal";
-import { FormCarrers } from "~/components/forms/form-carrers";
 import { PopupLearnMore } from "./PopupLearnMore";
+import { FormCareers } from "~/components/forms/form-careers";
 export const SectionOpenPositions = component$(({ data }: { data: any }) => {
   const formSignal = useSignal(false);
   const infoSignal = useSignal(false);
@@ -57,7 +57,7 @@ export const SectionOpenPositions = component$(({ data }: { data: any }) => {
   return (
     <div class="my-8 flex justify-center text-primary-blue">
       <Modal showSignal={formSignal}>
-        <FormCarrers />
+        <FormCareers />
       </Modal>
       <Modal showSignal={infoSignal}>
         <PopupLearnMore data={selected.value} />

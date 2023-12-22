@@ -4,9 +4,9 @@ import { StrapiImage } from "~/components/StrapiImage";
 
 export const SectionFRMZSS = component$(({ data }: { data: any }) => {
   return (
-    <div class="my-[80px] flex flex-col items-center justify-center">
+    <div class="mt-[80px] flex flex-col items-center justify-center">
       <div class="mb-6 flex items-center justify-center gap-6">
-        <span class="text-[40px] font-[600] text-white">
+        <span class="text-[40px] font-[600] text-white max-[800px]:hidden">
           {data["AboutFRM"]["Title"]}
         </span>
         <StrapiImage
@@ -45,7 +45,7 @@ export const SectionFRMZSS = component$(({ data }: { data: any }) => {
             classN="text-white text-[13px]"
             text={data["AboutFRM"]["Media"]["data"]["attributes"]["caption"]}
           />
-          <div class="mt-4 flex flex-col items-start justify-start gap-1 self-start">
+          <div class="my-4 flex flex-col items-start justify-start gap-1 self-start">
             {data["AboutFRM"]["Buttons"].map((btn: any, i: number) => {
               return (
                 <div

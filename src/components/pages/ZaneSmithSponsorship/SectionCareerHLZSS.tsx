@@ -13,13 +13,22 @@ export const SectionCareerHLZSS = component$(({ data }: { data: any }) => {
         <h2 class="mt-4 text-[30px] font-[500] text-secondary-red">
           {data["AboutZane"]["Title"]}
         </h2>
-        <Markdown text={data["AboutZane"]["Paragraph"]} />
+        <Markdown
+          classN="[&>h2]:text-[21px] [&>h2]:leading-10 [&>h2]:font-[600]"
+          text={data["AboutZane"]["Paragraph"]}
+        />
         <div class="mb-4 flex w-full items-center justify-evenly gap-2 rounded-full bg-primary-blue p-2">
           {data["AboutZane"]["Buttons"]
             .filter((btn: any) => !btn["Text"])
             .map((btn: any, i: number) => {
               return (
-                <div key={i}>
+                <div
+                  key={i}
+                  class="hover:cursor-pointer"
+                  onClick$={() => {
+                    window.open(btn["Link"], "_blank");
+                  }}
+                >
                   <StrapiImage
                     clasN="h-[20px]"
                     toWhite={i !== 0}
@@ -33,7 +42,13 @@ export const SectionCareerHLZSS = component$(({ data }: { data: any }) => {
           .filter((btn: any) => btn["Text"])
           .map((btn: any, i: number) => {
             return (
-              <div key={i} class="flex gap-2 self-start">
+              <div
+                key={i}
+                class="flex gap-2 self-start hover:cursor-pointer"
+                onClick$={() => {
+                  window.open(btn["Link"], "_blank");
+                }}
+              >
                 <StrapiImage
                   clasN="h-[24px] w-[24px]"
                   url={btn["Icon"]["data"]["attributes"]["url"]}
@@ -47,7 +62,7 @@ export const SectionCareerHLZSS = component$(({ data }: { data: any }) => {
         <span class="mb-4 text-[40px] font-[600]">
           {data["Highlights"]["Title"]}
         </span>
-        <Markdown classN="text-white" text={data["Highlights"]["Paragraph"]} />
+        <Markdown classN="text-white text-justify" text={data["Highlights"]["Paragraph"]} />
       </div>
     </div>
   );

@@ -20,6 +20,39 @@ input[type="number"] {
   -moz-appearance: textfield;
 }
 
+/* width */
+::-webkit-scrollbar {
+  width: 18px;
+  height: 12px;
+  background: transparent;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: linear-gradient(0deg, #25b193,  #2e5899 100%);
+  border-radius: 10px;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border: 3.5px solid white;
+  background-clip: padding-box;
+  background: transparent;
+  animation: scroll-gradient 5s ease infinite;
+  background-size: 100% 100%;
+  border-radius: 20px;
+  /* box shadow. If we set it to an enormous value with zero blur, it will cover all space around the scrollbar handle */
+  box-shadow: 0px 0px 0px 100vh white;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #2e5899;
+  border: 3.5px solid white;
+  background-clip: padding-box;
+}
+
 @layer base {
   ul,
   ol {
@@ -150,6 +183,7 @@ body {
   padding: 0;
   margin: 0;
   line-height: inherit;
+  overflow: overlay;
 }
 
 .markdownTitle h2 {
@@ -239,7 +273,8 @@ body {
   background-color: var(--color-tertiary) !important;
 }
 
-input, textarea {
+input,
+textarea {
   color: var(--color-primary) !important;
   font-weight: 400;
 }
