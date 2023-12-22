@@ -86,10 +86,10 @@
         <loc>https://rtatel.com/testimonials/</loc>
         <priority>0.80</priority>
     </url>
-    <!-- <url>
+    <url>
         <loc>https://rtatel.com/zane-smith-sponsorship/</loc>
         <priority>0.80</priority>
-    </url> -->
+    </url>
     <url>
         <loc>https://rtatel.com/referral-program/</loc>
         <priority>0.70</priority>
@@ -246,10 +246,10 @@
         <loc>https://rtatel.com/es/testimonials/</loc>
         <priority>0.80</priority>
     </url>
-    <!-- <url>
+    <url>
         <loc>https://rtatel.com/es/zane-smith-sponsorship/</loc>
         <priority>0.80</priority>
-    </url> -->
+    </url>
     <url>
         <loc>https://rtatel.com/es/referral-program/</loc>
         <priority>0.70</priority>
