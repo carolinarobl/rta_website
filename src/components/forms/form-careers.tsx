@@ -35,7 +35,7 @@ export const FormCareers = component$(() => {
                             "tel": formData.get("tel"),
                             "from_email": formData.get("from_email"),
                             "message": formData.get("message"),
-                            "resume1": result as string,
+                            "resume": result as string,
                             "template_id": templateID
                         }
 
