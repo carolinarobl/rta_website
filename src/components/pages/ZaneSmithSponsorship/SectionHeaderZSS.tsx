@@ -2,13 +2,13 @@ import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { Markdown } from "~/components/Markdown";
 import { StrapiImage } from "~/components/StrapiImage";
 import { YTVideo } from "~/components/YTVideo";
-import { BsZoomIn } from "@qwikest/icons/bootstrap";
-import { LocalizedText } from "~/components/LocalizedText";
-import { Modal } from "~/components/Modal";
+// import { BsZoomIn } from "@qwikest/icons/bootstrap";
+// import { LocalizedText } from "~/components/LocalizedText";
+// import { Modal } from "~/components/Modal";
 import { Button } from "~/components/Button";
 
 export const SectionHeaderZSS = component$(({ data }: { data: any }) => {
-  const imgModalSignal = useSignal<boolean>(false);
+  // const imgModalSignal = useSignal<boolean>(false);
   const screenW = useSignal<number>(1000);
 
   useVisibleTask$(() => {
@@ -33,7 +33,7 @@ export const SectionHeaderZSS = component$(({ data }: { data: any }) => {
             <YTVideo
               ytURL={data["RaceRepVids"][0]["Link"]}
               // eslint-disable-next-line qwik/no-react-props
-              className="rounded-[30px] shadow-lg"
+              classN="rounded-[30px] shadow-lg"
             />
             <Markdown
               text={data["RaceRepVids"][0]["Paragraph"]}
@@ -45,7 +45,7 @@ export const SectionHeaderZSS = component$(({ data }: { data: any }) => {
             <YTVideo
               ytURL={data["RaceRepVids"][1]["Link"]}
               // eslint-disable-next-line qwik/no-react-props
-              className="rounded-[30px] shadow-lg"
+              classN="rounded-[30px] shadow-lg"
             />
             <Markdown
               text={data["RaceRepVids"][1]["Paragraph"]}
@@ -60,7 +60,7 @@ export const SectionHeaderZSS = component$(({ data }: { data: any }) => {
         >
           {data["HeaderButtons"][0]["Text"]}
         </a>
-        <Modal showSignal={imgModalSignal}>
+        {/* <Modal showSignal={imgModalSignal}>
           <StrapiImage
             url={data["NascarSchedule"]["data"]["attributes"]["url"]}
             clasN="w-fit h-[90%] object-contain"
@@ -86,7 +86,7 @@ export const SectionHeaderZSS = component$(({ data }: { data: any }) => {
               />
             </span>
           </div>
-        </div>
+        </div> */}
       </div>
     );
   });
@@ -98,7 +98,7 @@ export const SectionHeaderZSS = component$(({ data }: { data: any }) => {
           url={data["LogoCorp"]["data"]["attributes"]["url"]}
           clasN="h-[80px] w-fit"
         />
-        <span class="mb-4 text-[46px] font-[500] leading-[50px]">
+        <span class="mb-4 text-[46px] font-[700] leading-[50px]">
           {data["Title"]}
         </span>
         <StrapiImage url={data["LogoSponsor"]["data"]["attributes"]["url"]} />
@@ -114,7 +114,7 @@ export const SectionHeaderZSS = component$(({ data }: { data: any }) => {
   });
 
   return (
-    <div class="flex min-h-[500px] w-full items-center justify-center bg-gradient-radial from-[#3281bb] via-[#2871ac] to-[#185393]">
+    <div class="flex min-h-[500px] w-full items-center justify-center bg-[conic-gradient(at_top,_var(--tw-gradient-stops))] from-[#001536] via-[#0E67BB] to-[#001536]">
       <div class="flex max-w-[1200px] flex-col items-center justify-center px-8 pt-12">
         <div
           class="grid items-start justify-center gap-6 max-[900px]:items-center"
@@ -133,7 +133,7 @@ export const SectionHeaderZSS = component$(({ data }: { data: any }) => {
                 <YTVideo
                   ytURL={data["GiveawayBox"][0]["Video"]["Link"]}
                   // eslint-disable-next-line qwik/no-react-props
-                  className="rounded-[30px] shadow-lg"
+                  classN="rounded-[30px] shadow-lg"
                 />
               </div>
               <Markdown

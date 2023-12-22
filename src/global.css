@@ -22,24 +22,35 @@ input[type="number"] {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 12px;
+  width: 18px;
   height: 12px;
+  background: transparent;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: transparent;
+  background: linear-gradient(0deg, #25b193,  #2e5899 100%);
+  border-radius: 10px;
+
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #396cb8;
-  border-radius: 10px;
+  border: 3.5px solid white;
+  background-clip: padding-box;
+  background: transparent;
+  animation: scroll-gradient 5s ease infinite;
+  background-size: 100% 100%;
+  border-radius: 20px;
+  /* box shadow. If we set it to an enormous value with zero blur, it will cover all space around the scrollbar handle */
+  box-shadow: 0px 0px 0px 100vh white;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #2e5899;
+  border: 3.5px solid white;
+  background-clip: padding-box;
 }
 
 @layer base {
