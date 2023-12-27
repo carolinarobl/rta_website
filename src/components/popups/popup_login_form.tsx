@@ -55,9 +55,9 @@ export const PopupLoginForm = component$(
 
     return (
       <div class=" z-[800] flex h-fit w-[600px] flex-col items-center justify-center gap-4 rounded-full bg-blue-100 p-8">
-        <h1 class="text-center text-4xl font-bold text-primary-blue">
+        <p class="text-center text-4xl font-bold text-primary-blue">
           {title}
-        </h1>
+        </p>
         <p class="font-light">{description}</p>
         <Form class="w-full" action={submitForm} onSubmit$={() => {}}>
           <div class="flex flex-row items-center justify-center gap-4 px-4">
