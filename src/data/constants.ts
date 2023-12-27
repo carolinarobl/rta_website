@@ -57,10 +57,10 @@ export const headSEO = (SEOdata: any) => {
         name: "description",
         content: SEOdata.MetaDescription,
       },
-      {
-        name: "robots",
-        content: SEOdata.preventIndexing ? "noindex" : "index",
-      },
+      // {
+      //   name: "robots",
+      //   content: SEOdata.preventIndexing ? "noindex" : "index",
+      // },
       {
         name: "keywords",
         content: SEOdata.Keywords,

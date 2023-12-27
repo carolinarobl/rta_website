@@ -44,7 +44,7 @@ export default component$(() => {
         <head>
           <meta charSet="utf-8" />
           <link rel="manifest" href="/manifest.json" />
-          {/* <meta name="robots" content="noindex" /> */}
+          <meta name="robots" content="index" />
           {/* <link ref="icon" href="/favicon.png" /> */}
           <RouterHead />
 
