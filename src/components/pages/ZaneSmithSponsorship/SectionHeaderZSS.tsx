@@ -96,7 +96,7 @@ export const SectionHeaderZSS = component$(({ data }: { data: any }) => {
       <div class="flex h-fit max-w-[600px] flex-col items-center justify-center  text-center text-white">
         <StrapiImage
           url={data["LogoCorp"]["data"]["attributes"]["url"]}
-          clasN="h-[80px] w-fit"
+          clasN="h-[80px] w-[215px]"
         />
         <span class="mb-4 text-[46px] font-[700] leading-[50px]">
           {data["Title"]}
