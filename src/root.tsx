@@ -13,14 +13,14 @@ import { translationFn } from "./speak-functions";
 import "./global.css";
 
 export default component$(() => {
-  const analyticsScriptP1 = `https://www.googletagmanager.com/gtag/js?id=G-73FN8JZHHH`;
+//   const analyticsScriptP1 = `https://www.googletagmanager.com/gtag/js?id=G-73FN8JZHHH`;
 
-const analyticsScriptP2 = `
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-  gtag('config', 'G-73FN8JZHHH');
-`;
+// const analyticsScriptP2 = `
+//   window.dataLayer = window.dataLayer || [];
+//   function gtag(){dataLayer.push(arguments);}
+//   gtag('js', new Date());
+//   gtag('config', 'G-73FN8JZHHH');
+// `;
   /**
    * The root of a QwikCity site always start with the <QwikCityProvider> component,
    * immediately followed by the document's <head> and <body>.
