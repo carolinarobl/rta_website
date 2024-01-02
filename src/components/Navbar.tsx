@@ -37,9 +37,9 @@ export const Navbar = component$(
             })}
           </div>
           <div class="grid grid-cols-3 items-center justify-evenly bg-white py-1 min-[1200px]:flex">
-            <div class="flex items-center justify-center min-[1200px]:hidden">
+            <button class="flex items-center mx-4 h-fit w-fit p-2 bg-primary-blue rounded-3xl justify-center min-[1200px]:hidden active:bg-primary-light-blue">
               <FaBarsSolid
-                class="w-[30px] min-[1200px]:hidden"
+                class="object-fill fill-white min-[1200px]:hidden"
                 onClick$={() => {
                   mobMenuOpen.value = !mobMenuOpen.value;
                   const body = document.getElementsByTagName("body")[0];
@@ -50,7 +50,7 @@ export const Navbar = component$(
                   }
                 }}
               />
-            </div>
+            </button>
             <div class="flex items-center justify-center">
               <div class="w-[125px] py-1">
                 <ActionLink link="/">
