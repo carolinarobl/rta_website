@@ -6,7 +6,7 @@ export const strapiURL = "https://strapi.rtatel.com";
 // Strapi por ip interna
 export const strapiGQLURL = "http://10.5.24.41:1337";
 
-export const gqlURL = `${strapiURL}/graphql`;
+export const gqlURL = `${strapiGQLURL}/graphql`;
 
 export const setURL = (url: string) => {
   return `${strapiURL}${url}`;
@@ -57,10 +57,10 @@ export const headSEO = (SEOdata: any) => {
         name: "description",
         content: SEOdata.MetaDescription,
       },
-      {
-        name: "robots",
-        content: SEOdata.preventIndexing ? "noindex" : "index",
-      },
+      // {
+      //   name: "robots",
+      //   content: SEOdata.preventIndexing ? "noindex" : "index",
+      // },
       {
         name: "keywords",
         content: SEOdata.Keywords,
