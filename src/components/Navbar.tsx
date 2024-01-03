@@ -36,10 +36,10 @@ export const Navbar = component$(
               );
             })}
           </div>
-          <div class="grid grid-cols-3 items-center justify-evenly bg-white py-1 min-[1200px]:flex">
-            <button class="mx-4 flex h-fit w-fit items-center justify-center rounded-3xl bg-primary-blue p-2 active:bg-primary-light-blue min-[1200px]:hidden">
+          <div class="grid grid-cols-3 items-center justify-evenly bg-white px-3 py-1 min-[800px]:flex">
+            <button class="mx-4 flex h-fit w-fit items-center justify-center rounded-3xl bg-primary-blue p-2 active:bg-primary-light-blue min-[800px]:hidden">
               <FaBarsSolid
-                class="fill-white object-fill min-[1200px]:hidden"
+                class="fill-white object-fill min-[800px]:hidden"
                 onClick$={() => {
                   mobMenuOpen.value = !mobMenuOpen.value;
                   const body = document.getElementsByTagName("body")[0];
