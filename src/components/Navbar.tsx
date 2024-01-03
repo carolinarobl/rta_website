@@ -36,10 +36,10 @@ export const Navbar = component$(
               );
             })}
           </div>
-          <div class="grid grid-cols-3 items-center justify-evenly bg-white py-1 min-[1200px]:flex">
-            <div class="flex items-center justify-center min-[1200px]:hidden">
+          <div class="grid grid-cols-3 items-center justify-evenly bg-white px-3 py-1 min-[800px]:flex">
+            <div class="flex items-center justify-center min-[800px]:hidden">
               <FaBarsSolid
-                class="w-[30px] min-[1200px]:hidden"
+                class="w-[30px] min-[800px]:hidden"
                 onClick$={() => {
                   mobMenuOpen.value = !mobMenuOpen.value;
                   const body = document.getElementsByTagName("body")[0];
@@ -71,7 +71,7 @@ export const Navbar = component$(
               </div>
             </div>
             {/* Main options */}
-            <div class="flex items-center justify-center gap-4 max-[1200px]:hidden">
+            <div class="flex items-center justify-center gap-4 px-3 text-[15px] max-[1200px]:text-[13px] max-[800px]:hidden">
               {data["MainOptions"].map(function (e: any, i: any) {
                 const hasSubOptions = e["SubOption"].length > 0;
                 if (hasSubOptions) {
@@ -79,7 +79,7 @@ export const Navbar = component$(
                 }
 
                 return (
-                  <div key={i} class="text-[15px] font-bold text-primary-blue ">
+                  <div key={i} class=" font-bold text-primary-blue ">
                     {!hasSubOptions ? (
                       <ActionLink
                         classN="text-primary-blue"
@@ -142,7 +142,7 @@ export const Navbar = component$(
             </ActionLink>
           ))}
         </div>
-        <div class="flex flex-row items-center justify-evenly bg-white py-1 max-[1200px]:hidden">
+        <div class="flex flex-row items-center justify-evenly bg-white py-1 max-[800px]:hidden">
           {data["gigfastOptions"].map((e: any, i: any) => (
             <ActionLink key={i} link={e["Link"]}>
               <div class="w-[130px] rounded-md p-1 hover:bg-slate-50">
