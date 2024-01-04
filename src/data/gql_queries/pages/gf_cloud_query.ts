@@ -35,7 +35,7 @@ export const gfCloudQuery = (locale:string)=>{
                   ${mediaUrl}
                 }
                 ServersTitle
-                Servers {
+                Servers (pagination:{limit:50}){
                   Text
                   Link
                   Icon{
