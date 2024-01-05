@@ -83,7 +83,7 @@ export const WinnersCircle = component$(({ data }: { data: any }) => {
                       height={270}
                       width={160}
                       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                      allowFullScreen
+                      allowFullscreen
                     />
                     <span class="text-secondary-red">Answer:</span>
                     <span class="text-primary-blue">{ans["Answer"]}</span>
@@ -101,7 +101,7 @@ export const WinnersCircle = component$(({ data }: { data: any }) => {
           <br/>
           <iframe
             class="h-full"
-            srcDoc={pageData["TwitterFeedLink"]}
+            srcdoc={pageData["TwitterFeedLink"]}
             height={"100%"}
             width={"100%"}
           ></iframe>

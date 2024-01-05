@@ -13,7 +13,7 @@ export const Wholesale = component$(({ data }: { data: any }) => {
   const features = pageData["NetworkDIA"]["Features"];
 
   const index = useSignal(0);
-
+  // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(async (taskCtx) => {
     const timer = setInterval(() => {
       index.value = (index.value + 1) % features.length;

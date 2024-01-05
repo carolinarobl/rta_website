@@ -15,12 +15,15 @@ export const Modal = component$(
           }
         }}
       >
+        <div
+         onClick$={() => {
+          showSignal.value = false;
+        }}
+        >
         <FaXmarkSolid
           class="absolute right-2 top-2 rounded-full bg-secondary-red p-1 text-[30px] font-[200] text-white hover:cursor-pointer"
-          onClick$={() => {
-            showSignal.value = false;
-          }}
         />
+        </div>
         <Slot></Slot>
       </div>
     );

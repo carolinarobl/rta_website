@@ -9,7 +9,7 @@ export const ServiceGlobal = component$(() => {
                     <img width={100}
                     height={100}
                         loading="lazy"
-                        srcSet="..."
+                        srcset="..."
                         class="aspect-[4.11] object-contain object-center w-full overflow-hidden self-stretch"
                     />
                     <div class="text-blue-800 text-center text-2xl font-bold leading-6 self-center mt-6 whitespace-nowrap">
