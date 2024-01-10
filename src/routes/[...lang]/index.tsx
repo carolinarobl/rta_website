@@ -38,9 +38,11 @@ export default component$(() => {
   const data = signalData.value;
   return (
     <MainLayout data={data["layoutData"]} showHeader={false}>
-      <h1 class="absolute opacity-0">
-        Rural Telecommunications of America Inc.
-      </h1>
+      {data.type == "home" && (
+        <h1 class="absolute opacity-0">
+          Rural Telecommunications of America Inc.
+        </h1>
+      )}
 
       {data.type == "home" ? (
         <Home data={data["pageData"]["data"]} />

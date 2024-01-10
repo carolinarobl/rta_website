@@ -10,7 +10,7 @@ import { Button } from "~/components/Button";
 export const SectionHeaderZSS = component$(({ data }: { data: any }) => {
   // const imgModalSignal = useSignal<boolean>(false);
   const screenW = useSignal<number>(1000);
-
+  // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(() => {
     screenW.value = window.innerWidth;
 

@@ -29,7 +29,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
   );
 
   const screenW = useSignal<number>(1000);
-
+  // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(() => {
     screenW.value = window.innerWidth;
 
@@ -155,7 +155,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
               'VideoBGDesktop'
             ]["data"]["attributes"]["caption"])}
           preload='auto'
-          autoPlay
+          autoplay
           loop
           muted
         >

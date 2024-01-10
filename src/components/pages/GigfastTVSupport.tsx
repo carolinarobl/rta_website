@@ -13,7 +13,7 @@ export const GigfastTVSupport = component$(({ data }: { data: any }) => {
             <h1 class="text-2xl text-center font-semibold text-primary-blue">{pageData['IntroText']}</h1>
             <div class="h-[150px] relative w-[350px] flex mb-14">
                 <video class="absolute pt-2" src={setURL(pageData['IntroMedia']['data'][1]['attributes']['url'])}
-                autoPlay
+                autoplay
                 loop
                 muted></video>
                 <img class="absolute z-0" src={setURL(pageData['IntroMedia']['data'][0]['attributes']['url'])} 

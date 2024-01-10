@@ -30,6 +30,7 @@ export default component$(() => {
   useTask$(() => {
     loadingPage.value = true
   })
+  // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(() => {
     loadingPage.value = false
     document.getElementById("splash")?.remove();

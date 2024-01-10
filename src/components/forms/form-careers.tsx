@@ -69,7 +69,7 @@ export const FormCareers = component$(() => {
             }
         };
     })
-
+    // eslint-disable-next-line qwik/no-use-visible-task
     const handlesubmit = useVisibleTask$(() => {
         const formulario = document.getElementById('form_careers')
         const inputPhone = document.getElementById('tel')

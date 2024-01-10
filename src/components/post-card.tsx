@@ -8,7 +8,7 @@ export const PostCard = component$(() => {
         width={300}
         height={200}
           loading="lazy"
-          srcSet="..."
+          srcset="..."
           class="aspect-[1.91] object-contain object-center w-full overflow-hidden self-start"
         />
         <div class="items-start flex w-full grow flex-col mt-5 self-start">

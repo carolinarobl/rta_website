@@ -36,7 +36,7 @@ export const useSplide = ({
     const handleResize = $(() => {
         numberOfSlides.value = getNumberOfSlides({ qty: slidesQty })
     })
-
+    // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(() => {
         handleResize()
     })

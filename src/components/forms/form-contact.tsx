@@ -49,7 +49,7 @@ export const FormContact = component$(({ templateID }: { templateID: any }) => {
     //     emailState.value = "ERROR";
     //   });
   })
-
+  // eslint-disable-next-line qwik/no-use-visible-task
   const handleSubmit = useVisibleTask$(() => {
     const formulario = document.getElementById('s_form')
     const inputPhone = document.getElementById('tel')

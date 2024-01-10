@@ -31,7 +31,7 @@ export default component$(
     // bgColor?: string;
   }) => {
     const numberOfSlides = useSplide({ slidesQty: slidesQty });
-
+  // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(({ track }) => {
       track(numberOfSlides);
 

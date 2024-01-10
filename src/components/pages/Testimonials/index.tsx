@@ -40,7 +40,6 @@ export const Testimonials = component$(({ data }: { data: any }) => {
             class="rounded-[30px] max-[800px]:max-w-[400px]"
             src={setURL(pageData["Video"]["data"]["attributes"]["url"])}
             controls
-            controlsList="nodownload"
           ></video>
         </div>
         <div class="items-center w-[40%] flex-col px-1 justify-center max-[800px]:w-full max-h-[500px]  ">

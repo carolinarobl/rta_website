@@ -13,7 +13,7 @@ export const PrimaryInner = component$(({color="bg-blue-800"}:Props) => {
               width={450}
               height={450}
                 loading="lazy"
-                srcSet="..."
+                srcset="..."
                 class="aspect-square object-contain object-center w-60 overflow-hidden self-center max-w-full"
               />
             </div>
