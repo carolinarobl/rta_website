@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rtatel.com/sitemap_index.xml
+Sitemap: https://rtatel.com/sitemap.xml
