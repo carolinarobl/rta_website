@@ -4,9 +4,10 @@ import { Markdown } from "~/components/Markdown";
 import { StrapiAsset } from "~/components/StrapiAsset";
 
 export const SectionDeals = component$(({ data }: { data: any }) => {
+  console.log(data);
   return (
     <div
-      class={`flex w-full flex-col items-center justify-center text-primary-blue`}
+      class={`${data["isVisible"] ? "" : "hidden"} flex w-full flex-col items-center justify-center text-primary-blue`}
     >
       <div
         class={`my-4 flex max-w-[1200px] items-center justify-center max-[800px]:flex-col`}
@@ -27,7 +28,7 @@ export const SectionDeals = component$(({ data }: { data: any }) => {
             text={data["Deals_description"]}
           />
           <div class="mb-3 flex items-start justify-evenly gap-4 max-[600px]:flex-col">
-            {data["Services"].map((deal:any, i:any) => (
+            {data["Services"].map((deal: any, i: any) => (
               <div key={i} class="flex items-center justify-center gap-1">
                 <StrapiAsset
                   url={deal["Icon"]["data"]["attributes"]["url"]}
@@ -41,9 +42,13 @@ export const SectionDeals = component$(({ data }: { data: any }) => {
           <Button text={data["Button"]["Text"]} link={data["Button"]["Link"]} />
         </div>
         <div class="flex w-[300px] items-center justify-center self-center p-4 max-[600px]:hidden min-[800px]:w-[30%]">
-          <StrapiAsset url={data["Media"]["data"]["attributes"]["url"]} clasN="rounded-full  mr-[30px]"   autoplay
-          loop
-          muted ={true} />
+          <StrapiAsset
+            url={data["Media"]["data"]["attributes"]["url"]}
+            clasN="rounded-full  mr-[30px]"
+            autoplay
+            loop
+            muted={true}
+          />
         </div>
       </div>
     </div>

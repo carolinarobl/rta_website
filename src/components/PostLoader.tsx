@@ -1,6 +1,5 @@
 import { component$, useSignal } from "@builder.io/qwik";
 import { Post } from "./Post";
-import { GQLQuery } from "~/services/graphql";
 import { useLocation } from "@builder.io/qwik-city";
 
 export const PostLoader = component$(
@@ -23,7 +22,7 @@ export const PostLoader = component$(
     return (
       <div
         id="postLoader"
-        class="grid w-full max-w-[1200px] grid-cols-3 justify-evenly gap-4 max-[800px]:grid-cols-1 [&>*]:justify-self-center"
+        class="grid w-full max-w-[1200px] grid-cols-3 justify-evenly gap-4 px-4 max-[800px]:grid-cols-1 [&>*]:justify-self-center"
         document:onscroll$={() => {
           if (loading.value) return;
 
@@ -47,7 +46,7 @@ export const PostLoader = component$(
             loading.value = true;
             const start = page.value * loadSize + 1;
             const paginationString = `{start: ${start}, limit: ${loadSize}}`;
-            GQLQuery(`
+            const qry = `
             query {
               page${type} (locale: "${lang}") {
                 data {
@@ -85,18 +84,28 @@ export const PostLoader = component$(
                 }
               }
             }
-            `).then((res) => {
-              const newPosts =
-                res["data"]["page" + type]["data"]["attributes"]["Posts"][
-                  "data"
-                ];
-              if (newPosts.length === 0) {
-                return;
-              }
-              page.value++;
-              sPosts.value = sPosts.value.concat(newPosts);
-              loading.value = false;
-            });
+            `;
+            fetch("/api/graphql/", {
+              method: "POST",
+              body: JSON.stringify({ query: qry }),
+              headers: {
+                "Content-Type": "application/json",
+              },
+            })
+              .then((res) => res.json())
+              .then((res) => {
+                console.log(res);
+                const newPosts =
+                  res["data"]["page" + type]["data"]["attributes"]["Posts"][
+                    "data"
+                  ];
+                if (newPosts.length === 0) {
+                  return;
+                }
+                page.value++;
+                sPosts.value = sPosts.value.concat(newPosts);
+                loading.value = false;
+              });
           }
         }}
       >
