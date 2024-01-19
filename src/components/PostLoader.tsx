@@ -22,7 +22,7 @@ export const PostLoader = component$(
     return (
       <div
         id="postLoader"
-        class="grid w-full max-w-[1200px] grid-cols-3 justify-evenly gap-4 max-[800px]:grid-cols-1 [&>*]:justify-self-center"
+        class="grid w-full max-w-[1200px] grid-cols-3 justify-evenly gap-4 px-4 max-[800px]:grid-cols-1 [&>*]:justify-self-center"
         document:onscroll$={() => {
           if (loading.value) return;
 
