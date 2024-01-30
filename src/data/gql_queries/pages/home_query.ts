@@ -157,7 +157,7 @@ export const homeQuery = (locale: string) => {
       }
     }
   }
-  sectionProsRta {
+  sectionProsRta(locale:"${locale}") {
     data {
       attributes {
         Pros {
