@@ -51,14 +51,16 @@ export const Post = component$(({ post, id }: { post: any; id: string }) => {
         alt={post["attributes"]["Cover"]["data"]["attributes"]["alternativeText"]}
         title={post["attributes"]["Cover"]["data"]["attributes"]["caption"]}
       />
-      <span class="px-3 py-1 font-[600] text-primary-blue opacity-70">
+      <h3 class="px-3 py-1 font-[600] text-[15px] text-primary-blue ">  {limitText(post["attributes"]["Title"], 60)}
+</h3>
+      <span class="px-3 text-[12px] font-[700]  text-primary-blue opacity-70">
         {formatDate(new Date(post["attributes"]["Date"]))}
       </span>
       <span class="px-3 text-primary-blue">
      
           <div
         dangerouslySetInnerHTML={parse(limitText(post["attributes"]["Description"], limit))}
-        class={`flex list-inside flex-col gap-3 text-justify text-sm`}
+        class={`flex list-inside flex-col gap-3 text-justify text-[14px]`}
       ></div>
       </span>
       <div class="mt-2 self-center">

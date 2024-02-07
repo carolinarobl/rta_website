@@ -12,12 +12,12 @@ export const PostHeader = component$(({ post }: { post: any }) => {
     <div class="flex max-w-[1200px] flex-row-reverse items-center justify-center self-center px-8 py-4 max-[800px]:flex-col-reverse">
       <div class="flex  flex-col items-center justify-start  gap-4 px-10 min-[800px]:w-[60%]">
         <div class="">
-          <div class="text-[32px] font-[600] leading-10 text-[#2E5899] max-sm:text-[24px] max-sm:leading-7">
+          <div class="my-4 text-[32px] font-[600] leading-10 text-[#2E5899] max-sm:text-[24px] max-sm:leading-7">
             {post["Title"]}
           </div>
           <div>
             <Markdown
-              classN={"max-sm:text-[13px] text-[16px] text-[#2E5899] text-justify "}
+              classN={"max-sm:text-[13px] text-[15px] text-[#2E5899] text-justify [&>h1]:text-[15px] [&>h1]:font-[600] [&>h2]:text-[15px] [&>h2]:font-[600] [&>h3]:text-[15px] [&>h3]:font-[600]"}
               text={limitText(post["Description"], limit)}
             />
           </div>
