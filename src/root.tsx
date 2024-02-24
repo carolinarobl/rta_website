@@ -13,13 +13,13 @@ import { translationFn } from "./speak-functions";
 import "./global.css";
 
 export default component$(() => {
-  const analyticsScriptP1 = `https://www.googletagmanager.com/gtag/js?id=G-ZSBXBFHTVV`;
+  const analyticsScriptP1 = `https://www.googletagmanager.com/gtag/js?id=G-19EN0CY127`;
 
   const analyticsScriptP2 = `
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-ZSBXBFHTVV');
+    gtag('config', 'G-19EN0CY127');
   `;
 
   const gtmScriptP1 = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
