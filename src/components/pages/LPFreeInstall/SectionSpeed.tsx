@@ -1,12 +1,7 @@
 import { component$ } from "@builder.io/qwik";
-import { Button } from "~/components/Button";
-import { Markdown } from "~/components/Markdown";
 import { Paragraph } from "~/components/Paragraph";
-import { StrapiImage } from "~/components/StrapiImage";
-import { Linking_picture } from "~/components/linking-picture";
 
 export const SectionSpeed = component$(({ parData, speedList }: { parData: any, speedList: any}) => {
-    const ballSize="w-[20vw] h-[20vw] min-w-[300px] min-h-[300px]"
     const content= parData;
     const speeds = speedList;
     

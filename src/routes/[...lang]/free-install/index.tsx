@@ -1,7 +1,6 @@
 import { component$ } from '@builder.io/qwik';
 import {routeLoader$, type DocumentHead } from '@builder.io/qwik-city';
 import { MainLayout } from '~/components/MainLayout';
-import { SEOh1 } from '~/components/SEOh1';
 import { LPFreeInstall } from '~/components/pages/LPFreeInstall';
 import { headSEO } from '~/data/constants';
 import { freeInstallQuery } from '~/data/gql_queries/pages/free_install_query';

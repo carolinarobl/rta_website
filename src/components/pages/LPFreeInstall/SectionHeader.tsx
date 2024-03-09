@@ -27,7 +27,9 @@ export const SectionHeader = component$(({ parData }: { parData: any }) => {
             <Markdown text={content['Paragraph']} classN="text-white text-[18px] md:text-[1.75vw]"/>
             {content['Buttons'] &&
                 content['Buttons'].map((button: any, i: number) => (
-                  <Button text={button['Text']} link={button['Link']} />
+                  <div key={i}>
+                    <Button text={button['Text']} link={button['Link']} />
+                  </div>
                 ))
             }     
           </div>
