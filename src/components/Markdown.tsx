@@ -6,7 +6,7 @@ export const Markdown = component$(
     return (
       <div
         dangerouslySetInnerHTML={parse(text)}
-        class={`flex list-outside flex-col gap-3 text-primary-blue [&>*>a]:text-secondary-red [&>h1]:text-[36px] [&>h1]:font-[600] [&>h2]:text-[32px] [&>h3]:text-[26px] [&>ul]:flex [&>ul]:flex-col [&>ul]:gap-3  ${classN}`}
+        class={`flex list-outside flex-col gap-3 text-primary-blue [&>*>a]:text-secondary-red min-[1000px]:[&>h1]:text-[45px] [&>h1]:text-[30px] [&>h1]:leading-tight [&>h1]:font-[400] [&>h2]:text-[32px] [&>h3]:text-[26px] [&>ul]:flex [&>ul]:flex-col [&>ul]:gap-3  ${classN}`}
       ></div>
     );
   },
