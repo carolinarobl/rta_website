@@ -10,7 +10,7 @@ export const SectionHeader = component$(({ parData }: { parData: any }) => {
   
   
     return (
-    <div class={`flex md:flex-row flex-col-reverse w-full text-center items-center justify-center p-8 md:my-10`}>
+    <div class={`flex md:flex-row flex-col-reverse w-full text-center items-center justify-center md:p-8 p-3 md:my-10`}>
 
     {/* Left Content */}
     <div class={`flex ${ballSize}`}>
@@ -23,8 +23,8 @@ export const SectionHeader = component$(({ parData }: { parData: any }) => {
         <div
           class={`bg-[#2E5899] flex h-full w-full items-center justify-center overflow-hidden rounded-full bg-opacity-80 shadow-md`}
         >
-          <div class="flex flex-col items-center">
-            <Markdown text={content['Paragraph']} classN="text-white text-[18px] md:text-[1.75vw]"/>
+          <div class="flex flex-col items-center gap-5">
+            <Markdown text={content['Paragraph']} classN="text-white text-[22px] md:text-[1.75vw]"/>
             {content['Buttons'] &&
                 content['Buttons'].map((button: any, i: number) => (
                   <div key={i}>
@@ -39,7 +39,7 @@ export const SectionHeader = component$(({ parData }: { parData: any }) => {
     </div>
 
     {/* Center Content */}
-    <div class="flex flex-col gap-5 md:px-[30px] px-[12vw]">
+    <div class="flex flex-col gap-5 md:px-[30px] px-[12vw] py-5">
 
       {/* Title / Logo */}
       <div class="flex flex-col justify-center items-center">
