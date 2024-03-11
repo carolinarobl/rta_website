@@ -5,8 +5,9 @@ import { Header } from "./Header";
 import { MenuMobile } from "./MenuMobile";
 
 export const MainLayout = component$(
-  ({ data, showHeader = true }: { data: any; showHeader?: boolean }) => {
+  ({ data, showMenus = true, showHeader=true }: { data: any; showMenus?: boolean; showHeader?: boolean;}) => {
     const mobMenuOpen = useSignal(false);
+
     return (
       <div
         class={`relative overflow-hidden transition-all duration-500 ${
@@ -40,12 +41,16 @@ export const MainLayout = component$(
           }
         >
           <div class="absolute bottom-0 left-0 right-0 top-0 -z-10 bg-gradient-to-l from-[#FFFFFF] to-[#C8D8ED]"></div>
+          {showMenus &&
           <Navbar
             data={data["data"]["generalMenu"]["data"]["attributes"]}
             mobMenuOpen={mobMenuOpen}
           />
+          }
+
           <div class={`${mobMenuOpen.value ? "overflow-y-hidden" : ""}`}>
-            {showHeader && (
+            {showHeader &&
+            (
               <div class="flex w-full items-center justify-center">
                 <Header
                   data={data["data"]["generalHeader"]["data"]["attributes"]}
@@ -55,9 +60,11 @@ export const MainLayout = component$(
             <div class="relative">
             <Slot />
             </div>
+            {showMenus &&
             <Footer
               data={data["data"]["generalFooter"]["data"]["attributes"]}
             />
+            }
           </div>
         </div>
       </div>

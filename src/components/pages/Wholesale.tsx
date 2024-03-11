@@ -84,7 +84,7 @@ export const Wholesale = component$(({ data }: { data: any }) => {
               )}
               alt="paragraph-image"
               width="597"
-              height="300"
+              height="500"
             />
           </div>
         </div>
@@ -98,7 +98,7 @@ export const Wholesale = component$(({ data }: { data: any }) => {
       ></Paragraph>
       <div class="my-4 flex flex-wrap-reverse items-center justify-center gap-8 px-8 py-6">
         <div
-          class="flex h-[400px] items-center justify-center"
+          class="flex items-center justify-center"
           onClick$={() => {
             console.log(pageData);
           }}

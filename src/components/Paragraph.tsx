@@ -81,7 +81,7 @@ export const Paragraph = component$(
               {subtitle && (
                 <h3
                   class={`text-[28px] font-bold
-                  ${ backgroundColor && backgroundColor.trim() !== "" ? "text-white": "text-secondary-red"}
+                  ${ backgroundColor && backgroundColor.trim() !== ("" || "transparent")  ? "text-white": "text-secondary-red"}
                   ${ hasPricing ? "" : "text-center "} max-sm:text-[20px]`}
                 >
                   {subtitle}
@@ -95,7 +95,12 @@ export const Paragraph = component$(
             <div class="flex gap-4">
               {buttons &&
                 buttons.map((button: any, i: number) => (
-                  <Button key={i} text={button["Text"]} link={button["Link"]}>
+                  <Button
+                  key={i}
+                  text={button["Text"]}
+                  link={button["Link"]}
+                  type={button['Link'].startsWith("tel:") ? "action" : "link"}
+                  >
                     <FaCircleArrowRightSolid
                       color="#13B295"
                       class="text-[21px] opacity-60"

@@ -627,6 +627,10 @@
         <loc>https://rtatel.com/internet-trends-navigating-the-digital-landscape/</loc>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://rtatel.com/rta-deploys-fiber-to-the-premises-with-dzs-technology-to-bring-world-class-broadband-experience-to-texas-bolivar-peninsula/</loc>
+        <priority>0.85</priority>
+    </url>
     <!-- END | POSTS (ENGLISH) -->
     <!-- END | POSTS (ENGLISH) -->
     <!-- START | POSTS (SPANISH) -->
@@ -1066,6 +1070,10 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/rta-completes-acquisition-of-blue-ridge-fiber-llc/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/rta-deploys-fiber-to-the-premises-with-dzs-technology-to-bring-world-class-broadband-experience-to-texas-bolivar-peninsula/</loc>
         <priority>0.85</priority>
     </url>
     <!-- END | POSTS (SPANISH) -->
