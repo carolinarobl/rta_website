@@ -1,6 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { routeLoader$, type DocumentHead } from "@builder.io/qwik-city";
 import { MainLayout } from "~/components/MainLayout";
+import { SEOh1 } from "~/components/SEOh1";
 import { News } from "~/components/pages/News";
 import { headSEO } from "~/data/constants";
 import { newsQuery } from "~/data/gql_queries/pages/news_query";
@@ -16,6 +17,11 @@ export default component$(() => {
   const data = signalData.value;
   return (
     <MainLayout data={data["layoutData"]}>
+     <SEOh1
+        SEOdata={
+          data["pageData"]["data"]["pageNews"]["data"]["attributes"]["SEO"]
+        }
+      />
       <News data={data["pageData"]["data"]} />
     </MainLayout>
   );
