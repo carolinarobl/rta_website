@@ -1,7 +1,6 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { Markdown } from "../Markdown";
 import { Button } from "../Button";
-import { setURL } from "~/data/constants";
 import { ListedParagraphs, Paragraph } from "../Paragraph";
 import { AccordionItem } from "../AccordionItem";
 import { StrapiImage } from "../StrapiImage";

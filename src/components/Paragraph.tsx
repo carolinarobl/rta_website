@@ -1,7 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { Button } from "./Button";
 import { FaCircleArrowRightSolid } from "@qwikest/icons/font-awesome";
-import { setURL } from "~/data/constants";
 import { Markdown } from "./Markdown";
 import { StrapiImage } from "./StrapiImage";
 

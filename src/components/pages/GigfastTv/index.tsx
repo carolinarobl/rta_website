@@ -1,5 +1,4 @@
 import { component$ } from "@builder.io/qwik";
-import { setURL } from "~/data/constants";
 import { SectionFeactures } from "./section-feactures";
 import { Markdown } from "~/components/Markdown";
 import { DownloadBoxImage } from "~/components/download-box-image";

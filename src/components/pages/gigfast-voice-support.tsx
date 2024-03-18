@@ -2,7 +2,6 @@ import { component$ } from "@builder.io/qwik";
 import { Markdown } from "../Markdown";
 import { DownloadBox } from "../download-box";
 import { Paragraph } from "../Paragraph";
-import { setURL } from "~/data/constants";
 import { StrapiImage } from "../StrapiImage";
 
 export const GigfastVoiceSupport = component$(({ data }: { data: any }) => {

@@ -1,5 +1,4 @@
 import { $, component$, useSignal } from "@builder.io/qwik";
-import { setURL } from "~/data/constants";
 import { StrapiImage } from "../StrapiImage";
 
 export const PopupChannelsLineup = component$(

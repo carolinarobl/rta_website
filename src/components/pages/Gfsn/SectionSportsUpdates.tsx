@@ -1,7 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import Carousel from "~/components/Carousel";
 import { StrapiImage } from "~/components/StrapiImage";
-import { setURL } from "~/data/constants";
 
 export const SectionSportsUpdates = component$(({ carouselData, title }: { carouselData: any, title: any }) => {
 
