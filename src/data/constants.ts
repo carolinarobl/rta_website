@@ -26,17 +26,28 @@ data {
 }
 `;
 
+
+
 export const headSEO = (SEOdata: any) => {
   let schemaScripts = [];
+  let isSimpleScript: boolean = true;
+  
   if (SEOdata.schema) {
-    schemaScripts = SEOdata.schema
-      .split(`<script type="application/ld+json">`)
-      .flatMap((scr: string) =>
-        scr.split(`<script type='application/ld+json'>`),
-      )
-      .flatMap((script: string) => {
-        return script.replace("</script>", "");
-      });
+
+    if (SEOdata.schema.includes(`<script type="application/ld+json">`)) {
+      isSimpleScript = false;
+  } 
+
+  schemaScripts = SEOdata.schema
+  .split(isSimpleScript ? '<script>' :`<script type="application/ld+json">`)
+  .flatMap((scr: string) =>
+    scr.split(isSimpleScript ? '<script>' :`<script type="application/ld+json">`),
+  )
+  .flatMap((script: string) => {
+    return script.replace("</script>", "");
+  });
+
+
     // .filter((script: string) => script !== null);
   }
 
@@ -45,7 +56,7 @@ export const headSEO = (SEOdata: any) => {
     scripts: [
       ...schemaScripts.map((script: string) => {
         return {
-          props: {
+          props: isSimpleScript ? {} : {
             type: "application/ld+json",
           },
           script: script,
