@@ -3,6 +3,7 @@ import { Markdown } from "../Markdown";
 import { setURL } from "~/data/constants";
 import { DownloadBox } from "../download-box";
 import { DownloadBoxImage } from "../download-box-image";
+import { StrapiImage } from "../StrapiImage";
 
 
 export const GigfastTVSupport = component$(({ data }: { data: any }) => {
@@ -16,7 +17,7 @@ export const GigfastTVSupport = component$(({ data }: { data: any }) => {
                 autoplay
                 loop
                 muted></video>
-                <img class="absolute z-0" src={setURL(pageData['IntroMedia']['data'][0]['attributes']['url'])} 
+                <StrapiImage clasN="absolute z-0" url={pageData['IntroMedia']['data'][0]['attributes']['url']} 
                 width="1082" height="786" alt={pageData['IntroMedia']['data'][0]['attributes']['alternativeText']} title={pageData['IntroMedia']['data'][0]['attributes']['caption']} />
             </div>
         </div>
@@ -63,8 +64,8 @@ export const GigfastTVSupport = component$(({ data }: { data: any }) => {
                     class={`flex min-[800px]:w-[70%] flex-col items-center justify-center gap-4 px-10`}>
 
                     <div class="max-w-[470px]">
-                        <img
-                            src={setURL(sectionChguide['Logo']['data']['attributes']['url'])}
+                        <StrapiImage
+                            url={sectionChguide['Logo']['data']['attributes']['url']}
                             alt={sectionChguide['Logo']['data']['attributes']['alternativeText']}
                             title={sectionChguide['Logo']['data']['attributes']['caption']}
                             width="1230"

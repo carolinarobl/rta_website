@@ -3,6 +3,7 @@ import { setURL } from "~/data/constants";
 import { BsCheckCircleFill } from "@qwikest/icons/bootstrap";
 import { Markdown } from "../Markdown";
 import { Button } from "../Button";
+import { Image } from '@unpic/qwik';
 
 interface Props {
   logo: any;
@@ -32,7 +33,7 @@ export const SimpleTable = component$(
         <div class="mt-8 flex w-fit max-w-full flex-col items-center self-center">
           {isFullLogo ?
           <div class="flex flex-col justify-center items-center self-center gap-2 ">
-          <img
+          <Image
             loading="lazy"
             src={setURL(logo['url'])}
             alt={logo['alternativeText']}
@@ -47,7 +48,7 @@ export const SimpleTable = component$(
         </div>
           :
           <div class="flex w-full items-start gap-5 self-center">
-            <img
+            <Image
               loading="lazy"
               src={setURL(logo['url'])}
               alt={logo['alternativeText']}

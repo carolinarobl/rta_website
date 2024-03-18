@@ -2,6 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import { BsCheckCircleFill, } from "@qwikest/icons/bootstrap";
 import { setURL } from "~/data/constants";
 import { PopupCall } from "../PopupCall";
+import { Image } from '@unpic/qwik';
 
 interface Props {
   logo: any;
@@ -39,7 +40,7 @@ export const ServiceTv = component$(({
     <div class="justify-between min-h-[670px] w-[300px] items-center shadow-lg bg-white flex flex-col px-5 pb-4 rounded-[35px]">
       <div class="items-center self-center flex w-[310px] max-w-full flex-col mt-8">
         <div class="items-start self-center flex w-full gap-5">
-          <img
+          <Image
             width={80}
             height={80}
             loading="lazy"
@@ -76,7 +77,7 @@ export const ServiceTv = component$(({
           </div>
           <div class="justify-center items-start self-stretch flex gap-2.5 mt-2.5">
             {channels.map((channel: any, index: any) => (
-              <img
+              <Image
                 key={index}
                 width={50}
                 height={50}

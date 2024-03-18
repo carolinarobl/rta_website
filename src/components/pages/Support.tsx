@@ -2,6 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import { Markdown } from "../Markdown";
 import { setURL } from "~/data/constants";
 import { Button } from "../Button";
+import { StrapiImage } from "../StrapiImage";
 
 export const Support = component$(({ data }: { data: any }) => {
     const pageData = data['data']['pageSupport']['data']['attributes'];
@@ -45,7 +46,7 @@ export const Support = component$(({ data }: { data: any }) => {
         <div class="flex flex-col my-4 md:flex-row gap-5">
             {pageData['SelfSupport'].map((support: any, index: any) => (
                 <div key={index} class="h-[290px] w-full md:w-[305px] rounded-3xl shadow-2xl flex p-6 flex-col items-center justify-between">
-                    <img src={setURL(support['Media']['data']['attributes']['url'])}
+                    <StrapiImage url={support['Media']['data']['attributes']['url']}
                         alt={support['Media']['data']['attributes']['alternativeText']}
                         title={support['Media']['data']['attributes']['caption']}
                         height={150}

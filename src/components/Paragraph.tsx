@@ -3,6 +3,7 @@ import { Button } from "./Button";
 import { FaCircleArrowRightSolid } from "@qwikest/icons/font-awesome";
 import { setURL } from "~/data/constants";
 import { Markdown } from "./Markdown";
+import { StrapiImage } from "./StrapiImage";
 
 export const Paragraph = component$(
   ({
@@ -59,8 +60,8 @@ export const Paragraph = component$(
           >
             {logo && (
               <div class="max-w-[470px]">
-                <img
-                  src={setURL(logo["url"])}
+                <StrapiImage
+                  url={logo["url"]}
                   alt={logo["alternativeText"]}
                   title={logo["caption"]}
                   width="1230"
@@ -120,7 +121,7 @@ export const Paragraph = component$(
                 }
               }}
             >
-              <img src={setURL(image["url"])} alt={image["alternativeText"]} title={image["caption"]}
+              <StrapiImage url={image["url"]} alt={image["alternativeText"]} title={image["caption"]}
  width="597" height="300" />
             </div>
           )}

@@ -2,6 +2,8 @@ import { component$ } from "@builder.io/qwik";
 import { StrapiImage } from "~/components/StrapiImage";
 import { FaLocationArrowSolid } from "@qwikest/icons/font-awesome";
 import { formatDate } from "~/data/constants";
+import { Image } from '@unpic/qwik';
+
 export const LocalWeatherStations = component$(({ data }: { data: any }) => {
   const pageData = data["pageLocWeather"]["data"]["attributes"];
 
@@ -70,7 +72,7 @@ export const LocalWeatherStations = component$(({ data }: { data: any }) => {
                 <span class="text-[18px] font-[700]">
                   {weather["data"]["days"][0]["conditions"]}
                 </span>
-                <img
+                <Image
                   width="50"
                   height="50"
                   src={iconURL(weather["data"]["days"][0]["icon"])}
@@ -119,7 +121,7 @@ export const LocalWeatherStations = component$(({ data }: { data: any }) => {
                       key={dayN}
                       class="flex flex-col items-center gap-1 text-[12px] max-[1200px]:text-[9px]"
                     >
-                      <img
+                      <Image
                         width="30"
                         height="30"
                         src={iconURL(weather["data"]["days"][dayN]["icon"])}

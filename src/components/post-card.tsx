@@ -1,10 +1,11 @@
 import { component$ } from "@builder.io/qwik";
+import { Image } from '@unpic/qwik';
 
 export const PostCard = component$(() => {
   return (
     <div class="justify-between my-8 items-center shadow-lg bg-white flex flex-col px-5 rounded-[35px]">
       <div class="items-center self-center flex w-[287px] max-w-full flex-col mt-8">
-        <img
+        <Image
         width={300}
         height={200}
           loading="lazy"

@@ -1,5 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { strapiURL } from "~/data/constants";
+import { Image } from '@unpic/qwik';
 
 export const StrapiImage = component$(
   ({
@@ -20,7 +21,7 @@ export const StrapiImage = component$(
     clasN?: string;
   }) => {
     return (
-      <img
+      <Image
         width={width}
         height={height}
         src={`${strapiURL}${url}`}

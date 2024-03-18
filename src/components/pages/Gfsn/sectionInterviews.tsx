@@ -6,7 +6,7 @@ import { StrapiImage } from "~/components/StrapiImage";
 export const SectionInterviews = component$(({ data }: { data: any }) => {
     const slides = data.map((slide: any, index: any) => {
         return <div key={index} class="relative z-0 w-350 h-150 rounded-2xl">
-            <img class="rounded-2xl" src={setURL(slide['Picture']['data']['attributes']['url'])} alt={slide['Picture']['data']['attributes']['alternativeText']}
+            <StrapiImage clasN="rounded-2xl" url={slide['Picture']['data']['attributes']['url']} alt={slide['Picture']['data']['attributes']['alternativeText']}
                 width={350}
                 height={150} />
             <a href={slide['Link']} class="absolute inset-0 h-full w-full flex items-center justify-center">

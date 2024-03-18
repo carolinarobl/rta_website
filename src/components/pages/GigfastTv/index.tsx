@@ -6,6 +6,7 @@ import { DownloadBoxImage } from "~/components/download-box-image";
 import { SectionChpack } from "./section-chpack";
 import { SectionAdditionalOptions } from "./section_additionalOptions";
 import { SectionPremiumChannels } from "./section-premiumChannels";
+import { StrapiImage } from "~/components/StrapiImage";
 
 export const GigfastTv = component$(({ data }: { data: any}) => {
     const pageData = data['data']['pageGfTv']['data']['attributes']
@@ -14,7 +15,7 @@ export const GigfastTv = component$(({ data }: { data: any}) => {
 
     return <div class="flex flex-col justify-around">
         <div class="flex flex-col my-6 items-center justify-center gap-4">
-            <img src={setURL(pageData['Logo']['data']['attributes']['url'])} alt={pageData['Logo']['data']['attributes']['alternativeText']} title={pageData['Logo']['data']['attributes']['caption']}
+            <StrapiImage url={pageData['Logo']['data']['attributes']['url']} alt={pageData['Logo']['data']['attributes']['alternativeText']} title={pageData['Logo']['data']['attributes']['caption']}
                 height={200} width={500} />
             <h2 class="text-[50px] font-bold text-center text-primary-blue">{pageData['Titles'][0]['Text']}</h2>
             <h2 class="text-[50px] font-bold text-center text-secondary-red">{pageData['Titles'][1]['Text']}</h2>
@@ -40,8 +41,8 @@ export const GigfastTv = component$(({ data }: { data: any}) => {
                     class={`flex min-[800px]:w-[70%] flex-col items-center justify-center gap-4 px-10`}>
 
                     <div class="max-w-[470px]">
-                        <img
-                            src={setURL(sectionChguide['Logo']['data']['attributes']['url'])}
+                        <StrapiImage
+                            url={sectionChguide['Logo']['data']['attributes']['url']}
                             alt={sectionChguide['Logo']['data']['attributes']['alternativeText']}
                             title={sectionChguide['Logo']['data']['attributes']['caption']}
                             width="1230"

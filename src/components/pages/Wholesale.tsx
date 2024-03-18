@@ -37,8 +37,8 @@ export const Wholesale = component$(({ data }: { data: any }) => {
           type="action"
         ></Button>
       </div>
-      <img
-        src={setURL(pageData["NetworkLogo"]["data"]["attributes"]["url"])}
+      <StrapiImage
+        url={pageData["NetworkLogo"]["data"]["attributes"]["url"]}
         alt={pageData["NetworkLogo"]["data"]["attributes"]["alternativeText"]}
         height={180}
         width={400}
@@ -78,10 +78,8 @@ export const Wholesale = component$(({ data }: { data: any }) => {
               100 - 70
             ).toString()}%]`}
           >
-            <img
-              src={setURL(
-                pageData["NetworkDIA"]["Media"]["data"]["attributes"]["url"],
-              )}
+            <StrapiImage
+              url={pageData["NetworkDIA"]["Media"]["data"]["attributes"]["url"]}
               alt="paragraph-image"
               width="597"
               height="500"

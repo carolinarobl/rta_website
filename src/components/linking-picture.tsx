@@ -1,5 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { setURL } from "~/data/constants";
+import { Image } from '@unpic/qwik';
 
 interface Props {
   width?: string;
@@ -29,7 +30,7 @@ export const Linking_picture = component$(
           <div
             class={`${color} flex h-full w-full items-center justify-center overflow-hidden rounded-full bg-opacity-80 shadow-md`}
           >
-            <img
+            <Image
               class="h-full w-full rounded-full object-cover"
               height={250}
               width={250}

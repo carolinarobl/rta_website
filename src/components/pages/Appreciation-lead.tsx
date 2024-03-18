@@ -3,6 +3,7 @@ import { setURL } from "~/data/constants";
 import { Button } from "../Button";
 import { StrapiImage } from "../StrapiImage";
 import { Spinner } from "../Spinner";
+import { Image } from '@unpic/qwik';
 
 export const AppreciationLead = component$(({ data }: { data: any }) => {
     const pageData = data['data']['pageAprLead']['data']['attributes']
@@ -11,21 +12,21 @@ export const AppreciationLead = component$(({ data }: { data: any }) => {
     return <div class="flex flex-wrap px-8 items-center justify-center">
         <div class="flex flex-col items-center justify-center w-full md:w-1/2">
             <div class="relative h-[600px] w-[80%] flex flex-col items-center justify-center">
-                <img class="" src={setURL(pageData['zane_lead']['bg_pic']['data']['attributes']['url'])} alt={pageData['zane_lead']['bg_pic']['data']['attributes']['alternativeText']} title={pageData['zane_lead']['bg_pic']['data']['attributes']['caption']}
+                <Image class="" src={setURL(pageData['zane_lead']['bg_pic']['data']['attributes']['url'])} alt={pageData['zane_lead']['bg_pic']['data']['attributes']['alternativeText']} title={pageData['zane_lead']['bg_pic']['data']['attributes']['caption']}
                     width="650" height="650" />
-                <img class="absolute flex rounded-full h-3/4 w-auto" src={setURL(pageData['zane_lead']['zane_pic']['data']['attributes']['url'])}
+                <Image class="absolute flex rounded-full h-3/4 w-auto" src={setURL(pageData['zane_lead']['zane_pic']['data']['attributes']['url'])}
                     height={250}
                     width={250}
                     alt={pageData['zane_lead']['zane_pic']['data']['attributes']['alternativeText']} />
-                <img class="absolute h-[10%] w-auto top-20 right-10" src={setURL(pageData['zane_lead']['tv_pic']['data']['attributes']['url'])}
+                <Image class="absolute h-[10%] w-auto top-20 right-10" src={setURL(pageData['zane_lead']['tv_pic']['data']['attributes']['url'])}
                     alt=""
                     height="50"
                     width="50" />
-                <img class="absolute bottom-10 h-[10%] w-auto left-5" src={setURL(pageData['zane_lead']['wifi_pic']['data']['attributes']['url'])}
+                <Image class="absolute bottom-10 h-[10%] w-auto left-5" src={setURL(pageData['zane_lead']['wifi_pic']['data']['attributes']['url'])}
                     alt=""
                     height="50"
                     width="50" />
-                <img class="absolute top-10 left-10 h-[10%] w-auto" src={setURL(pageData['zane_lead']['phone_pic']['data']['attributes']['url'])}
+                <Image class="absolute top-10 left-10 h-[10%] w-auto" src={setURL(pageData['zane_lead']['phone_pic']['data']['attributes']['url'])}
                     alt=""
                     height="50"
                     width="50" />
@@ -86,7 +87,7 @@ export const AppreciationLead = component$(({ data }: { data: any }) => {
             </div>
             <div class="flex flex-col items-center justify-center">
                 <p class="text-xl text-center font-medium text-primary-blue">{pageData['zane_description']}</p>
-                <img src={setURL(pageData['zane_banner']['banner_pic']['data']['attributes']['url'])}
+                <Image src={setURL(pageData['zane_banner']['banner_pic']['data']['attributes']['url'])}
                     alt=""
                     width="400" height="78"
                 />
