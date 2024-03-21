@@ -140,6 +140,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
           <button aria-label="Close popup" onClick$={handleModal} class={`absolute right-2  mt-2 mx-0" bg-secondary-red flex items-center justify-center text-white rounded-full h-[30px] focus:outline-none z-[600]`} ><div class="px-3 flex flex-row items-center text-xs gap-2">Back to site <BsHouseFill/></div></button>
           <iframe
             src={fullFrameSource.value}
+            title="load popup"
             class="h-full w-full"
             frameBorder="0"
           ></iframe>

@@ -21,7 +21,7 @@ export const Footer = component$(({ data }: { data: any }) => {
             <StrapiImage
               width={970}
               height={359}
-              url={data["CorpInfo"]["Media"]["data"]["attributes"]["url"]}
+              url={data["CorpInfo"]["Media"]["data"]["attributes"]["formats"]['small']['url']}
               alt={
                 data["CorpInfo"]["Media"]["data"]["attributes"][
                   "alternativeText"

@@ -12,7 +12,7 @@ export const SectionSugHome = component$(({ data }: { data: any }) => {
             class=" flex max-w-[400px] flex-col items-center gap-2 text-center text-primary-blue"
           >
             <Linking_picture
-              url={sugPage["Media"]["data"]["attributes"]["url"]}
+              url={sugPage["Media"]["data"]["attributes"]["formats"]['small']['url']}
               alt={sugPage["Media"]["data"]["attributes"]["alternativeText"]}
               title={sugPage["Media"]["data"]["attributes"]["caption"]}
 
@@ -20,7 +20,7 @@ export const SectionSugHome = component$(({ data }: { data: any }) => {
               width="w-[360px]"
               color="bg-primary-blue"
             />
-            <h5 class="text-[24px] font-[700]">{sugPage["Title"]}</h5>
+            <h2 class="text-[24px] font-[700]">{sugPage["Title"]}</h2>
             <p class="text-[17px] font-[400]">{sugPage["Paragraph"]}</p>
             <Button
               text={sugPage["Buttons"][0]["Text"]}

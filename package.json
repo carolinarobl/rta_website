@@ -58,6 +58,7 @@
     "esbuild": "^0.19.9",
     "marked": "^9.1.5",
     "motion": "^10.16.2",
+    "qwik-image": "^0.0.8",
     "qwik-speak": "^0.16.0",
     "valibot": "^0.20.0"
   }

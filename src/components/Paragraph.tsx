@@ -60,7 +60,7 @@ export const Paragraph = component$(
             {logo && (
               <div class="max-w-[470px]">
                 <StrapiImage
-                  url={logo["url"]}
+                  url={logo["formats"]['small']['url']}
                   alt={logo["alternativeText"]}
                   title={logo["caption"]}
                   width="1230"
@@ -120,7 +120,7 @@ export const Paragraph = component$(
                 }
               }}
             >
-              <StrapiImage url={image["url"]} alt={image["alternativeText"]} title={image["caption"]}
+              <StrapiImage url={image["formats"]['small']['url']} alt={image["alternativeText"]} title={image["caption"]}
  width="597" height="300" />
             </div>
           )}
