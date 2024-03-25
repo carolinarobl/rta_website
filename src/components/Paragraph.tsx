@@ -60,7 +60,7 @@ export const Paragraph = component$(
             {logo && (
               <div class="max-w-[470px]">
                 <StrapiImage
-                  url={logo["formats"]['small']['url']}
+                  url={logo['url']}
                   alt={logo["alternativeText"]}
                   title={logo["caption"]}
                   width="1230"
@@ -111,17 +111,16 @@ export const Paragraph = component$(
           </div>
           {image && (
             <div
-              class={`flex w-[300px] items-center justify-center self-center p-4 min-[800px]:w-[${(
-                100 - textPercentage
-              ).toString()}%] ${imageLink && "cursor-pointer"}`}
+              class={`flex bg-white items-center justify-center self-center ${imageLink && "cursor-pointer"}`}
               onClick$={() => {
                 if (imageLink) {
                   window.open(imageLink, "_blank");
                 }
               }}
             >
-              <StrapiImage url={image["formats"]['small']['url']} alt={image["alternativeText"]} title={image["caption"]}
- width="597" height="300" />
+              <div class="">
+                <StrapiImage url={image['formats']['small']['url']} alt={image["alternativeText"]} title={image["caption"]} width="400" height="400" />
+              </div>
             </div>
           )}
           {customComponent && (

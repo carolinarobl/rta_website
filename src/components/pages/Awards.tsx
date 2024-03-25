@@ -22,14 +22,14 @@ export const Awards = component$(({ data }: { data: any }) => {
                             <div class="flex flex-col items-center">
                                 <Image src={setURL(award['Icon']['data']['attributes']['url'])} alt={award['Icon']['data']['attributes']['alternativeText']} title={award['Icon']['data']['attributes']['caption']} height={40} width={40} />
 
-                                <h2 class="text-l text-white font-semibold text-center">{award['Title']}</h2>
+                                <p class="text-l text-white font-semibold text-center">{award['Title']}</p>
                                 <p class="text-center text-sm font-light text-white leading-8">{award['Award']}</p>
                             </div>
                             <a class="text-white font-semibold" target="_blank" href={award['Button']['Link']}>{award['Button']['Text']}</a>
                         </div>
                     </div>
                 </div>
-                <h2 class="text-3xl font-semibold text-primary-blue">{award['Year']}</h2>
+                <p class="text-3xl font-semibold text-primary-blue">{award['Year']}</p>
             </div>
         );
     });

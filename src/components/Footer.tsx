@@ -8,9 +8,9 @@ export const Footer = component$(({ data }: { data: any }) => {
   return (
     <div id="footer" class="">
       <div class="flex flex-col items-center bg-primary-blue px-4 py-3 text-white">
-        <h3 class="text-[22px] font-semibold">
+        <p class="text-[22px] font-semibold">
           {data["SupportSection"]["Title"]}
-        </h3>
+        </p>
         <p class="text-s lm:w-1/2 text-center sm:w-3/4">
           {data["SupportSection"]["Paragraph"]}
         </p>
@@ -54,7 +54,7 @@ export const Footer = component$(({ data }: { data: any }) => {
                   href={subOption["Link"]}
                   class="mb-4 hover:text-blue-600"
                 >
-                  <h3>{subOption["Text"]}</h3>
+                  <p>{subOption["Text"]}</p>
                 </Link>
               ))}
             </AccordionItem>
@@ -64,14 +64,14 @@ export const Footer = component$(({ data }: { data: any }) => {
         <div class="flex justify-around">
           {data["Menus"].map((menu: any, i: any) => (
             <div key={i} class="hidden w-1/4 sm:block">
-              <h2 class="text-2xl text-primary-light-blue font-semibold">{menu["Text"]}</h2>
+              <p class="text-2xl text-primary-light-blue font-semibold">{menu["Text"]}</p>
               {menu["SubOption"].map((subOption: any, index: any) => (
                 <Link
                   key={index}
                   href={subOption["Link"]}
                   class="hover:text-blue-600"
                 >
-                  <h3>{subOption["Text"]}</h3>
+                  <p>{subOption["Text"]}</p>
                 </Link>
               ))}
             </div>
