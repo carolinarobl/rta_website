@@ -128,22 +128,14 @@ sectionNetwork (locale:"${locale}"){
     attributes {
       Map {
         MapPicture {
-          data {
-            attributes {
-              url
-            }
-          }
+          ${mediaUrl}
         }
         ServersTitle
         Servers {
           Text
           Link
           Icon{
-            data{
-              attributes{
-                url
-              }
-            }
+            ${mediaUrl}
           }
         }
       }

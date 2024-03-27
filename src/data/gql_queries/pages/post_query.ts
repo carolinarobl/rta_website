@@ -1,3 +1,5 @@
+import { mediaUrl, sectionSEO } from "~/data/constants";
+
 export const postQuery = (slug: string, locale: string) => {
   const isES = locale === "es-419";
   console.log(`query QueryPostPage {
@@ -11,21 +13,9 @@ export const postQuery = (slug: string, locale: string) => {
           Description
           Slug
           Cover {
-            data {
-              attributes {
-                url
-                caption
-                alternativeText
-              }
-            }
+            ${mediaUrl}
           }
-          SEO {
-            MetaTitle
-            MetaDescription
-            Keywords
-            preventIndexing
-          }
-          
+          ${sectionSEO}
         }
       }
     }
@@ -41,21 +31,9 @@ export const postQuery = (slug: string, locale: string) => {
               Description
               Slug
               Cover {
-                data {
-                  attributes {
-                    url
-                    caption
-                    alternativeText
-                  }
-                }
+                ${mediaUrl}
               }
-              SEO {
-                MetaTitle
-                MetaDescription
-                Keywords
-                preventIndexing
-              }
-              
+              ${sectionSEO} 
             }
           }
         }

@@ -8,7 +8,7 @@ export const SectionCareerHLZSS = component$(({ data }: { data: any }) => {
       <div class="flex min-w-[300px] max-w-[400px] flex-col items-center justify-center rounded-[30px] bg-white p-8 text-primary-blue ">
         <StrapiImage
           clasN="h-fit w-[180px]"
-          url={data["AboutZane"]["Media"]["data"]["attributes"]["url"]}
+          media={data["AboutZane"]["Media"]["data"]["attributes"]}
         />
         <h2 class="mt-4 text-[30px] font-[500] text-secondary-red">
           {data["AboutZane"]["Title"]}
@@ -32,7 +32,7 @@ export const SectionCareerHLZSS = component$(({ data }: { data: any }) => {
                   <StrapiImage
                     clasN="h-[20px]"
                     toWhite={i !== 0}
-                    url={btn["Icon"]["data"]["attributes"]["url"]}
+                    media={btn["Icon"]["data"]["attributes"]}
                   />
                 </div>
               );
@@ -51,7 +51,7 @@ export const SectionCareerHLZSS = component$(({ data }: { data: any }) => {
               >
                 <StrapiImage
                   clasN="h-[24px] w-[24px]"
-                  url={btn["Icon"]["data"]["attributes"]["url"]}
+                  media={btn["Icon"]["data"]["attributes"]}
                 />
                 <span class="text-[14px] font-[500]">{btn["Text"]}</span>
               </div>

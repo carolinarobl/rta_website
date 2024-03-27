@@ -59,11 +59,7 @@ export const wholesaleQuery = (locale: string) => {
                   attributes {
                     Map {
                       MapPicture {
-                        data {
-                          attributes {
-                            url
-                          }
-                        }
+                        ${mediaUrl}
                       }
                     }
                   }

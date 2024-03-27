@@ -26,9 +26,7 @@ export const PostHeader = component$(({ post }: { post: any }) => {
       </div>
       <div class="flex w-full items-center justify-center self-center p-4 min-[800px]:w-[40%]">
         <StrapiImage
-          url={post["Cover"]["data"]["attributes"]["url"]}
-          alt={post["Cover"]["data"]["attributes"]["alternativeText"]}
-          title={post["Cover"]["data"]["attributes"]["caption"]}
+          media={post["Cover"]["data"]["attributes"]}
           clasN="rounded-[50px] shadow-2xl"
           width="1184"
           height="894"

@@ -17,8 +17,8 @@ export const GigfastTVSupport = component$(({ data }: { data: any }) => {
                 autoplay
                 loop
                 muted></video>
-                <StrapiImage clasN="absolute z-0" url={pageData['IntroMedia']['data'][0]['attributes']['url']} 
-                width="1082" height="786" alt={pageData['IntroMedia']['data'][0]['attributes']['alternativeText']} title={pageData['IntroMedia']['data'][0]['attributes']['caption']} />
+                <StrapiImage clasN="absolute z-0" media={pageData['IntroMedia']['data'][0]['attributes']} 
+                width="1082" height="786" />
             </div>
         </div>
         <div class="flex my-20 w-full py-10 bg-primary-blue bg-opacity-40">
@@ -65,9 +65,7 @@ export const GigfastTVSupport = component$(({ data }: { data: any }) => {
 
                     <div class="max-w-[470px]">
                         <StrapiImage
-                            url={sectionChguide['Logo']['data']['attributes']['url']}
-                            alt={sectionChguide['Logo']['data']['attributes']['alternativeText']}
-                            title={sectionChguide['Logo']['data']['attributes']['caption']}
+                            media={sectionChguide['Logo']['data']['attributes']}
                             width="1230"
                             height="230"
                         />

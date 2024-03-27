@@ -21,19 +21,7 @@ export const Footer = component$(({ data }: { data: any }) => {
             <StrapiImage
               width={970}
               height={359}
-              url={data["CorpInfo"]["Media"]["data"]["attributes"]["formats"]['small']['url']}
-              alt={
-                data["CorpInfo"]["Media"]["data"]["attributes"][
-                  "alternativeText"
-                ]
-              
-              }
-              title={
-                data["CorpInfo"]["Media"]["data"]["attributes"][
-                  "caption"
-                ]
-              
-              }
+              media={data["CorpInfo"]["Media"]["data"]["attributes"]}
             />
           </div>
           <p class="mb-4 max-w-sm text-center">
@@ -88,9 +76,7 @@ export const Footer = component$(({ data }: { data: any }) => {
                   <StrapiImage
                     height={20}
                     width={20}
-                    url={item["Icon"]["data"]["attributes"]["url"]}
-                    alt={item["Icon"]["data"]["attributes"]["alternativeText"]}
-                    title={item["Icon"]["data"]["attributes"]["caption"]}
+                    media={item["Icon"]["data"]["attributes"]}
                     toWhite={true}
                   />
                 </div>
@@ -100,9 +86,7 @@ export const Footer = component$(({ data }: { data: any }) => {
                   <StrapiImage
                     height={20}
                     width={20}
-                    url={item["Icon"]["data"]["attributes"]["url"]}
-                    alt={item["Icon"]["data"]["attributes"]["alternativeText"]}
-                    title={item["Icon"]["data"]["attributes"]["caption"]}
+                    media={item["Icon"]["data"]["attributes"]}
                     toWhite={true}
                   />
                 </div>

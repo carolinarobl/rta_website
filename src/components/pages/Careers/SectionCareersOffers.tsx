@@ -7,10 +7,7 @@ export const SectionCareersOffers = component$(({ data }: { data: any }) => {
       <div class="flex h-[250px] w-[170px] flex-col items-center justify-start gap-3 rounded-[16px] bg-white p-3 text-center shadow-lg">
         <StrapiImage
           clasN="h-[80px] w-[100%] object-cover rounded-[16px] bg-primary-blue bg-opacity-10"
-          url={offer["Media"]["data"]["attributes"]["url"]}
-          alt={offer["Media"]["data"]["attributes"]["alternativeText"]}
-          title={offer["Media"]["data"]["attributes"]["caption"]}
-
+          media={offer["Media"]["data"]["attributes"]}
           width="240"
           height="120"
         />

@@ -45,9 +45,7 @@ export const Support = component$(({ data }: { data: any }) => {
         <div class="flex flex-col my-4 md:flex-row gap-5">
             {pageData['SelfSupport'].map((support: any, index: any) => (
                 <div key={index} class="h-[290px] w-full md:w-[305px] rounded-3xl shadow-2xl flex p-6 flex-col items-center justify-between">
-                    <StrapiImage url={support['Media']['data']['attributes']['url']}
-                        alt={support['Media']['data']['attributes']['alternativeText']}
-                        title={support['Media']['data']['attributes']['caption']}
+                    <StrapiImage media={support['Media']['data']['attributes']}
                         height={150}
                         width={310} />
                     <p class="text-2xl md:text-3xl text-center font-semibold text-primary-blue">{support['Title']}</p>

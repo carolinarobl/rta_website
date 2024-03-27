@@ -12,10 +12,7 @@ export const SectionSugHome = component$(({ data }: { data: any }) => {
             class=" flex max-w-[400px] flex-col items-center gap-2 text-center text-primary-blue"
           >
             <Linking_picture
-              url={sugPage["Media"]["data"]["attributes"]["formats"]['small']['url']}
-              alt={sugPage["Media"]["data"]["attributes"]["alternativeText"]}
-              title={sugPage["Media"]["data"]["attributes"]["caption"]}
-
+              media={sugPage["Media"]["data"]["attributes"]}
               //   height="h-[36/0px]"
               width="w-[360px]"
               color="bg-primary-blue"

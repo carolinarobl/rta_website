@@ -45,9 +45,8 @@ export const SectionHeader = component$(({ parData }: { parData: any }) => {
       <div class="flex flex-col justify-center items-center">
         <Markdown text={content['Title']}/>
         <StrapiImage
-          url={content['Logo']['data']['attributes']['url']}
-          alt={content['Logo']['data']['attributes']['alternativeText']}
-          width={"500px"}/>
+          media={content['Logo']['data']['attributes']}
+          width={"400px"} height={"100px"}/>
       </div>
 
       {/* Pricing */}
@@ -56,7 +55,7 @@ export const SectionHeader = component$(({ parData }: { parData: any }) => {
 
     {/* Right Content */}
     <div class={`${ballSize} max-[930px]:hidden flex`}>
-      <Linking_picture url={content['Media']['data']['attributes']['url']} alt={content['Media']['data']['attributes']['alternativeText']}/>
+      <Linking_picture media={content['Media']['data']['attributes']}/>
     </div>
    
     </div>

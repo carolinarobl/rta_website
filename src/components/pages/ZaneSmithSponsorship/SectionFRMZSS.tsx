@@ -10,7 +10,7 @@ export const SectionFRMZSS = component$(({ data }: { data: any }) => {
           {data["AboutFRM"]["Title"]}
         </span>
         <StrapiImage
-          url={data["AboutFRM"]["Logo"]["data"]["attributes"]["url"]}
+          media={data["AboutFRM"]["Logo"]["data"]["attributes"]}
         />
       </div>
       <div class="flex gap-8 max-[800px]:flex-col">
@@ -21,7 +21,7 @@ export const SectionFRMZSS = component$(({ data }: { data: any }) => {
           />
           <StrapiImage
             clasN="w-[80%] min-w-[300px] rounded-3xl"
-            url={data["FRMChamps"]["data"]["attributes"]["url"]}
+            media={data["FRMChamps"]["data"]["attributes"]}
           />
           <Markdown
             classN="text-white text-[12px]"
@@ -39,7 +39,7 @@ export const SectionFRMZSS = component$(({ data }: { data: any }) => {
           />
           <StrapiImage
             clasN="w-[80%] min-w-[180px] rounded-3xl my-2"
-            url={data["AboutFRM"]["Media"]["data"]["attributes"]["url"]}
+            media={data["AboutFRM"]["Media"]["data"]["attributes"]}
           />
           <Markdown
             classN="text-white text-[13px]"
@@ -58,7 +58,7 @@ export const SectionFRMZSS = component$(({ data }: { data: any }) => {
                   <StrapiImage
                     clasN="h-[16px] w-[16px] mr-2"
                     toWhite
-                    url={btn["Icon"]["data"]["attributes"]["url"]}
+                    media={btn["Icon"]["data"]["attributes"]}
                   />
                   <span class="text-white">{btn["Text"]}</span>
                 </div>

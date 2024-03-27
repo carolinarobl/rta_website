@@ -37,8 +37,7 @@ export const Wholesale = component$(({ data }: { data: any }) => {
         ></Button>
       </div>
       <StrapiImage
-        url={pageData["NetworkLogo"]["data"]["attributes"]["url"]}
-        alt={pageData["NetworkLogo"]["data"]["attributes"]["alternativeText"]}
+        media={pageData["NetworkLogo"]["data"]["attributes"]}
         height={180}
         width={400}
       />
@@ -78,8 +77,7 @@ export const Wholesale = component$(({ data }: { data: any }) => {
             ).toString()}%]`}
           >
             <StrapiImage
-              url={pageData["NetworkDIA"]["Media"]["data"]["attributes"]["url"]}
-              alt="paragraph-image"
+              media={pageData["NetworkDIA"]["Media"]["data"]["attributes"]}
               width="597"
               height="500"
             />
@@ -101,11 +99,10 @@ export const Wholesale = component$(({ data }: { data: any }) => {
           }}
         >
           <StrapiImage
-            url={
-              pageData["NetworkMap"]["data"]["attributes"]["Map"]["MapPicture"][
-                "data"
-              ]["attributes"]["url"]
+           media={
+              pageData["NetworkMap"]["data"]["attributes"]["Map"]["MapPicture"]["data"]["attributes"]
             }
+            width={500} height={500}
           />
         </div>
         <div class="flex w-full flex-col items-center justify-center md:w-1/2">

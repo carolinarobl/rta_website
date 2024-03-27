@@ -28,7 +28,7 @@ export const LangSwitch = component$(({ data }: { data: any }) => {
       onClick$={handleClick}
     >
       <StrapiImage
-        url={data[0]["Icon"]["data"]["attributes"]["url"]}
+        media={data[0]["Icon"]["data"]["attributes"]}
         clasN={`h-[36px] w-[36px] m-1 rounded-full ${
           !isES
             ? "border-2 border-primary-blue border-opacity-50"
@@ -36,7 +36,7 @@ export const LangSwitch = component$(({ data }: { data: any }) => {
         }`}
       />
       <StrapiImage
-        url={data[1]["Icon"]["data"]["attributes"]["url"]}
+        media={data[1]["Icon"]["data"]["attributes"]}
         clasN={`h-[36px] w-[36px] m-1 rounded-full ${
           isES ? "border-2 border-primary-blue border-opacity-50" : "opacity-30"
         }  `}

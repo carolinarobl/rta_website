@@ -21,27 +21,19 @@ export const SectionCareersHeader = component$(({ data }: { data: any }) => {
       <div class="z-10 flex flex-wrap items-center justify-center px-8 text-center text-[30px] font-[700] text-primary-blue">
         <StrapiImage
           clasN="w-[300px] max-[1000px]:hidden"
-          url={data["HeaderPictures"]["data"][0]["attributes"]["url"]}
-          alt={data["HeaderPictures"]["data"][0]["attributes"]["alternativeText"]}
-          title={data["HeaderPictures"]["data"][0]["attributes"]["caption"]}
-
+          media={data["HeaderPictures"]["data"][0]["attributes"]}
         />
         <div class="flex flex-col">
           <span>Join the</span>
           <StrapiImage
             clasN="w-[200px]"
-            url={data["HeaderLogo"]["data"]["attributes"]["url"]}
-            alt={data["HeaderLogo"]["data"]["attributes"]["alternativeText"]}
-            title={data["HeaderLogo"]["data"]["attributes"]["caption"]}
-
+            media={data["HeaderLogo"]["data"]["attributes"]}
           />
           <span>Family</span>
         </div>
         <StrapiImage
           clasN="w-[300px]"
-          url={data["HeaderPictures"]["data"][1]["attributes"]["url"]}
-          alt={data["HeaderPictures"]["data"][1]["attributes"]["alternativeText"]}
-          title={data["HeaderPictures"]["data"][1]["attributes"]["caption"]}
+          media={data["HeaderPictures"]["data"][1]["attributes"]}
         />
       </div>
     </div>

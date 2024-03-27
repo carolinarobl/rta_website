@@ -20,9 +20,7 @@ export const ContactUs = component$(({ data }: { data: any }) => {
                         {item["Link"].includes("facebook") && (
                             <div class="flex w-[50px] h-[50px] items-center justify-center rounded-full bg-primary-blue p-4">
                                 <StrapiImage
-                                    url={item["Icon"]["data"]["attributes"]["url"]}
-                                    alt={item["Icon"]["data"]["attributes"]["alternativeText"]}
-                                    title={item["Icon"]["data"]["attributes"]["caption"]}
+                                    media={item["Icon"]["data"]["attributes"]}
                                     toWhite={true}
                                 />
                             </div>
@@ -30,9 +28,7 @@ export const ContactUs = component$(({ data }: { data: any }) => {
                         {!item["Link"].includes("facebook") && (
                             <div class="flex w-[50px] h-[50px] items-center justify-center rounded-full bg-primary-blue p-3">
                                 <StrapiImage
-                                    url={item["Icon"]["data"]["attributes"]["url"]}
-                                    alt={item["Icon"]["data"]["attributes"]["alternativeText"]}
-                                    title={item["Icon"]["data"]["attributes"]["caption"]}
+                                    media={item["Icon"]["data"]["attributes"]}
                                     toWhite={true}
                                 />
                             </div>

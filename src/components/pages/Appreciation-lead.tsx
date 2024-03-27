@@ -3,7 +3,6 @@ import { setURL } from "~/data/constants";
 import { Button } from "../Button";
 import { StrapiImage } from "../StrapiImage";
 import { Spinner } from "../Spinner";
-import { Image } from '@unpic/qwik';
 
 export const AppreciationLead = component$(({ data }: { data: any }) => {
     const pageData = data['data']['pageAprLead']['data']['attributes']
@@ -12,33 +11,32 @@ export const AppreciationLead = component$(({ data }: { data: any }) => {
     return <div class="flex flex-wrap px-8 items-center justify-center">
         <div class="flex flex-col items-center justify-center w-full md:w-1/2">
             <div class="relative h-[600px] w-[80%] flex flex-col items-center justify-center">
-                <Image class="" src={setURL(pageData['zane_lead']['bg_pic']['data']['attributes']['url'])} alt={pageData['zane_lead']['bg_pic']['data']['attributes']['alternativeText']} title={pageData['zane_lead']['bg_pic']['data']['attributes']['caption']}
-                    width="650" height="650" />
-                <Image class="absolute flex rounded-full h-3/4 w-auto" src={setURL(pageData['zane_lead']['zane_pic']['data']['attributes']['url'])}
-                    height={250}
-                    width={250}
-                    alt={pageData['zane_lead']['zane_pic']['data']['attributes']['alternativeText']} />
-                <Image class="absolute h-[10%] w-auto top-20 right-10" src={setURL(pageData['zane_lead']['tv_pic']['data']['attributes']['url'])}
-                    alt=""
-                    height="50"
-                    width="50" />
-                <Image class="absolute bottom-10 h-[10%] w-auto left-5" src={setURL(pageData['zane_lead']['wifi_pic']['data']['attributes']['url'])}
-                    alt=""
-                    height="50"
-                    width="50" />
-                <Image class="absolute top-10 left-10 h-[10%] w-auto" src={setURL(pageData['zane_lead']['phone_pic']['data']['attributes']['url'])}
-                    alt=""
-                    height="50"
-                    width="50" />
-                <div class="absolute left-1/2 top-5 flex flex-row text-primary-blue bg-white items-center justify-center p-2 rounded-full">
+                <StrapiImage media={pageData['zane_lead']['bg_pic']['data']['attributes']}
+                    width="650" height="650"
+                />
 
+                <StrapiImage clasN="absolute flex rounded-full h-3/4 w-auto" media={pageData['zane_lead']['zane_pic']['data']['attributes']}
+                    height={250} width={250}
+                />
+                <StrapiImage clasN="absolute h-[10%] w-auto top-20 right-10" media={pageData['zane_lead']['tv_pic']['data']['attributes']}
+                    height="50" width="50"
+                />
+                
+                <StrapiImage clasN="absolute bottom-10 h-[10%] w-auto left-5" media={pageData['zane_lead']['wifi_pic']['data']['attributes']}
+                    height="50" width="50"
+                />
+
+                <StrapiImage clasN="absolute top-10 left-10 h-[10%] w-auto" media={pageData['zane_lead']['phone_pic']['data']['attributes']['url']}
+                    height="50" width="50"
+                />
+
+                <div class="absolute left-1/2 top-5 flex flex-row text-primary-blue bg-white items-center justify-center p-2 rounded-full">
                     <div class="h-fit w-fit rounded-full  bg-secondary-red p-1">
                         <StrapiImage
                             toWhite
                             width={20}
                             height={20}
-                            url={pageData['zane_lead']['give_pic']['data']['attributes']['url']}
-                            alt={pageData['zane_lead']['give_pic']['data']['attributes']['alternativeText']}
+                            media={pageData['zane_lead']['give_pic']['data']['attributes']}
                         />
                     </div >
                     Price
@@ -50,8 +48,7 @@ export const AppreciationLead = component$(({ data }: { data: any }) => {
                             toWhite
                             width={20}
                             height={20}
-                            url={pageData['zane_lead']['auto_pic']['data']['attributes']['url']}
-                            alt={pageData['zane_lead']['auto_pic']['data']['attributes']['alternativeText']}
+                            media={pageData['zane_lead']['auto_pic']['data']['attributes']}
                         />
                     </div >
                     Live Events
@@ -63,9 +60,7 @@ export const AppreciationLead = component$(({ data }: { data: any }) => {
                             toWhite
                             width={20}
                             height={20}
-                            url={pageData['zane_lead']['cota_pic']['data']['attributes']['url']}
-                            alt={pageData['zane_lead']['cota_pic']['data']['attributes']['alternativeText']}
-
+                            media={pageData['zane_lead']['cota_pic']['data']['attributes']}
                         />
                     </div >
                     Discounts
@@ -77,9 +72,7 @@ export const AppreciationLead = component$(({ data }: { data: any }) => {
                             toWhite
                             width={20}
                             height={20}
-                            url={pageData['zane_lead']['auto_pic']['data']['attributes']['url']}
-                            alt={pageData['zane_lead']['auto_pic']['data']['attributes']['alternativeText']}
-
+                            media={pageData['zane_lead']['auto_pic']['data']['attributes']}
                         />
                     </div >
                     Live Events
@@ -87,8 +80,7 @@ export const AppreciationLead = component$(({ data }: { data: any }) => {
             </div>
             <div class="flex flex-col items-center justify-center">
                 <p class="text-xl text-center font-medium text-primary-blue">{pageData['zane_description']}</p>
-                <Image src={setURL(pageData['zane_banner']['banner_pic']['data']['attributes']['url'])}
-                    alt=""
+                <StrapiImage media={pageData['zane_banner']['banner_pic']['data']['attributes']}
                     width="400" height="78"
                 />
                 <div class="flex flex-row items-center gap-5 justify-evenly my-5">

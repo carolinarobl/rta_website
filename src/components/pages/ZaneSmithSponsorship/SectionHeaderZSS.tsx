@@ -25,7 +25,7 @@ export const SectionHeaderZSS = component$(({ data }: { data: any }) => {
         <section class="flex h-fit w-full flex-col rounded-[35px] bg-white text-center shadow-lg">
           <div class="flex w-full items-center justify-center rounded-t-[35px] bg-gradient-to-r from-[#4caafd] to-[#1a7ee4] px-6 py-3 text-center">
             <StrapiImage
-              url={data["RaceRepLogo"]["data"]["attributes"]["url"]}
+              media={data["RaceRepLogo"]["data"]["attributes"]}
               clasN="h-[16px] w-fit"
             />
           </div>
@@ -95,18 +95,18 @@ export const SectionHeaderZSS = component$(({ data }: { data: any }) => {
     return (
       <div class="flex h-fit max-w-[600px] flex-col items-center justify-center  text-center text-white">
         <StrapiImage
-          url={data["LogoCorp"]["data"]["attributes"]["url"]}
+          media={data["LogoCorp"]["data"]["attributes"]}
           clasN="h-[80px] w-[215px]"
         />
         <span class="mb-4 text-[46px] font-[700] leading-[50px]">
           {data["Title"]}
         </span>
-        <StrapiImage url={data["LogoSponsor"]["data"]["attributes"]["url"]} />
+        <StrapiImage media={data["LogoSponsor"]["data"]["attributes"]} />
         <span class="my-4 rounded-full bg-white px-4 text-[15px] font-[400] tracking-widest text-primary-blue">
           {data["Subtitle"].toUpperCase()}
         </span>
         <StrapiImage
-          url={data["HeaderPictures"]["data"][0]["attributes"]["url"]}
+          media={data["HeaderPictures"]["data"][0]["attributes"]}
           clasN="w-full h-fit px-4 pt-4"
         />
       </div>

@@ -35,11 +35,7 @@ export const WinnersCircle = component$(({ data }: { data: any }) => {
           width="1024"
           height="603"
           clasN="max-w-[1000px] w-fit z-10 object-cover"
-          url={pageData["WinnersBG"]["data"]["attributes"]["url"]}
-          alt={pageData["WinnersBG"]["data"]["attributes"]["alternativeText"]}
-          title={pageData["WinnersBG"]["data"]["attributes"]["caption"]}
-
-
+          media={pageData["WinnersBG"]["data"]["attributes"]}
         />
         <div class="absolute z-20 mb-[160px]  w-[290px] overflow-hidden  rounded-[10px] border border-gray-500 bg-[#171f2a] p-2">
         <Carousel slides={winnersSlides} id={"carouselWinners"} slidesQty={1} hasArrows={false} addSpace={false} />

@@ -21,7 +21,7 @@ export const LPFreeInstall = component$(({ data }: { data: any }) => {
   return (
     <div class="min-h-screen w-full flex flex-col items-center">
 
-      <StrapiImage width={"200px"} url={logoData['url']} alt={logoData['alternativeText']} clasN={"p-5"}/>
+      <StrapiImage width={"200px"} media={logoData} clasN={"p-5"}/>
 
       {/* HEADER SECTION*/}
       <SectionHeader parData={sectionHeadData}/>
