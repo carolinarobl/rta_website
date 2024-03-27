@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { Paragraph } from "~/components/Paragraph";
 
-export const SectionSpeed = component$(({ parData, speedList }: { parData: any, speedList: any}) => {
+export const SectionSpeed = component$(({ parData, speedList }: { parData?: any, speedList: any}) => {
     const content= parData;
     const speeds = speedList;
     
@@ -20,8 +20,9 @@ export const SectionSpeed = component$(({ parData, speedList }: { parData: any, 
                 ))
             }                
             </div>
-
-            <Paragraph color="white" title={content['Title']} text={content['Paragraph']} buttons={content['Buttons']} backgroundColor={"transparent"}/>
+            {parData &&
+              <Paragraph color="white" title={content['Title']} text={content['Paragraph']} buttons={content['Buttons']} backgroundColor={"transparent"}/>
+            }
 
         </div>
     </div>
