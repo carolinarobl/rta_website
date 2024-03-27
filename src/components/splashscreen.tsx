@@ -1,6 +1,5 @@
 import { component$ } from "@builder.io/qwik";
 import { Spinner } from "./Spinner";
-import { StrapiImage } from "./StrapiImage";
 import { setURL } from "~/data/constants";
 
 export const Splashscreen = component$(() => {

@@ -1,5 +1,4 @@
 import { component$, useSignal } from "@builder.io/qwik";
-import { setURL } from "~/data/constants";
 import { Button } from "../Button";
 import { StrapiImage } from "../StrapiImage";
 import { Spinner } from "../Spinner";

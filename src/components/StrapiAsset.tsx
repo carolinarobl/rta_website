@@ -7,8 +7,6 @@ export const StrapiAsset = component$(
     media,
     width,
     height,
-    alt=media['alternativeText'],
-    title=media['caption'],
     toWhite = false,
     clasN = "",
     autoplay = false,

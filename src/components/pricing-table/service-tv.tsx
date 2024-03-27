@@ -1,6 +1,5 @@
 import { component$ } from "@builder.io/qwik";
 import { BsCheckCircleFill, } from "@qwikest/icons/bootstrap";
-import { setURL } from "~/data/constants";
 import { PopupCall } from "../PopupCall";
 import { StrapiImage } from "../StrapiImage";
 

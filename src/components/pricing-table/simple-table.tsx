@@ -1,5 +1,4 @@
 import { component$ } from "@builder.io/qwik";
-import { setURL } from "~/data/constants";
 import { BsCheckCircleFill } from "@qwikest/icons/bootstrap";
 import { Markdown } from "../Markdown";
 import { Button } from "../Button";

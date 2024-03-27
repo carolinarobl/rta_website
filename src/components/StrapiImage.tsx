@@ -1,5 +1,5 @@
-import { $, component$ } from "@builder.io/qwik";
-import { setURL, strapiURL } from "~/data/constants";
+import { component$ } from "@builder.io/qwik";
+import { setURL } from "~/data/constants";
 
 export const StrapiImage = component$(({
   media,
