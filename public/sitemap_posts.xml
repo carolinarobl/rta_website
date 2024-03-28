@@ -647,6 +647,18 @@
         <loc>https://rtatel.com/5-easy-ways-to-improve-your-website-s-seo/</loc>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://rtatel.com/how-to-stay-safe-online-tips-and-tricks/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/the-rise-of-internet-memes-a-brief-history/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/why-you-should-consider-starting-a-blog/</loc>
+        <priority>0.85</priority>
+    </url>
     <!-- END | POSTS (ENGLISH) -->
     <!-- END | POSTS (ENGLISH) -->
     <!-- START | POSTS (SPANISH) -->
@@ -1106,6 +1118,18 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/5-easy-ways-to-improve-your-website-s-seo/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/how-to-stay-safe-online-tips-and-tricks/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/the-rise-of-internet-memes-a-brief-history/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/why-you-should-consider-starting-a-blog/</loc>
         <priority>0.85</priority>
     </url>
     <!-- END | POSTS (SPANISH) -->
