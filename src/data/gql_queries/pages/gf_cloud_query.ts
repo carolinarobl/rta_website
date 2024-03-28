@@ -39,11 +39,7 @@ export const gfCloudQuery = (locale:string)=>{
                   Text
                   Link
                   Icon{
-                    data{
-                      attributes{
-                        url
-                      }
-                    }
+                    ${mediaUrl}
                   }
                 }
               }

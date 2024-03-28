@@ -98,7 +98,7 @@ export const MenuMobile = component$(({ data }: { data: any }) => {
           >
             <div class="w-[130px] rounded-md p-1">
               <StrapiImage
-                url={e["Icon"]["data"]["attributes"]["url"]}
+                media={e["Icon"]["data"]["attributes"]}
                 width="311"
                 height="60"
               />

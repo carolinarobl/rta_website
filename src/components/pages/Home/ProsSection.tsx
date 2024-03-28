@@ -19,21 +19,21 @@ export const ProsSection = component$(({ data }: { data: any }) => {
             {prosData.map((pro:any, i:any) => {
               return (
                 <div key={i} class="flex-row ">
-                  <div class=" bg-secondary-red h-fit w-fit rounded-full p-2">
+                  <div class="flex flex-col">
+                    <div class="flex flex-row gap-4 items-center">
+                    <div class=" bg-secondary-red h-fit w-fit rounded-full p-2">
                     <StrapiImage
                       toWhite
                       width={20}
                       height={20}
-                      url={pro["Icon"]["data"]["attributes"]["url"]}
-                      alt={pro["Icon"]["data"]["attributes"]["alternativeText"]}
-                      title={pro["Icon"]["data"]["attributes"]["caption"]}
-
+                      media={pro["Icon"]["data"]["attributes"]}
                     />
                   </div>
-                  <div class="flex flex-col">
                     <span class="text-[28px] font-bold">
                       <Markdown text={pro["Title"]} classN="text-white" />
                     </span>
+                    </div>
+                    
                     <span class="text-[18px] ">
                       <Markdown text={pro["Text"]} classN="text-white" />
                     </span>
@@ -45,11 +45,9 @@ export const ProsSection = component$(({ data }: { data: any }) => {
         </div>
 
         <StrapiImage
-          width="800"
-          height="800"
-          url={prosMap['url']}
-          alt={prosMap['alternativeText']}
-          title={prosMap['caption']}
+          width="656"
+          height="720"
+          media={prosMap}
           clasN="px-8  min-w-[250px]"
         />
       </div>

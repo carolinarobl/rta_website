@@ -11,9 +11,7 @@ export const SectionSupportTips = component$(({ data }: { data: any }) => {
       >
         <div class="w-fit rounded-full bg-secondary-red p-2">
           <StrapiImage
-            url={tip["Icon"]["data"]["attributes"]["url"]}
-            alt={tip["Icon"]["data"]["attributes"]["alternativeText"]}
-            title={tip["Icon"]["data"]["attributes"]["caption"]}
+            media={tip["Icon"]["data"]["attributes"]}
             width={17}
             height={17}
             toWhite

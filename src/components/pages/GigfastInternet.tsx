@@ -8,7 +8,7 @@ import { SimpleTable } from "../pricing-table/simple-table";
 export const GigfastInternet = component$(({ data }: { data: any }) => {
     return <div class="flex flex-col items-center justify-around">
         <div class="mx-4 my-8 max-w-[500px]">
-            <StrapiImage url={data['Logo']['data']['attributes']['url']} alt={data['Logo']['data']['attributes']['alternativeText']} title={data['Logo']['data']['attributes']['caption']} width={1230} height={229} />
+            <StrapiImage media={data['Logo']['data']['attributes']} width={1230} height={229} />
         </div>
         <div class="mx-10 my-4 flex max-w-[800px] flex-col items-center justify-center gap-2 text-primary-blue">
             <span class="text-center text-[38px] font-bold text-[#2E5899] max-sm:text-[28px]">

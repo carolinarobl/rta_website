@@ -1,7 +1,6 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 import { Markdown } from "../Markdown";
 import { Button } from "../Button";
-import { setURL } from "~/data/constants";
 import { ListedParagraphs, Paragraph } from "../Paragraph";
 import { AccordionItem } from "../AccordionItem";
 import { StrapiImage } from "../StrapiImage";
@@ -37,9 +36,8 @@ export const Wholesale = component$(({ data }: { data: any }) => {
           type="action"
         ></Button>
       </div>
-      <img
-        src={setURL(pageData["NetworkLogo"]["data"]["attributes"]["url"])}
-        alt={pageData["NetworkLogo"]["data"]["attributes"]["alternativeText"]}
+      <StrapiImage
+        media={pageData["NetworkLogo"]["data"]["attributes"]}
         height={180}
         width={400}
       />
@@ -78,11 +76,8 @@ export const Wholesale = component$(({ data }: { data: any }) => {
               100 - 70
             ).toString()}%]`}
           >
-            <img
-              src={setURL(
-                pageData["NetworkDIA"]["Media"]["data"]["attributes"]["url"],
-              )}
-              alt="paragraph-image"
+            <StrapiImage
+              media={pageData["NetworkDIA"]["Media"]["data"]["attributes"]}
               width="597"
               height="500"
             />
@@ -104,11 +99,10 @@ export const Wholesale = component$(({ data }: { data: any }) => {
           }}
         >
           <StrapiImage
-            url={
-              pageData["NetworkMap"]["data"]["attributes"]["Map"]["MapPicture"][
-                "data"
-              ]["attributes"]["url"]
+           media={
+              pageData["NetworkMap"]["data"]["attributes"]["Map"]["MapPicture"]["data"]["attributes"]
             }
+            width={500} height={500}
           />
         </div>
         <div class="flex w-full flex-col items-center justify-center md:w-1/2">

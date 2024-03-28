@@ -1,8 +1,8 @@
 import { component$ } from "@builder.io/qwik";
-import { setURL } from "~/data/constants";
 import { BsCheckCircleFill } from "@qwikest/icons/bootstrap";
 import { Markdown } from "../Markdown";
 import { Button } from "../Button";
+import { StrapiImage } from "../StrapiImage";
 
 interface Props {
   logo: any;
@@ -32,14 +32,11 @@ export const SimpleTable = component$(
         <div class="mt-8 flex w-fit max-w-full flex-col items-center self-center">
           {isFullLogo ?
           <div class="flex flex-col justify-center items-center self-center gap-2 ">
-          <img
-            loading="lazy"
-            src={setURL(logo['url'])}
-            alt={logo['alternativeText']}
-            title={logo['caption']}
+          <StrapiImage
+            media={logo}
             height={100}
             width={300}
-            class=" w-full  overflow-hidden object-center"
+            clasN=" w-full  overflow-hidden object-center"
           />
             <div class=" text-2xl font-bold leading-6 text-primary-blue">
               {title}      
@@ -47,14 +44,11 @@ export const SimpleTable = component$(
         </div>
           :
           <div class="flex w-full items-start gap-5 self-center">
-            <img
-              loading="lazy"
-              src={setURL(logo['url'])}
-              alt={logo['alternativeText']}
-              title={logo['caption']}
+            <StrapiImage
+              media={logo}
               height={100}
               width={100}
-              class="aspect-square w-[70px] max-w-full items-center justify-center self-stretch overflow-hidden object-contain object-center"
+              clasN="aspect-square w-[70px] max-w-full items-center justify-center self-stretch overflow-hidden object-contain object-center"
             />
             <div class="my-auto flex flex-col self-center">
               <div class="self-start whitespace-nowrap text-2xl font-bold leading-6 text-primary-blue">

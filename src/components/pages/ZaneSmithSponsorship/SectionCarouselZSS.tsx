@@ -41,7 +41,7 @@ export const SectionCarouselZSS = component$(({ data }: { data: any }) => {
                   ▷
                 </div>
                 <StrapiImage
-                  url={slide["Cover"]["data"]["attributes"]["url"]}
+                  media={slide["Cover"]["data"]["attributes"]}
                 />
               </div>
             );

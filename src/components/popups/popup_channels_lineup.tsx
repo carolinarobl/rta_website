@@ -1,5 +1,5 @@
 import { $, component$, useSignal } from "@builder.io/qwik";
-import { setURL } from "~/data/constants";
+import { StrapiImage } from "../StrapiImage";
 
 export const PopupChannelsLineup = component$(
   ({
@@ -50,17 +50,10 @@ export const PopupChannelsLineup = component$(
                 include ? "" : "opacity-20"
               } flex flex-col rounded-full border-2 p-1`}
             >
-              <img
+              <StrapiImage
                 height={50}
                 width={50}
-                src={setURL(
-                  channel["attributes"]["Image"]["data"]["attributes"]["url"],
-                )}
-                alt={
-                  channel["attributes"]["Image"]["data"]["attributes"][
-                    "alterbativeText"
-                  ]
-                }
+                media={channel["attributes"]["Image"]["data"]["attributes"]}
               />
             </div>
             {commingSoon ? (

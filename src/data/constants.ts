@@ -22,6 +22,7 @@ data {
         url
         alternativeText
         caption
+        formats
     }
 }
 `;
@@ -127,22 +128,14 @@ sectionNetwork (locale:"${locale}"){
     attributes {
       Map {
         MapPicture {
-          data {
-            attributes {
-              url
-            }
-          }
+          ${mediaUrl}
         }
         ServersTitle
         Servers (pagination:{limit:50}){
           Text
           Link
           Icon{
-            data{
-              attributes{
-                url
-              }
-            }
+            ${mediaUrl}
           }
         }
       }

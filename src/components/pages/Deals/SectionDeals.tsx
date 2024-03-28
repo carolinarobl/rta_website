@@ -30,7 +30,7 @@ export const SectionDeals = component$(({ data }: { data: any }) => {
             {data["Services"].map((deal: any, i: any) => (
               <div key={i} class="flex items-center justify-center gap-1">
                 <StrapiAsset
-                  url={deal["Icon"]["data"]["attributes"]["url"]}
+                  media={deal["Icon"]["data"]["attributes"]}
                   clasN="w-[100px] max-[1000px]:w-[80px] "
                   muted={true}
                 />
@@ -42,7 +42,7 @@ export const SectionDeals = component$(({ data }: { data: any }) => {
         </div>
         <div class="flex w-[300px] items-center justify-center self-center p-4 max-[600px]:hidden min-[800px]:w-[30%]">
           <StrapiAsset
-            url={data["Media"]["data"]["attributes"]["url"]}
+            media={data["Media"]["data"]["attributes"]}
             clasN="rounded-full  mr-[30px]"
             autoplay
             loop

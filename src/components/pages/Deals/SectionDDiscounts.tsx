@@ -9,13 +9,10 @@ export const SectionDDiscounts = component$(({ data }: { data: any }) => {
         {data.map((discount:any, i: any) => (
           <div key={i} class="flex w-[280px] flex-col items-center gap-2">
             <Linking_picture
-              url={discount["Media"]["data"]["attributes"]["url"]}
+              media={discount["Media"]["data"]["attributes"]}
               color={i % 2 === 0 ? "bg-[#2E5899]" : "bg-secondary-red"}
-              width={"250px"}
-              height={"a"}
-              alt={discount["Media"]["data"]["attributes"]["alternativeText"]}
-              title={discount["Media"]["data"]["attributes"]["caption"]}
-
+              width={"300px"}
+              height={"300px"}
             />
             <Markdown
               text={discount["Title"]}

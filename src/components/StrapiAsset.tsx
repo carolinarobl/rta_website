@@ -4,11 +4,9 @@ import { setURL } from "~/data/constants";
 
 export const StrapiAsset = component$(
   ({
-    url,
+    media,
     width,
     height,
-    alt = "",
-    title="",
     toWhite = false,
     clasN = "",
     autoplay = false,
@@ -16,7 +14,7 @@ export const StrapiAsset = component$(
     loop = true,
     muted = true,
   }: {
-    url: string;
+    media: any;
     width?: any;
     height?: any;
     alt?: string;
@@ -28,12 +26,12 @@ export const StrapiAsset = component$(
     loop?: boolean;
     muted?: boolean;
   }) => {
-    if (url.includes(".mp4")) {
+    if (media['url'].includes(".mp4")) {
       return (
         <video
           width={width}
           height={height}
-          src={setURL(url)}
+          src={setURL(media['url'])}
           autoplay={autoplay}
           controls={controls}
           loop={loop}
@@ -51,11 +49,9 @@ export const StrapiAsset = component$(
 
     return (
       <StrapiImage
-        url={url}
+        media={media}
         width={width}
         height={height}
-        alt={alt}
-        title={title}
         toWhite={toWhite}
         clasN={clasN}
       ></StrapiImage>

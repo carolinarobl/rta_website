@@ -1,18 +1,18 @@
 import { component$ } from "@builder.io/qwik";
-import { SectionHeader } from "./SectionHeader";
-import { SectionSpeed } from "./SectionSpeed";
-import { SectionRating } from "./SectionRating";
 import { StrapiImage } from "~/components/StrapiImage";
 import { Link } from "@builder.io/qwik-city";
+import { SectionHeader } from "../LPFreeInstall/SectionHeader";
+import { SectionSpeed } from "../LPFreeInstall/SectionSpeed";
+import { SectionRating } from "../LPFreeInstall/SectionRating";
 
 
-export const LPFreeInstall = component$(({ data }: { data: any }) => {
+export const LPNeighborhood = component$(({ data }: { data: any }) => {
 
   const logoData = data['Logo']['data']['attributes'];
   const sectionHeadData = data['SectionHead'];
 
   const speedList = data['SpeedBullets'];
-  const sectionSpeedData = data['SectionSpeed'];
+//   const sectionSpeedData = data['SectionSpeed'];
   
   const sectionRatingData = data['SectionRating'];
 
@@ -21,13 +21,13 @@ export const LPFreeInstall = component$(({ data }: { data: any }) => {
   return (
     <div class="min-h-screen w-full flex flex-col items-center">
 
-      <StrapiImage width={"200px"} media={logoData} clasN={"p-5"}/>
+      <StrapiImage width={"200px"} height="80px" media={logoData} clasN={"pt-5 px-5"}/>
 
       {/* HEADER SECTION*/}
       <SectionHeader parData={sectionHeadData}/>
 
       {/* SPEED SECTION*/}
-      <SectionSpeed parData={sectionSpeedData} speedList={speedList}/>
+      <SectionSpeed speedList={speedList}/>
 
       {/* RATING SECTION*/}
       <SectionRating parData={sectionRatingData}/>

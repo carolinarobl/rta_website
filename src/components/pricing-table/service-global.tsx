@@ -6,12 +6,6 @@ export const ServiceGlobal = component$(() => {
         <div class="justify-between items-center shadow-lg bg-white flex flex-col px-5 rounded-[35px]">
             <div class="items-center self-center flex w-[306px] max-w-full flex-col mt-8">
                 <div class="justify-center items-center self-center flex w-full flex-col">
-                    <img width={100}
-                    height={100}
-                        loading="lazy"
-                        srcset="..."
-                        class="aspect-[4.11] object-contain object-center w-full overflow-hidden self-stretch"
-                    />
                     <div class="text-blue-800 text-center text-2xl font-bold leading-6 self-center mt-6 whitespace-nowrap">
                         Nombre Paquete
                     </div>

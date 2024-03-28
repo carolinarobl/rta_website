@@ -2,6 +2,7 @@ import { component$ } from "@builder.io/qwik";
 import { StrapiImage } from "~/components/StrapiImage";
 import { FaLocationArrowSolid } from "@qwikest/icons/font-awesome";
 import { formatDate } from "~/data/constants";
+
 export const LocalWeatherStations = component$(({ data }: { data: any }) => {
   const pageData = data["pageLocWeather"]["data"]["attributes"];
 
@@ -25,20 +26,10 @@ export const LocalWeatherStations = component$(({ data }: { data: any }) => {
                   clasN="h-[400px]"
                   width="2622"
                   height="3086"
-                  url={
+                  media={
                     pageData["LocTables"].find(
                       (e: any) => e["Location"] === weather["city"],
-                    )["LocationPic"]["data"]["attributes"]["url"]
-                  }
-                  alt={
-                    pageData["LocTables"].find(
-                      (e: any) => e["Location"] === weather["city"],
-                    )["LocationPic"]["data"]["attributes"]["alternativeText"]
-                  }
-                  title={
-                    pageData["LocTables"].find(
-                      (e: any) => e["Location"] === weather["city"],
-                    )["LocationPic"]["data"]["attributes"]["caption"]
+                    )["LocationPic"]["data"]["attributes"]
                   }
                 />
               </div>

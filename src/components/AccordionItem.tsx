@@ -28,9 +28,9 @@ export const AccordionItem = component$(
             isOpen.value = !isOpen.value;
           }}
         >
-          <span class="flex w-full items-center justify-center font-bold">
+          <h3 class="flex w-full items-center justify-center font-bold">
             {title}
-          </span>
+          </h3>
           <div
             class={`flex h-[20px] w-[20px] items-center justify-center ${
               inFooter ? "" : "rounded-full bg-secondary-red text-white"

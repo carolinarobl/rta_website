@@ -54,9 +54,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
           <StrapiImage
             clasN="w-[160px]"
             width="1667"
-            url={slide["Logo"]["data"]["attributes"]["url"]}
-            alt={slide["Logo"]["data"]["attributes"]["alternativeText"]}
-            title={slide["Logo"]["data"]["attributes"]["caption"]}
+            media={slide["Logo"]["data"]["attributes"]}
           />
           <div class="mx-3 max-[1000px]:hidden">
             <Markdown classN="text-[13px]" text={slide["Paragraph"]} />
@@ -68,7 +66,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
         </div>
         <StrapiAsset
           clasN="rounded-full w-[150px] mr-[30px] max-[1000px]:w-[40%]"
-          url={slide["Media"]["data"]["attributes"]["url"]}
+          media={slide["Media"]["data"]["attributes"]}
           alt={slide["Media"]["data"]["attributes"]["alternativeText"]}
           title={slide["Media"]["data"]["attributes"]["caption"]}
           autoplay
@@ -140,6 +138,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
           <button aria-label="Close popup" onClick$={handleModal} class={`absolute right-2  mt-2 mx-0" bg-secondary-red flex items-center justify-center text-white rounded-full h-[30px] focus:outline-none z-[600]`} ><div class="px-3 flex flex-row items-center text-xs gap-2">Back to site <BsHouseFill/></div></button>
           <iframe
             src={fullFrameSource.value}
+            title="load popup"
             class="h-full w-full"
             frameBorder="0"
           ></iframe>

@@ -9,12 +9,12 @@ export const GigfastCloud = component$(({ data }: { data: any }) => {
     const dataSectionNetwork = data['sectionNetwork']['data']['attributes']
 
     return <div class="flex flex-col items-center justify-center">
-        <StrapiImage url={dataPage['GNetworkLogo']['data']['attributes']['url']} alt={dataPage['GNetworkLogo']['data']['attributes']['alternativeText']} title={dataPage['GNetworkLogo']['data']['attributes']['caption']}
+        <StrapiImage media={dataPage['GNetworkLogo']['data']['attributes']}
             width={500} height={95}></StrapiImage>
         <div class="flex flex-wrap-reverse px-8 py-6 items-center justify-center">
             <div class="h-[450px] w-full md:w-1/2">
-                <StrapiImage url={dataSectionNetwork['Map']['MapPicture']['data']['attributes']['url']} alt={dataSectionNetwork['Map']['MapPicture']['data']['attributes']['alternativeText']} title={dataSectionNetwork['Map']['MapPicture']['data']['attributes']['caption']}
-                    width={500} height={95}></StrapiImage>
+                <StrapiImage media={dataSectionNetwork['Map']['MapPicture']['data']['attributes']} 
+                    width={500} height={490}></StrapiImage>
             </div>
             <div class="flex flex-col w-full md:w-1/2 items-center justify-center">
                 <Markdown text={dataSectionNetwork['Description']['Paragraph']} classN="text-primary-blue"></Markdown>

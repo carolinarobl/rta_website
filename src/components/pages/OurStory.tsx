@@ -12,8 +12,8 @@ export const OurStory = component$(({ data }: { data: any }) => {
         <h3 class="font-bold my-4 text-2xl md:text-4xl text-center">{data['CommitmentPar']['Title']}</h3>
         <Markdown text={data['CommitmentPar']['Paragraph']} classN="text-justify"></Markdown>
       </div>
-      <Linking_picture height="h-[350px]" width="w-[350px]" alt={data['CommitmentPar']['Media']['data']['attributes']['alternativeText']}
-        url={data['CommitmentPar']['Media']['data']['attributes']['url']} title={data['CommitmentPar']['Media']['data']['attributes']['caption']} ></Linking_picture>
+      <Linking_picture height="h-[350px]" width="w-[350px]" 
+        media={data['CommitmentPar']['Media']['data']['attributes']} ></Linking_picture>
     </div>
     <div class="flex px-8 mt-8 flex-col md:flex-row justify-center md:justify-around items-center md:items-start">
       {data['ColumnsPar'].map((column: any, index: any) => (
@@ -32,7 +32,7 @@ export const OurStory = component$(({ data }: { data: any }) => {
       </div>
       {data['Sponsorships'].map((sponsorship: any, index: any) => (
         <div key={index} class="h-[350px] px-6 absolute flex flex-col justify-around items-center w-[250px] bg-white rounded-3xl shadow-xl">
-          <Linking_picture height="h-[200px]" width="w-[200px]" alt={sponsorship['Media']['data']['attributes']['alternativeText']} url={data['Sponsorships'][0]['Media']['data']['attributes']['url']} title={data['Sponsorships'][0]['Media']['data']['attributes']['caption']}></Linking_picture>
+          <Linking_picture height="h-[200px]" width="w-[200px]" media={data['Sponsorships'][0]['Media']['data']['attributes']}></Linking_picture>
           <div class="flex flex-col items-center">
             <h3 class="text-secondary-red text-xl font-semibold">{sponsorship['Title']}</h3>
             <h3 class="text-secondary-red text-xl font-semibold">{sponsorship['Subtitle']}</h3>

@@ -4,13 +4,11 @@ export const PostCard = component$(() => {
   return (
     <div class="justify-between my-8 items-center shadow-lg bg-white flex flex-col px-5 rounded-[35px]">
       <div class="items-center self-center flex w-[287px] max-w-full flex-col mt-8">
-        <img
+        {/* <StrapiImage
         width={300}
         height={200}
-          loading="lazy"
-          srcset="..."
-          class="aspect-[1.91] object-contain object-center w-full overflow-hidden self-start"
-        />
+          clasN="aspect-[1.91] object-contain object-center w-full overflow-hidden self-start"
+        /> */}
         <div class="items-start flex w-full grow flex-col mt-5 self-start">
           <div class="overflow-hidden text-blue-800 text-ellipsis text-xl font-semibold">
             Este es el título del artículo que está pasando de dos líneas

@@ -8,9 +8,7 @@ export const SectionGFVIntro = component$(({ data }: { data: any }) => {
     <div class="flex w-full justify-center text-primary-blue">
       <div class="mx-8 my-8 flex flex-col items-center gap-6 text-center text-[18px]">
         <StrapiImage
-          url={data["Logo"]["data"]["attributes"]["url"]}
-          alt={data["Logo"]["data"]["attributes"]["alternativeText"]}
-          title={data["Logo"]["data"]["attributes"]["caption"]}
+          media={data["Logo"]["data"]["attributes"]}
           width={"450"}
           clasN="mb-6"
         />
