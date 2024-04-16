@@ -22,6 +22,25 @@ export const locationQuery = (locale: string, slug: string) => {
           ZipCode
           Description
           Slug
+          
+          posts{
+            data{
+              attributes{
+                Title
+                Date
+                Cover{
+                  ${mediaUrl}
+                }
+                Description
+                VideoLink
+                Gallery{
+                  ${mediaUrl}
+                }
+                Slug
+              }
+            }
+          }
+          
           SEO {
             MetaTitle
             MetaDescription
