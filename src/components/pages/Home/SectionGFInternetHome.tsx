@@ -7,18 +7,16 @@ import { StrapiImage } from "~/components/StrapiImage";
 export const SectionGFInternetHome = component$(
   ({ data, parGFIPlans }: { data: any; parGFIPlans: any[] }) => {
     const buttons = data["Buttons"];
-    const logoSrc = data["Logo"]["data"]["attributes"]["formats"]['small']['url'];
-    const logoAlt = data["Logo"]["data"]["attributes"]["alternativeText"];
-    const mediaSrc = data["Media"]["data"]["attributes"]["formats"]['small']['url'];
-    const mediaAlt = data["Media"]["data"]["attributes"]["alternativeText"];
+    const logo = data["Logo"]["data"]["attributes"];
+    const media = data["Media"]["data"]["attributes"];
     return (
       <div class="mb-4 flex flex-row-reverse max-w-[1200px] items-center justify-center gap-4 self-center px-8 max-[800px]:flex-col-reverse">
-        <div class="flex w-[300px] items-center justify-center self-center p-4 min-[800px]:w-[40%]">
-          <StrapiImage url={mediaSrc} width={395} height={500} alt={mediaAlt}/>
+        <div class="flex w-[400px] items-center justify-center self-center p-4 min-[800px]:w-[40%]">
+          <StrapiImage media={media} width={400} height={500}/>
         </div>
         <div class="flex flex-col items-center justify-center gap-4 min-[800px]:w-[60%]">
           <div class="max-w-[470px]">
-            <StrapiImage url={logoSrc} width={1230} height={230} alt={logoAlt} />
+            <StrapiImage media={logo} width={1230} height={230} />
           </div>
           <div class="flex items-start gap-2">
             <div class="text-center text-[38px] font-bold text-[#2E5899] max-sm:text-[28px]">

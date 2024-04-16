@@ -47,9 +47,7 @@ export const Post = component$(({ post, id }: { post: any; id: string }) => {
         width="1184"
         height="894"
         clasN="rounded-2xl self-center object-cover h-[200px] w-[300px]"
-        url={post["attributes"]["Cover"]["data"]["attributes"]["url"]}
-        alt={post["attributes"]["Cover"]["data"]["attributes"]["alternativeText"]}
-        title={post["attributes"]["Cover"]["data"]["attributes"]["caption"]}
+        media={post["attributes"]["Cover"]["data"]["attributes"]}
       />
       <h3 class="px-3 py-1 font-[600] text-[15px] text-primary-blue ">  {limitText(post["attributes"]["Title"], 60)}
 </h3>

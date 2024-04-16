@@ -1,6 +1,7 @@
 import { component$, useSignal } from "@builder.io/qwik";
 import { Post } from "./Post";
 import { useLocation } from "@builder.io/qwik-city";
+import { mediaUrl } from "~/data/constants";
 
 export const PostLoader = component$(
   ({
@@ -59,22 +60,10 @@ export const PostLoader = component$(
                           Title
                           Date
                           Cover {
-                            data {
-                              attributes {
-                                url
-                                caption
-                                alternativeText
-                              }
-                            }
+                            ${mediaUrl}
                           }
                           Gallery {
-                            data {
-                              attributes {
-                                url
-                                caption
-                                alternativeText
-                              }
-                            }
+                            ${mediaUrl}
                           }
                           Description
                           Slug

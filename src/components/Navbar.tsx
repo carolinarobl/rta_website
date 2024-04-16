@@ -22,9 +22,7 @@ export const Navbar = component$(
                   <div class="flex flex-row items-center gap-2">
                     <div class="w-[12px]">
                       <StrapiImage
-                        url={e["Icon"]["data"]["attributes"]["url"]}
-                        alt={e["Icon"]["data"]["attributes"]["alternativeText"]}
-                        title={e["Icon"]["data"]["attributes"]["caption"]}
+                        media={e["Icon"]["data"]["attributes"]}
                         toWhite={true}
                         width="16"
                         height="16"
@@ -58,15 +56,7 @@ export const Navbar = component$(
               <div class="w-[125px] py-1">
                 <ActionLink link="/">
                   <StrapiImage
-                    url={data["MainMenu"]["Logo"]["data"]["attributes"]["url"]}
-                    alt={
-                      data["MainMenu"]["Logo"]["data"]["attributes"][
-                        "alternativeText"
-                      ]
-                    }
-                    title={
-                      data["MainMenu"]["Logo"]["data"]["attributes"]["caption"]
-                    }
+                    media={data["MainMenu"]["Logo"]["data"]["attributes"]}
                     width={150}
                     height={80}
                   />
@@ -150,9 +140,7 @@ export const Navbar = component$(
             <ActionLink key={i} link={e["Link"]}>
               <div class="w-[130px] rounded-md p-1 hover:bg-slate-50">
                 <StrapiImage
-                  url={e["Icon"]["data"]["attributes"]["url"]}
-                  alt={e["Icon"]["data"]["attributes"]["alternativeText"]}
-                  title={e["Icon"]["data"]["attributes"]["caption"]}
+                  media={e["Icon"]["data"]["attributes"]}
                   width="311"
                   height="60"
                 />

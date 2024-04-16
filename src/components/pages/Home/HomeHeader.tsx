@@ -54,9 +54,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
           <StrapiImage
             clasN="w-[160px]"
             width="1667"
-            url={slide["Logo"]["data"]["attributes"]["url"]}
-            alt={slide["Logo"]["data"]["attributes"]["alternativeText"]}
-            title={slide["Logo"]["data"]["attributes"]["caption"]}
+            media={slide["Logo"]["data"]["attributes"]}
           />
           <div class="mx-3 max-[1000px]:hidden">
             <Markdown classN="text-[13px]" text={slide["Paragraph"]} />
@@ -68,7 +66,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
         </div>
         <StrapiAsset
           clasN="rounded-full w-[150px] mr-[30px] max-[1000px]:w-[40%]"
-          url={slide["Media"]["data"]["attributes"]["url"]}
+          media={slide["Media"]["data"]["attributes"]}
           alt={slide["Media"]["data"]["attributes"]["alternativeText"]}
           title={slide["Media"]["data"]["attributes"]["caption"]}
           autoplay

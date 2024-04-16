@@ -36,6 +36,7 @@ export const Paragraph = component$(
     backgroundColor?: string;
     imageLink?: string;
   }) => {
+    
     return (
       <div
         class={`flex w-full flex-col items-center justify-center ${ alt ? "bg-white" : "bg-[#e2eefa]" }
@@ -60,9 +61,7 @@ export const Paragraph = component$(
             {logo && (
               <div class="max-w-[470px]">
                 <StrapiImage
-                  url={logo["formats"]['small']['url']}
-                  alt={logo["alternativeText"]}
-                  title={logo["caption"]}
+                  media={logo}
                   width="1230"
                   height="230"
                 />
@@ -111,17 +110,17 @@ export const Paragraph = component$(
           </div>
           {image && (
             <div
-              class={`flex w-[300px] items-center justify-center self-center p-4 min-[800px]:w-[${(
-                100 - textPercentage
-              ).toString()}%] ${imageLink && "cursor-pointer"}`}
+              class={`flex items-center justify-center self-center ${imageLink && "cursor-pointer"}`}
               onClick$={() => {
                 if (imageLink) {
                   window.open(imageLink, "_blank");
                 }
               }}
             >
-              <StrapiImage url={image["formats"]['small']['url']} alt={image["alternativeText"]} title={image["caption"]}
- width="597" height="300" />
+            <div class="flex md:w-[400px] w-[350px] items-center justify-center self-center p-4">
+                      <StrapiImage media={image} width="400" height="400" />
+            </div>
+             
             </div>
           )}
           {customComponent && (

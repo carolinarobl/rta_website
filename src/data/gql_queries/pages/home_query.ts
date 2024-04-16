@@ -134,22 +134,10 @@ export const homeQuery = (locale: string) => {
     data {
       attributes {
         Video {
-          data {
-            attributes {
-              url
-              alternativeText
-              caption
-            }
-          }
+          ${mediaUrl}
         }
         Logo {
-          data {
-            attributes {
-              url
-              alternativeText
-              caption
-            }
-          }
+          ${mediaUrl}
         }
         Description
         RaceDay
@@ -162,13 +150,7 @@ export const homeQuery = (locale: string) => {
       attributes {
         Pros {
           Icon {
-            data {
-            attributes {
-              url
-              alternativeText
-              caption
-            }
-          }
+            ${mediaUrl}
           }
           Title
           Text
@@ -182,11 +164,7 @@ export const homeQuery = (locale: string) => {
       attributes {
         Map {
           MapPicture {
-            data {
-              attributes {
-                url
-              }
-            }
+            ${mediaUrl}
           }
         }
       }

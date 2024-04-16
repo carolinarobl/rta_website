@@ -53,12 +53,7 @@ export const PopupChannelsLineup = component$(
               <StrapiImage
                 height={50}
                 width={50}
-                url={channel["attributes"]["Image"]["data"]["attributes"]["url"]}
-                alt={
-                  channel["attributes"]["Image"]["data"]["attributes"][
-                    "alterbativeText"
-                  ]
-                }
+                media={channel["attributes"]["Image"]["data"]["attributes"]}
               />
             </div>
             {commingSoon ? (

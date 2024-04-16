@@ -1,43 +1,26 @@
-import { $, component$ } from "@builder.io/qwik";
-import { strapiURL } from "~/data/constants";
-import { Image, type ImageTransformerProps, useImageProvider } from 'qwik-image';
+import { component$ } from "@builder.io/qwik";
+import { setURL } from "~/data/constants";
 
 export const StrapiImage = component$(({
-  url,
+  media,
   width = 150,
   height = 150,
-  alt = "",
-  title = "",
   toWhite = false,
   clasN = "",
 }: {
-  url: string;
+  media: any;
   width?: any;
   height?: any;
-  alt?: string;
-  title?: string;
   toWhite?: boolean;
   clasN?: string;
 }) => {
-  const imageTransformer$ = $(
-    ({src}: ImageTransformerProps): string => {
-        return `${strapiURL}${src}`;
-    }
-  );
-
-  useImageProvider({
-    resolutions: [640, 960, 1280, 1920, 3840],
-    imageTransformer$
-  });
 
   return (
-    <Image
-      layout="constrained"
-      objectFit="contain"
+    <img
       width={width}
       height={height}
-      title={title}
-      alt={alt}
+      title={media["caption"]}
+      alt={media["alternativeText"]}
       class={
         (toWhite
           ? "brightness-110 contrast-100 hue-rotate-[23deg] invert saturate-[7500%] sepia-0 filter"
@@ -45,8 +28,17 @@ export const StrapiImage = component$(({
         "" +
         clasN
       }
-      src={`${url}`}
+      src={setURL(media.url)}
+      srcset={media.formats &&
+              media.formats.small &&
+              (`${setURL(media.formats.small.url)} 40w, ${setURL(media.url)} 800w`)}
+      sizes="(max-width: 600px) 40px, 800px"
+      // {`${media.formats &&
+      //           media.formats.small &&
+      //           ("(max-width: 600px) 40px, 800px")}`}
+      // srcset={media.formats && (`${setURL(media.url)} 400w`)}
     />
+    // <h1>auida</h1>
   );
 });
 

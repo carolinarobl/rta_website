@@ -2,7 +2,6 @@ import { component$ } from "@builder.io/qwik";
 import { StrapiImage } from "~/components/StrapiImage";
 import { FaLocationArrowSolid } from "@qwikest/icons/font-awesome";
 import { formatDate } from "~/data/constants";
-import { Image } from '@unpic/qwik';
 
 export const LocalWeatherStations = component$(({ data }: { data: any }) => {
   const pageData = data["pageLocWeather"]["data"]["attributes"];
@@ -27,20 +26,10 @@ export const LocalWeatherStations = component$(({ data }: { data: any }) => {
                   clasN="h-[400px]"
                   width="2622"
                   height="3086"
-                  url={
+                  media={
                     pageData["LocTables"].find(
                       (e: any) => e["Location"] === weather["city"],
-                    )["LocationPic"]["data"]["attributes"]["url"]
-                  }
-                  alt={
-                    pageData["LocTables"].find(
-                      (e: any) => e["Location"] === weather["city"],
-                    )["LocationPic"]["data"]["attributes"]["alternativeText"]
-                  }
-                  title={
-                    pageData["LocTables"].find(
-                      (e: any) => e["Location"] === weather["city"],
-                    )["LocationPic"]["data"]["attributes"]["caption"]
+                    )["LocationPic"]["data"]["attributes"]
                   }
                 />
               </div>
@@ -72,7 +61,7 @@ export const LocalWeatherStations = component$(({ data }: { data: any }) => {
                 <span class="text-[18px] font-[700]">
                   {weather["data"]["days"][0]["conditions"]}
                 </span>
-                <Image
+                <img
                   width="50"
                   height="50"
                   src={iconURL(weather["data"]["days"][0]["icon"])}
@@ -121,7 +110,7 @@ export const LocalWeatherStations = component$(({ data }: { data: any }) => {
                       key={dayN}
                       class="flex flex-col items-center gap-1 text-[12px] max-[1200px]:text-[9px]"
                     >
-                      <Image
+                      <img
                         width="30"
                         height="30"
                         src={iconURL(weather["data"]["days"][dayN]["icon"])}

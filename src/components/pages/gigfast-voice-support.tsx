@@ -14,7 +14,7 @@ export const GigfastVoiceSupport = component$(({ data }: { data: any }) => {
             <div class="h-full absolute rounded-full w-1/4 bg-blue-600"></div>
             <div class="absolute w-full h-full flex flex-row p-5 justify-between items-center" >
                 <h1 class="text-primary-blue lg:text-3xl md:text-2xl font-bold text-center text-xl">{dataPage['Introduction']['Paragraph']}</h1>
-                <StrapiImage url={dataPage['Introduction']['Media']['data']['attributes']['url']} width={200} height={150} alt={dataPage['Introduction']['Media']['data']['attributes']['alternativeText']} title={dataPage['Introduction']['Media']['data']['attributes']['caption']} />
+                <StrapiImage media={dataPage['Introduction']['Media']['data']['attributes']} width={200} height={150} />
 
             </div>
         </div>

@@ -7,7 +7,7 @@ export const SectionSportsUpdates = component$(({ carouselData, title }: { carou
     const UpdateCard = component$(({ update }: { update: any }) => {
         return (
             <div class={`relative z-0 h-3/4 w-[250px] text-center items-center justify-center }`}>
-                <StrapiImage clasN="object-fill h-full w-full" url={update['Picture']['data']['attributes']['url']} alt={update['Picture']['data']['attributes']['alternativeText']} title={update['Picture']['data']['attributes']['caption']}
+                <StrapiImage clasN="object-fill h-full w-full" media={update['Picture']['data']['attributes']}
                     height={500}
                     width={250} />
                 <a href={update['Link']}>

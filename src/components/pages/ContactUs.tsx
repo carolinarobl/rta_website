@@ -13,16 +13,14 @@ export const ContactUs = component$(({ data }: { data: any }) => {
         <Button text={introduction['Buttons'][0]['Text']} link={introduction['Buttons'][0]['Link']}></Button>
 
         <div class="flex flex-col items-center gap-2 px-4 py-4 my-10">
-            <p class="text-xl sm:text-2xl font-bold text-primary-blue">{socialMedia["Text"]}</p>
+            <h2 class="text-xl sm:text-2xl font-bold text-primary-blue">{socialMedia["Text"]}</h2>
             <div class="flex flex-row gap-4">
                 {data["SocialMedia"]["SubOption"].map((item: any, index: any) => (
                     <Link key={index} href={item["Link"]}>
                         {item["Link"].includes("facebook") && (
                             <div class="flex w-[50px] h-[50px] items-center justify-center rounded-full bg-primary-blue p-4">
                                 <StrapiImage
-                                    url={item["Icon"]["data"]["attributes"]["url"]}
-                                    alt={item["Icon"]["data"]["attributes"]["alternativeText"]}
-                                    title={item["Icon"]["data"]["attributes"]["caption"]}
+                                    media={item["Icon"]["data"]["attributes"]}
                                     toWhite={true}
                                 />
                             </div>
@@ -30,9 +28,7 @@ export const ContactUs = component$(({ data }: { data: any }) => {
                         {!item["Link"].includes("facebook") && (
                             <div class="flex w-[50px] h-[50px] items-center justify-center rounded-full bg-primary-blue p-3">
                                 <StrapiImage
-                                    url={item["Icon"]["data"]["attributes"]["url"]}
-                                    alt={item["Icon"]["data"]["attributes"]["alternativeText"]}
-                                    title={item["Icon"]["data"]["attributes"]["caption"]}
+                                    media={item["Icon"]["data"]["attributes"]}
                                     toWhite={true}
                                 />
                             </div>
@@ -42,7 +38,7 @@ export const ContactUs = component$(({ data }: { data: any }) => {
             </div>
         </div>
         <div class="flex flex-col items-center justify-center">
-            <h2 class="text-xl sm:text-2xl font-bold text-primary-blue">{data['OfficesTitle']}</h2>
+            <h3 class="text-xl sm:text-2xl font-bold text-primary-blue">{data['OfficesTitle']}</h3>
             <div class="flex flex-wrap gap-8 mt-5 justify-center items-start">
                 {officesLocation.map((item: any, index: any) => (
                     <div class="flex flex-col w-[200px]" key={index}>

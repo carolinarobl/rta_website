@@ -14,7 +14,7 @@ export const GigfastTv = component$(({ data }: { data: any}) => {
 
     return <div class="flex flex-col justify-around">
         <div class="flex flex-col my-6 items-center justify-center gap-4">
-            <StrapiImage url={pageData['Logo']['data']['attributes']['url']} alt={pageData['Logo']['data']['attributes']['alternativeText']} title={pageData['Logo']['data']['attributes']['caption']}
+            <StrapiImage media={pageData['Logo']['data']['attributes']}
                 height={200} width={500} />
             <h2 class="text-[50px] font-bold text-center text-primary-blue">{pageData['Titles'][0]['Text']}</h2>
             <h2 class="text-[50px] font-bold text-center text-secondary-red">{pageData['Titles'][1]['Text']}</h2>
@@ -41,9 +41,7 @@ export const GigfastTv = component$(({ data }: { data: any}) => {
 
                     <div class="max-w-[470px]">
                         <StrapiImage
-                            url={sectionChguide['Logo']['data']['attributes']['url']}
-                            alt={sectionChguide['Logo']['data']['attributes']['alternativeText']}
-                            title={sectionChguide['Logo']['data']['attributes']['caption']}
+                            media={sectionChguide['Logo']['data']['attributes']}
                             width="1230"
                             height="230"
                         />

@@ -34,12 +34,7 @@ export const gigfastVoiceQuery = (locale: string) => {
               Text
               Link
               Icon {
-                data {
-                  attributes {
-                    name
-                    url
-                  }
-                }
+                ${mediaUrl}
               }
             }
           }

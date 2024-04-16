@@ -10,12 +10,12 @@ export const SectionHeader = component$(({ parData }: { parData: any }) => {
   
   
     return (
-    <div class={`flex md:flex-row flex-col-reverse w-full text-center items-center justify-center md:p-8 p-3 md:my-10`}>
+    <div class={`flex md:flex-row flex-col-reverse w-full text-center items-center justify-center md:p-8 md:my-10`}>
 
     {/* Left Content */}
-    <div class={`flex ${ballSize}`}>
+    <div class={`flex ${ballSize} items-center justify-center`}>
     <div
-      class={`bg-[#2E5899] h-full w-full bg-opacity-40 p-6 inline-block items-center justify-center rounded-full`}
+      class={`bg-[#2E5899] md:h-full h-[285px] md:w-full w-[285px] bg-opacity-40 p-6 inline-block items-center justify-center rounded-full`}
     >
       <div
         class={`bg-[#2E5899] flex h-full w-full items-center justify-center overflow-hidden rounded-full bg-opacity-60 px-6 py-6 shadow-md`}
@@ -24,7 +24,7 @@ export const SectionHeader = component$(({ parData }: { parData: any }) => {
           class={`bg-[#2E5899] flex h-full w-full items-center justify-center overflow-hidden rounded-full bg-opacity-80 shadow-md`}
         >
           <div class="flex flex-col items-center gap-5">
-            <Markdown text={content['Paragraph']} classN="text-white text-[22px] md:text-[1.75vw]"/>
+            <Markdown text={content['Paragraph']} classN="text-white text-[18px] leading-none md:text-[1.75vw]"/>
             {content['Buttons'] &&
                 content['Buttons'].map((button: any, i: number) => (
                   <div key={i}>
@@ -43,20 +43,19 @@ export const SectionHeader = component$(({ parData }: { parData: any }) => {
 
       {/* Title / Logo */}
       <div class="flex flex-col justify-center items-center">
-        <Markdown text={content['Title']}/>
+        <Markdown text={content['Title']} classN="[&>h1]:text-[28px]"/>
         <StrapiImage
-          url={content['Logo']['data']['attributes']['url']}
-          alt={content['Logo']['data']['attributes']['alternativeText']}
-          width={"500px"}/>
+          media={content['Logo']['data']['attributes']}
+          width={"400px"} height={"100px"}/>
       </div>
 
       {/* Pricing */}
-      <Markdown text={content['Subtitle']}/>
+      <Markdown text={content['Subtitle']} classN="[&>h2]:text-[18px]"/>
     </div>
 
     {/* Right Content */}
     <div class={`${ballSize} max-[930px]:hidden flex`}>
-      <Linking_picture url={content['Media']['data']['attributes']['url']} alt={content['Media']['data']['attributes']['alternativeText']}/>
+      <Linking_picture media={content['Media']['data']['attributes']}/>
     </div>
    
     </div>
