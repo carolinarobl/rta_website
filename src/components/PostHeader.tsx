@@ -3,7 +3,7 @@ import { Markdown } from "./Markdown";
 import { StrapiImage } from "./StrapiImage";
 import { Button } from "./Button";
 
-export const PostHeader = component$(({ post }: { post: any }) => {
+export const PostHeader = component$(({ post, isES }: { post: any, isES: any}) => {
   const limitText = (text: string, limit: number) => {
     return text.slice(0, limit) + "...";
   };
@@ -22,7 +22,8 @@ export const PostHeader = component$(({ post }: { post: any }) => {
             />
           </div>
         </div>
-        <Button text={"Read More"} link={`/${post["Slug"]}/`} />
+        <Button text={ isES ? 'Leer Más': "Read More"} link={`/${isES ? `es/${[post["Slug"].replace("-es", "")]}` :[post["Slug"]]}`} />
+
       </div>
       <div class="flex w-full items-center justify-center self-center p-4 min-[800px]:w-[40%]">
         <StrapiImage

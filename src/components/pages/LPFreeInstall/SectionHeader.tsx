@@ -13,6 +13,7 @@ export const SectionHeader = component$(({ parData }: { parData: any }) => {
     <div class={`flex md:flex-row flex-col-reverse w-full text-center items-center justify-center md:p-8 md:my-10`}>
 
     {/* Left Content */}
+    <div class="relative">
     <div class={`flex ${ballSize} items-center justify-center`}>
     <div
       class={`bg-[#2E5899] md:h-full h-[285px] md:w-full w-[285px] bg-opacity-40 p-6 inline-block items-center justify-center rounded-full`}
@@ -24,17 +25,20 @@ export const SectionHeader = component$(({ parData }: { parData: any }) => {
           class={`bg-[#2E5899] flex h-full w-full items-center justify-center overflow-hidden rounded-full bg-opacity-80 shadow-md`}
         >
           <div class="flex flex-col items-center gap-5">
-            <Markdown text={content['Paragraph']} classN="text-white text-[18px] leading-none md:text-[1.75vw]"/>
-            {content['Buttons'] &&
-                content['Buttons'].map((button: any, i: number) => (
-                  <div key={i}>
-                    <Button text={button['Text']} link={button['Link']} />
-                  </div>
-                ))
-            }     
           </div>
         </div>
       </div>
+    </div>
+    </div>
+    <div class="flex gap-3 flex-col absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full items-center justify-center">
+    <Markdown text={content['Paragraph']} classN="text-white text-[18px] leading-none md:text-[1.75vw]"/>
+            {content['Buttons'] &&
+                content['Buttons'].map((button: any, i: number) => (
+                  <div key={i} class="z-50">
+                    <Button text={button['Text']} link={button['Link']} />
+                  </div>
+                ))
+            }    
     </div>
     </div>
 

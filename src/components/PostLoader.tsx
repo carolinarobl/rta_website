@@ -8,10 +8,14 @@ export const PostLoader = component$(
     posts,
     loadSize = 6,
     type,
+    isLocalBlog=false,
+    isES
   }: {
     posts: any;
     loadSize: number;
     type: string;
+    isLocalBlog?:boolean;
+    isES:any
   }) => {
     // get route
     const route = useLocation();
@@ -49,10 +53,10 @@ export const PostLoader = component$(
             const paginationString = `{start: ${start}, limit: ${loadSize}}`;
             const qry = `
             query {
-              page${type} (locale: "${lang}") {
+             ${isLocalBlog?`${type}`:`page${type}`} (locale: "${lang}") {
                 data {
                   attributes {
-                    Posts (sort: "Date:desc", pagination: ${paginationString}) {
+                    ${isLocalBlog?`posts`:`Posts`} (sort: "Date:desc", pagination: ${paginationString}) {
                       data {
                         attributes {
                           Title
@@ -74,6 +78,7 @@ export const PostLoader = component$(
               }
             }
             `;
+            console.log(qry);
             fetch("/api/graphql/", {
               method: "POST",
               body: JSON.stringify({ query: qry }),
@@ -84,7 +89,7 @@ export const PostLoader = component$(
               .then((res) => res.json())
               .then((res) => {
                 console.log(res);
-                const newPosts =
+                const newPosts = isLocalBlog?res['data']['locations']['data'][0]['attributes']['posts']['data']:
                   res["data"]["page" + type]["data"]["attributes"]["Posts"][
                     "data"
                   ];
