@@ -44,9 +44,9 @@ export default component$(() => {
                 : <div class="flex flex-col items-center justify-center">
 
                     {/* <SectionTips data={pageData['Tips']} /> */}
-                    <PostHeader post={firstBlog[0]["attributes"]} />
+                    <PostHeader post={firstBlog[0]["attributes"]} isES={isES} />
                     <div class="my-4"></div>
-                    <PostLoader posts={pageData["posts"]["data"]} loadSize={3} type="locations" isLocalBlog />
+                    <PostLoader posts={pageData["posts"]["data"]} loadSize={3} type="locations" isLocalBlog isES={isES} />
                 </div>
         }
 
@@ -56,12 +56,17 @@ export default component$(() => {
 
 export const head: DocumentHead = ({ resolveValue }) => {
     const lang = resolveValue(useLang);
+    const getPageData = resolveValue(usePageData);
+    const pageData = getPageData['pageData']['data']['locations']['data'][0]['attributes'];
+    const locationName = pageData['Name'];
+
+    console.log("el valor que se obtiene de las páginas es ", pageData);
 
     const seoData =
     {
-        'MetaTitle': lang == "en" ? `Local blog | RTA Rural Telecommunications of America` : `Blog locales | RTA Rural Telecommunications of America`,
-        'MetaDescription': lang[0] == "en" ? "Explore the most recent and relevant news in your locality or area. Stay informed about events, updates, and local news that impact your community" : "Explora las noticias más recientes y relevantes en tu localidad o área. Mantente informado sobre eventos, actualizaciones y noticias locales que impactan tu comunidad.",
-        'Keywords': lang[0] == "en" ? "Technology news, Tech updates, Digital trends, Innovation insights, RTA, local blog" : "Noticias de tecnología, Actualizaciones tecnológicas, Tendencias digitales, Novedades en innovación, RTA, blog local"
+        'MetaTitle': lang == "en" ? `${locationName} Local Blog | RTA Telecommunications` : `Blog Local en ${locationName} | RTA Telecommunications`,
+        'MetaDescription': lang == "en" ? `Explore the most recent and relevant news in ${locationName}. Stay informed about events, updates, and local news that impact your community.` : `Explora las noticias más recientes y relevantes en ${locationName}. Mantente informado sobre eventos y noticias locales que impactan tu comunidad.`,
+        'Keywords': lang == "en" ? "Technology news, Tech updates, Digital trends, Innovation insights, RTA, local blog" : "Noticias de tecnología, Actualizaciones tecnológicas, Tendencias digitales, Novedades en innovación, RTA, blog local"
     }
 
     return headSEO(seoData);

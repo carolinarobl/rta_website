@@ -40,6 +40,7 @@ export const Post = component$(({ post, id }: { post: any; id: string }) => {
     return text.slice(0, limit) + "...";
   };
   const limit = 120;
+  const isES = post["attributes"]["Slug"].endsWith("-es");
 
   return (
     <div id={id} class="mb-8 flex max-w-[300px] flex-col">
@@ -62,7 +63,7 @@ export const Post = component$(({ post, id }: { post: any; id: string }) => {
       ></div>
       </span>
       <div class="mt-2 self-center">
-        <Button text="Read More" link={`/${[post["attributes"]["Slug"]]}`} />
+        <Button text={ isES ? 'Leer Más': "Read More"} link={`/${isES ? `es/${[post["attributes"]["Slug"].replace("-es", "")]}` :[post["attributes"]["Slug"]]}`} />
       </div>
     </div>
   );

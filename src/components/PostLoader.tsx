@@ -8,12 +8,14 @@ export const PostLoader = component$(
     posts,
     loadSize = 6,
     type,
-    isLocalBlog=false
+    isLocalBlog=false,
+    isES
   }: {
     posts: any;
     loadSize: number;
     type: string;
-    isLocalBlog?:boolean
+    isLocalBlog?:boolean;
+    isES:any
   }) => {
     // get route
     const route = useLocation();
