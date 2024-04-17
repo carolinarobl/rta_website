@@ -1,4 +1,4 @@
-import { mediaUrl, sectionSEO } from "~/data/constants"
+import {sectionSEO } from "~/data/constants"
 
 export const texasQuery = (locale:string)=>{
     return `query{

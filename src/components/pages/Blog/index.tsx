@@ -17,7 +17,7 @@ export const Blog = component$(({ data }: { data: any }) => {
       <SectionTips data={pageData['Tips']}/>
       <PostHeader post={firstBlog} isES={isES}/>
       <div class="my-4"></div>
-      <PostLoader posts={pageData["Posts"]["data"]} loadSize={3} type="Blog" isES={isES}/>
+      <PostLoader posts={pageData["Posts"]["data"]} loadSize={3} type="Blog"/>
     </div>
   );
 });

@@ -107,6 +107,10 @@
         <priority>0.60</priority>
     </url>
     <url>
+        <loc>https://rtatel.com/es/goldsmith-tt/</loc>
+        <priority>0.60</priority>
+    </url>
+    <url>
         <loc>https://rtatel.com/faq/</loc>
         <priority>0.30</priority>
     </url>
@@ -264,6 +268,10 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/free-install/</loc>
+        <priority>0.60</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/goldsmith-tt/</loc>
         <priority>0.60</priority>
     </url>
     <url>
