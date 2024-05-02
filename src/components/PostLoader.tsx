@@ -14,6 +14,7 @@ export const PostLoader = component$(
     loadSize: number;
     type: string;
     isLocalBlog?:boolean;
+    isES:any
   }) => {
     // get route
     const route = useLocation();

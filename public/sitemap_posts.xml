@@ -659,6 +659,18 @@
         <loc>https://rtatel.com/why-you-should-consider-starting-a-blog/</loc>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://rtatel.com/the-dark-side-of-the-internet-deep-web-and-darknets/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/the-importance-of-net-neutrality-in-the-digital-age/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/5-rising-social-media-platforms-to-look-out-for/</loc>
+        <priority>0.85</priority>
+    </url>
     <!-- END | POSTS (ENGLISH) -->
     <!-- END | POSTS (ENGLISH) -->
     <!-- START | POSTS (SPANISH) -->
@@ -1130,6 +1142,18 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/why-you-should-consider-starting-a-blog/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/the-dark-side-of-the-internet-deep-web-and-darknets/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/the-importance-of-net-neutrality-in-the-digital-age/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/5-rising-social-media-platforms-to-look-out-for/</loc>
         <priority>0.85</priority>
     </url>
     <!-- END | POSTS (SPANISH) -->

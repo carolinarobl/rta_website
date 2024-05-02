@@ -9,4 +9,7 @@
      <sitemap>
         <loc>https://rtatel.com/sitemap_locations.xml</loc>
     </sitemap>
+     <sitemap>
+        <loc>https://rtatel.com/sitemap_local_blogs.xml</loc>
+    </sitemap>
 </sitemapindex>
