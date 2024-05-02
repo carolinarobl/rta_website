@@ -15,6 +15,10 @@ export const locationQuery = (locale: string, slug: string) => {
                   attributes {
                     Address
                     Schema
+                    Phone{
+                      Link
+                      Text
+                    }
                   }
                 }
               }
