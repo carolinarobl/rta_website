@@ -120,7 +120,7 @@ export const PopupLeaving = component$(({ signalPopupLeaving,
         // signalMainPopup.value=false;
     })
 
-    return <div class={`fixed flex items-center justify-center h-full w-full bottom-0 left-0 right-0 bg-blue-300 bg-opacity-50 top-0 z-[650]`}>
+    return <div class={`fixed flex items-center justify-center h-full w-full bottom-0 left-0 right-0 bg-blue-300 bg-opacity-50 top-0 z-[700]`}>
         <div class="flex flex-col items-center justify-evenly sm:h-[80%] h-fit md:w-1/2 w-[80%] bg-[#DFEDFF] rounded-2xl px-5 pb-4 transition-all duration-1000 ease-in-out">
             <div onClick$={() => $(() => {
                 // signalPopupLeaving.value=false;
