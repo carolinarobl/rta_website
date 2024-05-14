@@ -1,0 +1,144 @@
+import { $, Signal, component$, useSignal, useStore, useTask$, useVisibleTask$ } from "@builder.io/qwik";
+import { Checkbox } from "../checkbox";
+import { CheckboxWithInput } from "../checkboxWithInput";
+import { supabase } from "~/utils/supabase";
+
+
+const getQuestions = async (isSelectedOther: boolean) => {
+    const { data, error } = await supabase.from('questions').select('*').eq('id', isSelectedOther ? 11 : 10);
+
+    if (error) {
+        console.error("Error en getQuestions: " + error)
+        throw error;
+    }
+
+    return data;
+}
+
+const insertSurveyAnswers = async () => {
+    const { data, error } = await supabase.from('survey_answers').insert([
+        {
+            survey_id: 2,
+            created_at: new Date().toISOString()
+        }
+    ]).select('id');
+
+    if (error) {
+        console.log("Error en insertSurveyAnswers: " + error);
+        throw error;
+    }
+
+    return data;
+}
+
+const insertAnswers = async (survey_answers_id: number, question_id: number, answer: string) => {
+    const { data, error } = await supabase.from('answers').insert([
+        {
+            survey_answers_id,
+            question_id,
+            answer,
+            created_at: new Date().toISOString()
+        }
+    ])
+
+    if (error) {
+        console.log("Error en insertAnswers: " + error);
+        throw error;
+    }
+
+    return data;
+}
+
+export const PopupLeaving = component$(({ signalPopupLeaving,
+    signalMainPopup
+}: {
+    signalPopupLeaving: Signal<boolean>,
+    signalMainPopup: Signal<boolean>
+}) => {
+    const questionState = useStore({
+        id: 0,
+        survey_id: 0,
+        question: "",
+        answers: ["", "", "", ""]
+    })
+
+    const isSelectedOther = useSignal(false);
+    const reasonOther:Signal<string> = useSignal("");
+
+    const othersTextArea = document.querySelector<HTMLTextAreaElement>('textarea');
+
+    othersTextArea?.addEventListener('input', () => {
+        if (othersTextArea?.value != null && othersTextArea?.value != "") {
+            isSelectedOther.value = true
+            reasonOther.value = othersTextArea?.value
+        } else {
+            isSelectedOther.value = false
+        }
+    })
+
+    useTask$(async () => {
+        const questions = await getQuestions(false);
+        questions.map(question => {
+            questionState.id = question.id,
+                questionState.survey_id = question.survey_id,
+                questionState.question = question.question,
+                questionState.answers = [question.radio1, question.radio2, question.radio3, question.radio4]
+        });
+    })
+
+    const handleClick = $(async () => {
+        const form = document.getElementById('form-leaving') as HTMLFormElement;
+        const checkboxes = form.querySelectorAll<HTMLInputElement>('input[type="checkbox"]');
+
+        const valoresCheckbox: string[] = [];
+
+        checkboxes.forEach(checkbox => {
+            if (checkbox.checked && checkbox.value != "on") {
+                valoresCheckbox.push(checkbox.value);
+            }
+        });
+
+        console.log(valoresCheckbox);
+
+        if (isSelectedOther.value && reasonOther.value!="") {
+            const questionsOther = await getQuestions(true);
+            console.log(questionsOther);
+            const questionIdOther = questionsOther[0]['id'];
+            const idSurverAnswer = await insertSurveyAnswers();
+            console.log(idSurverAnswer[0]['id']);
+            await insertAnswers(idSurverAnswer[0]['id'], questionIdOther, reasonOther.value)
+        }
+
+        if (valoresCheckbox.length>0) {
+            const surveyAnswer = await insertSurveyAnswers();
+            console.log(surveyAnswer[0]['id'])
+
+            await insertAnswers(surveyAnswer[0]['id'], questionState.id, valoresCheckbox.join(', '))
+        }
+
+        // signalPopupLeaving.value=false;
+        // signalMainPopup.value=false;
+    })
+
+    return <div class={`fixed flex items-center justify-center h-full w-full bottom-0 left-0 right-0 bg-blue-300 bg-opacity-50 top-0 z-[650]`}>
+        <div class="flex flex-col items-center justify-evenly sm:h-[80%] h-fit md:w-1/2 w-[80%] bg-[#DFEDFF] rounded-2xl px-5 pb-4 transition-all duration-1000 ease-in-out">
+            <div onClick$={() => $(() => {
+                // signalPopupLeaving.value=false;
+                // signalMainPopup.value=false;
+            })} class="ml-auto text-3xl font-bold text-[#8AA7D2] cursor-pointer">×</div>
+            <div class="w-full h-[15%] flex flex-col items-center justify-center bg-gradient-to-tr from-primary-blue to-primary-light-blue rounded-3xl text-white mb-10 p-4 text-center">
+                <h2 class="font-bold sm:text-[35px] text-[24px]">Leaving so soon?</h2>
+                <p>{questionState.question}</p>
+            </div>
+            <form id="form-leaving" class="flex flex-col items-center justify-between h-[50%] w-full">
+                {
+                    questionState.answers.map((answer: string, index: number) => (
+                        index == 3 ? <CheckboxWithInput key={index} id={index} text={answer} description="Please, specify the reason" signal={isSelectedOther} classN="mt-1" /> : <Checkbox key={index} classN="w-full my-1" text={answer} id={`checkbox-1-${index}`} />
+                    ))
+                }
+            </form>
+            <button onClick$={() => handleClick()} class="text-white bg-btn-green font-bold py-2 px-4 w-fit h-fit rounded-3xl mt-4">Submit</button>
+        </div>
+
+    </div>
+});
