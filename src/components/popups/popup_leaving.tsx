@@ -1,10 +1,11 @@
-import { $, Signal, component$, useSignal, useStore, useTask$, useVisibleTask$ } from "@builder.io/qwik";
+import { $, Signal, component$, useSignal, useStore, useTask$ } from "@builder.io/qwik";
 import { Checkbox } from "../checkbox";
 import { CheckboxWithInput } from "../checkboxWithInput";
 import { supabase } from "~/utils/supabase";
+import { server$ } from "@builder.io/qwik-city";
 
 
-const getQuestions = async (isSelectedOther: boolean) => {
+const getQuestions = server$(async (isSelectedOther: boolean) => {
     const { data, error } = await supabase.from('questions').select('*').eq('id', isSelectedOther ? 11 : 10);
 
     if (error) {
@@ -13,9 +14,9 @@ const getQuestions = async (isSelectedOther: boolean) => {
     }
 
     return data;
-}
+})
 
-const insertSurveyAnswers = async () => {
+const insertSurveyAnswers = server$(async () => {
     const { data, error } = await supabase.from('survey_answers').insert([
         {
             survey_id: 2,
@@ -29,9 +30,9 @@ const insertSurveyAnswers = async () => {
     }
 
     return data;
-}
+})
 
-const insertAnswers = async (survey_answers_id: number, question_id: number, answer: string) => {
+const insertAnswers = server$(async (survey_answers_id: number, question_id: number, answer: string) => {
     const { data, error } = await supabase.from('answers').insert([
         {
             survey_answers_id,
@@ -47,7 +48,7 @@ const insertAnswers = async (survey_answers_id: number, question_id: number, ans
     }
 
     return data;
-}
+})
 
 export const PopupLeaving = component$(({ signalPopupLeaving,
     signalMainPopup
@@ -63,7 +64,7 @@ export const PopupLeaving = component$(({ signalPopupLeaving,
     })
 
     const isSelectedOther = useSignal(false);
-    const reasonOther:Signal<string> = useSignal("");
+    const reasonOther: Signal<string> = useSignal("");
 
     const othersTextArea = document.querySelector<HTMLTextAreaElement>('textarea');
 
@@ -115,7 +116,7 @@ export const PopupLeaving = component$(({ signalPopupLeaving,
 
             await insertAnswers(surveyAnswer[0]['id'], questionState.id, valoresCheckbox.join(', '))
         }
-
+        
         // signalPopupLeaving.value=false;
         // signalMainPopup.value=false;
     })
@@ -137,7 +138,9 @@ export const PopupLeaving = component$(({ signalPopupLeaving,
                     ))
                 }
             </form>
-            <button onClick$={() => handleClick()} class="text-white bg-btn-green font-bold py-2 px-4 w-fit h-fit rounded-3xl mt-4">Submit</button>
+            <button
+                onClick$={() => handleClick()}
+                class="text-white bg-btn-green font-bold py-2 px-4 w-fit h-fit rounded-3xl mt-4">Submit</button>
         </div>
 
     </div>
