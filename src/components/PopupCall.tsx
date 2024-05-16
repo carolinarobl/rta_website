@@ -132,11 +132,13 @@ export const PopupCall = component$(
             <div class={` ${link.includes(configurator) ? "w-full h-full flex-row-reverse " : "flex-col-reverse md:flex-row w-fit"} animate-zoomIn flex `}>
               <div class="flex p-4 flex-wrap overflow-hidden items-center justify-center ">
                 {child}
-                {link.includes(configurator) && showPopupLeaving.value ? <PopupLeaving signalMainPopup={showModal} signalPopupLeaving={showPopupLeaving}/> : null}
+                {link.includes(configurator) 
+                && showPopupLeaving.value 
+                && window.localStorage.getItem("sendform_leaving")!="true" ? <PopupLeaving signalMainPopup={showModal} signalPopupLeaving={showPopupLeaving}/> : null}
               </div>
               <button aria-label="Close popup"
                 onClick$={() => {
-                  if (link.includes(configurator)) {
+                  if (link.includes(configurator) && window.localStorage.getItem("sendform_leaving")!="true") {
                     console.log(showPopupLeaving.value);
                     showPopupLeaving.value = true;
                     console.log(showPopupLeaving.value);
