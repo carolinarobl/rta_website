@@ -15,6 +15,7 @@ export const CheckboxWithInput = component$(({
 }) => {
 
     const isSelected = useSignal(false);
+    const textEmpty=useSignal(true);
         
         // eslint-disable-next-line qwik/no-use-visible-task
         useVisibleTask$(()=>{
@@ -23,9 +24,11 @@ export const CheckboxWithInput = component$(({
 
             othersTextArea?.addEventListener('input', ()=>{
                 if (othersTextArea?.value != null && othersTextArea?.value != "") {
-                    isSelected.value = true
+                    isSelected.value = true;
+                    textEmpty.value=false;
                 } else {
-                    isSelected.value = false
+                    isSelected.value = false;
+                    textEmpty.value=true;
                 }
             })
 
@@ -41,6 +44,9 @@ export const CheckboxWithInput = component$(({
             {description != "" ? <label for={id} class="hover:cursor-pointer w-full h-full flex items-center font-light">{`(${description})`}</label>
                 : null}
         </div>
-        <textarea rows={3} name={`${id}-textarea`} id={`${id}-textarea`} class="appearance-none border border-primary-dark-blue rounded-2xl text-primary-dark-blue px-1" />
+        <textarea rows={3} name={`${id}-textarea`} id={`${id}-textarea`} 
+        class={`appearance-none border ${isSelected.value && textEmpty.value?"border-secondary-red":"border-primary-dark-blue"}  
+        rounded-2xl text-primary-dark-blue px-1`} />
+        <div class={`w-full rounded-3xl bg-secondary-red bg-opacity-70 text-center mt-1 ${isSelected.value && textEmpty.value?"":"hidden"}`}>Specify the reason</div>
     </div>
 });
