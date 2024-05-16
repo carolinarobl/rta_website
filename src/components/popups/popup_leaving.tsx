@@ -1,4 +1,4 @@
-import { $, Signal, component$, useSignal, useStore, useTask$, useVisibleTask$ } from "@builder.io/qwik";
+import { $, Signal, component$, useSignal, useStore, useTask$ } from "@builder.io/qwik";
 import { Checkbox } from "../checkbox";
 import { CheckboxWithInput } from "../checkboxWithInput";
 import { supabase } from "~/utils/supabase";
@@ -130,7 +130,7 @@ export const PopupLeaving = component$(({ signalPopupLeaving,
                 signalMainPopup.value = false;
                 window.localStorage.setItem('sendform_leaving', "true");
             }
-            
+
         } catch (error) {
             console.log("Error: " + error);
             throw error
