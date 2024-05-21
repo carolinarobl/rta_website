@@ -99,7 +99,10 @@ export const PopupCall = component$(
         {link.includes(configurator) &&
           (!text?.includes("Check") || !text.includes("Buscar")) ? (
           <div
-            onClick$={() => (showModal.value = true)}
+            onClick$={() => {
+              showModal.value = true;
+              console.log(showModal.value);
+            }}
             class={`flex w-fit items-center justify-center rounded-full border-2 border-teal-500 border-opacity-70 bg-white p-0.5 px-1 text-btn-green opacity-90 shadow-md transition-all delay-150 ease-in-out hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white`}
           >
             <p class="min-sm:text-[13px] mx-2 text-[15px] font-[600] tracking-wide max-md:text-[14px] ">
@@ -119,37 +122,36 @@ export const PopupCall = component$(
               ? ""
               : "rounded-full border-2 border-teal-500 p-1 px-7 shadow-md transition-all  hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white"
               }  bg-white  text-[15px] font-[600]  text-btn-green opacity-80 max-md:text-[14px] max-sm:text-[13px] `}
-            onClick$={() => {
-              showModal.value = true;
-            }}
+            onClick$={() => (showModal.value = true)
+            }
           >
             {text}
           </button>
         )}
 
         {showModal.value && (
-          <div class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-black bg-opacity-40">
-            <div class={` ${link.includes(configurator) ? "w-full h-full flex-row-reverse " : "flex-col-reverse md:flex-row w-fit"} animate-zoomIn flex `}>
-              <div class="flex p-4 flex-wrap overflow-hidden items-center justify-center ">
-                {child}
-                {link.includes(configurator) 
-                && showPopupLeaving.value 
-                && window.localStorage.getItem("sendform_leaving")!="true" ? <PopupLeaving signalMainPopup={showModal} signalPopupLeaving={showPopupLeaving}/> : null}
-              </div>
-              <button aria-label="Close popup"
-                onClick$={() => {
-                  if (link.includes(configurator) && window.localStorage.getItem("sendform_leaving")!="true") {
-                    console.log(showPopupLeaving.value);
-                    showPopupLeaving.value = true;
-                    console.log(showPopupLeaving.value);
-                  }
-                  else {
-                    showModal.value = false;
-                  }
-                }}
-                class={`${link.includes(configurator) ? "mt-2 mx-0" : "w-[30px] p-4"} bg-secondary-red flex items-center justify-center text-white rounded-full h-[30px] focus:outline-none z-[600]`} >{link.includes(configurator) ? <div class="px-3 flex flex-row items-center text-xs gap-2">Back to site <BsHouseFill /></div> : <div><BsXLg /></div>}</button>
+          <div class="fixed inset-0 z-[200] flex flex-col items-center justify-center bg-black bg-opacity-40">
+          <div class={` ${link.includes(configurator) ? "w-full h-full flex-row-reverse " : "flex-col-reverse md:flex-row w-fit"} animate-zoomIn flex `}>
+            <div class="flex p-4 flex-wrap overflow-hidden items-center justify-center ">
+              {child}
+              {link.includes(configurator)
+                && showPopupLeaving.value
+                && window.localStorage.getItem("sendform_leaving") != "true" ? <PopupLeaving signalMainPopup={showModal} signalPopupLeaving={showPopupLeaving} /> : null}
             </div>
+            <button aria-label="Close popup"
+              onClick$={() => {
+                if (link.includes(configurator) && window.localStorage.getItem("sendform_leaving") != "true") {
+                  console.log(showPopupLeaving.value);
+                  showPopupLeaving.value = true;
+                  console.log(showPopupLeaving.value);
+                }
+                else {
+                  showModal.value = false;
+                }
+              }}
+              class={`${link.includes(configurator) ? "mt-2 mx-0" : "w-[30px] p-4"} bg-secondary-red flex items-center justify-center text-white rounded-full h-[30px] focus:outline-none z-[600]`} >{link.includes(configurator) ? <div class="px-3 flex flex-row items-center text-xs gap-2">Back to site <BsHouseFill /></div> : <div><BsXLg /></div>}</button>
           </div>
+        </div>
         )}
       </div>
     );
