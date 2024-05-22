@@ -64,11 +64,10 @@ export const PopupLeaving = component$(({ signalPopupLeaving,
         answers: ["", "", "", ""]
     })
 
-    const valoresCheckbox: string[] = [];
-
     const isSelectedOther = useSignal(false);
     const selectReason = useSignal(false);
     const clickButtonSend = useSignal(false);
+
     const reasonOther: Signal<string> = useSignal("");
 
     const othersTextArea = document.querySelector<HTMLTextAreaElement>('textarea');
@@ -100,18 +99,18 @@ export const PopupLeaving = component$(({ signalPopupLeaving,
         clickButtonSend.value = true;
 
         const form = document.getElementById('form-leaving') as HTMLFormElement;
-        const checkboxes = form.querySelectorAll<HTMLInputElement>('input[type="checkbox"]');
+        const data = new FormData(form);
+        let selectedAnswer = '';
 
-        checkboxes.forEach(checkbox => {
-            if (checkbox.checked && checkbox.value != "on") {
-                valoresCheckbox.push(checkbox.value);
+        data.forEach((value, key)=>{
+            if(key=='answer'){
+                selectedAnswer = value as string;
             }
-        });
-
-        console.log(valoresCheckbox);
+        })
+        console.log(selectedAnswer);
 
         try {
-            if (isSelectedOther.value && reasonOther.value != "") {
+            if (selectedAnswer == "on" && isSelectedOther.value && reasonOther.value != "") {
                 selectReason.value = true;
                 const questionsOther = await getQuestions(true);
                 const questionIdOther = questionsOther[0]['id'];
@@ -119,10 +118,10 @@ export const PopupLeaving = component$(({ signalPopupLeaving,
                 await insertAnswers(idSurverAnswer[0]['id'], questionIdOther, reasonOther.value)
             }
 
-            if (valoresCheckbox.length > 0) {
-                const surveyAnswer = await insertSurveyAnswers();
+            if (selectedAnswer != "on") {
                 selectReason.value = true;
-                await insertAnswers(surveyAnswer[0]['id'], questionState.id, valoresCheckbox.join(', '))
+                const surveyAnswer = await insertSurveyAnswers();
+                await insertAnswers(surveyAnswer[0]['id'], questionState.id, selectedAnswer)
             }
 
             if (selectReason.value) {
@@ -150,7 +149,7 @@ export const PopupLeaving = component$(({ signalPopupLeaving,
             <form id="form-leaving" class="flex flex-col items-center justify-between h-[50%] w-full">
                 {
                     questionState.answers.map((answer: string, index: number) => (
-                        index == 3 ? <CheckboxWithInput key={index} id={index} text={answer} description="Please, specify the reason" signal={isSelectedOther} classN="mt-1" /> : <Checkbox key={index} classN="w-full my-1" text={answer} id={`checkbox-1-${index}`} />
+                        index == 3 ? <CheckboxWithInput key={index} id={index} text={answer} description="Please, specify the reason" signal={isSelectedOther} classN="mt-1" /> : <Checkbox key={index} classN="w-full my-1" text={answer} id={`checkbox-1-${index}`}/>
                     ))
                 }
             </form>

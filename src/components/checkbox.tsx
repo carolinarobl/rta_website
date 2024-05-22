@@ -1,4 +1,4 @@
-import { component$, useSignal, useVisibleTask$} from "@builder.io/qwik";
+import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 
 export const Checkbox = component$(
     ({
@@ -11,19 +11,20 @@ export const Checkbox = component$(
         id: string,
     }) => {
 
-        const isSelected = useSignal(false);
-        
-        // eslint-disable-next-line qwik/no-use-visible-task
-        useVisibleTask$(()=>{
-            const checkbox = document.getElementById(id) as HTMLInputElement;
+        const isSelected = useSignal(false)
 
-            checkbox?.addEventListener('change', ()=>{
-                isSelected.value=checkbox.checked
+        // eslint-disable-next-line qwik/no-use-visible-task
+        useVisibleTask$(() => {
+            const form = document.getElementById('form-leaving') as HTMLFormElement;
+
+            form?.addEventListener('change', (e) => {
+                const checkbox = document.getElementById(id) as HTMLInputElement;
+                    isSelected.value = checkbox.checked
             })
         })
 
-        return <div class={`flex items-center justify-start hover:cursor-pointer ${isSelected.value?"text-white bg-primary-blue":"text-primary-dark-blue bg-white"}  shadow-2xl px-4 rounded-2xl h-[50px] ${classN}`}>
-            <input id={id} name={id} value={text} type="checkbox" class={`peer appearance-none border border-primary-dark-blue w-4 h-4 rounded-full mr-[20px] checked:bg-btn-green checked:border-white`} />
+        return <div class={`flex items-center justify-start hover:cursor-pointer ${isSelected.value ? "text-white bg-primary-blue" : "text-primary-dark-blue bg-white"}  shadow-2xl px-4 rounded-2xl h-[50px] ${classN}`}>
+            <input id={id} name="answer" value={text} type="radio" class={`peer appearance-none border border-primary-dark-blue w-4 h-4 rounded-full mr-[20px] checked:bg-btn-green checked:border-white`} />
             <label for={id} class={`w-full hover:cursor-pointer h-full flex items-center font-bold`}>{text}</label>
         </div>
     });

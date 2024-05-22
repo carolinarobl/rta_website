@@ -32,14 +32,17 @@ export const CheckboxWithInput = component$(({
             }
         })
 
-        checkbox?.addEventListener('change', () => {
+        const form = document.getElementById('form-leaving') as HTMLFormElement;
+
+        form?.addEventListener('change', (e) => {
+            const checkbox = document.getElementById(id) as HTMLInputElement;
             isSelected.value = checkbox.checked
         })
     })
 
     return <div class={`flex flex-col w-full  shadow-2xl px-4 rounded-2xl ${isSelected.value ? "bg-primary-blue text-white" : "bg-white text-primary-dark-blue"}`}>
         <div class={`flex items-center justify-start hover:cursor-pointer h-[50px] ${classN}`}>
-            <input id={id} name={id} type="checkbox" class="peer appearance-none border border-primary-dark-blue w-4 h-4 rounded-full mr-[20px] checked:bg-btn-green checked:border-white" checked={signal.value} />
+            <input id={id} name="answer" type="radio" class="peer appearance-none border border-primary-dark-blue w-4 h-4 rounded-full mr-[20px] checked:bg-btn-green checked:border-white" checked={signal.value} />
             <label for={id} class={`${description ? "w-fit" : "w-full"} hover:cursor-pointer h-full flex items-center font-bold `}>{text}</label>
             {description != "" ? <label for={id} class="hover:cursor-pointer w-full h-full flex items-center font-light">{`(${description})`}</label>
                 : null}
