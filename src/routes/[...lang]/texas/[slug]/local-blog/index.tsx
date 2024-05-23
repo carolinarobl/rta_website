@@ -46,7 +46,7 @@ export default component$(() => {
                     {/* <SectionTips data={pageData['Tips']} /> */}
                     <PostHeader post={firstBlog[0]["attributes"]} isES={isES} />
                     <div class="my-4"></div>
-                    <PostLoader posts={pageData["posts"]["data"]} loadSize={3} type="locations" isLocalBlog />
+                    <PostLoader posts={pageData["posts"]["data"]} loadSize={3} type="locations" isLocalBlog/>
                 </div>
         }
 
