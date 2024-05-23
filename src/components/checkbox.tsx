@@ -17,7 +17,7 @@ export const Checkbox = component$(
         useVisibleTask$(() => {
             const form = document.getElementById('form-leaving') as HTMLFormElement;
 
-            form?.addEventListener('change', (e) => {
+            form?.addEventListener('change', () => {
                 const checkbox = document.getElementById(id) as HTMLInputElement;
                     isSelected.value = checkbox.checked
             })

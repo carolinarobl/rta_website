@@ -48,12 +48,14 @@ export const headSEO = (SEOdata: any) => {
   )
   .flatMap((script: string) => {
     return script.replace("</script>", "");
-  });
-
+  })
+  .reduce((acc: any, i: any) => i ? [...acc, i] : acc, []);
 
     // .filter((script: string) => script !== null);
   }
 
+  schemaScripts.flat();
+  
   return <DocumentHeadValue>{
     title: SEOdata.MetaTitle,
     scripts: [
