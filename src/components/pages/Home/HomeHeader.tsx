@@ -1,12 +1,13 @@
 import { component$, useSignal, $, useVisibleTask$ } from "@builder.io/qwik";
 import { BsHouseFill } from "@qwikest/icons/bootstrap";
-import {  FaLocationPinSolid } from "@qwikest/icons/font-awesome";
+import { FaLocationPinSolid } from "@qwikest/icons/font-awesome";
 import { Button } from "~/components/Button";
 import Carousel from "~/components/Carousel";
 import { Markdown } from "~/components/Markdown";
 import { StrapiAsset } from "~/components/StrapiAsset";
 import { StrapiImage } from "~/components/StrapiImage";
 import { setURL } from "~/data/constants";
+import { CarouselTestimonials } from "./CarouselTestimonials";
 // import { Slider } from "qwik-slider";
 // import { StrapiImage } from "~/components/StrapiImage";
 // import { Markdown } from "~/components/Markdown";
@@ -85,11 +86,10 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
     ({ isMobile = false }: { isMobile?: boolean }) => {
       return (
         <div
-          class={`flex h-[230px] items-center  justify-center overflow-hidden bg-white   ${
-            isMobile
-              ? "w-full max-w-[420px] rounded-full min-[1000px]:hidden"
-              : "w-[420px] rounded-br-full rounded-tr-full bg-opacity-60 max-[1000px]:hidden"
-          }`}
+          class={`flex h-[230px] items-center  justify-center overflow-hidden bg-white   ${isMobile
+            ? "w-full max-w-[420px] rounded-full min-[1000px]:hidden"
+            : "w-[420px] rounded-br-full rounded-tr-full bg-opacity-60 max-[1000px]:hidden"
+            }`}
         >
           {/* <SlideCard slide={heroSlides[0]} /> */}
           <Carousel
@@ -126,23 +126,22 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
       <div class="relative flex h-[80vh] max-h-[750px] w-full items-center">
         {/* MODAL */}
         <div
-          class={`fixed bottom-0 left-0 right-0 bg-white top-${
-            modalIsOpen.value ? "0 z-[200]" : "[100vh] -z-[200]"
-          }  transition-all duration-1000 ease-in-out`}
+          class={`fixed bottom-0 left-0 right-0 bg-white top-${modalIsOpen.value ? "0 z-[200]" : "[100vh] -z-[200]"
+            }  transition-all duration-1000 ease-in-out`}
         >
           {/* <FaXmarkSolid
             onClick$={handleModal}
             class="text-md absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-secondary-red text-white hover:cursor-pointer"
           /> */}
-        
-          <button aria-label="Close popup" onClick$={handleModal} class={`absolute right-2  mt-2 mx-0" bg-secondary-red flex items-center justify-center text-white rounded-full h-[30px] focus:outline-none z-[600]`} ><div class="px-3 flex flex-row items-center text-xs gap-2">Back to site <BsHouseFill/></div></button>
+
+          <button aria-label="Close popup" onClick$={handleModal} class={`absolute right-2  mt-2 mx-0" bg-secondary-red flex items-center justify-center text-white rounded-full h-[30px] focus:outline-none z-[600]`} ><div class="px-3 flex flex-row items-center text-xs gap-2">Back to site <BsHouseFill /></div></button>
           <iframe
             src={fullFrameSource.value}
             title="load popup"
             class="h-full w-full"
             frameBorder="0"
           ></iframe>
-      
+
         </div>
         {/* MODAL */}
         {/* {modalIsOpen.value && "aaaaaaaaaa"} */}
@@ -150,75 +149,81 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
           class="absolute left-0 top-0 -z-10 h-full w-full object-cover"
           poster={setURL(
             data[
-              // `${screenW.value <= 800 ? "VideoBGMobile" : "VideoBGDesktop"}`
-              'VideoBGDesktop'
+            // `${screenW.value <= 800 ? "VideoBGMobile" : "VideoBGDesktop"}`
+            'VideoBGDesktop'
             ]["data"]["attributes"]["caption"])}
           preload='auto'
           autoplay
           loop
           muted
         >
-        <source  src={setURL(
+          <source src={setURL(
             data[
-              `${screenW.value <= 800 ? "VideoBGMobile" : "VideoBGDesktop"}`
+            `${screenW.value <= 800 ? "VideoBGMobile" : "VideoBGDesktop"}`
             ]["data"]["attributes"]["url"],
-          )+"#t=0.1"} type="video/mp4"></source>
+          ) + "#t=0.1"} type="video/mp4"></source>
         </video>
-        <div class="flex h-full w-full items-center justify-between max-[1000px]:flex-col-reverse max-[1000px]:px-4">
-          <HeroCarousel />
-          <div class="relative flex w-[420px] flex-col items-center justify-center gap-5 rounded-bl-full rounded-tl-full bg-white bg-opacity-60 max-[1000px]:mb-8 max-[1000px]:w-full max-[1000px]:max-w-[420px] max-[1000px]:rounded-full max-[1000px]:py-8 min-[1000px]:h-[230px]">
-            <div
-              class={`absolute left-10 right-10 top-[90%] z-20 flex max-h-[200px] flex-col gap-3 overflow-y-auto rounded-xl bg-white p-6 text-primary-blue shadow-lg ${
-                suggStatus.value === "none" || suggStatus.value === "selected"
+        <div class="flex flex-col items-center justify-between h-full w-full mb-10">
+          <div class="flex h-full w-full items-center justify-between max-[1000px]:flex-col-reverse max-[1000px]:px-4">
+            <HeroCarousel />
+            <div class="relative flex w-[420px] flex-col items-center justify-center gap-5 rounded-bl-full rounded-tl-full bg-white bg-opacity-60 max-[1000px]:mb-8 max-[1000px]:w-full max-[1000px]:max-w-[420px] max-[1000px]:rounded-full max-[1000px]:py-8 min-[1000px]:h-[230px]">
+              <div
+                class={`absolute left-10 right-10 top-[90%] z-20 flex max-h-[200px] flex-col gap-3 overflow-y-auto rounded-xl bg-white p-6 text-primary-blue shadow-lg ${suggStatus.value === "none" || suggStatus.value === "selected"
                   ? "hidden"
                   : ""
-              }`}
-            >
-              {suggestions.value.length === 0 ? "Not found" : ""}
-              {suggestions.value.map((sugg: any, i: number) => {
-                return (
-                  <div
-                    key={i}
-                    class="grid items-center gap-4 hover:cursor-pointer"
-                    style={{
-                      gridTemplateColumns: "20px 1fr",
-                    }}
-                    onClick$={() => {
-                      streetRef.value.value = sugg["address"].split(", ")[0];
-                      zipRef.value.value = sugg["zip"];
-                      suggStatus.value = "selected";
-                    }}
-                  >
-                    <FaLocationPinSolid class="w-6 text-secondary-red" />
-                    <span class="text-[14px]">{sugg["address"]}</span>
-                  </div>
-                );
-              })}
-            </div>
-            <div class="px-8 text-center text-[22px] font-[600] text-primary-blue max-[1000px]:px-12">
-              {data["HeroForm"]["Title"]}
-            </div>
-            <div class="flex w-full items-center gap-4 px-6 max-[1000px]:flex-col ">
-              <input
-                class="w-[50%] rounded-full px-3 py-2 placeholder-primary-blue"
-                placeholder="Address Search"
-                onKeyUp$={handleSearch}
-                ref={streetRef}
-                type="text"
+                  }`}
+              >
+                {suggestions.value.length === 0 ? "Not found" : ""}
+                {suggestions.value.map((sugg: any, i: number) => {
+                  return (
+                    <div
+                      key={i}
+                      class="grid items-center gap-4 hover:cursor-pointer"
+                      style={{
+                        gridTemplateColumns: "20px 1fr",
+                      }}
+                      onClick$={() => {
+                        streetRef.value.value = sugg["address"].split(", ")[0];
+                        zipRef.value.value = sugg["zip"];
+                        suggStatus.value = "selected";
+                      }}
+                    >
+                      <FaLocationPinSolid class="w-6 text-secondary-red" />
+                      <span class="text-[14px]">{sugg["address"]}</span>
+                    </div>
+                  );
+                })}
+              </div>
+              <div class="px-8 text-center text-[22px] font-[600] text-primary-blue max-[1000px]:px-12">
+                {data["HeroForm"]["Title"]}
+              </div>
+              <div class="flex w-full items-center gap-4 px-6 max-[1000px]:flex-col ">
+                <input
+                  class="w-[50%] rounded-full px-3 py-2 placeholder-primary-blue"
+                  placeholder="Address Search"
+                  onKeyUp$={handleSearch}
+                  ref={streetRef}
+                  type="text"
+                />
+                <input
+                  class="w-[50%] rounded-full px-3 py-2 placeholder-primary-blue"
+                  placeholder="Zip Code"
+                  ref={zipRef}
+                  type="text"
+                />
+              </div>
+              <Button
+                text={data["HeroForm"]["ActionButton"]["Text"]}
+                // link={data["HeroForm"]["ActionButton"]["Link"]}
+                onClick={handleModal}
               />
-              <input
-                class="w-[50%] rounded-full px-3 py-2 placeholder-primary-blue"
-                placeholder="Zip Code"
-                ref={zipRef}
-                type="text"
-              />
             </div>
-            <Button
-              text={data["HeroForm"]["ActionButton"]["Text"]}
-              // link={data["HeroForm"]["ActionButton"]["Link"]}
-              onClick={handleModal}
-            />
+
           </div>
+          {
+            data['Testimonials'].length>1?<CarouselTestimonials testimonials={data['Testimonials']}/>:null
+          }
+          
         </div>
       </div>
       <div class="flex justify-center bg-gradient-to-r from-[#3d76c1] to-[#3568ae] px-4 pt-4">

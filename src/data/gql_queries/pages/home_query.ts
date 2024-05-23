@@ -49,6 +49,12 @@ export const homeQuery = (locale: string) => {
             Link
           }
         }
+
+        Testimonials{
+          Name
+          Text
+        }
+
         ProsPar{
           Title
           Paragraph
