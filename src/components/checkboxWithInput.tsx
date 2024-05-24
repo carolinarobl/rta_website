@@ -19,7 +19,7 @@ export const CheckboxWithInput = component$(({
 
     // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(() => {
-        const checkbox = document.getElementById(id) as HTMLInputElement;
+        // const checkbox = document.getElementById(id) as HTMLInputElement;
         const othersTextArea = document.querySelector<HTMLTextAreaElement>('textarea');
 
         othersTextArea?.addEventListener('input', () => {
@@ -34,7 +34,7 @@ export const CheckboxWithInput = component$(({
 
         const form = document.getElementById('form-leaving') as HTMLFormElement;
 
-        form?.addEventListener('change', (e) => {
+        form?.addEventListener('change', () => {
             const checkbox = document.getElementById(id) as HTMLInputElement;
             isSelected.value = checkbox.checked
         })
