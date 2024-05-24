@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import Carousel from "~/components/Carousel";
 
-export const CarouselTestimonials = component$(({ testimonials }: { testimonials: any }) => {
+export const CarouselTestimonials = component$(({ testimonials, isMobile=false }: { testimonials: any, isMobile?:boolean }) => {
 
     const ElementTestimonials = component$(({ name, testimonial, index }: { name: string, testimonial: string, index: number }) => {
         return <div class="flex flex-col w-full items-center justify-around">
@@ -15,13 +15,13 @@ export const CarouselTestimonials = component$(({ testimonials }: { testimonials
     ))
 
     
-    return <div class="relative w-full h-[160px] flex items-center justify-center py-5">
-        <div class="md:w-1/2 w-[80%] h-full flex items-center bg-white rounded-full">
+    return <div class="relative w-full h-[150px] flex items-center justify-center py-5">
+        <div class="md:w-1/2 sm:w-[80%] w-full h-full flex items-center bg-white rounded-full">
 
             {/* AQUI VA EL CARRUSEL */}
                 <Carousel slides={itemsTestimonials} hasPagination={false} 
                 slidesQty={1}
-                id="header_Carousel_testimonials"/>
+                id={`header_Carousel_testimonials_${isMobile?"mobile":"desk"}`}/>
         </div>
     </div>
 });

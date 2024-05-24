@@ -15,6 +15,8 @@ import { CarouselTestimonials } from "./CarouselTestimonials";
 
 export const HomeHeader = component$(({ data }: { data: any }) => {
   const heroSlidesData = data["HeroCarSlides"];
+  const TestimonialsIsEmpty = data['Testimonials'].length < 1 ? true : false;
+
   const streetRef = useSignal<HTMLInputElement>(
     (<input></input>) as unknown as HTMLInputElement,
   );
@@ -163,7 +165,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
             ]["data"]["attributes"]["url"],
           ) + "#t=0.1"} type="video/mp4"></source>
         </video>
-        <div class="flex flex-col items-center justify-between h-full w-full mb-10">
+        <div class="flex flex-col items-center justify-between h-full w-full md:mb-10">
           <div class="flex h-full w-full items-center justify-between max-[1000px]:flex-col-reverse max-[1000px]:px-4">
             <HeroCarousel />
             <div class="relative flex w-[420px] flex-col items-center justify-center gap-5 rounded-bl-full rounded-tl-full bg-white bg-opacity-60 max-[1000px]:mb-8 max-[1000px]:w-full max-[1000px]:max-w-[420px] max-[1000px]:rounded-full max-[1000px]:py-8 min-[1000px]:h-[230px]">
@@ -221,13 +223,19 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
 
           </div>
           {
-            data['Testimonials'].length>1?<CarouselTestimonials testimonials={data['Testimonials']}/>:null
+            TestimonialsIsEmpty ? null : <div class="block max-[1000px]:hidden w-full">
+              <CarouselTestimonials testimonials={data['Testimonials']} />
+            </div>
           }
-          
+
         </div>
       </div>
-      <div class="flex justify-center bg-gradient-to-r from-[#3d76c1] to-[#3568ae] px-4 pt-4">
+      <div class="flex flex-col  justify-evenly items-center bg-gradient-to-r from-[#3d76c1] to-[#3568ae] px-4 pt-4">
         <HeroCarousel isMobile />
+        {TestimonialsIsEmpty ? null
+          : <div class="max-[1000px]:block hidden w-full">
+            <CarouselTestimonials testimonials={data['Testimonials']} isMobile={true} />
+          </div>}
         {/* <div
           class={`relative z-20 flex h-[230px]  w-full max-w-[420px] items-center   
               justify-center overflow-hidden rounded-full min-[1000px]:hidden
