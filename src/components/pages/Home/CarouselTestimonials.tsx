@@ -3,7 +3,7 @@ import Carousel from "~/components/Carousel";
 
 export const CarouselTestimonials = component$(({ testimonials, isMobile=false }: { testimonials: any, isMobile?:boolean }) => {
 
-    const ElementTestimonials = component$(({ name, testimonial, index }: { name: string, testimonial: string, index: number }) => {
+    const ElementTestimonials = component$(({ name, testimonial }: { name: string, testimonial: string, index: number }) => {
         return <div class="flex flex-col w-full items-center justify-around">
             <h2 class="text-secondary-red font-bold text-lg">{name}</h2>
             <p class="text-primary-blue font-semibold text-center">{testimonial}</p>
