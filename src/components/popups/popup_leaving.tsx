@@ -2,10 +2,9 @@ import { $, Signal, component$, useSignal, useStore, useTask$ } from "@builder.i
 import { Checkbox } from "../checkbox";
 import { CheckboxWithInput } from "../checkboxWithInput";
 import { supabase } from "~/utils/supabase";
-import { server$ } from "@builder.io/qwik-city";
 
 
-const getQuestions = server$(async (isSelectedOther: boolean) => {
+const getQuestions = $(async (isSelectedOther: boolean) => {
     const { data, error } = await supabase.from('questions').select('*').eq('id', isSelectedOther ? 11 : 10);
 
     if (error) {
@@ -16,7 +15,7 @@ const getQuestions = server$(async (isSelectedOther: boolean) => {
     return data;
 })
 
-const insertSurveyAnswers = server$(async () => {
+const insertSurveyAnswers = $(async () => {
     const { data, error } = await supabase.from('survey_answers').insert([
         {
             survey_id: 2,
@@ -32,7 +31,7 @@ const insertSurveyAnswers = server$(async () => {
     return data;
 })
 
-const insertAnswers = server$(async (survey_answers_id: number, question_id: number, answer: string) => {
+const insertAnswers = $(async (survey_answers_id: number, question_id: number, answer: string) => {
     const { data, error } = await supabase.from('answers').insert([
         {
             survey_answers_id,
