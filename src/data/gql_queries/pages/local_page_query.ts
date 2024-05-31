@@ -27,7 +27,7 @@ export const locationQuery = (locale: string, slug: string) => {
           Description
           Slug
           
-          posts{
+          posts(sort: "Date:desc", pagination: { limit: 100 }){
             data{
               attributes{
                 Title

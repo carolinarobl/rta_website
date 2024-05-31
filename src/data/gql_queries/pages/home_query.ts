@@ -53,6 +53,7 @@ export const homeQuery = (locale: string) => {
         Testimonials{
           Name
           Text
+          Rating
         }
 
         ProsPar{

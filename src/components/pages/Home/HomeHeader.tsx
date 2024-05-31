@@ -90,7 +90,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
         <div
           class={`flex h-[230px] items-center  justify-center overflow-hidden bg-white   ${isMobile
             ? "w-full max-w-[420px] rounded-full min-[1000px]:hidden"
-            : "w-[420px] rounded-br-full rounded-tr-full bg-opacity-60 max-[1000px]:hidden"
+            : "w-[420px] rounded-br-full rounded-tr-full bg-white/60 backdrop-blur-sm border border-white/60 max-[1000px]:hidden"
             }`}
         >
           {/* <SlideCard slide={heroSlides[0]} /> */}
@@ -168,7 +168,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
         <div class="flex flex-col items-center justify-between h-full w-full md:mb-10">
           <div class="flex h-full w-full items-center justify-between max-[1000px]:flex-col-reverse max-[1000px]:px-4">
             <HeroCarousel />
-            <div class="relative flex w-[420px] flex-col items-center justify-center gap-5 rounded-bl-full rounded-tl-full bg-white bg-opacity-60 max-[1000px]:mb-8 max-[1000px]:w-full max-[1000px]:max-w-[420px] max-[1000px]:rounded-full max-[1000px]:py-8 min-[1000px]:h-[230px]">
+            <div class="relative flex w-[420px] flex-col items-center justify-center gap-5 rounded-bl-full rounded-tl-full bg-white/60 backdrop-blur-sm max-[1000px]:mb-8 max-[1000px]:w-full max-[1000px]:max-w-[420px] max-[1000px]:rounded-[30px] max-[1000px]:py-2 min-[1000px]:h-[230px] border border-white/60">
               <div
                 class={`absolute left-10 right-10 top-[90%] z-20 flex max-h-[200px] flex-col gap-3 overflow-y-auto rounded-xl bg-white p-6 text-primary-blue shadow-lg ${suggStatus.value === "none" || suggStatus.value === "selected"
                   ? "hidden"
@@ -196,19 +196,19 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
                   );
                 })}
               </div>
-              <div class="px-8 text-center text-[22px] font-[600] text-primary-blue max-[1000px]:px-12">
+              <div class=" text-center md:text-[22px] text-[20px] font-[600] text-primary-blue ">
                 {data["HeroForm"]["Title"]}
               </div>
-              <div class="flex w-full items-center gap-4 px-6 max-[1000px]:flex-col ">
+              <div class="flex w-full items-center gap-3 px-6  ">
                 <input
-                  class="w-[50%] rounded-full px-3 py-2 placeholder-primary-blue"
+                  class="w-[100%] rounded-full px-3 py-2 placeholder-primary-blue"
                   placeholder="Address Search"
                   onKeyUp$={handleSearch}
                   ref={streetRef}
                   type="text"
                 />
                 <input
-                  class="w-[50%] rounded-full px-3 py-2 placeholder-primary-blue"
+                  class="w-[60%] rounded-full px-3 py-2 placeholder-primary-blue"
                   placeholder="Zip Code"
                   ref={zipRef}
                   type="text"
