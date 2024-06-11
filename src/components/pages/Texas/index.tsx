@@ -11,14 +11,14 @@ export const TexasPage = component$(({ data }: { data: any }) => {
             <thead class="bg-primary-blue text-white font-semibold">
                 <th>{isES?"Nombre":"Name"}</th>
                 <th>{isES?"Código postal":"Zip code"}</th>
-                <th>{isES?"Oficina":"Office"}</th>
+                <th>{isES?"Ubicación de oficina local":"Local Office Location"}</th>
             </thead>
             <tbody>
                 {data.map((location: any, index: any) => (
                     <tr key={index} class={`text-center text-primary-dark-blue w-full h-full ${index % 2 == 0 ? "bg-blue-100" : "bg-blue-200"}`}>
                         <td class="hover:text-secondary-red">
                             <a href={isES? ('/es/texas/'+location['attributes']['Slug']).replace('-es', '/') :  (location['attributes']['Slug']+'/')}>
-                                {location['attributes']['Name']}
+                                {location['attributes']['Name']}, TX
                             </a>
                         </td>
                         <td>
