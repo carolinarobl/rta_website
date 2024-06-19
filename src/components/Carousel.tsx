@@ -87,6 +87,7 @@ export default component$(
             options,
           ).mount();
          
+          console.log(newSplide);
         });
       }, 50);
     });
