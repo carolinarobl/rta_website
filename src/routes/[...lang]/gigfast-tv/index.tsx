@@ -15,8 +15,6 @@ export const usePageData = routeLoader$(async (req)=>{
 export default component$(() => {
     const signalData = usePageData();
     const data = signalData.value
-
-    console.log(data['pageData'])
     
   return <>
   <MainLayout data={data['layoutData']}>

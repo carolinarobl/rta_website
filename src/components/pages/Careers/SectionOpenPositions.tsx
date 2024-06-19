@@ -36,7 +36,6 @@ export const SectionOpenPositions = component$(({ data }: { data: any }) => {
               onClick$={() => {
                 selected.value = position;
                 infoSignal.value = true;
-                console.log("a1");
               }}
             >
               Learn more
