@@ -54,6 +54,37 @@ export const locationQuery = (locale: string, slug: string) => {
         }
       }
     }
+    sectionProsRta(locale:"${locale}") {
+    data {
+      attributes {
+        Pros {
+          Icon {
+            ${mediaUrl}
+          }
+          Title
+          Text
+          Caption
+        }
+      }
+    }
+  }
+
+  pageHome(locale:"${locale}"){
+    data{
+      attributes{
+
+        ProsPar{
+          Title
+          Paragraph
+        }
+
+        ProsPicture{
+          ${mediaUrl}
+        }
+      }
+    }
+  }
+
     lpPtGroup(locale:"${locale}"){
         data{
           attributes{

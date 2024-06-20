@@ -60,8 +60,6 @@ export const head: DocumentHead = ({ resolveValue }) => {
     const pageData = getPageData['pageData']['data']['locations']['data'][0]['attributes'];
     const locationName = pageData['Name'];
 
-    console.log("el valor que se obtiene de las páginas es ", pageData);
-
     const seoData =
     {
         'MetaTitle': lang == "en" ? `${locationName} Local Blog | RTA Telecommunications` : `Blog Local en ${locationName} | RTA Telecommunications`,

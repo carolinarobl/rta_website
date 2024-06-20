@@ -34,7 +34,6 @@ export const ServiceTv = component$(({
   btnLink,
   dataChannels
 }: Props) => {
-  console.log("botón de ver más: ", btnSeeMoreLink)
   return (
     <div class="justify-between min-h-[670px] w-[300px] items-center shadow-lg bg-white flex flex-col px-5 pb-4 rounded-[35px]">
       <div class="items-center self-center flex w-[310px] max-w-full flex-col mt-8">

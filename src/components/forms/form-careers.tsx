@@ -17,7 +17,6 @@ export const FormCareers = component$(() => {
     const correctEmail = useSignal(false);
 
     const sendEmail = $(() => {
-        console.log("Enivando correo")
         emailState.value = "LOADING";
         const formData = new FormData(
             document.getElementById("form_careers") as HTMLFormElement,

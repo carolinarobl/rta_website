@@ -11,7 +11,6 @@ export const ZaneSmithSponsorship = component$(({ data }: { data: any }) => {
   return (
     <div
       onClick$={() => {
-        console.log(pageData);
       }}
     >
       <SectionHeaderZSS data={pageData} />

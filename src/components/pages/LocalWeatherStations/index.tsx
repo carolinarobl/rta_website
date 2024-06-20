@@ -38,7 +38,6 @@ export const LocalWeatherStations = component$(({ data }: { data: any }) => {
                 <span
                   class="text-[20px] font-[700]"
                   onClick$={() => {
-                    console.log(weather["data"]["days"][0]);
                   }}
                 >
                   {

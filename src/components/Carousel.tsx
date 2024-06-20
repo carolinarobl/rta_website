@@ -86,10 +86,8 @@ export default component$(
             `${id ? "#" + id : ".splide"}`,
             options,
           ).mount();
-          console.log(
-            "Al cambiar de tamaño, se volverá a crear el carrusel",
-            newSplide,
-          );
+         
+          console.log(newSplide);
         });
       }, 50);
     });
