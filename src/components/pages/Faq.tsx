@@ -2,10 +2,8 @@ import { component$ } from "@builder.io/qwik";
 import { AccordionItem } from "../AccordionItem";
 import {BsInfoCircleFill} from "@qwikest/icons/bootstrap"
 import { Markdown } from "../Markdown";
-import { StrapiImage } from "../StrapiImage";
 
 export const Faq = component$(({ data }: { data: any }) => {
-  console.log(data['FAQList'][1])
 
   return <div class="my-8">
     <h1 class="text-center text-xl font-semibold text-primary-blue">{data['Introduction']['Titles'][0]['Text']}</h1>
