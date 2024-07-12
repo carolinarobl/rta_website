@@ -26,11 +26,12 @@ export const LPSheridan = component$(({ data }: { data: any }) => {
       {/* HEADER SECTION*/}
       <SectionHeader parData={sectionHeadData}/>
 
+      {/* RATING SECTION*/}
+      <SectionRating parData={sectionRatingData}/>
+      
       {/* SPEED SECTION*/}
       <SectionSpeed speedList={speedList} addIcons={true}/>
 
-      {/* RATING SECTION*/}
-      <SectionRating parData={sectionRatingData}/>
 
       <div class="w-full bg-white  flex md:flex-row flex-col items-center justify-between">
         <div class=" flex flex-row gap-5 p-1">

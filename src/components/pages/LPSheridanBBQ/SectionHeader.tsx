@@ -1,5 +1,4 @@
 import { component$ } from "@builder.io/qwik";
-import { Button } from "~/components/Button";
 // import { Button } from "~/components/Button";
 import { Markdown } from "~/components/Markdown";
 import { StrapiImage } from "~/components/StrapiImage";
@@ -11,10 +10,10 @@ export const SectionHeader = component$(({ parData }: { parData: any }) => {
   
   
     return (
-    <div class={`flex md:flex-row flex-col-reverse w-full text-center items-center justify-center md:p-8 md:my-10`}>
+    <div class={`flex md:flex-row flex-col-reverse w-full text-center items-center justify-center md:pt-8 md:mt-10 pt-5`}>
 
     {/* Left Content */}
-    <div class="relative">
+    {/* <div class="relative">
     <div class={`flex ${ballSize} items-center justify-center`}>
     <div
       class={`bg-[#d20030]  md:h-full h-[285px] md:w-full w-[285px] bg-opacity-40 p-6 inline-block items-center justify-center rounded-full`}
@@ -41,7 +40,7 @@ export const SectionHeader = component$(({ parData }: { parData: any }) => {
                 ))
             }    
     </div>
-    </div>
+    </div> */}
 
     {/* Center Content */}
     <div class="flex flex-col gap-5 md:px-[30px] px-[12vw] py-5">
@@ -63,8 +62,8 @@ export const SectionHeader = component$(({ parData }: { parData: any }) => {
     </div>
 
     {/* Right Content */}
-    <div class={`${ballSize} motion-safe:animate-[spin_8s_ease-in-out_infinite] flex `}>
-      <Linking_picture media={content['Media']['data']['attributes']} color={"bg-[#f6f307]"}/>
+    <div class={`${ballSize} motion-safe:animate-[spin_8s_ease-in-out_infinite] flex w-[350px] h-[350px] `}>
+      <Linking_picture media={content['Media']['data']['attributes']} color={"bg-[#f6f307]"} width="w-[350px]" height="h-[350px]"/>
     </div>
    
     </div>
