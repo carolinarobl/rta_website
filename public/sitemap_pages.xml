@@ -119,10 +119,6 @@
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://rtatel.com/acp/</loc>
-        <priority>0.30</priority>
-    </url>
-    <url>
         <loc>https://rtatel.com/board-members/</loc>
         <priority>0.30</priority>
     </url>
@@ -284,10 +280,6 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/faq/</loc>
-        <priority>0.30</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/es/acp/</loc>
         <priority>0.30</priority>
     </url>
     <url>
