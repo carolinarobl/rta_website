@@ -3,6 +3,7 @@ import { type DocumentHead, routeLoader$, useLocation } from '@builder.io/qwik-c
 import { MainLayout } from '~/components/MainLayout';
 import { PostHeader } from '~/components/PostHeader';
 import { PostLoader } from '~/components/PostLoader';
+import { SEOh1 } from '~/components/SEOh1';
 import { customLocale, headSEO } from '~/data/constants';
 import { locationQuery } from '~/data/gql_queries/pages/local_page_query';
 import { getPageCustomData } from '~/services/graphql';
@@ -36,6 +37,8 @@ export default component$(() => {
 
 
     return <MainLayout data={data['layoutData']}>
+              <SEOh1 customText={ isES ? `Blog Local en ${pageData['Name']} | RTA Telecommunications` : `${pageData['Name']} Local Blog | RTA Telecommunications`}
+      />
         {
             firstBlog.length == 0
                 ? <div class="h-full w-full flex items-center justify-center">
