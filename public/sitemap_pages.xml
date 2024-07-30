@@ -43,10 +43,6 @@
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/gigfast-tv/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
         <loc>https://website42.rtatel.com/gigfast-cloud/</loc>
         <priority>0.90</priority>
     </url>
@@ -60,10 +56,6 @@
     </url>
     <url>
         <loc>https://website42.rtatel.com/gigfast-voice-support/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/gigfast-tv-support/</loc>
         <priority>0.80</priority>
     </url>
     <url>
@@ -143,10 +135,6 @@
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/gigfast-tv-privacy-policy/</loc>
-        <priority>0.30</priority>
-    </url>
-    <url>
         <loc>https://website42.rtatel.com/local-weather-stations/</loc>
         <priority>0.20</priority>
     </url>
@@ -195,10 +183,6 @@
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/gigfast-tv/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
         <loc>https://website42.rtatel.com/es/gigfast-cloud/</loc>
         <priority>0.90</priority>
     </url>
@@ -212,10 +196,6 @@
     </url>
     <url>
         <loc>https://website42.rtatel.com/es/gigfast-voice-support/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/es/gigfast-tv-support/</loc>
         <priority>0.80</priority>
     </url>
     <url>
@@ -292,10 +272,6 @@
     </url>
     <url>
         <loc>https://website42.rtatel.com/es/privacy-policy/</loc>
-        <priority>0.30</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/es/gigfast-tv-privacy-policy/</loc>
         <priority>0.30</priority>
     </url>
     <url>
