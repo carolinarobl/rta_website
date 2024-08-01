@@ -683,6 +683,14 @@
         <loc>https://rtatel.com/rta-sponsors-texas-crab-festival-empowering-youth-with-scholarships/</loc>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://rtatel.com/rta-wholesale-expands-to-miami/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/rta-leverages-cbrs-to-bring-gig-fast-internet-to-sheridan-tx/</loc>
+        <priority>0.85</priority>
+    </url>
     <!-- END | POSTS (ENGLISH) -->
     <!-- END | POSTS (ENGLISH) -->
     <!-- START | POSTS (SPANISH) -->
@@ -1365,6 +1373,14 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/rta-sponsors-texas-crab-festival-empowering-youth-with-scholarships/</loc>
+        <priority>0.85</priority>
+    </url>
+        <url>
+        <loc>https://rtatel.com/es/rta-wholesale-expands-to-miami/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/rta-leverages-cbrs-to-bring-gig-fast-internet-to-sheridan-tx/</loc>
         <priority>0.85</priority>
     </url>
     <!-- END | POSTS (SPANISH) -->
