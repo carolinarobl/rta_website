@@ -82,6 +82,18 @@
         <loc>https://rtatel.com/living-rural-in-crystal-beach-texas/</loc>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://rtatel.com/history-of-connectivity-in-texas/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/digital-inclusion-in-rural-texas-how-rta-is-closing-the-digital-divide/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/community-events-in-smithville-a-celebration-of-local-spirit/</loc>
+        <priority>0.85</priority>
+    </url>
     <!-- END | LOCAL BLOG POSTS (ENGLISH) -->
     <!-- END | LOCAL BLOG POSTS (ENGLISH) -->
     <!-- START | LOCAL BLOG POSTS (SPANISH) -->
@@ -120,6 +132,18 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/living-rural-in-crystal-beach-texas/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/history-of-connectivity-in-texas/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/digital-inclusion-in-rural-texas-how-rta-is-closing-the-digital-divide/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/community-events-in-smithville-a-celebration-of-local-spirit/</loc>
         <priority>0.85</priority>
     </url>
     <!-- END | LOCATION POSTS (SPANISH) -->
