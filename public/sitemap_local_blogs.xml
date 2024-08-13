@@ -94,6 +94,10 @@
         <loc>https://rtatel.com/community-events-in-smithville-a-celebration-of-local-spirit/</loc>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://rtatel.com/exploring-community-events-in-midland-texas/</loc>
+        <priority>0.85</priority>
+    </url>
     <!-- END | LOCAL BLOG POSTS (ENGLISH) -->
     <!-- END | LOCAL BLOG POSTS (ENGLISH) -->
     <!-- START | LOCAL BLOG POSTS (SPANISH) -->
@@ -144,6 +148,10 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/community-events-in-smithville-a-celebration-of-local-spirit/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/exploring-community-events-in-midland-texas/</loc>
         <priority>0.85</priority>
     </url>
     <!-- END | LOCATION POSTS (SPANISH) -->
