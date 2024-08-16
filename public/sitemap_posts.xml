@@ -691,6 +691,10 @@
         <loc>https://rtatel.com/rta-leverages-cbrs-to-bring-gig-fast-internet-to-sheridan-tx/</loc>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://rtatel.com/rural-telecommunications-of-america-inc-rta-ranks-no-1-877-on-the-2024-inc-5000/</loc>
+        <priority>0.85</priority>
+    </url>
     <!-- END | POSTS (ENGLISH) -->
     <!-- END | POSTS (ENGLISH) -->
     <!-- START | POSTS (SPANISH) -->
@@ -1381,6 +1385,10 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/rta-leverages-cbrs-to-bring-gig-fast-internet-to-sheridan-tx/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/rural-telecommunications-of-america-inc-rta-ranks-no-1-877-on-the-2024-inc-5000/</loc>
         <priority>0.85</priority>
     </url>
     <!-- END | POSTS (SPANISH) -->
