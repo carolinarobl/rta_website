@@ -156,6 +156,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
             ]["data"]["attributes"]["caption"])}
           preload='auto'
           autoplay
+          playsInline
           loop
           muted
         >
