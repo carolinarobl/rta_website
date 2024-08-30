@@ -2,16 +2,10 @@ import type { RequestHandler } from "@builder.io/qwik-city";
 
 export const onPost: RequestHandler = async (request) => {
   const body = await request.parseBody() as any;
-  const url = "https://api.emailjs.com/api/v1.0/email/send/";
-
-  const cred = {
-    service_id: "service_3c06k96",
-    user_id: "IYZz-W8oLRewKg_p0",
-    accessToken: "6I-rPRtBvWRubnBm_GLdd",
-  };
+  const url = "https://supa42.rtatel.com/notifications/api";
 
   const data = {
-    ...cred,
+    action: "rtaMail",
     template_id: body["template_id"],
     template_params: body,
   };

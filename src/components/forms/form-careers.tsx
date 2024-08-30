@@ -25,6 +25,7 @@ export const FormCareers = component$(() => {
         const reader = new FileReader()
         const resumeFile = formData.get('resume') as File;
 
+        // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
         if (resumeFile) {
             reader.readAsDataURL(resumeFile);
         } else {
@@ -73,7 +74,6 @@ export const FormCareers = component$(() => {
         const formulario = document.getElementById('form_careers')
         const inputPhone = document.getElementById('tel')
         const inputEmail = document.getElementById('from_email')
-        console.log(formulario)
 
         const validarForm = (e: any) => {
             switch (e.target.name) {
