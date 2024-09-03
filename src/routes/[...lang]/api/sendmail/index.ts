@@ -1,22 +1,47 @@
-import type { RequestHandler } from "@builder.io/qwik-city";
+export async function sendMail(template: string, subject: string, destEmail: string, inputs:object, lang: string, attached?:string) {
+  const attachmentURL = attached ? "/attachment" : '';
+  const url = `https://supa42.rtatel.com/notifications/api${attachmentURL}`;
 
-export const onPost: RequestHandler = async (request) => {
-  const body = await request.parseBody() as any;
-  const url = "https://supa42.rtatel.com/notifications/api";
+    const bodyData:any = {
+      action: "rtaMail",
+      subject: subject,
+      template: template,
+      mailto: destEmail,
+      variables: inputs,
+    };
 
-  const data = {
-    action: "rtaMail",
-    template_id: body["template_id"],
-    template_params: body,
-  };
+    // Si attached tiene un valor, lo añadimos al bodyData
+    if (attached) {
+      bodyData.attachment = {
+        filename: "resume.pdf",
+        file: attached};
+    }
 
-  const resp = await fetch(url, {
-    method: "POST",
-    body: JSON.stringify(data),
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
+    try {
+      const resp = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify(bodyData),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
-  request.json(200, { resp: await resp.text() });
-};
+      
+      if (resp.ok) {
+        // location.reload();
+        alert(`Formulario enviado con éxito: ${JSON.stringify(bodyData)}`);
+      }
+      
+      else {
+        const errorData = await resp.json();
+        const errorMsg = lang.includes('es') ? "Error al enviar el formulario: " : "Error while trying to send the form: ";
+        alert(`${errorMsg} ${errorData.message}`);
+      }
+    }
+    
+    catch (error) {
+    console.error('Error en la solicitud:', error);
+    alert('Hubo un error al enviar el formulario.');
+    }
+
+}

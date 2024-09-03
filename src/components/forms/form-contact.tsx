@@ -1,4 +1,5 @@
-import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import { useLocation } from "@builder.io/qwik-city";
 import {
   BsChatSquareTextFill,
   BsPersonFill,
@@ -6,56 +7,37 @@ import {
   BsEnvelopeAtFill,
   BsTelephoneFill,
 } from "@qwikest/icons/bootstrap";
+import { sendMail } from "~/routes/[...lang]/api/sendmail";
 import { Spinner } from "../Spinner";
 
-export const FormContact = component$(({ templateID }: { templateID: any }) => {
+export const FormContact = component$(({ templateID, mailto, subject, lang }: { templateID: any, subject: string, mailto: string, lang: string}) => {
+
+  const location = useLocation();
+  const isSpanish = location.prevUrl?.pathname.includes("/es/");
+  
   const emailState = useSignal<"NONE" | "LOADING" | "ERROR" | "SUCCESS">(
     "NONE",
   );
-
+  const formId="contact_form";
+  
   const validatePhone = /^\d{10}$/;
   const validateEmail = /^[a-zA-Z0-9_.]+@[a-zA-Z0-9_.]+\.[a-zA-Z]{2,}$/;
+  
   const correctPhone = useSignal(false);
   const isFocusPhone = useSignal(false);
   const isFocusEmail = useSignal(false);
   const correctEmail = useSignal(false);
-
-  const sendEmail = $(() => {
-    emailState.value = "LOADING";
-    const formData = new FormData(
-      document.getElementById("s_form") as HTMLFormElement,
-    );
-    const data = Object.fromEntries(formData);
-
-    data["template_id"] = templateID;
-    console.log(data);
-    fetch("/api/emailjs/", {
-      method: "POST",
-      body: JSON.stringify(data),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.json())
-      .then((res) => {
-        if (res["resp"] === "OK") {
-          emailState.value = "SUCCESS";
-        } else {
-          emailState.value = "ERROR";
-        }
-      })
-      .catch((err) => {
-        console.error(err);
-        emailState.value = "ERROR";
-      });
-  });
+  
   // eslint-disable-next-line qwik/no-use-visible-task
   const handleSubmit = useVisibleTask$(() => {
-    const formulario = document.getElementById("s_form");
+    const formulario = document.getElementById(formId);
+    
+    const formInputs: Array <any> = [];
+
     const inputPhone = document.getElementById("tel");
     const inputEmail = document.getElementById("from_email");
-    console.log(formulario);
 
+    // FUNCIÓN | Validación de formulario
     const validarForm = (e: any) => {
       switch (e.target.name) {
         case "tel":
@@ -92,22 +74,34 @@ export const FormContact = component$(({ templateID }: { templateID: any }) => {
       isFocusEmail.value = true;
     });
 
-    formulario?.addEventListener("submit", (e) => {
+    // FUNCIÓN | Submit form
+    formulario?.addEventListener("submit", (e) => {  
       e.preventDefault();
+      emailState.value = "LOADING";
+      const formData = new FormData(formulario as HTMLFormElement);
+
       if (correctEmail.value && correctPhone.value) {
-        console.log("Enviando");
-        sendEmail();
+        console.log("Sending");
+
+        formData.forEach((value, key)=>{
+          formInputs.push({name:key, value: value.toString()})
+        })
+
+        sendMail(templateID, subject, mailto, 
+          formInputs, lang);
       } else {
         console.log("Error validaciones");
       }
     });
+
+  
   });
 
   return (
     <div class="mx-auto flex max-w-lg flex-col rounded-3xl bg-white p-6">
       <form
         class="mt-2"
-        id="s_form"
+        id={formId}
         preventdefault:submit
         onSubmit$={() => {
           handleSubmit;
@@ -232,7 +226,7 @@ export const FormContact = component$(({ templateID }: { templateID: any }) => {
           disabled={
             emailState.value === "LOADING" || emailState.value === "SUCCESS"
           }
-          class={`flex w-full items-center justify-center rounded-full bg-secondary-red px-4 py-2 text-base font-semibold text-white hover:bg-opacity-95 ${
+          class={`flex w-full items-center justify-center rounded-full bg-bg-teal-500 px-4 py-2 text-base font-semibold text-white border border-white hover:bg-opacity-95 ${
             emailState.value === "LOADING"
               ? "cursor-wait bg-primary-blue"
               : emailState.value === "SUCCESS"
@@ -242,13 +236,13 @@ export const FormContact = component$(({ templateID }: { templateID: any }) => {
           // onClick$={}
         >
           {emailState.value === "NONE" ? (
-            "Submit"
+            isSpanish ? "Enviar": "Send"
           ) : emailState.value === "LOADING" ? (
             <Spinner size="28px"></Spinner>
           ) : emailState.value === "ERROR" ? (
             "Error"
           ) : (
-            "Email Sent!"
+            isSpanish ? "¡Mensaje enviado!": "Email Sent!"
           )}
         </button>
       </form>
