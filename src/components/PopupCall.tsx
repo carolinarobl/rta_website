@@ -45,7 +45,8 @@ export const PopupCall = component$(
       const linkClean = link.replaceAll(iFrame, "");
       child = <PortabilityRequest link={linkClean} />;
     } else if (link.includes(contactEmail)) {
-      child = <FormContact templateID={link.split("=")[2]} />;
+      const formInfo = link.split('=');
+      child = <FormContact templateID={formInfo[2]} mailto={formInfo[3]} subject={formInfo[4]} lang={isES ? 'es' : 'en'}/>;
     } else if (link.includes(channelLineup)) {
       child = (
         <PopupChannelsLineup

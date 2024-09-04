@@ -1,17 +1,20 @@
-import { Signal, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import type { Signal} from "@builder.io/qwik";
+import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
 
 export const CheckboxWithInput = component$(({
     text,
     classN,
     id,
     description = "",
-    signal
+    // signal
+    textareaSignal
 }: {
     text: string,
     classN?: string,
     id: any,
     description?: string,
-    signal: Signal<boolean>
+    // signal: Signal<boolean>
+    textareaSignal: Signal<string>
 }) => {
 
     const isSelected = useSignal(false);
@@ -19,37 +22,56 @@ export const CheckboxWithInput = component$(({
 
     // eslint-disable-next-line qwik/no-use-visible-task
     useVisibleTask$(() => {
-        // const checkbox = document.getElementById(id) as HTMLInputElement;
-        const othersTextArea = document.querySelector<HTMLTextAreaElement>('textarea');
-
-        othersTextArea?.addEventListener('input', () => {
-            if (othersTextArea?.value != null && othersTextArea?.value != "") {
-                isSelected.value = true;
-                textEmpty.value = false;
-            } else {
-                isSelected.value = false;
-                textEmpty.value = true;
-            }
-        })
 
         const form = document.getElementById('form-leaving') as HTMLFormElement;
 
-        form?.addEventListener('change', () => {
+        form.addEventListener('change', () => {
             const checkbox = document.getElementById(id) as HTMLInputElement;
             isSelected.value = checkbox.checked
         })
     })
 
-    return <div class={`flex flex-col w-full  shadow-2xl px-4 rounded-2xl ${isSelected.value ? "bg-primary-blue text-white" : "bg-white text-primary-dark-blue"}`}>
-        <div class={`flex items-center justify-start hover:cursor-pointer h-[50px] ${classN}`}>
-            <input id={id} name="answer" type="radio" class="peer appearance-none border border-primary-dark-blue w-4 h-4 rounded-full mr-[20px] checked:bg-btn-green checked:border-white" checked={signal.value} />
-            <label for={id} class={`${description ? "w-fit" : "w-full"} hover:cursor-pointer h-full flex items-center font-bold `}>{text}</label>
-            {description != "" ? <label for={id} class="hover:cursor-pointer w-full h-full flex items-center font-light">{`(${description})`}</label>
-                : null}
-        </div>
-        <textarea rows={3} name={`${id}-textarea`} id={`${id}-textarea`}
-            class={`appearance-none border ${isSelected.value && textEmpty.value ? "border-secondary-red" : "border-primary-dark-blue"}  
-        rounded-2xl text-primary-dark-blue px-1`} />
-        <div class={`w-full rounded-3xl bg-secondary-red bg-opacity-70 text-center mt-1 ${isSelected.value && textEmpty.value ? "" : "hidden"}`}>Specify the reason</div>
+    return  <div class={`flex flex-col w-full shadow-2xl p-3 rounded-2xl ${isSelected.value ? "bg-primary-blue text-white" : "bg-white text-primary-dark-blue"}`}>
+            
+                {/* Container | Contenedor de elementos para radiobutton */}
+                <div class={`flex flex-row items-center gap-3 justify-start hover:cursor-pointer ${classN} `}>
+                
+                    {/* Input | Botón tipo Radio */}
+                    <input id={id} name={`answer`} value={"followup-"+text} type="radio" class="peer appearance-none border border-primary-dark-blue w-4 h-4 shrink-0 rounded-full checked:bg-btn-green checked:border-white" 
+                    // checked={signal.value}
+                    />
+            
+                    {/* Label | Contenedor de texto de la opción */}
+                    <label for={id} class={`hover:cursor-pointer flex flex-col w-full`}>
+                
+                        {/* Texto | Título de opción/input */}
+                        <span class="font-bold">{text}</span>
+
+                    </label>
+
+                </div>
+
+                {/* Container | Contenedor para textbox area opcional */}
+                <div class={`${isSelected.value ? "flex flex-col" : "hidden"}`}>
+
+                    {/* Texto | Descripción de opción/input */}
+                    <span>{description != "" ? `(${description})`:null}</span>
+
+                    {/* Input | Textarea */}
+                    <textarea
+                        rows={3}
+                        name={`${id}-textarea`}
+                        id={`${id}-textarea`}
+                        required={isSelected.value}
+                        onInput$={(event) => textareaSignal.value = (event.target as HTMLTextAreaElement).value}
+                        class={`appearance-none border rounded-2xl text-primary-dark-blue px-1
+                                ${isSelected.value && textEmpty.value ? "border-secondary-red" : "border-primary-dark-blue"}`} />
+
+                </div>
+
+               
+                    
+        
+        {/* <div class={`w-full rounded-3xl bg-secondary-red bg-opacity-70 text-center mt-1 ${isSelected.value && textEmpty.value ? "" : "hidden"}`}>Specify the reason</div> */}
     </div>
 });

@@ -48,6 +48,7 @@ export const Careers = component$(({ data }: { data: any }) => {
         data={{
           Positions: pageData["Positions"]["data"],
           PositionsTitle: pageData["PositionsTitle"],
+          FormInfo: pageData["FormParagraph"]["Buttons"][0]['Link']
         }}
       />
     </div>
