@@ -1,6 +1,6 @@
 export async function sendMail(template: string, subject: string, destEmail: string, inputs:object, lang: string, attached?:string) {
   const attachmentURL = attached ? "/attachment" : '';
-  const url = `https://supa42.rtatel.com/notifications/api${attachmentURL}`;
+  const url = `https://supa41.rtatel.com/notifications/api${attachmentURL}`;
 
     const bodyData:any = {
       action: "rtaMail",
