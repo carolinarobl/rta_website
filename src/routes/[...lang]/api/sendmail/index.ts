@@ -28,8 +28,9 @@ export async function sendMail(template: string, subject: string, destEmail: str
 
       
       if (resp.ok) {
-        // location.reload();
-        alert(`Formulario enviado con éxito: ${JSON.stringify(bodyData)}`);
+        location.reload();
+        const successMsg = lang.includes('es') ? "¡Enviado Correctamente!" : "Successfully Sent!";
+        alert(successMsg);
       }
       
       else {

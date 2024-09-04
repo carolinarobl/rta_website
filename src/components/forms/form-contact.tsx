@@ -226,7 +226,7 @@ export const FormContact = component$(({ templateID, mailto, subject, lang }: { 
           disabled={
             emailState.value === "LOADING" || emailState.value === "SUCCESS"
           }
-          class={`flex w-full items-center justify-center rounded-full bg-bg-teal-500 px-4 py-2 text-base font-semibold text-white border border-white hover:bg-opacity-95 ${
+          class={`flex flex-row items-center justify-center mt-4 bg-secondary-red text-white w-full font-semibold px-4 py-2 rounded-xl hover:bg-blue-600 focus:outline-none ${
             emailState.value === "LOADING"
               ? "cursor-wait bg-primary-blue"
               : emailState.value === "SUCCESS"

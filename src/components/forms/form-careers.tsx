@@ -1,8 +1,17 @@
 import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import { useLocation } from "@builder.io/qwik-city";
 import { BsUpload } from "@qwikest/icons/bootstrap";
 import { sendMail } from "~/routes/[...lang]/api/sendmail";
+import { Spinner } from "../Spinner";
 
 export const FormCareers = component$(({ templateID, mailto, subject, lang, position }: { templateID: any, subject: string, mailto: string, lang: string, position: string}) => {
+
+    const location = useLocation();
+    const isSpanish = location.prevUrl?.pathname.includes("/es/");
+    
+    const emailState = useSignal<"NONE" | "LOADING" | "ERROR" | "SUCCESS">(
+        "NONE",
+      );
 
     const formId="form_careers";
 
@@ -60,6 +69,7 @@ export const FormCareers = component$(({ templateID, mailto, subject, lang, posi
     // FUNCIÓN | Submit form
         formulario?.addEventListener('submit', (e) => {
             e.preventDefault();
+            emailState.value = "LOADING";
             const formData = new FormData(formulario as HTMLFormElement);
 
             if (correctEmail.value && correctPhone.value) {
@@ -134,8 +144,28 @@ export const FormCareers = component$(({ templateID, mailto, subject, lang, posi
                 name='resume'
                 class="w-full"
             />
-            <button type="submit" class="mt-4 bg-secondary-red text-white w-full font-semibold px-4 py-2 rounded-xl hover:bg-blue-600 focus:outline-none">
-                Submit
+            <button
+            type="submit"
+            disabled={
+                emailState.value === "LOADING" || emailState.value === "SUCCESS"
+              }
+              class={`flex flex-row items-center justify-center mt-4 bg-secondary-red text-white w-full font-semibold px-4 py-2 rounded-xl hover:bg-blue-600 focus:outline-none ${
+                emailState.value === "LOADING"
+                  ? "cursor-wait bg-primary-blue"
+                  : emailState.value === "SUCCESS"
+                    ? "bg-teal-500"
+                    : ""
+              } focus:outline-none`}
+            >
+               {emailState.value === "NONE" ? (
+            isSpanish ? "Enviar": "Send"
+          ) : emailState.value === "LOADING" ? (
+            <Spinner size="28px"></Spinner>
+          ) : emailState.value === "ERROR" ? (
+            "Error"
+          ) : (
+            isSpanish ? "¡Mensaje enviado!": "Email Sent!"
+          )}
             </button>
         </form>
     </div>

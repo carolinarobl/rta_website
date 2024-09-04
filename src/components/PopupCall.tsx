@@ -7,7 +7,6 @@ import { BsHouseFill, BsTagFill, BsXLg } from "@qwikest/icons/bootstrap";
 import { useLocation } from "@builder.io/qwik-city";
 import { PopupConfigurator } from "./popups/popup_configurator";
 import { PopupLeaving } from "./popups/popup_leaving";
-// import { PopupLeaving } from "./popups/popup_leaving";
 
 export const PopupCall = component$(
   ({
@@ -137,15 +136,15 @@ export const PopupCall = component$(
             <div class="flex p-4 flex-wrap overflow-hidden items-center justify-center ">
               {child}
               {link.includes(configurator)
-                // && showPopupLeaving.value
-                // && window.localStorage.getItem("sendform_leaving") != "true"
+                && showPopupLeaving.value
+                && window.localStorage.getItem("sendform_leaving") != "true"
                 ? <PopupLeaving signalMainPopup={showModal} signalPopupLeaving={showPopupLeaving} /> : null
               }
             </div>
             <button aria-label="Close popup"
               onClick$={() => {
                 if (link.includes(configurator)
-                  // && window.localStorage.getItem("sendform_leaving") != "true"
+                  && window.localStorage.getItem("sendform_leaving") != "true"
                 ) {
                   console.log(showPopupLeaving.value);
                   showPopupLeaving.value = true;
