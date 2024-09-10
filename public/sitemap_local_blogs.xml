@@ -18,6 +18,10 @@
         <loc>https://rtatel.com/texas/gigfast-internet-in-smithville/local-blog/</loc>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://rtatel.com/texas/gigfast-internet-in-port-bolivar/local-blog/</loc>
+        <priority>0.85</priority>
+    </url>
     <!-- END | LOCAL BLOG PAGES (ENGLISH) -->
     <!-- END | LOCAL BLOG PAGES (ENGLISH) -->
     <!-- START | LOCAL BLOG PAGES (SPANISH) -->
@@ -36,6 +40,10 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/texas/gigfast-internet-in-smithville/local-blog/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/texas/gigfast-internet-in-port-bolivar/local-blog/</loc>
         <priority>0.85</priority>
     </url>
     <!-- END | LOCATION PAGES (SPANISH) -->
@@ -98,6 +106,14 @@
         <loc>https://rtatel.com/exploring-community-events-in-midland-texas/</loc>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://rtatel.com/celebrating-community-events-that-bring-port-bolivar-together/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/midland-s-digital-future-supporting-remote-work-and-startups/</loc>
+        <priority>0.85</priority>
+    </url>
     <!-- END | LOCAL BLOG POSTS (ENGLISH) -->
     <!-- END | LOCAL BLOG POSTS (ENGLISH) -->
     <!-- START | LOCAL BLOG POSTS (SPANISH) -->
@@ -152,6 +168,14 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/exploring-community-events-in-midland-texas/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/celebrating-community-events-that-bring-port-bolivar-together/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/midland-s-digital-future-supporting-remote-work-and-startups/</loc>
         <priority>0.85</priority>
     </url>
     <!-- END | LOCATION POSTS (SPANISH) -->

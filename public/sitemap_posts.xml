@@ -695,6 +695,10 @@
         <loc>https://rtatel.com/rural-telecommunications-of-america-inc-rta-ranks-no-1-877-on-the-2024-inc-5000/</loc>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://rtatel.com/digital-marketing-trends-to-watch-in-2024/</loc>
+        <priority>0.85</priority>
+    </url>
     <!-- END | POSTS (ENGLISH) -->
     <!-- END | POSTS (ENGLISH) -->
     <!-- START | POSTS (SPANISH) -->
@@ -1389,6 +1393,10 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/rural-telecommunications-of-america-inc-rta-ranks-no-1-877-on-the-2024-inc-5000/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/digital-marketing-trends-to-watch-in-2024/</loc>
         <priority>0.85</priority>
     </url>
     <!-- END | POSTS (SPANISH) -->
