@@ -3,6 +3,7 @@ import { AccordionItem } from "./AccordionItem";
 import { StrapiImage } from "./StrapiImage";
 import { Link } from "@builder.io/qwik-city";
 import { Button } from "./Button";
+import { Markdown } from "./Markdown";
 
 export const Footer = component$(({ data }: { data: any }) => {
   return (
@@ -24,9 +25,7 @@ export const Footer = component$(({ data }: { data: any }) => {
               media={data["CorpInfo"]["Media"]["data"]["attributes"]}
             />
           </div>
-          <p class="mb-4 max-w-sm text-center">
-            {data["CorpInfo"]["Paragraph"]}
-          </p>
+          <Markdown text={data["CorpInfo"]["Paragraph"]} classN={"text-white text-center mb-4 max-w-sm text-center"}/>
           <Button
             type="action"
             link={data["CorpInfo"]["Buttons"][0]["Link"]}

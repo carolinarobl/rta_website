@@ -17,6 +17,7 @@ export const Checkbox = component$(
         useVisibleTask$(() => {
             const form = document.getElementById('form-leaving') as HTMLFormElement;
 
+            // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
             form?.addEventListener('change', () => {
                 const checkbox = document.getElementById(id) as HTMLInputElement;
                     isSelected.value = checkbox.checked
@@ -24,7 +25,7 @@ export const Checkbox = component$(
         })
 
         return <div class={`flex items-center justify-start hover:cursor-pointer ${isSelected.value ? "text-white bg-primary-blue" : "text-primary-dark-blue bg-white"}  shadow-2xl px-4 rounded-2xl h-[50px] ${classN}`}>
-            <input id={id} name="answer" value={text} type="radio" class={`peer appearance-none border border-primary-dark-blue w-4 h-4 rounded-full mr-[20px] checked:bg-btn-green checked:border-white`} />
+            <input id={id} name={`answer`} value={text} type="radio" class={`peer appearance-none border border-primary-dark-blue w-4 h-4 rounded-full mr-[20px] checked:bg-btn-green checked:border-white`} />
             <label for={id} class={`w-full hover:cursor-pointer h-full flex items-center font-bold`}>{text}</label>
         </div>
     });

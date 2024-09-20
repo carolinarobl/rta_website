@@ -107,10 +107,6 @@
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/acp/</loc>
-        <priority>0.30</priority>
-    </url>
-    <url>
         <loc>https://website42.rtatel.com/board-members/</loc>
         <priority>0.30</priority>
     </url>
@@ -140,6 +136,10 @@
     </url>
     <url>
         <loc>https://website42.rtatel.com/legal/</loc>
+        <priority>0.30</priority>
+    </url>
+    <url>
+        <loc>https://website42.rtatel.com/internet-transparency-statement/</loc>
         <priority>0.30</priority>
     </url>
     <url>
@@ -263,10 +263,6 @@
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/acp/</loc>
-        <priority>0.30</priority>
-    </url>
-    <url>
         <loc>https://website42.rtatel.com/es/board-members/</loc>
         <priority>0.30</priority>
     </url>
@@ -296,6 +292,10 @@
     </url>
     <url>
         <loc>https://website42.rtatel.com/es/legal/</loc>
+        <priority>0.30</priority>
+    </url>
+    <url>
+        <loc>https://website42.rtatel.com/es/internet-transparency-statement/</loc>
         <priority>0.30</priority>
     </url>
     <url>

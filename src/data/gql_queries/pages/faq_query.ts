@@ -24,7 +24,7 @@ export const faqQuery = (locale:string)=>{
                 Caption
                 }
 
-                Table{
+                Table(pagination: { limit: 50 }){
                 ColumnOne
                 ColumnTwo
                 ColumnThree

@@ -78,7 +78,6 @@ export const PostLoader = component$(
               }
             }
             `;
-            console.log(qry);
             fetch("/api/graphql/", {
               method: "POST",
               body: JSON.stringify({ query: qry }),
@@ -88,7 +87,6 @@ export const PostLoader = component$(
             })
               .then((res) => res.json())
               .then((res) => {
-                console.log(res);
                 const newPosts = isLocalBlog?res['data']['locations']['data'][0]['attributes']['posts']['data']:
                   res["data"]["page" + type]["data"]["attributes"]["Posts"][
                     "data"

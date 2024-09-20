@@ -52,6 +52,9 @@ export const careersQuery = (locale: string) => {
           FormParagraph{
             Title
             Paragraph
+            Buttons{
+            Link
+            }
           }
           FormCareers{
             Title

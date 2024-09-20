@@ -1,12 +1,19 @@
-import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import { component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
+import { useLocation } from "@builder.io/qwik-city";
 import { BsUpload } from "@qwikest/icons/bootstrap";
+import { sendMail } from "~/routes/[...lang]/api/sendmail";
+import { Spinner } from "../Spinner";
 
-export const FormCareers = component$(() => {
-    const templateID = "template_gwyyy7d";
+export const FormCareers = component$(({ templateID, mailto, subject, lang, position }: { templateID: any, subject: string, mailto: string, lang: string, position: string}) => {
 
+    const location = useLocation();
+    const isSpanish = location.prevUrl?.pathname.includes("/es/");
+    
     const emailState = useSignal<"NONE" | "LOADING" | "ERROR" | "SUCCESS">(
         "NONE",
-    );
+      );
+
+    const formId="form_careers";
 
     const validatePhone = /^\d{10}$/
     const validateEmail = /^[a-zA-Z0-9_.]+@[a-zA-Z0-9_.]+\.[a-zA-Z]{2,}$/
@@ -16,66 +23,16 @@ export const FormCareers = component$(() => {
     const isFocusEmail = useSignal(false);
     const correctEmail = useSignal(false);
 
-    const sendEmail = $(() => {
-        console.log("Enivando correo")
-        emailState.value = "LOADING";
-        const formData = new FormData(
-            document.getElementById("form_careers") as HTMLFormElement,
-        );
-
-        const reader = new FileReader()
-        const resumeFile = formData.get('resume') as File;
-
-        if (resumeFile) {
-            reader.readAsDataURL(resumeFile);
-        } else {
-            console.error('No se encontró el archivo adjunto');
-        }
-
-        reader.onload = async (event) => {
-            if (event.target && event.target.result) {
-                const result = await event.target.result;
-                const data = await {
-                    "from_name": formData.get('from_name'),
-                    "tel": formData.get("tel"),
-                    "from_email": formData.get("from_email"),
-                    "message": formData.get("message"),
-                    "resume1": result as string,
-                    "template_id": templateID
-                }
-
-                await fetch("/api/emailjs/", {
-                    method: "POST",
-                    body: JSON.stringify(data),
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                })
-                    .then((res) => res.json())
-                    .then((res) => {
-                        if (res["resp"] === "OK") {
-                            emailState.value = "SUCCESS";
-                        } else {
-                            console.log(res["resp"])
-                            emailState.value = "ERROR";
-                        }
-                    })
-                    .catch((err) => {
-                        console.error(err);
-                        emailState.value = "ERROR";
-                    });
-            } else {
-                console.error('Error al obtener los datos Base64 del archivo.');
-            }
-        };
-    })
     // eslint-disable-next-line qwik/no-use-visible-task
     const handlesubmit = useVisibleTask$(() => {
-        const formulario = document.getElementById('form_careers')
+        const formulario = document.getElementById(formId)
+
+        const formInputs: Array <any> = [];
+
         const inputPhone = document.getElementById('tel')
         const inputEmail = document.getElementById('from_email')
-        console.log(formulario)
 
+    // FUNCIÓN | Validación de formulario
         const validarForm = (e: any) => {
             switch (e.target.name) {
                 case "tel":
@@ -109,11 +66,36 @@ export const FormCareers = component$(() => {
         inputEmail?.addEventListener('keyup', validarForm)
         inputEmail?.addEventListener('focus', () => { isFocusEmail.value = true })
 
+    // FUNCIÓN | Submit form
         formulario?.addEventListener('submit', (e) => {
             e.preventDefault();
+            emailState.value = "LOADING";
+            const formData = new FormData(formulario as HTMLFormElement);
+
             if (correctEmail.value && correctPhone.value) {
-                console.log("Enviando")
-                sendEmail()
+                console.log("Sending")
+
+                const reader = new FileReader()
+                const resumeFile = formData.get('resume') as File;
+                
+                // eslint-disable-next-line @typescript-eslint/no-unnecessary-condition
+                resumeFile ? reader.readAsDataURL(resumeFile) : console.error('No se encontró el archivo adjunto');
+                
+                reader.onload = async (event) => {
+                    if (event.target && event.target.result) {
+                        const result = await event.target.result;
+                        formData.forEach((value, key)=>{
+                            formInputs.push({name:key, value: value.toString()})
+                          })
+
+                          formInputs.push({name:'position', value: position})
+                        sendMail(templateID, subject, mailto, formInputs, lang, result as string );
+                    } else {
+                        console.error('Error al obtener los datos Base64 del archivo.');
+                    }
+                };
+
+                
             }
             else {
                 console.log("Error validaciones")
@@ -162,8 +144,28 @@ export const FormCareers = component$(() => {
                 name='resume'
                 class="w-full"
             />
-            <button type="submit" class="mt-4 bg-secondary-red text-white w-full font-semibold px-4 py-2 rounded-xl hover:bg-blue-600 focus:outline-none">
-                Submit
+            <button
+            type="submit"
+            disabled={
+                emailState.value === "LOADING" || emailState.value === "SUCCESS"
+              }
+              class={`flex flex-row items-center justify-center mt-4 bg-secondary-red text-white w-full font-semibold px-4 py-2 rounded-xl hover:bg-blue-600 focus:outline-none ${
+                emailState.value === "LOADING"
+                  ? "cursor-wait bg-primary-blue"
+                  : emailState.value === "SUCCESS"
+                    ? "bg-teal-500"
+                    : ""
+              } focus:outline-none`}
+            >
+               {emailState.value === "NONE" ? (
+            isSpanish ? "Enviar": "Send"
+          ) : emailState.value === "LOADING" ? (
+            <Spinner size="28px"></Spinner>
+          ) : emailState.value === "ERROR" ? (
+            "Error"
+          ) : (
+            isSpanish ? "¡Mensaje enviado!": "Email Sent!"
+          )}
             </button>
         </form>
     </div>

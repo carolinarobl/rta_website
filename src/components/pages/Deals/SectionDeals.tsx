@@ -4,7 +4,6 @@ import { Markdown } from "~/components/Markdown";
 import { StrapiAsset } from "~/components/StrapiAsset";
 
 export const SectionDeals = component$(({ data }: { data: any }) => {
-  console.log(data);
   return (
     <div
       class={`${data["isVisible"] ? "" : "hidden"} flex w-full flex-col items-center justify-center text-primary-blue`}

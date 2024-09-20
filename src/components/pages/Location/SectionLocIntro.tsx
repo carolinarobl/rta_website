@@ -7,7 +7,6 @@ export const SectionLocIntro = component$(({ data }: { data: any }) => {
     data["Slug"].substring(data["Slug"].length - 3, data["Slug"].length) ===
     "-es";
 
-    console.log(data)
   return (
     <div class="flex max-w-[1200px] gap-5 px-8 py-20 text-primary-blue max-[800px]:flex-col">
       <div class="flex flex-col items-center justify-center gap-1 text-center min-[800px]:w-[40%] md:px-2">
@@ -26,6 +25,14 @@ export const SectionLocIntro = component$(({ data }: { data: any }) => {
 
 
         {/* BLOG SECTION */}
+        <div class="w-full h-full mt-4">
+        <iframe
+            src={data["office"]["data"]["attributes"]["Address"]}
+            class="h-full w-full rounded-2xl"
+            loading="lazy"
+        >
+    </iframe>
+    </div>
         {/* <div class="flex flex-col items-center justify-center bg-[#2e5899] text-white w-full my-7 rounded-[20px] font-light overflow-hidden">
         <p class=" bg-black/20 font-bold text-[16px] py-3 px-5 w-full animate-pulse">
           Explore your community's essence with RTA

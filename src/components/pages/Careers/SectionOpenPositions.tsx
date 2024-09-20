@@ -1,17 +1,27 @@
 import { $, component$, useSignal } from "@builder.io/qwik";
 import { FaLocationArrowSolid } from "@qwikest/icons/font-awesome";
-import { Button } from "~/components/Button";
 import Carousel from "~/components/Carousel";
 import { Markdown } from "~/components/Markdown";
 import { Modal } from "~/components/Modal";
 import { PopupLearnMore } from "./PopupLearnMore";
 import { FormCareers } from "~/components/forms/form-careers";
+import { useLocation } from "@builder.io/qwik-city";
 export const SectionOpenPositions = component$(({ data }: { data: any }) => {
   const formSignal = useSignal(false);
   const infoSignal = useSignal(false);
   const selected = useSignal(data["Positions"][0]["attributes"]);
-  const formClick = $(() => {
-    formSignal.value = true;
+
+  const positionSignal = useSignal('');
+
+  const formInfo = data['FormInfo'].split('=');
+
+  const location = useLocation();
+  const isES = location.prevUrl?.pathname.includes("/es/");
+  
+  const formClick = $(({ positionName }: { positionName: string }) => {
+    positionSignal.value = positionName;
+        formSignal.value = true;
+
   });
   const PositionCard = component$(({ position }: { position: any }) => {
     return (
@@ -36,14 +46,13 @@ export const SectionOpenPositions = component$(({ data }: { data: any }) => {
               onClick$={() => {
                 selected.value = position;
                 infoSignal.value = true;
-                console.log("a1");
               }}
             >
               Learn more
             </span>{" "}
             <span class="text-black">or</span>
           </div>
-          <Button text="Submit Resume" onClick={formClick} />
+          <button class={`flex w-fit items-center justify-center rounded-full border-2 border-teal-500 border-opacity-70 bg-white p-0.5 px-1 text-btn-green opacity-90 shadow-md delay-150 ease-in-out hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white`} onClick$={() => formClick({ positionName: position['Name'] })}> Submit Resume </button>
         </div>
       </div>
     );
@@ -57,7 +66,8 @@ export const SectionOpenPositions = component$(({ data }: { data: any }) => {
   return (
     <div class="my-8 flex justify-center text-primary-blue">
       <Modal showSignal={formSignal}>
-        <FormCareers />
+        
+        <FormCareers templateID={formInfo[2]} mailto={formInfo[3]} subject={formInfo[4]} lang={isES ? 'es' : 'en'} position={positionSignal.value}/>
       </Modal>
       <Modal showSignal={infoSignal}>
         <PopupLearnMore data={selected.value} />
