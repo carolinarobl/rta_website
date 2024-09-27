@@ -5,6 +5,7 @@ import { Button } from '~/components/Button';
 import { searchCoverage } from '~/services/coverage_search';
 import { searchProducts } from '~/services/products_search';
 import { BroadbandPlans } from './broadbandplans';
+import { Spinner } from '~/components/Spinner';
 
 export default component$(({ data }: { data: any }) => {
   const location = useLocation();
@@ -20,6 +21,7 @@ export default component$(({ data }: { data: any }) => {
     (<input></input>) as unknown as HTMLInputElement,
   );
   const coverageFlag = useSignal(true);
+  const isloading = useSignal(false);
   const locationGroup = useSignal("");
   const type = useSignal("");
   const isBusiness = useSignal<boolean>(false);
@@ -42,6 +44,7 @@ export default component$(({ data }: { data: any }) => {
 
   const handleCheck = $(() => {
     if (lat.value != "" && lng.value != "") {
+      isloading.value = true;
       packagesInternetResidential.value = [];
       packagesInternetBusiness.value = [];
       packagesVoiceBusiness.value = [];
@@ -56,6 +59,7 @@ export default component$(({ data }: { data: any }) => {
 
         if (coverageFlag.value && locationGroup.value != "" && type.value != "") {
           searchProducts(locationGroup.value, type.value).then((data) => {
+            isloading.value = false;
             packagesInternetResidential.value = [...data.residentialInternet];
             packagesInternetBusiness.value = [...data.businessInternet];
 
@@ -168,6 +172,12 @@ export default component$(({ data }: { data: any }) => {
         );
       })}
     </div>
+
+    {
+      isloading.value && (
+          <Spinner size='100px'/>
+      )
+    }
 
     {
       coverageFlag.value && (
