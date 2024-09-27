@@ -40,12 +40,38 @@ export const searchProducts = async (
     const dataBusiness = await respBusiness.json()
 
 
-    const gigfastInternetProductsResidential = data.result.filter((item:any) => item.family === "gigFastInternet");
-    const gigfastInternetProductsBusiness = dataBusiness.result.filter((item:any) => item.family === "gigFastInternet");
+    const { gigfastInternetProductsResidential, gigfastVoiceResidential } = data.result.reduce(
+        (acc: any, item: any) => {
+          if (item.family === "gigFastInternet") {
+            acc.gigfastInternetProductsResidential.push(item);
+          } else if (item.family === "gigFastVoice") {
+            acc.gigfastVoiceResidential.push(item);
+          }
+          return acc;
+        },
+        { gigfastInternetProductsResidential: [], gigfastVoiceResidential: [] }
+      );
+      
+      // Filtrando 'dataBusiness.result'
+      const { gigfastInternetProductsBusiness, gigfastVoiceBusiness } = dataBusiness.result.reduce(
+        (acc: any, item: any) => {
+          if (item.family === "gigFastInternet") {
+            acc.gigfastInternetProductsBusiness.push(item);
+          } else if (item.family === "gigFastVoice") {
+            acc.gigfastVoiceBusiness.push(item);
+          }
+          return acc;
+        },
+        { gigfastInternetProductsBusiness: [], gigfastVoiceBusiness: [] }
+      );
+
 
     console.log(gigfastInternetProductsResidential);
     return {
-        'residential': gigfastInternetProductsResidential,
-        'business': gigfastInternetProductsBusiness
+        'residentialInternet': gigfastInternetProductsResidential,
+        'businessInternet': gigfastInternetProductsBusiness,
+        'residentialVoice': gigfastVoiceResidential,
+        'businessVoice': gigfastVoiceBusiness
+
     }
 }

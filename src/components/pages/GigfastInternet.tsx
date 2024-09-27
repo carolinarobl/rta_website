@@ -25,6 +25,7 @@ export const GigfastInternet = component$(({ data }: { data: any }) => {
                 btnLink={item['Button']['Link']} btnText={item['Button']['Text']}></SimpleTable>
             ))}
         </div>
+        <Button text={data['ButtonConfig']['Text']} link={data['ButtonConfig']['Link']}/>
         <Markdown classN="text-primary-blue text-center mx-4 my-8" text={data['Disclaimer']}></Markdown>
         <Paragraph text={data['GFInternetSupport']['Paragraph']} title={data['GFInternetSupport']['Title']}
         logo={data['GFInternetSupport']['Logo']['data']['attributes']}

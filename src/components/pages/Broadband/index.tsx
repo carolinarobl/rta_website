@@ -1,18 +1,17 @@
-import { $, component$, useSignal, useStore } from '@builder.io/qwik';
+import { $, component$, useSignal } from '@builder.io/qwik';
 import { useLocation } from '@builder.io/qwik-city';
 import { FaLocationPinSolid } from '@qwikest/icons/font-awesome';
-import { BroadbandLabel } from '~/components/BroadbandLabel';
 import { Button } from '~/components/Button';
-import { Markdown } from '~/components/Markdown';
-import Lang from '~/routes/[...lang]';
 import { searchCoverage } from '~/services/coverage_search';
 import { searchProducts } from '~/services/products_search';
+import { BroadbandPlans } from './broadbandplans';
 
-export default component$(({ plans }: { plans: any }) => {
-  const description = `Experience the speed and reliability of *Gigfast Internet* with our detailed Broadband Labels. Easily compare pricing, contract terms, and additional features for each plan to find the best fit for your needs. With Gigfast, you get ultra-fast Internet, perfect for homes and businesses that demand top-tier connectivity. Browse our options and choose the plan that will take you to the next level.`
-
+export default component$(({ data }: { data: any }) => {
   const location = useLocation();
-  const isES = location.prevUrl?.pathname.includes("/es/");
+    const isES = location.prevUrl?.pathname.includes("/es/");
+
+  const broadbandPageData = data['pageBroadbandlabel']['data']['attributes'];
+
 
   const addressInput = useSignal<HTMLInputElement>(
     (<input></input>) as unknown as HTMLInputElement,
@@ -27,9 +26,11 @@ export default component$(({ plans }: { plans: any }) => {
 
   const lat = useSignal("");
   const lng = useSignal("");
-  const packagesResidential = useSignal<any>([]);
-  const packagesBusiness = useSignal<any>([]);
+  const packagesInternetResidential = useSignal<any>([]);
+  const packagesInternetBusiness = useSignal<any>([]);
 
+  const packagesVoiceResidential = useSignal<any>([]);
+  const packagesVoiceBusiness = useSignal<any>([]);
   // console.log(coverageFlag.value);
 
 
@@ -41,8 +42,10 @@ export default component$(({ plans }: { plans: any }) => {
 
   const handleCheck = $(() => {
     if (lat.value != "" && lng.value != "") {
-      packagesResidential.value = [];
-      packagesBusiness.value = [];
+      packagesInternetResidential.value = [];
+      packagesInternetBusiness.value = [];
+      packagesVoiceBusiness.value = [];
+      packagesVoiceResidential.value = [];
 
       const data = searchCoverage(lat.value, lng.value, zipRef.value.value);
 
@@ -53,8 +56,11 @@ export default component$(({ plans }: { plans: any }) => {
 
         if (coverageFlag.value && locationGroup.value != "" && type.value != "") {
           searchProducts(locationGroup.value, type.value).then((data) => {
-            packagesResidential.value = [...data.residential];
-            packagesBusiness.value = [...data.business];
+            packagesInternetResidential.value = [...data.residentialInternet];
+            packagesInternetBusiness.value = [...data.businessInternet];
+
+            packagesVoiceBusiness.value = [...data.businessVoice];
+            packagesVoiceResidential.value = [...data.residentialVoice];
           }
           );
         }
@@ -91,14 +97,14 @@ export default component$(({ plans }: { plans: any }) => {
 
   return <div class="flex flex-col items-center justify-around">
     <h1 class="text-center text-[38px] font-bold text-[#2E5899] max-sm:text-[28px]">
-      Broadband Labels
+      {broadbandPageData['Title']}
     </h1>
-    <div class="bg-white h-[150px] rounded-full md:w-1/2 w-[90%] flex flex-col items-center justify-around my-5">
-      <p class="px-8 text-center text-[22px] font-[600] text-primary-blue max-[1000px]:px-12">{isES ? "Encuentra los planes disponibles en tu area" : "Find the available plans in your area"}</p>
-      <form action="" class="w-3/4 flex items-center justify-center gap-4" >
+    <div class="bg-white md:h-[200px] h-[220px] rounded-full md:w-1/2 w-[90%] flex flex-col items-center justify-around my-5 gap-2">
+      <p class="px-8 text-center text-[22px] font-[600] text-primary-blue max-[1000px]:px-12">{broadbandPageData['Form']['Title']}</p>
+      <form action="" class="w-3/4 flex items-center justify-center gap-4 md:flex-row flex-col" >
         <input
-          class="w-[50%] rounded-full px-3 py-2 placeholder-primary-blue bg-primary-light-blue/20"
-          placeholder="Address Search"
+          class="md:w-[50%] w-[80%] rounded-full px-3 py-2 placeholder-primary-blue bg-primary-light-blue/20"
+          placeholder={broadbandPageData['Form']['Fields'][0]['Placeholder']}
           required
           onKeyUp$={handleSearch}
           ref={addressInput}
@@ -111,11 +117,12 @@ export default component$(({ plans }: { plans: any }) => {
           type="text"
         />
         <Button
-          text="Check Now"
-          // link={data["HeroForm"]["ActionButton"]["Link"]}
+          text={broadbandPageData['Form']['ActionButton']['Text']}
           onClick={handleCheck}
         />
       </form>
+
+      <p class="text-xs text-primary-blue text-center ">{isES?"Ingresa tu dirección y selecciona la opción correcta de la lista desplegable que aparecerá":"Enter your address and select the correct option from the dropdown list that appears"}</p>
 
       <label class={`${coverageFlag.value === true ? "flex" : "hidden"} inline-flex items-center mb-5 cursor-pointer`}>
         <input type="checkbox" checked={isBusiness.value}
@@ -123,12 +130,12 @@ export default component$(({ plans }: { plans: any }) => {
             isBusiness.value = !isBusiness.value;
           }}
           class="sr-only peer" />
-        <span class="me-3 text-sm font-medium text-primary-blue">Residential</span>
+        <span class="me-3 text-sm font-medium text-primary-blue">{broadbandPageData['CustomerType'][0]['title']}</span>
         <div class="relative w-11 h-6 bg-secondary-red peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-blue-300 rounded-full peer peer-checked:after:translate-x-full  rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:w-5 after:h-5 after:transition-all peer-checked:bg-primary-blue"></div>
-        <span class="ms-3 text-sm font-medium text-primary-blue">Business</span>
+        <span class="ms-3 text-sm font-medium text-primary-blue">{broadbandPageData['CustomerType'][1]['title']}</span>
       </label>
 
-      <p class={`${coverageFlag.value ? "hidden" : "flex"} text-secondary-red text-xl font-bold`}>No coverage</p>
+      <p class={`${coverageFlag.value ? "hidden" : "flex"} text-secondary-red text-xl font-bold`}>{broadbandPageData['Message']}</p>
     </div>
     <div
       class={`flex max-h-[200px] flex-col gap-3 overflow-y-auto rounded-xl bg-white p-6 text-primary-blue shadow-lg ${suggStatus.value === "none" || suggStatus.value === "selected"
@@ -151,6 +158,8 @@ export default component$(({ plans }: { plans: any }) => {
               lng.value = sugg["position"]["lng"];
               zipRef.value.value = sugg['zip'];
               suggStatus.value = "selected";
+
+              console.log(lat.value + " "+ lng.value);
             }}
           >
             <FaLocationPinSolid class="w-6 text-secondary-red" />
@@ -159,65 +168,48 @@ export default component$(({ plans }: { plans: any }) => {
         );
       })}
     </div>
-    {coverageFlag.value && <div class="mx-4 my-8 max-w-[500px]">
-      <img src="https://strapi42.rtatel.com/uploads/gig_FAST_Internet_0253314cce.webp" width={1230} height={229} alt="" />
-      {/* cambiar img  */}
-      {/* <StrapiImage media="/uploads/gig_FAST_Internet_0253314cce.webp" width={1230} height={229} /> */}
-    </div>
-
-    }
-    {/* <div class="mx-10 my-4 flex max-w-[800px] flex-col items-center justify-center gap-2 text-primary-blue">
-      
-      <Markdown classN={"text-center"} text={description} />
-    </div> */}
-    {
-      coverageFlag.value && packagesResidential.value.length > 0 &&
-
-      <div class={`${isBusiness.value ? "hidden" : "flex"} flex-col items-center gap-2`}>
-        <h2 class="text-center text-[38px] font-bold text-[#2E5899] max-sm:text-[28px]">Residential</h2>
-
-        <div class={`flex w-full overflow-x-auto gap-1 flex-row xl:justify-center mb-4 pb-4`}>
-        
-        {
-          packagesResidential.value.length > 0 &&
-          packagesResidential.value.map((plan: any, index: number) => {
-            return (
-              <BroadbandLabel key={'Broadband-' + index} monthlyPrice={plan['price']}
-                servicePlan={plan['name']}
-                // providerName={plan['values']['provider_name'][0]['data']}
-                typicalDownSpeed={plan['download_mbps']}
-                typicalUploadSpeed={plan['upload_mbps']}
-              />
-            )
-          })
-        }
-      </div>
-      </div>
-    }
 
     {
-      coverageFlag.value && packagesBusiness.value.length > 0 &&
-      <div class={`${isBusiness.value ? "flex" : "hidden"} flex-col items-center gap-2`}>
-        <h2 class="text-center text-[38px] font-bold text-[#2E5899] max-sm:text-[28px]">Business</h2>
+      coverageFlag.value && (
+        <>
+          {/* PLANES DE GIGFASTINTERNET */}
+          <BroadbandPlans
+            isVisible={!isBusiness.value}
+            plans={packagesInternetResidential.value}
+            broadbandPageData={broadbandPageData}
+            index={0}
+            customerTypeIndex={0}
+          />
 
-        <div class={`flex w-full overflow-x-auto gap-1 flex-row xl:justify-center mb-4 pb-4`}>
+          <BroadbandPlans
+            isVisible={isBusiness.value}
+            plans={packagesInternetBusiness.value}
+            broadbandPageData={broadbandPageData}
+            index={0}
+            customerTypeIndex={1}
+          />
 
-          {
-            packagesBusiness.value.length > 0 &&
-            packagesBusiness.value.map((plan: any, index: number) => {
-              return (
-                <BroadbandLabel key={'Broadband-' + index} monthlyPrice={plan['price']}
-                  servicePlan={plan['name']}
-                  // providerName={plan['values']['provider_name'][0]['data']}
-                  typicalDownSpeed={plan['download_mbps']}
-                  typicalUploadSpeed={plan['upload_mbps']}
-                />
-              )
-            })
-          }
-        </div>
-      </div>
+          {/* PLANES DE GIGFASTVOICE */}
+          <BroadbandPlans
+            isVisible={!isBusiness.value}
+            plans={packagesVoiceResidential.value}
+            broadbandPageData={broadbandPageData}
+            index={1}
+            customerTypeIndex={0}
+            isVoice
+          />
 
+          <BroadbandPlans
+            isVisible={isBusiness.value}
+            plans={packagesVoiceBusiness.value}
+            broadbandPageData={broadbandPageData}
+            index={1}
+            customerTypeIndex={1}
+            isVoice
+          />
+        </>
+      )
     }
+
   </div>
 });
