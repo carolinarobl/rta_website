@@ -7,7 +7,7 @@ import { useLocation } from "@builder.io/qwik-city";
 function convertToMbps(speed: string): number {
     const match = speed.match(/^(\d+(?:\.\d+)?)(\s*[MG]B)$/i);
     if (!match) {
-        throw new Error("Invalid speed format");
+        return parseFloat(speed) * 8;
     }
 
     const value = parseFloat(match[1]);
@@ -88,6 +88,7 @@ export const BroadbandLabel = component$(({
     customer_support_web: string,
     isVoice?: boolean,
 }) => {
+    
 
     const typicalDownSpeedMBbps = typical_download_speed ? convertToMbps(typical_download_speed) : "N/A";
     const typicalUploadSpeedMbps = typical_upload_speed ? convertToMbps(typical_upload_speed) : 'N/A';
