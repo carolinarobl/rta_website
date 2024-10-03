@@ -30,7 +30,7 @@ export default component$((props: Props) => {
                     />
             </div>
 
-            <div class={`flex w-full overflow-x-auto gap-1 flex-row justify-start mb-4 pb-4 px-4`} style={"scrollbar-width: thin; scrollbar-color: var(--primary-blue) #f1f1f1;"}>
+            <div class={`flex w-full overflow-x-auto gap-1 flex-row justify-start mb-4 pb-4 px-4`} style={"scrollbar-width: thin; scrollbar-color: #2E5698 #f1f1f1;"}>
                 {broadbandlabelnternet.map((plan: any, idx: number) => (
                     <BroadbandLabel
                         key={`Broadband-Internet}-${idx}`}
@@ -84,7 +84,7 @@ export default component$((props: Props) => {
                     />
             </div>
 
-            <div class={`flex w-full overflow-x-auto gap-1 flex-row justify-start mb-4 pb-4 px-4`} style={"scrollbar-width: thin; scrollbar-color: var(--primary-blue) #f1f1f1;"}>
+            <div class={`flex w-full overflow-x-auto gap-1 flex-row justify-start mb-4 pb-4 px-4`} style={"scrollbar-width: thin; scrollbar-color: #2E5698 #f1f1f1;"}>
                 {braodbandlabelVoice.map((plan: any, idx: number) => (
                     <BroadbandLabel
                         key={`Broadband-Voice}-${idx}`}
