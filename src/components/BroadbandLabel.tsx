@@ -178,7 +178,10 @@ export const BroadbandLabel = component$(({
                 <p class="text-right">{contract_time}</p>
                 <p class="col-span-2">{isES ? "Enlace a los términos del contrato" : "Link to Terms of Contract"}</p>
             </div>
-            <p class="text-sm"><a href="https://rtatel.com/client-services-agreement-general-terms-and-conditions/">https://rtatel.com/client-services-agreement-general-terms-and-conditions/</a></p>
+            {
+                plan.contract_terms_url &&
+                <p class="text-sm"><a href={plan.contract_terms_url}>{plan.contract_terms_url}</a></p>
+            }
             <hr class="border-2 border-black" />
 
             {/* additional-charges */}
