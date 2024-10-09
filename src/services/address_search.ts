@@ -15,7 +15,8 @@ export const searchStreets = async (
   const items = data["items"].map((item: any) => {
     return {
       address: item["title"],
-      zip: item["title"].split(", ")[2].split(" ")[1],
+      zip: item["title"]?.split(", ")[2]?.split(" ")[1] || "",
+      position: item['position']
     };
   });
   return items;

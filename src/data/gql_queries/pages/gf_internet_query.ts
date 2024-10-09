@@ -34,6 +34,10 @@ export const gfInternetQuery = (locale:string)=>{
                 }
               }
               Disclaimer
+              ButtonConfig{
+                Text
+                Link
+              }
               GFInternetSupport {
                 Title
                 Subtitle
