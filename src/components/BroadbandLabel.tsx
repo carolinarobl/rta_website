@@ -299,6 +299,11 @@ export const BroadbandLabel = component$(({
             <hr class="border border-black" />
             <p class="text-sm"> {isES ? "Familiarícese con el lenguaje utilizado en esta etiqueta. Visite el sitio web del área de recursos para el consumidor, de la Comisión Federal de Comunicaciones (FCC)." : "Learn more about the terms used on this label by visiting the Federal Communications Commission's Consumer Resource Center."}</p>
             <p class="text-sm text-right"><strong><a href="https://fcc.gov/consumer" target="_blank" rel="noreferrer">fcc.gov/consumer</a></strong></p>
+            {
+                plan.unique_plan_id != "N/A" &&
+                <p class="text-sm">{isES?`Identificador Único de Plan: ${plan.unique_plan_id}`:`Unique Plan Identifier: ${plan.unique_plan_id}` }</p>
+            }
+
         </div>
         <div class="flex flex-col items-center justify-evenly gap-2 w-full">
             <Button text="Download as CSV" onClick={handleClick} />

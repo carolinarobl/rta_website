@@ -56,7 +56,7 @@ export const BroadbandPlans = component$((props: BroadbandPlansProps) => {
             typical_download_speed={plan['download_mbps']}
             typical_upload_speed={plan['upload_mbps']}
             typical_latency={plan['values']?.['typical_latency']?.[0]?.['data'] || 'N/A'}
-            unique_plan_id={plan['id']}
+            unique_plan_id={plan['values']['unique_plan_id']?.[0]?.['data'] || 'N/A'}
             monthly_data_allow={plan['values']?.['monthly_data_allow']?.[0]?.['data'] || 'Unlimited'}
             over_usage_data_price={plan['values']?.['over_usage_data_price']?.[0]?.['data'] || 'N/A'}
             additional_data_increment={plan['values']?.['additional_data_increment']?.[0]?.['data'] || 'N/A'}
