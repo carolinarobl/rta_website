@@ -699,6 +699,10 @@
         <loc>https://rtatel.com/digital-marketing-trends-to-watch-in-2024/</loc>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://rtatel.com/5-essential-strategies-for-building-a-strong-online-presence/</loc>
+        <priority>0.85</priority>
+    </url>
     <!-- END | POSTS (ENGLISH) -->
     <!-- END | POSTS (ENGLISH) -->
     <!-- START | POSTS (SPANISH) -->
@@ -1397,6 +1401,10 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/digital-marketing-trends-to-watch-in-2024/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/5-essential-strategies-for-building-a-strong-online-presence/</loc>
         <priority>0.85</priority>
     </url>
     <!-- END | POSTS (SPANISH) -->
