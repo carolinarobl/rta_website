@@ -20,7 +20,7 @@
     </url>
     <url>
         <loc>https://rtatel.com/support/</loc>
-        <priority>0.70</priority>
+        <priority>0.90</priority>
     </url>
     <url>
         <loc>https://rtatel.com/business/</loc>
@@ -165,6 +165,14 @@
     <url>
         <loc>https://rtatel.com/local-weather-stations/</loc>
         <priority>0.20</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/broadbandlabels/</loc>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/services-broadbandlabels/</loc>
+        <priority>0.90</priority>
     </url>
     <!-- END | MAIN UNIQUE PAGES (ENGLISH) -->
     <!-- END | MAIN UNIQUE PAGES (ENGLISH) -->
@@ -333,6 +341,14 @@
     <url>
         <loc>https://rtatel.com/es/local-weather-stations/</loc>
         <priority>0.20</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/broadbandlabels/</loc>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/services-broadbandlabels/</loc>
+        <priority>0.90</priority>
     </url>
     <!-- END | MAIN UNIQUE PAGES (SPANISH) -->
     <!-- END | MAIN UNIQUE PAGES (SPANISH) -->
