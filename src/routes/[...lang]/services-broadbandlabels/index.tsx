@@ -29,7 +29,7 @@ export const useAllBroadbandLabels = routeLoader$(async () => {
 
     const { gigfastInternet, gigfastVoice } = data.result.reduce(
         (acc: any, item: any) => {
-            if (item.family === "gigFastInternet" && item.values.networkType ) {
+            if (item.family === "gigFastInternet" && item.values.networkType) {
                 acc.gigfastInternet.push(item);
             } else if (item.family === "gigFastVoice" && item.groups.length == 0) {
                 acc.gigfastVoice.push(item);

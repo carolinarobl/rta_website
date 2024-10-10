@@ -21,7 +21,7 @@ export const GigfastInternet = component$(({ data }: { data: any }) => {
             {data['PackTables'].map((item: any, index: any) => (
                 <SimpleTable key={index} title={item['Title']} logo={item['Logo']['data']['attributes']}
                 description={item['Description']}
-                features={item['Features']} price={item['Price']} priceTime={item['Pricetime']}
+                features={item['Features']}
                 btnLink={item['Button']['Link']} btnText={item['Button']['Text']}></SimpleTable>
             ))}
         </div>
