@@ -16,7 +16,7 @@ export const downloadPDF = (idElement: string) => {
 
         // Convertir píxeles a milímetros
         const pdfWidth = (325 / 96) * 25.4;  // Ancho en milímetros
-        const pdfHeight = (1535 / 96) * 25.4; // Altura en milímetros
+        const pdfHeight = (1300 / 96) * 25.4; // Altura en milímetros
 
         // Crear PDF con tamaño personalizado
         const pdf = new jsPDF('p', 'mm', [pdfWidth, pdfHeight]);
