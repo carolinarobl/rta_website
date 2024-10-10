@@ -4,24 +4,6 @@ import { downloadCSV } from "~/utils/download_broadband_csv";
 import { downloadPDF, downloadPNG } from "~/utils/download_broadband_pdf";
 import { useLocation } from "@builder.io/qwik-city";
 
-function convertToMbps(speed: string): number {
-    const match = speed.match(/^(\d+(?:\.\d+)?)(\s*[MG]B)$/i);
-    if (!match) {
-        return parseFloat(speed) * 8;
-    }
-
-    const value = parseFloat(match[1]);
-    const unit = match[2].trim();
-
-    if (unit === "MB") {
-        return value * 8; // Convertir MB a Mbps
-    } else if (unit === "GB") {
-        return value * 8000; // Convertir GB a Mbps
-    } else {
-        throw new Error("Unsupported unit");
-    }
-}
-
 
 export const BroadbandLabel = component$(({
     providerName = "Rural Telecommunications of America",
@@ -88,11 +70,6 @@ export const BroadbandLabel = component$(({
     customer_support_web: string,
     isVoice?: boolean,
 }) => {
-    
-
-    const typicalDownSpeedMBbps = typical_download_speed ? convertToMbps(typical_download_speed) : "N/A";
-    const typicalUploadSpeedMbps = typical_upload_speed ? convertToMbps(typical_upload_speed) : 'N/A';
-
 
     const plan = {
         unique_plan_id: unique_plan_id,
@@ -114,8 +91,8 @@ export const BroadbandLabel = component$(({
         monthly_provider_fee: monthly_provider_fee === 'N/A' ? "NULL" : monthly_provider_fee,
         tax: tax,
         bundle_discounts_url: bundle_discounts_url,
-        typical_download_speed: typicalDownSpeedMBbps,
-        typical_upload_speed: typicalUploadSpeedMbps,
+        typical_download_speed: typical_download_speed,
+        typical_upload_speed: typical_upload_speed,
         typical_latency: typical_latency === 'N/A' ? "0" : typical_latency,
         monthly_data_allow: monthly_data_allow === 'N/A' ? "NULL" : monthly_data_allow,
         over_usage_data_price: over_usage_data_price === 'N/A' ? "0" : over_usage_data_price,
@@ -245,9 +222,9 @@ export const BroadbandLabel = component$(({
                             <p class="font-bold">{isES ? "Velocidades de internet proporcionadas con este plan" : "Speeds Provided with Plan"}</p>
                             <div class="grid grid-cols-[2fr_1fr] gap-1 p-2">
                                 <p>{isES ? "Velocidad típica de descarga de datos" : "Typical Download Speed"}</p>
-                                <p class="text-right font-bold">{typicalDownSpeedMBbps == "N/A" ? typicalDownSpeedMBbps : typicalDownSpeedMBbps + "Mbps"}</p>
+                                <p class="text-right font-bold">{typical_download_speed + " Mbps"}</p>
                                 <p>{isES ? "Velocidad típica de carga de datos" : "Typical Upload Speed"}</p>
-                                <p class="text-right font-bold">{typicalUploadSpeedMbps == "N/A" ? typicalUploadSpeedMbps : typicalUploadSpeedMbps + "Mbps"}</p>
+                                <p class="text-right font-bold">{typical_upload_speed + " Mbps"}</p>
                                 <p>{isES ? "Latencia típica" : "Typical latency"}</p>
                                 <p class="text-right font-bold">{typical_latency} ms</p>
                             </div>
