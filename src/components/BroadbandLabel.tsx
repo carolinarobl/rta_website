@@ -133,7 +133,7 @@ export const BroadbandLabel = component$(({
                 <hr class="border-black border-2" />
                 <p class="text-base font-bold">{providerName}</p>
                 <p class="text-base font-extrabold">{plan.service_plan_name}</p>
-                <p class="text-base">{isES ? "Declaración de transparencia para el usuario de servicios de internet de banda ancha fija." : "Fixed Broadband Consumer Disclosure"}</p>
+                <p class="text-base">{isES ? "Declaración de transparencia para el usuario de servicios de internet de banda ancha fija." : `${connection_type} Broadband Consumer Disclosure`}</p>
             </header>
             <hr class="border-black border-4" />
             <div class="grid grid-cols-2 font-extrabold">
