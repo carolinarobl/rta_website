@@ -703,6 +703,10 @@
         <loc>https://rtatel.com/5-essential-strategies-for-building-a-strong-online-presence/</loc>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://rtatel.com/the-impact-of-internet-on-politics-pros-and-cons/</loc>
+        <priority>0.85</priority>
+    </url>
     <!-- END | POSTS (ENGLISH) -->
     <!-- END | POSTS (ENGLISH) -->
     <!-- START | POSTS (SPANISH) -->
@@ -1405,6 +1409,10 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/5-essential-strategies-for-building-a-strong-online-presence/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/the-impact-of-internet-on-politics-pros-and-cons/</loc>
         <priority>0.85</priority>
     </url>
     <!-- END | POSTS (SPANISH) -->

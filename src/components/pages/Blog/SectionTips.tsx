@@ -25,8 +25,8 @@ export const SectionTips = component$(({ data }: { data: any }) => {
         <div class=" gap-2 flex flex-row bg-white p-3 md:rounded-full rounded-3xl md:w-[750px] w-[90%] shadow-lg items-center">
             <div>
                 <div class={`bg-[#2e5899] p-5 rounded-full shadow-lg md:min-h-[130px] md:max-w-[130px] md:max-h-[130px] max-w-[80px] flex justify-center items-center max-[768px]:hidden	`}>
-                    <div class="bg-white md:p-5 p-2 w-fit h-fit items-center rounded-full shadow-lg shadow-inner">
-                        <BsLightbulbFill class={` md:w-[45px] md:h-[45px] w-[20px] h-[20px] fill-[#2e5899]`}></BsLightbulbFill>
+                    <div class="bg-white md:p-5 p-2 w-fit h-fit items-center rounded-full  text-[#2e5899]">
+                        <BsLightbulbFill class={` md:w-[55px] md:h-[55px] w-[30px] h-[30px] fill-[#2e5899]`}></BsLightbulbFill>
                     </div>
                 </div>
             </div>
