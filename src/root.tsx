@@ -28,8 +28,17 @@ export default component$(() => {
   'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
   })(window,document,'script','dataLayer','GTM-W5BJSW4');`;
 
-
-
+const pixelScript = `
+!function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '427875699033893');
+ `;
 
   /**
    * The root of a QwikCity site always start with the <QwikCityProvider> component,
@@ -51,10 +60,13 @@ export default component$(() => {
           <script defer async src={analyticsScriptP1} ></script>
           <script defer async dangerouslySetInnerHTML={analyticsScriptP2}></script>
           <script defer async dangerouslySetInnerHTML={gtmScriptP1}></script>
-
+          <script defer async dangerouslySetInnerHTML={pixelScript}></script>
           <ServiceWorkerRegister />
         </head>
         <body lang="en" class="max-h-screen overflow-x-hidden">
+        <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=427875699033893&ev=PageView&noscript=1"
+/></noscript>
           <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W5BJSW4"
             height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
