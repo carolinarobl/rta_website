@@ -21,6 +21,18 @@ export default component$(() => {
 //   gtag('js', new Date());
 //   gtag('config', 'G-73FN8JZHHH');
 // `;
+
+const pixelScript = `
+!function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '427875699033893');
+ `;
   /**
    * The root of a QwikCity site always start with the <QwikCityProvider> component,
    * immediately followed by the document's <head> and <body>.
@@ -40,6 +52,10 @@ export default component$(() => {
           {/* <link ref="icon" href="/favicon.png" /> */}
           <RouterHead />
 
+          <script defer async dangerouslySetInnerHTML={pixelScript}></script>
+          <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=427875699033893&ev=PageView&noscript=1"
+/></noscript>
           {/* <script defer async src={analyticsScriptP1} ></script>
           <script defer async dangerouslySetInnerHTML={analyticsScriptP2}></script> */}
 
