@@ -32,7 +32,9 @@ export const BroadbandPlans = component$((props: BroadbandPlansProps) => {
         {broadbandPageData['CustomerType'][customerTypeIndex]['title']}
       </h2>
 
-      <div class={`flex w-full overflow-x-auto gap-1 flex-row xl:justify-center mb-4 pb-4`}>
+ {/* ajustar los estilos para que los elementos dentro del div se ajusten a la izquierda */}
+     <div class={`flex w-full overflow-x-auto gap-1 px-4 flex-row ${plans.length > 3 ?'justify-start':'xl:justify-center'}  mb-4 pb-4`}
+      style={"scrollbar-width: thin; scrollbar-color: #2E5698 #f1f1f1;"}>
         {plans.map((plan: any, idx: number) => (
           <BroadbandLabel
             key={`Broadband-${isVoice ? 'Voice' : 'Internet'}-${customerTypeIndex}-${idx}`}
