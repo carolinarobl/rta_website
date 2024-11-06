@@ -179,6 +179,7 @@ export default component$(({ data }: { data: any }) => {
       )
     }
 
+    
     {
       coverageFlag.value && (
         <>
@@ -189,7 +190,7 @@ export default component$(({ data }: { data: any }) => {
             broadbandPageData={broadbandPageData}
             index={0}
             customerTypeIndex={0}
-          />
+            />
 
           <BroadbandPlans
             isVisible={isBusiness.value}
@@ -197,7 +198,7 @@ export default component$(({ data }: { data: any }) => {
             broadbandPageData={broadbandPageData}
             index={0}
             customerTypeIndex={1}
-          />
+            />
 
           {/* PLANES DE GIGFASTVOICE */}
           <BroadbandPlans
@@ -207,7 +208,7 @@ export default component$(({ data }: { data: any }) => {
             index={1}
             customerTypeIndex={0}
             isVoice
-          />
+            />
 
           <BroadbandPlans
             isVisible={isBusiness.value}
@@ -216,10 +217,9 @@ export default component$(({ data }: { data: any }) => {
             index={1}
             customerTypeIndex={1}
             isVoice
-          />
+            />
         </>
       )
     }
-
-  </div>
+    </div>
 });
