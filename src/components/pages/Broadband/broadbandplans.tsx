@@ -1,5 +1,4 @@
 import { component$ } from '@builder.io/qwik';
-import { includes } from 'valibot';
 import { BroadbandLabel } from '~/components/BroadbandLabel';
 import { setURL } from '~/data/constants';
 
