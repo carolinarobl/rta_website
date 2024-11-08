@@ -1,4 +1,5 @@
 import { component$ } from '@builder.io/qwik';
+import { includes } from 'valibot';
 import { BroadbandLabel } from '~/components/BroadbandLabel';
 import { setURL } from '~/data/constants';
 
@@ -18,6 +19,17 @@ export const BroadbandPlans = component$((props: BroadbandPlansProps) => {
     return null;
   }
 
+  //orden de los plans para que los planes con name "ESSENTIALgig" aparezcan primero
+  const sortedPlans = plans.sort((a:any, b:any) => {
+    if (a['name'].includes('ESSENTIALgig') && !b['name'].includes('ESSENTIALgig')) {
+      return -1;
+    } else if (!a['name'].includes('ESSENTIALgig') && b['name'].includes('ESSENTIALgig')) {
+      return 1;
+    } else {
+      return 0;
+    }
+  });
+
   return (
     <div class={`w-full flex-col gap-2 ${isVisible ? 'flex' : 'hidden'}`}>
       <div class="my-8 max-w-[350px] sm:max-w-[500px] mx-auto">
@@ -35,7 +47,7 @@ export const BroadbandPlans = component$((props: BroadbandPlansProps) => {
  {/* ajustar los estilos para que los elementos dentro del div se ajusten a la izquierda */}
      <div class={`flex w-full overflow-x-auto gap-1 px-4 flex-row ${plans.length > 3 ?'justify-start':'xl:justify-center'}  mb-4 pb-4`}
       style={"scrollbar-width: thin; scrollbar-color: #2E5698 #f1f1f1;"}>
-        {plans.map((plan: any, idx: number) => (
+        {sortedPlans.map((plan: any, idx: number) => (
           <BroadbandLabel
             key={`Broadband-${isVoice ? 'Voice' : 'Internet'}-${customerTypeIndex}-${idx}`}
             tier_plan_name="NULL"

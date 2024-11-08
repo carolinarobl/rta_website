@@ -13,6 +13,17 @@ interface Props {
 export default component$((props: Props) => {
     const { pageData, broadbandlabelnternet, braodbandlabelVoice } = props;
 
+    // orden de los broadbandlabelInternet y broadbandlabelvoice por contener ESSENTIALgig en su name
+    const sortedBroadbandlabelnternet = broadbandlabelnternet.sort((a:any, b:any) => {
+        if (a['values']['name'][0]['data'].includes('ESSENTIALgig') && !b['values']['name'][0]['data'].includes('ESSENTIALgig')) {
+            return -1;
+        } else if (!a['values']['name'][0]['data'].includes('ESSENTIALgig') && b['values']['name'][0]['data'].includes('ESSENTIALgig')) {
+            return 1;
+        } else {
+            return 0;
+        }
+    });
+
     return <div class="flex flex-col items-center justify-around">
         <h1 class="text-center text-[38px] font-bold text-[#2E5899] max-sm:text-[28px]">
             {pageData['data']['attributes']['Title']}
@@ -31,7 +42,7 @@ export default component$((props: Props) => {
             </div>
 
             <div class={`flex w-full overflow-x-auto gap-1 flex-row justify-start mb-4 pb-4 px-4`} style={"scrollbar-width: thin; scrollbar-color: #2E5698 #f1f1f1;"}>
-                {broadbandlabelnternet.map((plan: any, idx: number) => (
+                {sortedBroadbandlabelnternet.map((plan: any, idx: number) => (
                     <BroadbandLabel
                         key={`Broadband-Internet}-${idx}`}
 
