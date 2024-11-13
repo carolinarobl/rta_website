@@ -707,6 +707,10 @@
         <loc>https://rtatel.com/the-impact-of-internet-on-politics-pros-and-cons/</loc>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://rtatel.com/exploring-the-impact-of-email-honoring-ray-tomlinson-s-legacy/</loc>
+        <priority>0.85</priority>
+    </url>
     <!-- END | POSTS (ENGLISH) -->
     <!-- END | POSTS (ENGLISH) -->
     <!-- START | POSTS (SPANISH) -->
@@ -1413,6 +1417,10 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/the-impact-of-internet-on-politics-pros-and-cons/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/exploring-the-impact-of-email-honoring-ray-tomlinson-s-legacy/</loc>
         <priority>0.85</priority>
     </url>
     <!-- END | POSTS (SPANISH) -->
