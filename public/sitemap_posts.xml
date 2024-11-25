@@ -711,6 +711,10 @@
         <loc>https://rtatel.com/exploring-the-impact-of-email-honoring-ray-tomlinson-s-legacy/</loc>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://rtatel.com/the-future-of-artificial-intelligence-on-the-internet/</loc>
+        <priority>0.85</priority>
+    </url>
     <!-- END | POSTS (ENGLISH) -->
     <!-- END | POSTS (ENGLISH) -->
     <!-- START | POSTS (SPANISH) -->
@@ -1421,6 +1425,10 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/exploring-the-impact-of-email-honoring-ray-tomlinson-s-legacy/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/the-future-of-artificial-intelligence-on-the-internet/</loc>
         <priority>0.85</priority>
     </url>
     <!-- END | POSTS (SPANISH) -->
