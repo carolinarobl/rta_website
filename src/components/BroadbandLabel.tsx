@@ -148,7 +148,7 @@ export const BroadbandLabel = component$(({
                 <p>{isES ? "Este precio mensual corresponde a una tarifa inicial" : "This monthly price is an introductory rate"}</p>
                 <p class="text-right">{intro_rate}</p>
                 <p>{isES ? "Lapso al que se aplica la tarifa inicial" : "Time the introductory rate applies"}</p>
-                <p class="text-right">{intro_rate_time}</p>
+                <p class="text-right">{ isES ? `${intro_rate_time} meses` : `${intro_rate_time} months` }</p>
                 <p>{isES ? "Precio mensual posterior a la tarifa inicial" : "Monthly price after the introductory rate"}</p>
                 <p class="text-right">${plan.intro_rate_price}</p>
                 <p>{isES ? "Duración del contrato" : "Length of contract"}</p>
