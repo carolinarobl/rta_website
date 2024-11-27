@@ -48,7 +48,7 @@ export default component$((props: Props) => {
 
                         tier_plan_name="NULL"
                         connection_type={plan['values']?.['connection_type']?.[0]?.['data'] || 'N/A'}
-                        monthly_price={plan['values']['price'][0]['data'][0]['amount']}
+                        monthly_price={plan['values']?.['monthly_price']?.[0]['data'] || plan['values']?.['price']?.[0]['data'][0]['amount']}
                         service_plan_name={plan['values']['name'][0]['data']}
                         intro_rate={plan['values']?.['intro_rate']?.[0]?.['data'] || 'No'}
                         intro_rate_price={plan['values']?.['intro_rate_price']?.[0]?.['data'] || '0.00'}
