@@ -51,7 +51,7 @@ export const BroadbandPlans = component$((props: BroadbandPlansProps) => {
             key={`Broadband-${isVoice ? 'Voice' : 'Internet'}-${customerTypeIndex}-${idx}`}
             tier_plan_name="NULL"
             connection_type={plan['values']?.['connection_type']?.[0]?.['data'] || 'N/A'}
-            monthly_price={plan['price']}
+            monthly_price={plan['values']?.['monthly_price']?.[0]['data'] || plan['price']}
             service_plan_name={plan['name']}
             intro_rate={plan['values']?.['intro_rate']?.[0]?.['data'] || 'No'}
             intro_rate_price={plan['values']?.['intro_rate_price']?.[0]?.['data'] || '0.00'}
