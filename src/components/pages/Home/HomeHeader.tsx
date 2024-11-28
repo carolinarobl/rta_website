@@ -8,14 +8,12 @@ import { StrapiAsset } from "~/components/StrapiAsset";
 import { StrapiImage } from "~/components/StrapiImage";
 import { setURL } from "~/data/constants";
 import { CarouselTestimonials } from "./CarouselTestimonials";
-// import { Slider } from "qwik-slider";
-// import { StrapiImage } from "~/components/StrapiImage";
-// import { Markdown } from "~/components/Markdown";
-// import { Carouseld } from "~/components/Carousel";
+import { PromoBanner } from "./PromoBanner";
 
-export const HomeHeader = component$(({ data }: { data: any }) => {
+export const HomeHeader = component$(({ data, bannerData }: { data: any, bannerData: any }) => {
   const heroSlidesData = data["HeroCarSlides"];
   const TestimonialsIsEmpty = data['Testimonials'].length < 1 ? true : false;
+  const promoBanner = bannerData;
 
   const streetRef = useSignal<HTMLInputElement>(
     (<input></input>) as unknown as HTMLInputElement,
@@ -88,7 +86,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
     ({ isMobile = false }: { isMobile?: boolean }) => {
       return (
         <div
-          class={`flex h-[230px] items-center  justify-center overflow-hidden bg-white   ${isMobile
+          class={`flex h-[200px] items-center  justify-center overflow-hidden bg-white   ${isMobile
             ? "w-full max-w-[420px] rounded-full min-[1000px]:hidden"
             : "w-[420px] rounded-br-full rounded-tr-full bg-white/60 backdrop-blur-sm border border-white/60 max-[1000px]:hidden"
             }`}
@@ -168,8 +166,21 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
         </video>
         <div class="flex flex-col items-center justify-between h-full w-full md:mb-10">
           <div class="flex h-full w-full items-center justify-between max-[1000px]:flex-col-reverse max-[1000px]:px-4">
-            <HeroCarousel />
-            <div class="relative flex w-[420px] flex-col items-center justify-center gap-5 rounded-bl-full rounded-tl-full bg-white/60 backdrop-blur-sm max-[1000px]:mb-8 max-[1000px]:w-full max-[1000px]:max-w-[420px] max-[1000px]:rounded-[30px] max-[1000px]:py-2 min-[1000px]:h-[230px] border border-white/60">
+          
+          <div class="flex flex-col gap-4">
+            <div class="opacity-0">
+            <PromoBanner data={promoBanner} />
+            </div>
+
+              <HeroCarousel />
+            </div>
+
+            <div class="flex flex-col gap-4">
+
+              {/* BANNER DE PROMOCIÓN */}
+              <PromoBanner data={promoBanner} />
+
+            <div class="relative flex w-[420px] flex-col items-center justify-center gap-3 rounded-bl-full rounded-tl-full bg-white/60 backdrop-blur-sm max-[1000px]:mb-8 max-[1000px]:w-full max-[1000px]:max-w-[420px] max-[1000px]:rounded-[30px] max-[1000px]:py-2 min-[1000px]:h-[200px] border border-white/60">
               <div
                 class={`absolute left-10 right-10 top-[90%] z-20 flex max-h-[200px] flex-col gap-3 overflow-y-auto rounded-xl bg-white p-6 text-primary-blue shadow-lg ${suggStatus.value === "none" || suggStatus.value === "selected"
                   ? "hidden"
@@ -197,7 +208,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
                   );
                 })}
               </div>
-              <div class=" text-center md:text-[22px] text-[20px] font-[600] text-primary-blue ">
+              <div class=" text-center text-[20px] font-[600] text-primary-blue ">
                 {data["HeroForm"]["Title"]}
               </div>
               <div class="flex w-full items-center gap-3 px-6  ">
@@ -220,6 +231,7 @@ export const HomeHeader = component$(({ data }: { data: any }) => {
                 // link={data["HeroForm"]["ActionButton"]["Link"]}
                 onClick={handleModal}
               />
+            </div>
             </div>
 
           </div>
