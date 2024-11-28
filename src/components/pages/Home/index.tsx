@@ -18,6 +18,9 @@ export const Home = component$(({ data }: { data: any }) => {
 
   const prosMap = pageData["ProsPicture"]["data"]["attributes"]
 
+  const promoBannerData = data['generalPromoBanner']['data']['attributes'];
+
+
   // const prosMap =
   //   data["sectionNetwork"]["data"]["attributes"]["Map"]["MapPicture"]["data"][
   //     "attributes"
@@ -30,7 +33,7 @@ export const Home = component$(({ data }: { data: any }) => {
       }}
     >
       <div class="absolute bottom-0 left-0 right-0 top-[100vh] -z-10 bg-white" />
-      <HomeHeader data={pageData} />
+      <HomeHeader data={pageData} bannerData={promoBannerData}/>
       <ProsSection
         data={{
           prosPar: pageData["ProsPar"],

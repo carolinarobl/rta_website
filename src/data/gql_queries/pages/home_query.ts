@@ -166,6 +166,17 @@ export const homeQuery = (locale: string) => {
       }
     }
   }
+
+  generalPromoBanner(locale:"${locale}"){
+        data{
+          attributes{
+            Title
+            Caption
+            Display            
+          }
+        }
+      }
+        
   sectionNetwork {
     data {
       attributes {
