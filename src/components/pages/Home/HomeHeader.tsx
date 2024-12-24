@@ -128,7 +128,7 @@ export const HomeHeader = component$(({ data, bannerData }: { data: any, bannerD
 
   return (
     <>
-      <div class="relative flex h-[80vh] max-h-[750px] w-full items-center">
+      <div class="relative flex h-[80vh] max-h-[750px] w-full items-center ">
         {/* MODAL */}
         <div
           class={`fixed bottom-0 left-0 right-0 bg-white top-${modalIsOpen.value ? "0 z-[200]" : "[100vh] -z-[200]"
@@ -169,7 +169,7 @@ export const HomeHeader = component$(({ data, bannerData }: { data: any, bannerD
           ) + "#t=0.1"} type="video/mp4"></source>
         </video>
         <div class="flex flex-col items-center justify-between h-full w-full md:mb-10">
-          <div class="flex h-full w-full items-center justify-between max-[1000px]:flex-col-reverse max-[1000px]:px-4">
+          <div class="flex h-full w-full items-center justify-between max-[1000px]:flex-col max-[1000px]:px-4">
           
           <div class="flex flex-col gap-4">
             <div class="opacity-0">
@@ -184,7 +184,7 @@ export const HomeHeader = component$(({ data, bannerData }: { data: any, bannerD
               {/* BANNER DE PROMOCIÓN */}
               <PromoBanner data={promoBanner} />
 
-            <div class="relative flex w-[420px] flex-col items-center justify-center gap-3 rounded-bl-full rounded-tl-full bg-white/60 backdrop-blur-sm max-[1000px]:mb-8 max-[1000px]:w-full max-[1000px]:max-w-[420px] max-[1000px]:rounded-[30px] max-[1000px]:py-2 min-[1000px]:h-[200px] border border-white/60">
+            <div class="relative flex w-[420px] flex-col items-center justify-center gap-3 rounded-bl-full rounded-tl-full bg-white/60 backdrop-blur-sm max-[1000px]:mb-8 max-[1000px]:w-full max-[1000px]:max-w-[420px] max-[1000px]:rounded-[30px] max-[1000px]:py-2 max-[1000px]:my-5 min-[1000px]:h-[200px] border border-white/60 ">
               <div
                 class={`absolute left-10 right-10 top-[90%] z-20 flex max-h-[200px] flex-col gap-3 overflow-y-auto rounded-xl bg-white p-6 text-primary-blue shadow-lg ${suggStatus.value === "none" || suggStatus.value === "selected"
                   ? "hidden"
