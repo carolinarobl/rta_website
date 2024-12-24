@@ -41,10 +41,14 @@ export const HomeHeader = component$(({ data, bannerData }: { data: any, bannerD
 
   const handleModal = $((): void => {
     modalIsOpen.value = !modalIsOpen.value;
+    // var finalStreetValue= streetRef.value.value.split(", ")[0];
+    var finalStreetValue= streetRef.value.value.split(", ")[0];
+
+    ;
     if (!modalIsOpen.value) return;
     fullFrameSource.value = data["HeroForm"]["ActionButton"]["Link"]
       .replace("=pConf=", "")
-      .replace("streetInput", streetRef.value.value)
+      .replace("streetInput", finalStreetValue)
       .replace("zipInput", zipRef.value.value);
   });
 
@@ -106,7 +110,9 @@ export const HomeHeader = component$(({ data, bannerData }: { data: any, bannerD
   const handleSearch = $(() => {
     clearTimeout(typingTimer.value);
     typingTimer.value = setTimeout(() => {
+
       if (streetRef.value.value.length > 2)
+
         fetch(`/api/get-streets?q=${encodeURIComponent(streetRef.value.value)}`)
           .then((res) => res.json())
           .then((data) => {
@@ -196,7 +202,7 @@ export const HomeHeader = component$(({ data, bannerData }: { data: any, bannerD
                         gridTemplateColumns: "20px 1fr",
                       }}
                       onClick$={() => {
-                        streetRef.value.value = sugg["address"].split(", ")[0];
+                        streetRef.value.value = sugg["address"];
                         zipRef.value.value = sugg["zip"];
                         suggStatus.value = "selected";
                       }}
@@ -218,12 +224,12 @@ export const HomeHeader = component$(({ data, bannerData }: { data: any, bannerD
                   ref={streetRef}
                   type="text"
                 />
-                <input
+                {/* <input
                   class="w-[60%] rounded-full px-3 py-2 placeholder-primary-blue"
                   placeholder="Zip Code"
                   ref={zipRef}
                   type="text"
-                />
+                /> */}
               </div>
               <Button
                 text={data["HeroForm"]["ActionButton"]["Text"]}
