@@ -109,11 +109,7 @@ export const HomeHeader = component$(({ data, bannerData }: { data: any, bannerD
   const handleSearch = $(() => {
     clearTimeout(typingTimer.value);
     typingTimer.value = setTimeout(() => {
-
-
       if (streetRef.value.value.length > 2)
-
-
         fetch(`/api/get-streets?q=${encodeURIComponent(streetRef.value.value)}`)
           .then((res) => res.json())
           .then((data) => {
