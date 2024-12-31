@@ -49,7 +49,7 @@ export default component$(() => {
           <meta charSet="utf-8" />
           <link rel="manifest" href="/manifest.json" />
           <meta name="robots" content="noindex"/> 
-          {/* <link ref="icon" href="/favicon.png" /> */}
+          <link rel="icon" href="/favicon.ico" />
           <RouterHead />
 
           {/* <script defer async dangerouslySetInnerHTML={pixelScript}></script> */}

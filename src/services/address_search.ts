@@ -12,12 +12,25 @@ export const searchStreets = async (
     return [];
   }
   const data = await resp.json();
-  const items = data["items"].map((item: any) => {
+
+  var tempItems = data['items'];
+
+  tempItems = tempItems.filter(
+    (item: any) =>
+      item['resultType'] !== "locality" &&
+      item['resultType'] !== "intersection" &&
+      item['resultType'] !== "postalCodePoint"
+  );
+
+  const items = tempItems.map((item: any) => {
+    
     return {
-      address: item["title"],
+      resultType: item['resultType'],
+      address: item["address"]['label'],
       zip: item["title"]?.split(", ")[2]?.split(" ")[1] || "",
       position: item['position']
     };
   });
+
   return items;
 };
