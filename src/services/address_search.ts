@@ -23,15 +23,28 @@ export const searchStreets = async (
   );
 
   const items = tempItems.map((item: any) => {
+
+    if (item['resultType'] == 'place') {  
+      var label = item['address']['label'];
+      
+      console.log('Soy de tipo place y mi dirección es: ', label);
+      // Separa el texto por la primera coma
+      if(label != null || label != ''){
+        var parts = label.split(',').slice(1).join(',').trim();
+        item['address']['label'] = parts;
+      }
+
+    }
     
     return {
       resultType: item['resultType'],
-      address: item["address"]['label'],
-      zip: item["title"]?.split(", ")[2]?.split(" ")[1] || "",
+      address: item['address']['label'],
+      zip: item['address']['label']?.split(", ")[2]?.split(" ")[1] || "",
       position: item['position']
     };
-  });
 
+  });
 
   return items;
 };
+
