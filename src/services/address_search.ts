@@ -37,8 +37,8 @@ export const searchStreets = async (
     
     return {
       resultType: item['resultType'],
-      address: item["address"]['label'],
-      zip: item["title"]?.split(", ")[2]?.split(" ")[1] || "",
+      address: item['address']['label'],
+      zip: item['address']['label']?.split(", ")[2]?.split(" ")[1] || "",
       position: item['position']
     };
 
