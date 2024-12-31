@@ -13,7 +13,7 @@ export const searchStreets = async (
   }
   const data = await resp.json();
 
-  var tempItems = data['items'];
+  let tempItems = data['items'];
 
   tempItems = tempItems.filter(
     (item: any) =>
@@ -25,11 +25,11 @@ export const searchStreets = async (
   const items = tempItems.map((item: any) => {
 
     if (item['resultType'] == 'place') {  
-      var label = item['address']['label'];
+      let label = item['address']['label'];
       
       // Separa el texto por la primera coma
       if(label != null || label != ''){
-        var parts = label.split(',').slice(1).join(',').trim();
+        let parts = label.split(',').slice(1).join(',').trim();
         item['address']['label'] = parts;
       }
 
