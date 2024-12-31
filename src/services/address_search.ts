@@ -27,7 +27,6 @@ export const searchStreets = async (
     if (item['resultType'] == 'place') {  
       var label = item['address']['label'];
       
-      console.log('Soy de tipo place y mi dirección es: ', label);
       // Separa el texto por la primera coma
       if(label != null || label != ''){
         var parts = label.split(',').slice(1).join(',').trim();
