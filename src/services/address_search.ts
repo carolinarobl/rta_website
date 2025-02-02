@@ -25,11 +25,11 @@ export const searchStreets = async (
   const items = tempItems.map((item: any) => {
 
     if (item['resultType'] == 'place') {  
-      let label = item['address']['label'];
+      const label = item['address']['label'];
       
       // Separa el texto por la primera coma
       if(label != null || label != ''){
-        let parts = label.split(',').slice(1).join(',').trim();
+        const parts = label.split(',').slice(1).join(',').trim();
         item['address']['label'] = parts;
       }
 

@@ -142,6 +142,18 @@
         <loc>https://rtatel.com/midland-s-growing-tech-hub-how-rta-is-powering-innovation/</loc>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://rtatel.com/the-role-of-high-speed-internet-in-smithville-s-education-system/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/5-g-and-industry-4-0-the-future-of-industrial-automation-in-crystal-beach/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/how-rta-is-transforming-connectivity-in-smithville/</loc>
+        <priority>0.85</priority>
+    </url>
     <!-- END | LOCAL BLOG POSTS (ENGLISH) -->
     <!-- END | LOCAL BLOG POSTS (ENGLISH) -->
     <!-- START | LOCAL BLOG POSTS (SPANISH) -->
@@ -232,6 +244,18 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/midland-s-growing-tech-hub-how-rta-is-powering-innovation/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/the-role-of-high-speed-internet-in-smithville-s-education-system/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/5-g-and-industry-4-0-the-future-of-industrial-automation-in-crystal-beach/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/how-rta-is-transforming-connectivity-in-smithville/</loc>
         <priority>0.85</priority>
     </url>
     <!-- END | LOCATION POSTS (SPANISH) -->

@@ -54,7 +54,7 @@ const pixelScript = `
         <head>
           <meta charSet="utf-8" />
           <link rel="manifest" href="/manifest.json" />
-          <meta name="robots" content="noindex"/> 
+          <meta name="robots" content="index"/> 
           <link rel="icon" href="/favicon.ico" />
           <RouterHead />
 
