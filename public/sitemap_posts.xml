@@ -735,6 +735,10 @@
         <loc>https://rtatel.com/the-role-of-rural-internet-in-bridging-the-digital-divide-in-2025/</loc>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://rtatel.com/the-future-of-work-in-rural-areas-how-internet-connectivity-is-changing-lives/</loc>
+        <priority>0.85</priority>
+    </url>
     <!-- END | POSTS (ENGLISH) -->
     <!-- END | POSTS (ENGLISH) -->
     <!-- START | POSTS (SPANISH) -->
@@ -1469,6 +1473,10 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/the-role-of-rural-internet-in-bridging-the-digital-divide-in-2025/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/the-future-of-work-in-rural-areas-how-internet-connectivity-is-changing-lives/</loc>
         <priority>0.85</priority>
     </url>
     <!-- END | POSTS (SPANISH) -->
