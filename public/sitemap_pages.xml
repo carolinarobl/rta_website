@@ -3,312 +3,352 @@
     <!-- START | MAIN UNIQUE PAGES (ENGLISH) -->
     <!-- START | MAIN UNIQUE PAGES (ENGLISH) -->
     <url>
-        <loc>https://website42.rtatel.com/</loc>
+        <loc>https://rtatel.com/</loc>
         <priority>1.00</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/blog/</loc>
+        <loc>https://rtatel.com/blog/</loc>
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/news/</loc>
+        <loc>https://rtatel.com/news/</loc>
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/contact-us/</loc>
+        <loc>https://rtatel.com/contact-us/</loc>
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/support/</loc>
+        <loc>https://rtatel.com/support/</loc>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/business/</loc>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/residential/</loc>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/wholesale/</loc>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/gigfast-internet/</loc>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/gigfast-voice/</loc>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/gigfast-tv/</loc>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/gigfast-cloud/</loc>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/gigfast-iot/</loc>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/gigfast-internet-support/</loc>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/gigfast-voice-support/</loc>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/gigfast-tv-support/</loc>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/gfsn/</loc>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/portability/</loc>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/careers/</loc>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/deals/</loc>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/testimonials/</loc>
+        <priority>0.80</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/referral-program/</loc>
         <priority>0.70</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/business/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/residential/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/wholesale/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/gigfast-internet/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/gigfast-voice/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/gigfast-tv/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/gigfast-cloud/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/gigfast-iot/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/gigfast-internet-support/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/gigfast-voice-support/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/gigfast-tv-support/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/gfsn/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/portability/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/careers/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/deals/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/testimonials/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/referral-program/</loc>
+        <loc>https://rtatel.com/winners-circle/</loc>
         <priority>0.70</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/winners-circle/</loc>
-        <priority>0.70</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/appreciation-lead/</loc>
+        <loc>https://rtatel.com/appreciation-lead/</loc>
         <priority>0.60</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/appreciation-giveaway/</loc>
+        <loc>https://rtatel.com/appreciation-giveaway/</loc>
         <priority>0.60</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/faq/</loc>
+        <loc>https://rtatel.com/free-install/</loc>
+        <priority>0.60</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/pumptopper/</loc>
+        <priority>0.60</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/goldsmith-tt/</loc>
+        <priority>0.60</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/faq/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/board-members/</loc>
+        <loc>https://rtatel.com/board-members/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/leadership-team/</loc>
+        <loc>https://rtatel.com/leadership-team/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/our-story/</loc>
+        <loc>https://rtatel.com/our-story/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/awards/</loc>
+        <loc>https://rtatel.com/awards/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/giving-back/</loc>
+        <loc>https://rtatel.com/giving-back/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/client-services-agreement-general-terms-and-conditions/</loc>
+        <loc>https://rtatel.com/client-services-agreement-general-terms-and-conditions/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/cookies/</loc>
+        <loc>https://rtatel.com/cookies/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/legal/</loc>
+        <loc>https://rtatel.com/legal/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/internet-transparency-statement/</loc>
+        <loc>https://rtatel.com/internet-transparency-statement/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/privacy-policy/</loc>
+        <loc>https://rtatel.com/privacy-policy/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/gigfast-tv-privacy-policy/</loc>
+        <loc>https://rtatel.com/gigfast-tv-privacy-policy/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/local-weather-stations/</loc>
+        <loc>https://rtatel.com/local-weather-stations/</loc>
         <priority>0.20</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/broadbandlabels/</loc>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/services-broadbandlabels/</loc>
+        <priority>0.90</priority>
     </url>
     <!-- END | MAIN UNIQUE PAGES (ENGLISH) -->
     <!-- END | MAIN UNIQUE PAGES (ENGLISH) -->
     <!-- START | MAIN UNIQUE PAGES (SPANISH) -->
     <!-- START | MAIN UNIQUE PAGES (SPANISH) -->
     <url>
-        <loc>https://website42.rtatel.com/es/</loc>
+        <loc>https://rtatel.com/es/</loc>
         <priority>1.00</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/blog/</loc>
+        <loc>https://rtatel.com/es/blog/</loc>
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/news/</loc>
+        <loc>https://rtatel.com/es/news/</loc>
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/contact-us/</loc>
+        <loc>https://rtatel.com/es/contact-us/</loc>
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/support/</loc>
+        <loc>https://rtatel.com/es/support/</loc>
         <priority>0.70</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/business/</loc>
+        <loc>https://rtatel.com/es/business/</loc>
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/residential/</loc>
+        <loc>https://rtatel.com/es/residential/</loc>
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/wholesale/</loc>
+        <loc>https://rtatel.com/es/wholesale/</loc>
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/gigfast-internet/</loc>
+        <loc>https://rtatel.com/es/gigfast-internet/</loc>
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/gigfast-voice/</loc>
+        <loc>https://rtatel.com/es/gigfast-voice/</loc>
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/gigfast-tv/</loc>
+        <loc>https://rtatel.com/es/gigfast-tv/</loc>
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/gigfast-cloud/</loc>
+        <loc>https://rtatel.com/es/gigfast-cloud/</loc>
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/gigfast-iot/</loc>
+        <loc>https://rtatel.com/es/gigfast-iot/</loc>
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/gigfast-internet-support/</loc>
+        <loc>https://rtatel.com/es/gigfast-internet-support/</loc>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/gigfast-voice-support/</loc>
+        <loc>https://rtatel.com/es/gigfast-voice-support/</loc>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/gigfast-tv-support/</loc>
+        <loc>https://rtatel.com/es/gigfast-tv-support/</loc>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/gfsn/</loc>
+        <loc>https://rtatel.com/es/gfsn/</loc>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/portability/</loc>
+        <loc>https://rtatel.com/es/portability/</loc>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/careers/</loc>
+        <loc>https://rtatel.com/es/careers/</loc>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/deals/</loc>
+        <loc>https://rtatel.com/es/deals/</loc>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/testimonials/</loc>
+        <loc>https://rtatel.com/es/testimonials/</loc>
         <priority>0.80</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/referral-program/</loc>
+        <loc>https://rtatel.com/es/referral-program/</loc>
         <priority>0.70</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/winners-circle/</loc>
+        <loc>https://rtatel.com/es/winners-circle/</loc>
         <priority>0.70</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/appreciation-lead/</loc>
+        <loc>https://rtatel.com/es/appreciation-lead/</loc>
         <priority>0.60</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/appreciation-giveaway/</loc>
+        <loc>https://rtatel.com/es/appreciation-giveaway/</loc>
         <priority>0.60</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/faq/</loc>
+        <loc>https://rtatel.com/es/free-install/</loc>
+        <priority>0.60</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/pumptopper/</loc>
+        <priority>0.60</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/goldsmith-tt/</loc>
+        <priority>0.60</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/faq/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/board-members/</loc>
+        <loc>https://rtatel.com/es/board-members/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/leadership-team/</loc>
+        <loc>https://rtatel.com/es/leadership-team/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/our-story/</loc>
+        <loc>https://rtatel.com/es/our-story/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/awards/</loc>
+        <loc>https://rtatel.com/es/awards/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/giving-back/</loc>
+        <loc>https://rtatel.com/es/giving-back/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/client-services-agreement-general-terms-and-conditions/</loc>
+        <loc>https://rtatel.com/es/client-services-agreement-general-terms-and-conditions/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/cookies/</loc>
+        <loc>https://rtatel.com/es/cookies/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/legal/</loc>
+        <loc>https://rtatel.com/es/legal/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/internet-transparency-statement/</loc>
+        <loc>https://rtatel.com/es/internet-transparency-statement/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/privacy-policy/</loc>
+        <loc>https://rtatel.com/es/privacy-policy/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/gigfast-tv-privacy-policy/</loc>
+        <loc>https://rtatel.com/es/gigfast-tv-privacy-policy/</loc>
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/local-weather-stations/</loc>
+        <loc>https://rtatel.com/es/local-weather-stations/</loc>
         <priority>0.20</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/broadbandlabels/</loc>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/services-broadbandlabels/</loc>
+        <priority>0.90</priority>
     </url>
     <!-- END | MAIN UNIQUE PAGES (SPANISH) -->
     <!-- END | MAIN UNIQUE PAGES (SPANISH) -->

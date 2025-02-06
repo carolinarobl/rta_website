@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <sitemap>
-        <loc>https://website42.rtatel.com/sitemap_posts.xml</loc>
+        <loc>https://rtatel.com/sitemap_posts.xml</loc>
     </sitemap>
     <sitemap>
-        <loc>https://website42.rtatel.com/sitemap_pages.xml</loc>
+        <loc>https://rtatel.com/sitemap_pages.xml</loc>
     </sitemap>
      <sitemap>
-        <loc>https://website42.rtatel.com/sitemap_locations.xml</loc>
+        <loc>https://rtatel.com/sitemap_locations.xml</loc>
+    </sitemap>
+     <sitemap>
+        <loc>https://rtatel.com/sitemap_local_blogs.xml</loc>
     </sitemap>
 </sitemapindex>
