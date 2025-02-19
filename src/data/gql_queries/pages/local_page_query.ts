@@ -44,6 +44,25 @@ export const locationQuery = (locale: string, slug: string) => {
               }
             }
           }
+
+              FAQ{
+                Title
+                Paragraph
+                Disclaimer{
+                Icon{
+                    ${mediaUrl}
+                }
+                Title
+                Text
+                Caption
+                }
+
+                Table(pagination: { limit: 50 }){
+                ColumnOne
+                ColumnTwo
+                ColumnThree
+                }
+              }
           
           SEO {
             MetaTitle
