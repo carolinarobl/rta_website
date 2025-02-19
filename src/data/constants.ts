@@ -7,10 +7,12 @@ export const strapiURL = "https://strapi.rtatel.com";
 export const strapiGQLURL = "http://10.5.24.41:1337";
 
 export const gqlURL = `${strapiGQLURL}/graphql`;
+// export const gqlURL = `${strapiURL}/graphql`;
 
 export const setURL = (url: string) => {
   return `${strapiURL}${url}`;
 };
+
 
 export const customLocale = (locale: string) => {
   return locale === "es" ? "es-419" : locale;
