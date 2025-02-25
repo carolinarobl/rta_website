@@ -16,6 +16,26 @@ export const postQuery = (slug: string, locale: string) => {
               Cover {
                 ${mediaUrl}
               }
+
+              FAQ{
+                Title
+                Paragraph
+                Disclaimer{
+                Icon{
+                    ${mediaUrl}
+                }
+                Title
+                Text
+                Caption
+                }
+
+                Table(pagination: { limit: 50 }){
+                ColumnOne
+                ColumnTwo
+                ColumnThree
+                }
+              }
+
               ${sectionSEO} 
             }
           }

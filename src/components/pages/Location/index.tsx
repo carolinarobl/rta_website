@@ -1,11 +1,9 @@
 import { component$ } from "@builder.io/qwik";
 import { SectionLocIntro } from "./SectionLocIntro";
 import { SectionLocOffers } from "./SectionLocOffers";
-// import { SectionLocMap } from "./SectionLocMap";
 import { ProsSection } from "../Home/ProsSection";
 import { Post } from "~/components/Post";
 import { Button } from "~/components/Button";
-import { SectionFaq } from "./FaqBox";
 
 export const Location = component$(({ data }: { data: any }) => {
 
@@ -22,11 +20,6 @@ export const Location = component$(({ data }: { data: any }) => {
     const prosPar = prosHome['ProsPar'];
     
     const lastPosts= pageData['posts']['data'].slice(0, 3);
-
-    // FAQ Section
-    const faqList = pageData['FAQ'];
-
-    console.log(faqList.length);
 
   return (
     <div class="flex flex-col items-center justify-center">
@@ -59,20 +52,6 @@ export const Location = component$(({ data }: { data: any }) => {
           />
       </div>
       <SectionLocOffers data={data} />
-
-      {faqList.length > 0 &&
-         <div class="flex w-full flex-col m-4 max-w-[800px]">
-         <h3 class="text-center text-[38px] font-[600] leading-10 text-primary-blue max-[800px]:text-[28px]">  
-           {isSpanish ? "¿Tienes preguntas?":"Do you have questions?"}
-         </h3>
-         <h4 class="text-center text-[18px] font-[500] leading-10 text-primary-blue max-[800px]:text-[14px]">  
-           {isSpanish ? "Aquí es dónde empezar.":"Here is where to start."}
-         </h4>
-       
-         <SectionFaq faqList={faqList}/>
-       </div>
-
-      }
 
     </div>
   );
