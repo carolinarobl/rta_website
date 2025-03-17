@@ -94,7 +94,7 @@ export default component$(({ isES, formData }: { isES: any, formData?: any }) =>
   const formFields = formData?.['Fields'] ?? [{ 'Placeholder': isES ? 'Busca una dirección':'Address Search' }];
   const formButton = formData?.['ActionButton'] ?? { 'Text': isES ? 'Consultar':'Check' };
 
-  return  <div>
+  return  <div class='w-full'>
 
               {isFormOpen.value && (
                 <div class="fixed inset-0 !z-[999999] flex flex-col items-center justify-center bg-black bg-opacity-40 bastrop-form">
@@ -116,11 +116,11 @@ export default component$(({ isES, formData }: { isES: any, formData?: any }) =>
               </div>
               )}
 
-            <div class={`flex max-w-[1200px] gap-2 text-primary-blue justify-center items-center flex-col`}>
+            <div class={`flex gap-2 text-primary-blue justify-center items-center flex-col grow w-full`}>
 
-                    <div class={`flex bg-white md:rounded-full rounded-[20px]  flex flex-col items-center justify-around p-4 gap-2`}>
+                    <div class={`flex bg-white md:rounded-full rounded-[20px] md:w-auto w-full flex-col items-center justify-around p-4 gap-2`}>
                                         
-                        <form action="" class="w-full flex items-center justify-center gap-2 flex-row" >
+                        <form action="" class="w-full flex items-center justify-center gap-2 md:flex-row flex-col grow" >
                             
                             <input
                                 name='search-address'
