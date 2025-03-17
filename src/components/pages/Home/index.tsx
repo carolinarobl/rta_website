@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { HomeHeader } from "./HomeHeader";
-import { ListedParagraphs } from "~/components/Paragraph";
+import { ListedParagraphs, SerializedParagraph } from "~/components/Paragraph";
 import { ProsSection } from "./ProsSection";
 
 import { SectionGFInternetHome } from "./SectionGFInternetHome";
@@ -41,11 +41,12 @@ export const Home = component$(({ data }: { data: any }) => {
           prosMap,
         }}
       />
-      {/* <SerializedParagraph
+      <SerializedParagraph
         data={pageData["ParACP"]}
         reverse
         textPercentage={60}
-      /> */}
+      />
+      
       <div class="flex w-full justify-center bg-[#ebf4fc]">
         <SectionGFInternetHome
           data={pageData["ParGFServices"][0]}

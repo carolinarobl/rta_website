@@ -10,7 +10,7 @@ export const SectionFaq = component$(({ faqList }: { faqList: any }) => {
         <AccordionItem
           key={index}
           title={question["Title"]}
-          classContainer="text-center bg-white text-primary-blue text-base md:text-lg shadow-xl"
+          classContainer="text-center bg-white text-primary-blue text-base shadow-xl"
           classChild="text-sm md:text-base border-primary-blue"
         >
           <Markdown text={question["Paragraph"]} classN="text-primary-blue p-2" />
@@ -18,7 +18,7 @@ export const SectionFaq = component$(({ faqList }: { faqList: any }) => {
           {question["Disclaimer"] !== null ? (
             <div class="flex flex-row items-center justify-center gap-2">
               <BsInfoCircleFill class="text-secondary-red" />
-              <Markdown text={question["Disclaimer"]["Text"]} classN="text-[12px] text-primary-dark-blue" />
+              <Markdown text={question["Disclaimer"]["Text"]} classN="text-[10px] text-primary-dark-blue" />
             </div>
           ) : null}
 

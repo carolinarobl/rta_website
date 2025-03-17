@@ -3,7 +3,7 @@ import { StrapiImage } from "~/components/StrapiImage";
 
 export const SectionCareersHeader = component$(({ data }: { data: any }) => {
   return (
-    <div class="relative flex w-full items-center justify-center">
+    <div class="relative flex w-full items-center justify-center z-0">
       <div
         class="absolute bottom-0 left-0 right-0 top-0 z-10 grid"
         style={{

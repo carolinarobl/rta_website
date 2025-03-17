@@ -9,6 +9,7 @@ import { StrapiImage } from "~/components/StrapiImage";
 import { setURL } from "~/data/constants";
 import { CarouselTestimonials } from "./CarouselTestimonials";
 import { PromoBanner } from "./PromoBanner";
+import { PopupLeaving } from "~/components/popups/popup_leaving";
 
 export const HomeHeader = component$(({ data, bannerData }: { data: any, bannerData: any }) => {
   const heroSlidesData = data["HeroCarSlides"];
@@ -23,6 +24,8 @@ export const HomeHeader = component$(({ data, bannerData }: { data: any, bannerD
   );
   const fullFrameSource = useSignal<string>("");
   const modalIsOpen = useSignal<boolean>(false);
+  const showPopupLeaving = useSignal(false);
+
   const typingTimer = useSignal<any>();
   const suggestions = useSignal([]);
   const suggStatus = useSignal<"none" | "notfound" | "success" | "selected">(
@@ -40,6 +43,7 @@ export const HomeHeader = component$(({ data, bannerData }: { data: any, bannerD
   });
 
   const handleModal = $((): void => {
+
     modalIsOpen.value = !modalIsOpen.value;
     // var finalStreetValue= streetRef.value.value.split(", ")[0];
     const finalStreetValue= streetRef.value.value.split(", ")[0];
@@ -49,17 +53,34 @@ export const HomeHeader = component$(({ data, bannerData }: { data: any, bannerD
       .replace("=pConf=", "")
       .replace("streetInput", finalStreetValue)
       .replace("zipInput", zipRef.value.value);
+
+      
   });
+
+  const handleLeavingModal = $((): void => {
+
+    if(window.localStorage.getItem("sendform_leaving") != "true") {
+      showPopupLeaving.value = true;
+    }
+    else {
+      modalIsOpen.value = false;
+    }
+    
+});
 
   const SlideCard = component$(({ slide }: { slide: any }) => {
     return (
       <div class="flex items-center justify-between gap-1">
         <div class="flex flex-col gap-1 max-[1000px]:gap-2">
-          <StrapiImage
+        { slide['Logo']['data'] && 
+            <StrapiImage
             clasN="w-[160px]"
             width="1667"
             media={slide["Logo"]["data"]["attributes"]}
           />
+
+          }
+          
           <div class="mx-3 max-[1000px]:hidden">
             <Markdown classN="text-[13px]" text={slide["Paragraph"]} />
           </div>
@@ -109,9 +130,7 @@ export const HomeHeader = component$(({ data, bannerData }: { data: any, bannerD
   const handleSearch = $(() => {
     clearTimeout(typingTimer.value);
     typingTimer.value = setTimeout(() => {
-
       if (streetRef.value.value.length > 2)
-
         fetch(`/api/get-streets?q=${encodeURIComponent(streetRef.value.value)}`)
           .then((res) => res.json())
           .then((data) => {
@@ -139,7 +158,7 @@ export const HomeHeader = component$(({ data, bannerData }: { data: any, bannerD
             class="text-md absolute right-2 top-2 flex h-5 w-5 items-center justify-center rounded-full bg-secondary-red text-white hover:cursor-pointer"
           /> */}
 
-          <button aria-label="Close popup" onClick$={handleModal} class={`absolute right-2  mt-2 mx-0" bg-secondary-red flex items-center justify-center text-white rounded-full h-[30px] focus:outline-none z-[600]`} ><div class="px-3 flex flex-row items-center text-xs gap-2">Back to site <BsHouseFill /></div></button>
+          <button aria-label="Close popup" onClick$={handleLeavingModal} class={`absolute right-2  mt-2 mx-0" bg-secondary-red flex items-center justify-center text-white rounded-full h-[30px] focus:outline-none z-[600]`} ><div class="px-3 flex flex-row items-center text-xs gap-2">Back to site <BsHouseFill /></div></button>
           <iframe
             src={fullFrameSource.value}
             title="load popup"
@@ -149,6 +168,11 @@ export const HomeHeader = component$(({ data, bannerData }: { data: any, bannerD
 
         </div>
         {/* MODAL */}
+        <div>
+          {
+            showPopupLeaving.value && window.localStorage.getItem("sendform_leaving") != "true" ? <PopupLeaving signalMainPopup={modalIsOpen} signalPopupLeaving={showPopupLeaving} /> : null
+          }
+        </div>
         {/* {modalIsOpen.value && "aaaaaaaaaa"} */}
         <video
           class="absolute left-0 top-0 -z-10 h-full w-full object-cover"
@@ -159,6 +183,7 @@ export const HomeHeader = component$(({ data, bannerData }: { data: any, bannerD
             ]["data"]["attributes"]["caption"])}
           preload='auto'
           autoplay
+          playsInline
           loop
           muted
         >
@@ -184,7 +209,7 @@ export const HomeHeader = component$(({ data, bannerData }: { data: any, bannerD
               {/* BANNER DE PROMOCIÓN */}
               <PromoBanner data={promoBanner} />
 
-            <div class="relative flex w-[420px] !z-50 flex-col items-center justify-center gap-3 rounded-bl-full rounded-tl-full bg-white/60 backdrop-blur-sm max-[1000px]:mb-8 max-[1000px]:w-full max-[1000px]:max-w-[420px] max-[1000px]:rounded-[30px] max-[1000px]:py-2 max-[1000px]:my-5 min-[1000px]:h-[200px] border border-white/60 ">
+              <div class="flex w-[420px] !z-[5] flex-col items-center justify-center gap-3 rounded-bl-full rounded-tl-full bg-white/60 backdrop-blur-sm max-[1000px]:mb-8 max-[1000px]:w-full max-[1000px]:max-w-[420px] max-[1000px]:rounded-[30px] max-[1000px]:py-2 max-[1000px]:my-5 min-[1000px]:h-[200px] border border-white/60 ">
               <div
                 class={`absolute left-10 right-10 top-[90%] flex max-h-[200px] flex-col gap-3 overflow-y-auto rounded-xl bg-white p-6 text-primary-blue shadow-lg ${suggStatus.value === "none" || suggStatus.value === "selected"
                   ? "hidden"

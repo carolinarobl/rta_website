@@ -40,8 +40,15 @@ export const Button = component$(
             <p class="min-sm:text-[13px] mx-2 text-[15px] text-btn-green font-[600] tracking-wide max-md:text-[14px] ">
               {text}
             </p>
-            <div class="flex h-[25px] w-[25px] items-center justify-center rounded-full bg-teal-500 p-0 opacity-70 text-white ">
-              <BsArrowRightShort class="font-bold" />
+
+            <div class={`flex h-[30px] min-h-[30px] w-[30px] min-w-[30px] items-center justify-center rounded-full bg-teal-500 p-0 opacity-70 text-white transition-transform duration-300`}>
+              <BsArrowRightShort
+                class={`text-3xl transition-colors duration-300 text-white`}
+                style={{
+                  width: "24px",
+                  height: "24px"
+                }}
+              />
             </div>
           </div>
         );

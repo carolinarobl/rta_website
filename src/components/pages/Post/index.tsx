@@ -1,7 +1,7 @@
 import { component$ } from "@builder.io/qwik";
+import { SectionFaq } from "~/components/FaqBox";
 import { Markdown } from "~/components/Markdown";
 import { StrapiImage } from "~/components/StrapiImage";
-import { SectionFaq } from "./FaqBox";
 
 export const Post = component$(({ data }: { data: any }) => {
 

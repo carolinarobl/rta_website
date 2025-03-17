@@ -16,7 +16,7 @@ type QuestionState = {
 
 // Función | Consulta para obtener las preguntas de la encuesta indicada
 const getQuestions = $(async () => {
-    const { data, error } = await supabase.from('questions').select('*').eq('survey_id', id_survey);
+    const { data, error } = await supabase.schema('rta_surveys').from('questions').select('*').eq('survey_id', id_survey);
 
     if (error) {
         console.error("Error en getQuestions: " + error)
@@ -28,7 +28,7 @@ const getQuestions = $(async () => {
 
 // Función | Consulta para registrar que la encuesta en general ha sido respondida
 const insertSurveyAnswers = $(async () => {
-    const { data, error } = await supabase.from('survey_answers').insert([
+    const { data, error } = await supabase.schema('rta_surveys').from('survey_answers').insert([
         {
             survey_id: id_survey,
             created_at: new Date().toISOString()
@@ -45,7 +45,7 @@ const insertSurveyAnswers = $(async () => {
 
 // Función | Consulta para guardar las respuestas del usuario a la encuesta
 const insertAnswers = $(async (survey_answers_id: number, question_id: number, answer: string) => {
-    const { data, error } = await supabase.from('answers').insert([
+    const { data, error } = await supabase.schema('rta_surveys').from('answers').insert([
         {
             survey_answers_id,
             question_id,

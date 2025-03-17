@@ -23,7 +23,7 @@ export const OurStory = component$(({ data }: { data: any }) => {
         </div>
       ))}
     </div>
-    <h3 class="font-bold text-2xl md:text-4xl mt-8 text-center">{data['SponsorshipsTitle']}</h3>
+    {/* <h3 class="font-bold text-2xl md:text-4xl mt-8 text-center">{data['SponsorshipsTitle']}</h3>
     <div class="flex items-center justify-center w-full my-4">
       <div class="w-full flex bg-primary-blue bg-opacity-30 my-4 h-[350px] py-10">
         <div class="w-full bg-primary-blue py-10 bg-opacity-60">
@@ -41,6 +41,6 @@ export const OurStory = component$(({ data }: { data: any }) => {
           <Button text={sponsorship['Buttons'][0]['Text']} link={sponsorship['Buttons'][0]['Link']}></Button>
         </div>
       ))}
-    </div>
+    </div> */}
   </div>
 });

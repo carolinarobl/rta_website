@@ -6,6 +6,7 @@ import { searchCoverage } from '~/services/coverage_search';
 import { searchProducts } from '~/services/products_search';
 import { BroadbandPlans } from './broadbandplans';
 import { Spinner } from '~/components/Spinner';
+import SearchAddressBox from '~/components/SearchAddressBox';
 
 export default component$(({ data }: { data: any }) => {
   const location = useLocation();
@@ -103,6 +104,12 @@ export default component$(({ data }: { data: any }) => {
     <h1 class="text-center text-[38px] font-bold text-[#2E5899] max-sm:text-[28px]">
       {broadbandPageData['Title']}
     </h1>
+
+      <SearchAddressBox isES={isES} formData={broadbandPageData['Form']}>
+        <div class="bg-green-400 w-[100px] h-[100px]">Aquí van los planes</div>
+      </SearchAddressBox>
+
+
     <div class="bg-white md:h-[200px] h-[220px] rounded-full md:w-1/2 w-[90%] flex flex-col items-center justify-around my-5 gap-2">
       <p class="px-8 text-center text-[22px] font-[600] text-primary-blue max-[1000px]:px-12">{broadbandPageData['Form']['Title']}</p>
       <form action="" class="w-3/4 flex items-center justify-center gap-4 md:flex-row flex-col" >
