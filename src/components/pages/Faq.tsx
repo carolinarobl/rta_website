@@ -1,7 +1,4 @@
 import { component$ } from "@builder.io/qwik";
-import { AccordionItem } from "../AccordionItem";
-import {BsInfoCircleFill} from "@qwikest/icons/bootstrap"
-import { Markdown } from "../Markdown";
 import FaqListing from "../FaqListing";
 
 export const Faq = component$(({ data }: { data: any }) => {

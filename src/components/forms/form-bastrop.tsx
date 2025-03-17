@@ -1,5 +1,4 @@
 import { $, component$, useSignal, useVisibleTask$ } from "@builder.io/qwik";
-import { useLocation } from "@builder.io/qwik-city";
 import {
   BsPersonFill,
   BsEnvelopeAtFill,

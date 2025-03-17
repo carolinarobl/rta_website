@@ -12,7 +12,7 @@ export default component$(({ isES, formData }: { isES: any, formData?: any }) =>
     (<input></input>) as unknown as HTMLInputElement,
   );
 
-  let selectedAddress = useSignal('');
+  const selectedAddress = useSignal('');
 
   const coverageFlag = useSignal(true);
   const isloading = useSignal(false);

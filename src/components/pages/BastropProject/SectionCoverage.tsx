@@ -3,7 +3,7 @@ import { Markdown } from '~/components/Markdown';
 import { FormContact } from '~/components/forms/form-contact';
 
 
-export default component$(({ faqList, paragraph, formTitle, lang }: { faqList: any, paragraph:string, formTitle: string, lang?: string }) => {  
+export default component$(({  paragraph,  lang }: { paragraph:string,  lang?: string }) => {  
 
   return <div class="flex max-[800px]:flex-col items-center justify-center my-4">
             

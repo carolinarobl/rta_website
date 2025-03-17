@@ -1,7 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { Markdown } from "../Markdown";
 import { Linking_picture } from "../linking-picture";
-import { Button } from "../Button";
 
 export const OurStory = component$(({ data }: { data: any }) => {
   return <div class="flex flex-col items-center text-primary-blue">

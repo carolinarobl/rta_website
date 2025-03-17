@@ -1,4 +1,4 @@
-import { $, component$, useVisibleTask$ } from '@builder.io/qwik';
+import { component$, useVisibleTask$ } from '@builder.io/qwik';
 import Chart from 'chart.js/auto';
 
 export default component$(({title, totalData, progressData, maxWidth, color}: {title: string, totalData: number, progressData: number, maxWidth?: string, color?:string}) => {

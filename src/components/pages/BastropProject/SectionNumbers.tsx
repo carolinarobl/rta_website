@@ -1,6 +1,4 @@
 import { component$ } from '@builder.io/qwik';
-import { Markdown } from '~/components/Markdown';
-import { StrapiImage } from '~/components/StrapiImage';
 import NumberCounter from './NumberCounter';
 import { Paragraph } from '~/components/Paragraph';
 
