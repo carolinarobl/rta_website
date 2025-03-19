@@ -32,18 +32,20 @@ export const StrapiAsset = component$(
           width={width}
           height={height}
           src={setURL(media['url'])}
-          autoplay={autoplay}
-          controls={controls}
-          loop={loop}
-          muted={muted}
+          {...(autoplay ? { autoplay: true } : {})}
+          {...(controls ? { controls: true } : {})}
+          {...(loop ? { loop: true } : {})}
+          {...(muted ? { muted: true } : {})}
+          playsInline
           class={
-            (toWhite
-              ? "brightness-110 contrast-100 hue-rotate-[23deg] invert saturate-[7500%] sepia-0 filter"
-              : "") +
-            " " +
-            clasN
-          }
-        />
+          (toWhite
+            ? "brightness-110 contrast-100 hue-rotate-[23deg] invert saturate-[7500%] sepia-0 filter"
+            : "") +
+          " " +
+          clasN
+  }
+/>
+
       );
     }
 
