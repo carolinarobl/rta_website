@@ -278,3 +278,14 @@ textarea {
   color: var(--color-primary) !important;
   font-weight: 400;
 }
+
+
+input:invalid {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+input:invalid::-webkit-validation-bubble,
+input:invalid::-moz-validation-bubble {
+  display: none;
+}

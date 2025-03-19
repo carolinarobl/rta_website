@@ -1,13 +1,14 @@
 import { component$ } from "@builder.io/qwik";
 import { SectionLocIntro } from "./SectionLocIntro";
 import { SectionLocOffers } from "./SectionLocOffers";
-// import { SectionLocMap } from "./SectionLocMap";
 import { ProsSection } from "../Home/ProsSection";
 import { Post } from "~/components/Post";
 import { Button } from "~/components/Button";
 
 export const Location = component$(({ data }: { data: any }) => {
-  const slug= data["locations"]["data"][0]["attributes"]['Slug'];
+
+  const pageData = data['locations']['data'][0]['attributes'];
+  const slug= pageData['Slug'];
   const isSpanish =
   slug.substring(slug.length - 3, slug.length) ===
   "-es";
@@ -18,7 +19,7 @@ export const Location = component$(({ data }: { data: any }) => {
     const prosMap = prosHome["ProsPicture"]["data"]["attributes"];
     const prosPar = prosHome['ProsPar'];
     
-    const lastPosts= data['locations']['data'][0]['attributes']['posts']['data'].slice(0, 3);
+    const lastPosts= pageData['posts']['data'].slice(0, 3);
 
   return (
     <div class="flex flex-col items-center justify-center">
@@ -51,6 +52,7 @@ export const Location = component$(({ data }: { data: any }) => {
           />
       </div>
       <SectionLocOffers data={data} />
+
     </div>
   );
 });

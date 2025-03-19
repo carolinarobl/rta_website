@@ -15,7 +15,7 @@ export const AccordionItem = component$(
     const isOpen = useSignal(false);
 
     return (
-      <div class="my-8 mb-2 w-full">
+      <div class="my-3 w-full">
         <div
           class={`flex cursor-pointer flex-row items-center transition ${
             inFooter
