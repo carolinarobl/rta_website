@@ -1,6 +1,7 @@
 import { component$ } from "@builder.io/qwik";
 import { AccordionItem } from "~/components/AccordionItem";
 import { Button } from "~/components/Button";
+import FaqListing from "~/components/FaqListing";
 import { Markdown } from "~/components/Markdown";
 import { StrapiImage } from "~/components/StrapiImage";
 
@@ -34,7 +35,7 @@ export const SectionGFInternetHome = component$(
               }
               text={data["Paragraph"]}
             />
-            {parGFIPlans.map((plan: any, i: number) => {
+            {/* {parGFIPlans.map((plan: any, i: number) => {
               return (
                 <div key={i} class="text-[22px]">
                   <AccordionItem title={plan["Title"]} classContainer={"bg-white shadow-xl"}>
@@ -45,7 +46,10 @@ export const SectionGFInternetHome = component$(
                   </AccordionItem>
                 </div>
               );
-            })}
+            })} */}
+            <div class="rounded-[20px] bg-white">
+              <FaqListing faqs={parGFIPlans}/>
+            </div>
           </div>
           <div class="flex gap-4">
             {buttons.map((button: any, i: number) => (
