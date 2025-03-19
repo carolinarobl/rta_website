@@ -1,5 +1,4 @@
 import { component$ } from "@builder.io/qwik";
-import { AccordionItem } from "~/components/AccordionItem";
 import { Button } from "~/components/Button";
 import FaqListing from "~/components/FaqListing";
 import { Markdown } from "~/components/Markdown";
