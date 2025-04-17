@@ -1,9 +1,11 @@
 import { $, component$, useStore, useVisibleTask$ } from "@builder.io/qwik";
 import { BsArrowDownShort, BsInfoCircleFill } from "@qwikest/icons/bootstrap";
 import { Markdown } from "~/components/Markdown";
+import { Button } from "./Button";
 
 
 export default component$(({ faqs }: { faqs: any }) => {
+
   const state = useStore({ openIndex: -1, heights: {} as Record<number, number> });
 
   // Identifica la altura de cada sección de contenido
@@ -23,6 +25,16 @@ export default component$(({ faqs }: { faqs: any }) => {
       {faqs.map((faq:any, index:number) => {
         
         const isOpen = state.openIndex === index;
+        
+        const linkRegex = /\[([^\]]+)\]\((=p[^)]+)\)/g;
+        const matches = [...faq.Paragraph.matchAll(linkRegex)];
+
+        const specialLinks = matches.map((match) => ({
+          text: match[1], 
+          id: match[2],  
+        }));
+
+        const cleanedParagraph = faq.Paragraph.replace(linkRegex, () => '');
         
         return (
           <div key={index} class="border-b border-primary-blue/30">
@@ -52,8 +64,17 @@ export default component$(({ faqs }: { faqs: any }) => {
                 opacity: isOpen ? 1 : 0,
               }}
             >
-
-              <Markdown text={faq.Paragraph} classN="text-primary-blue p-2 !text-[14px]" />
+                       
+            <Markdown text={cleanedParagraph} classN="text-primary-blue p-2 !text-[14px]" />
+            
+            {specialLinks.map((link) => (
+              // <CustomLink key={link.id} id={link.id} label={link.text} />
+              <Button
+              text={link.text}
+              link={link.id}
+              />
+            ))}
+            
 
               {faq.Disclaimer &&
                 (<div class="flex flex-row items-center justify-center gap-2">

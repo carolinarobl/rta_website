@@ -9,9 +9,8 @@ import { Spinner } from "../Spinner";
 import { Markdown } from "../Markdown";
 import { supabase } from "~/utils/supabase";
 
-export const FormBastrop = component$(({ lang, bastrop_address }: {lang: string, bastrop_address:string}) => {
+export const FormBastrop = component$(({ lang, bastrop_address, service_type }: {lang: string, bastrop_address:string, service_type: string}) => {
 
-  console.log(bastrop_address);
   const isSpanish = (lang == 'es');
   
   const emailState = useSignal<"NONE" | "LOADING" | "ERROR" | "SUCCESS">(
@@ -26,6 +25,9 @@ export const FormBastrop = component$(({ lang, bastrop_address }: {lang: string,
   const isFocusPhone = useSignal(false);
   const isFocusEmail = useSignal(false);
   const correctEmail = useSignal(false);
+
+  const checkMailState = useSignal(false);
+  const checkPhoneState = useSignal(false);
 
   const handlePhoneInput = $((e: any) => {
     const value = e.target.value.replace(/\D/g, "");
@@ -54,6 +56,8 @@ export const FormBastrop = component$(({ lang, bastrop_address }: {lang: string,
 
     const inputPhone = document.getElementById("tel");
     const inputEmail = document.getElementById("from_email");
+    const checkPhone = document.getElementById("accept_sms")  as HTMLInputElement;
+    const checkEmail = document.getElementById("accept_mail")  as HTMLInputElement;
 
     // FUNCIÓN | Validación de formulario
     const validarForm = (e: any) => {
@@ -81,11 +85,31 @@ export const FormBastrop = component$(({ lang, bastrop_address }: {lang: string,
       isFocusEmail.value = true;
     });
 
+    checkPhone?.addEventListener("change", () => {
+      checkPhoneState.value = checkPhone.checked;
+    });
+
+    checkEmail?.addEventListener("change", () => {
+      checkMailState.value = checkEmail.checked;
+    });
+
+    checkEmail?.addEventListener('invalid', (event) => {
+      const target = event.target as HTMLInputElement;
+      if (!target.validity.valid) {
+        if (target.validity.valueMissing) {
+          target.setCustomValidity(isSpanish ? 'Por favor, selecciona al menos una de las opciones': 'Please, check at least one of the boxes to proceed');
+        } else {
+          target.setCustomValidity('');
+        }
+      }
+    });
+
     // SEARCH ADDRESS SECTION
     
     // FUNCIÓN | Consulta para guardar los datos del usuario
-    const registerUser = $(async (first_name: string, last_name: string, address: string, email: string, phone_number: string, receive_txt: any) => {
-      const { data, error } = await supabase
+    const registerUser = $(async (first_name: string, last_name: string, address: string, email: string, phone_number: string, receive_txt: boolean, receive_mail: boolean, has_service: any) => {
+
+      const { error } = await supabase
         .schema('rta_surveys')
         .from('bastrop_users')
         .insert([
@@ -96,7 +120,9 @@ export const FormBastrop = component$(({ lang, bastrop_address }: {lang: string,
             address,
             email,
             phone_number,
-            receive_txt
+            receive_txt,
+            receive_mail,
+            has_service
           }
         ]);
     
@@ -105,7 +131,7 @@ export const FormBastrop = component$(({ lang, bastrop_address }: {lang: string,
         return false;
       }
     
-      console.log("Usuario registrado en Supabase:", data);
+      console.log("Successfully saved");
       return true;
     });
     
@@ -113,13 +139,17 @@ export const FormBastrop = component$(({ lang, bastrop_address }: {lang: string,
     formulario?.addEventListener("submit", async (e) => {  
       e.preventDefault();
       emailState.value = "LOADING";
+
       const formData = new FormData(formulario as HTMLFormElement);
-    
-      if (correctEmail.value && correctPhone.value) {
+      const mailCheckbox = checkMailState.value;
+      const phoneCheckbox = checkPhoneState.value;
+      
+      // if ( correctEmail.value && correctPhone.value) {
+      if((mailCheckbox || phoneCheckbox)){
         console.log("Sending");
     
         formData.forEach((value, key) => {
-          formInputs.push({ name: key, value: key.includes('accept_sms') ? value : value.toString() });
+          formInputs.push({ name: key, value: value  });
         });
     
         const first_name = formInputs.find(field => field.name === 'from_first_name')?.value || '';
@@ -127,15 +157,19 @@ export const FormBastrop = component$(({ lang, bastrop_address }: {lang: string,
         const address = bastrop_address;
         const email = formInputs.find(field => field.name === 'from_email')?.value || '';
         const phone_number = formInputs.find(field => field.name === 'tel')?.value || '';
-        const receive_txt = formInputs.find(field => field.name === 'accept_sms')?.value == 'on' || false;
-    
+        const receive_txt = formInputs.find(field => field.name === 'accept_sms')?.value == 'on';
+        const receive_mail = formInputs.find(field => field.name === 'accept_mail')?.value == 'on';
+        const service_available = service_type;
+
         const submitted = await registerUser(
           first_name,
           last_name,
           address,
           email,
           phone_number,
-          receive_txt
+          receive_txt,
+          receive_mail,
+          service_available
         );
     
         if (submitted) {
@@ -147,27 +181,71 @@ export const FormBastrop = component$(({ lang, bastrop_address }: {lang: string,
     
         emailState.value = "NONE"; // Resetear el estado
       } else {
-        console.log("Error validaciones");
+        alert('Seems that there is some data you need to validate. Please, try again.');
+        emailState.value = "ERROR"; // Resetear el estado
+
       }
     });
     
     
   
   });
-  const title= isSpanish ? '¡Buenas noticias!':"Great News!"
 
-  const paragraph = isSpanish ? `Tu dirección podrá recibir _**gigFAST INTERNET®**_.
 
-Únete a la red de fibra gigFAST registrándote a continuación. Te mantendremos informado cuando estemos en tu zona.`
-  :
-  `Your address will be able to receive _**gigFAST INTERNET®**_.
+  const messages = [
+    {
+      serviceType: 'bastrop_elegible',
+      title: isSpanish ? '¡Instalación gratuita!' : 'Free Installation!',
+      paragraph: isSpanish
+        ? `Tu dirección es elegible para recibir _**gigFAST INTERNET®**_ con instalación gratuita. 
+  Regístrate ahora y te mantendremos informado cuando estemos listos para conectarte.`
+        : `Your address is eligible to receive _**gigFAST INTERNET®**_ with free installation. 
+  Sign up now and we’ll keep you informed when we’re ready to connect you.`
+    },
+    {
+      serviceType: 'bastrop_nofiber',
+      title: isSpanish ? '¡Buenas noticias!' : 'Great News!',
+      paragraph: isSpanish
+        ? `Estamos expandiendo la red _**gigFAST INTERNET®**_ cerca de tu zona.
+  Regístrate hoy y te mantendremos informado cuando comencemos el despliegue en tu vecindario.`
+        : `We’re expanding the _**gigFAST INTERNET®**_ network near your area.
+  Sign up today and we’ll keep you informed when we begin deploying in your neighborhood.`
+    },
+    {
+      serviceType: 'bastrop_nocoverage',
+      title: isSpanish ? 'Gracias por contactarnos' : 'Thank You for Contacting Us',
+      paragraph: isSpanish
+        ? `Tu dirección está en el Condado de Bastrop, pero aún no está en nuestra red.
+  Nos pondremos en contacto contigo para informarte si podremos ofrecerte servicio.`
+        : `Your address is in Bastrop County, but not yet on our network.
+  We will reach out to let you know if and when we will be able to offer service.`
+    },
+    {
+      serviceType: 'notbastrop',
+      title: isSpanish ? 'Dirección fuera de cobertura' : 'Out of Coverage Area',
+      paragraph: isSpanish
+        ? `Lo sentimos, esta dirección no aparece dentro del Condado de Bastrop, Texas.
+  Si crees que esto es un error, intenta ingresar tu dirección nuevamente o llama a nuestra oficina para verificar la cobertura.`
+        : `Sorry, this address does not appear to be in Bastrop County, Texas.
+  If you believe this is an error, please try entering your address again or call our office to verify service availability.`
+    }
+  ];
+
+
+
+  const foundMessage = messages.find((msg) => msg.serviceType === service_type);
+
+  const { title, paragraph } = foundMessage ?? {
+    title: isSpanish ? '¡Gracias!' : `Thank You! service type: ${service_type}`,
+    paragraph: isSpanish
+      ? 'Gracias por tu interés en gigFAST INTERNET®.'
+      : 'Thank you for your interest in gigFAST INTERNET®.'
+  };
   
-  Join the gigFAST Fiber Network by pre-registering below. We will keep you up to date when we are going to be in your neighborhood.`;
-
   return (
-    <div class="flex flex-col rounded-3xl bg-white p-6 text-start  md:w-full w-[90vw] md:m-0">
-    <Markdown text={title} classN="md:text-[45px] text-[28px] font-bold"/>
-    <Markdown text={paragraph} classN="!max-w-[500px]"/>
+    <div class="flex flex-col rounded-3xl bg-white p-6 text-start  md:w-full w-[90vw] md:m-0 max-h-[90vh] overflow-y-auto ">
+    <Markdown text={title} classN="md:text-[38px] text-[22px] font-bold"/>
+    <Markdown text={paragraph} classN="!max-w-[600px] text-[12px] md:!text-[14px]"/>
 
     <form
       class="mt-2 "
@@ -177,6 +255,30 @@ export const FormBastrop = component$(({ lang, bastrop_address }: {lang: string,
         handleSubmit;
       }}
     >
+            <div class="mb-4 w-full">
+          <label
+            for="from_address"
+            class="block py-1 font-regular tracking-[0.5px] text-[14px]"
+          >
+           {isSpanish ? "Dirección": "Address"} <span class="text-red-300">*</span>
+          </label>
+          <div class="flex items-center p-2 bg-white rounded-full border border-[#2e5899] border-opacity-40">
+            <div class="mr-2">
+              <BsEnvelopeAtFill
+                style={{ color: "#2e5899", opacity:"0.5", width:"14px" }}
+              ></BsEnvelopeAtFill>
+            </div>
+            <input
+              type="text"
+              name="from_address"
+              id="from_address"
+              class="w-full focus:outline-none text-[13px]"
+              required
+              // placeholder={isSpanish ? "tu@correo.com": "your@mail.com"}
+              value={bastrop_address}
+            />
+          </div>
+        </div>
       <div class="flex flex-col md:flex-row md:gap-4">
         <div class="mb-4 w-full">
           <label
@@ -216,12 +318,14 @@ export const FormBastrop = component$(({ lang, bastrop_address }: {lang: string,
         </div>
       </div>
       <div class="flex flex-col items-center gap-2">
+
+        <div class="flex flex-col md:flex-row md:gap-4 w-full">
         <div class="mb-4 w-full">
           <label
             for="from_email"
-            class="block py-1 font-regular tracking-[0.5px] text-[14px]"
+            class="flex flex-row py-1 font-regular tracking-[0.5px] text-[14px] gap-2"
           >
-           {isSpanish ? "Correo electrónico": "E-mail"} <span class="text-red-300">*</span>
+           {isSpanish ? "Correo electrónico": "E-mail"} <span class={`text-red-300 ${checkMailState.value ? 'flex':'hidden'}`}>*</span>
           </label>
           <div class="flex items-center p-2 bg-white rounded-full border border-[#2e5899] border-opacity-40">
             <div class="mr-2">
@@ -234,18 +338,19 @@ export const FormBastrop = component$(({ lang, bastrop_address }: {lang: string,
               name="from_email"
               id="from_email"
               class="w-full focus:outline-none text-[13px]"
-              required
+              required={checkMailState.value}
               placeholder={isSpanish ? "tu@correo.com": "your@mail.com"}
             />
           </div>
           <label
-            class={`text-xs text-red-300 ${correctEmail.value == false && isFocusEmail.value == true ? "flex" : "hidden"} bg-transparent`}
+            class={`text-xs text-red-300 ${!correctEmail.value && isFocusEmail.value && checkMailState.value ? "flex" : "hidden"} bg-transparent`}
           >
-            {isSpanish ? "Por favor, usa un correo electrónico válido.": "Please, use a valid email address."}
+            {isSpanish ? "Por favor, usa un correo electrónico válido.": "Please, use a valid email address."} <span class={`text-red-300 ${checkPhoneState.value ? 'flex':'hidden'}`}>*</span>
           </label>
         </div>
+
         <div class="mb-4 w-full">
-          <label for="tel" class="block py-1 font-regular tracking-[0.5px] text-[14px]">
+          <label for="tel" class="flex flex-row py-1 font-regular tracking-[0.5px] text-[14px] gap-2">
           {isSpanish ? "Número de teléfono": "Mobile Phone Number"}
           </label>
           <div class="flex items-center p-2 bg-white rounded-full border border-[#2e5899] border-opacity-40">
@@ -257,30 +362,59 @@ export const FormBastrop = component$(({ lang, bastrop_address }: {lang: string,
               name="tel"
               id="tel"
               class="w-full focus:outline-none text-[13px]"
+              required={checkPhoneState.value}
               placeholder= {isSpanish ? "ejemplo: (555) 000-0000": "example: (555) 000-0000"}
             />
           </div>
           <label
-            class={`text-xs text-red-300 ${correctPhone.value == false && isFocusPhone.value == true ? "flex" : "hidden"} bg-transparent`}
+            class={`text-xs text-red-300 ${!correctPhone.value && isFocusPhone.value && checkPhoneState.value ? "flex" : "hidden"} bg-transparent`}
           >
             {isSpanish ? "Por favor, usa un número de teléfono válido.": "Please, use a valid phone number."}
           </label>
         </div>
+        </div>
+       
+
+
+        <div class=" w-full flex items-start"> 
+        <label
+            class={`text-xs text-red-300 ${!checkPhoneState.value && !checkMailState.value  ? "flex" : "hidden"} bg-transparent`}
+          >
+            {isSpanish ? "Selecciona por lo menos un método para contactarte, por favor.": "Please, select at least one contact method."}
+          </label>
+        </div>
+
+        <div class=" w-full flex items-start">
+          <input
+            type="checkbox"
+            id="accept_mail"
+            name="accept_mail"
+            class="mt-1 cursor-pointer"
+            required={!checkPhoneState.value}
+          />
+  
+          <label for="accept_mail" class="ml-2 text-sm">
+            {isSpanish
+              ? "Acepto recibir correos electrónicos de la empresa."
+            : "I agree to receive e-mails from the company."}
+          </label>
+        </div>
 
         <div class="mb-4 w-full flex items-start">
-  <input
-    type="checkbox"
-    id="accept_sms"
-    name="accept_sms"
-    class="mt-1 cursor-pointer"
-    required
-  />
-  <label for="accept_sms" class="ml-2 text-sm">
-    {isSpanish
-      ? "Acepto recibir mensajes de texto de la empresa."
-      : "I agree to receive text messages from the company."}
-  </label>
-</div>
+          <input
+            type="checkbox"
+            id="accept_sms"
+            name="accept_sms"
+            class="mt-1 cursor-pointer"
+            required={!checkMailState.value}
+          />
+  
+          <label for="accept_sms" class="ml-2 text-sm">
+            {isSpanish
+              ? "Acepto recibir mensajes de texto de la empresa."
+            : "I agree to receive text messages from the company."}
+          </label>
+        </div>
 
       </div>
 

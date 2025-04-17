@@ -1,8 +1,9 @@
 import { component$ } from '@builder.io/qwik';
 import { useLocation } from '@builder.io/qwik-city';
 import SectionHero from './SectionHero';
-import SectionNumbers from './SectionNumbers';
+// import SectionNumbers from './SectionNumbers';
 import { Paragraph } from '~/components/Paragraph';
+import { StrapiAsset } from '~/components/StrapiAsset';
 
 export default component$(({ data }: { data: any }) => {
   const location = useLocation();
@@ -11,23 +12,53 @@ export default component$(({ data }: { data: any }) => {
   const pageData = data['pageBastropP']['data']['attributes'];
 
 // INTRO SECTION
+  const headerDekstop = pageData['HeaderDesktop']['data']['attributes'];
+  const headerMobile = pageData['HeaderMobile']['data']['attributes'];
   const introPar = pageData['IntroPar'];
 
 // FAQ SECTION
   const faqPar = pageData['FaqPar'];
   const faqList = pageData['FaqList']
   
+  const tempOffersPlans = faqList.find((item: { Table: any[]; Paragraph: any; }) => 
+    item.Table.length > 0 && (item.Paragraph.includes('plans') || item.Paragraph.includes('planes'))
+  );
+
+
+  const plansTables = tempOffersPlans && tempOffersPlans.Table.filter((item: { ColumnOne: string; }) => !item.ColumnOne.startsWith('**'));
+
 // NUMBERS SECTION
-  const numbersTitle = isES ? 'Brindando oportunidades en Bastrop': 'Bringing Online Opportunities to Bastrop';
-  const numbersParagraph = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. '
+  // const numbersTitle = isES ? 'Brindando oportunidades en Bastrop': 'Bringing Online Opportunities to Bastrop';
+  // const numbersParagraph = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. '
 
 // CONTACT SECTION
 const contactPar = pageData['ContactPar'];
 
+
+
 return  <div class="flex flex-col items-center justify-center">
-            
-            <div class="max-w-[1200px] flex flex-col px-8 py-10 text-primary-blue items-center justify-center gap-10">
+
+          {headerDekstop &&
+            <div class="bg-white w-full !max-h-[250px] md:flex hidden">
+              <StrapiAsset
+                media={headerDekstop}
+                width={900}
+                height={924}
+              />
+            </div>
+          }
           
+          {headerMobile &&
+            <div class="bg-white w-full !max-h-[250px] md:hidden flex">
+              <StrapiAsset
+                media={headerMobile}
+                width={650}
+                height={650}
+              />
+            </div>
+          }
+            <div class="max-w-[1200px] flex flex-col text-primary-blue items-center justify-center gap-10">
+
               <SectionHero
                 introPar={introPar}
                 faqPar={faqPar}
@@ -35,12 +66,35 @@ return  <div class="flex flex-col items-center justify-center">
                 isES={isES}
                 
               />
+
+              <div class="flex flex-col w-full">
+
+                <Paragraph
+                title={isES ? 'Nuestros planes':'Our Plans'}
+                logo={{'url':'/uploads/gig_FAST_Internet_0253314cce.webp'}}
+                text={isES?'Dale un vistazo a las ofertas disponibles en esta área':'Take a look of the available offers in this area'}
+                backgroundColor='transparent'/>
+
+                <div class="flex justify-evenly gap-4 max-[1400px]:flex-wrap">
+                  {plansTables &&
+                  plansTables.map((table:any, i:any) => (
+                    <div class={`relative ${i%2==0 ? 'bg-blue-500' : 'bg-primary-blue'} text-white px-4 py-8 w-48 h-40 rounded-xl overflow-hidden shadow-lg`}>
+                      <div class={`absolute -top-5 -right-5 w-14 h-14 ${i%2==0 ? 'bg-primary-blue' : 'bg-blue-500'} rounded-full`}></div>
+                        
+                      <h2 class="text-2xl font-bold">{table['ColumnOne']}</h2>
+                      
+                      <p class="text-sm">{table['ColumnTwo']}</p>
+                      <p class="text-xl py-4 font-bold">{table['ColumnThree']}<span class='text-sm font-thin'>/mo</span></p>
+                    </div>
+                  ))}
+                </div>
+              </div>
                 
-              <SectionNumbers
+              {/* <SectionNumbers
                 title={numbersTitle}
                 desc={numbersParagraph}
                 isES={isES}
-              />
+              /> */}
 
               <Paragraph
                 backgroundColor='transparent'
@@ -51,4 +105,6 @@ return  <div class="flex flex-col items-center justify-center">
 
     </div>
   </div>
+
 });
+
