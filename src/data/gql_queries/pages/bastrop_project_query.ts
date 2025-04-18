@@ -6,6 +6,14 @@ export const bastropProjectQuery = (locale:string)=>{
                     data{
                         attributes{    
 
+                            HeaderDesktop{
+                                ${mediaUrl}
+                            }
+                            
+                            HeaderMobile{
+                                ${mediaUrl}
+                            }
+
                             IntroPar{
               	                Title
                                 Paragraph

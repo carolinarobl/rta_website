@@ -14,19 +14,40 @@ export const searchCoverage = async (Lat:string, Lng:string, zipcode:string)=>{
     };
 }
 
-export const searchBastropCoverage = async (Lat:string, Lng:string)=>{
+export const consultMap = async (
+    Lat: string,
+    Lng: string,
+    radius: string,
+    limit: string,
+    geometry: string,
+    accessToken: string
+  ) => {
+    const url = `https://api.mapbox.com/v4/uzzielpalma99.cm86cp9fg0fdp1otla8ttr421-5s8um/tilequery/${Lng},${Lat}.json?radius=${radius}&limit=${limit}&geometry=${geometry}&access_token=${accessToken}`;
+    const res = await fetch(url);
+    return res.json();
+  };
+  
+  export const searchBastropCoverage = async (Lat: string, Lng: string) => {
+    const getFeatures = async (geometry: 'point' | 'polygon', radius: string, limit: string) =>
+      (await consultMap(Lat, Lng, radius, limit, geometry, access_token)).features;
 
-    const radius = '50';
-    const limit = '5';
-    const accessToken = 'pk.eyJ1IjoidXp6aWVscGFsbWE5OSIsImEiOiJja3hoeWxxaHUwYjVhMndvYzdkMW4wbTAzIn0.JGPo9_pMeml93PD7bELQRg';
-   
-    const resp = await fetch(`https://api.mapbox.com/v4/uzzielpalma99.cm86cp9fg0fdp1otla8ttr421-5s8um/tilequery/${Lng},${Lat}.json?radius=${radius}&limit=${limit}&geometry=linestring&access_token=${accessToken}`);
+    const access_token ='pk.eyJ1IjoidXp6aWVscGFsbWE5OSIsImEiOiJja3hoeWxxaHUwYjVhMndvYzdkMW4wbTAzIn0.JGPo9_pMeml93PD7bELQRg';
+    const pointFeatures = await getFeatures('point', '150', '2');
+    const polygonFeatures = await getFeatures('polygon', '0', '5');
+  
+    const isBastrop = polygonFeatures.some((f: { properties: { folder: string; }; }) => f.properties.folder === 'bastrop_county_outline');
+    const noFiber = pointFeatures.some((f: { properties: { folder: string; }; }) => f.properties.folder === 'bastrop_served_nonfiber');
+    const eligible = pointFeatures.some((f: { properties: { folder: string; }; }) => f.properties.folder === 'Eligible_locations_Bastrop');
+    let serviceType: 'bastrop_nofiber' | 'bastrop_elegible' | 'bastrop_nocoverage' | 'notbastrop' | 'unknown' = 'unknown';
     
-    const data = await resp.json();
-    
-    const flag = data['features'].length > 0;
-
-    return {
-        "coverage": flag,
-    };
-}
+    serviceType =
+      isBastrop
+        ? noFiber
+          ? 'bastrop_nofiber'
+          : eligible
+            ? 'bastrop_elegible'
+            : 'bastrop_nocoverage'
+        : 'notbastrop';
+  
+    return { serviceType };
+  };

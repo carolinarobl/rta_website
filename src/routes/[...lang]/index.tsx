@@ -33,11 +33,14 @@ export const usePageData = routeLoader$(async (req) => {
   };
 });
 
+
+
 export default component$(() => {
   const signalData = usePageData();
   const data = signalData.value;
+
   return (
-    <MainLayout data={data["layoutData"]} showHeader={false}>
+    <MainLayout data={data["layoutData"]} marqueeData={data['pageData']['data']['generalMarquee']['data']['attributes']} showHeader={false} showMarquee={true}>
       {data.type == "home" && (
         <h1 class="absolute opacity-0">
           Rural Telecommunications of America Inc.

@@ -14,7 +14,7 @@ export default component$(({ isES, formData }: { isES: any, formData?: any }) =>
 
   const selectedAddress = useSignal('');
 
-  const coverageFlag = useSignal(true);
+  const coverageFlag = useSignal<'bastrop_nofiber' | 'bastrop_elegible' | 'bastrop_nocoverage' | 'notbastrop' | 'unknown'> ('unknown');
   const isloading = useSignal(false);
   const isFormOpen = useSignal(false);
   const isAddressMissing = useSignal(false);
@@ -39,12 +39,13 @@ export default component$(({ isES, formData }: { isES: any, formData?: any }) =>
 
       selectedAddress.value = addressInput.value.value;
       const data = searchBastropCoverage(lat.value, lng.value);
-  
+      
       data.then((res) => {
-        coverageFlag.value = res['coverage'];
-  
-        if (coverageFlag.value  ) {
-              isFormOpen.value = true;
+        coverageFlag.value = res['serviceType'];
+
+        isFormOpen.value = true;
+
+        if (coverageFlag.value) {
               isloading.value = false; // Asegurar que se oculta el spinner al finalizar
 
         } else {
@@ -54,12 +55,10 @@ export default component$(({ isES, formData }: { isES: any, formData?: any }) =>
         isloading.value = false; // Si ocurre un error
       });
   
-      coverageFlag.value = true;
       lng.value = "";
       lat.value = "";
   
     } else {
-      coverageFlag.value = false;
       isloading.value = false;
     }
 
@@ -97,11 +96,12 @@ export default component$(({ isES, formData }: { isES: any, formData?: any }) =>
   return  <div class='w-full'>
 
               {isFormOpen.value && (
-                <div class="fixed inset-0 !z-[999999] flex flex-col items-center justify-center bg-black bg-opacity-40 bastrop-form">
+                <div class="fixed inset-0 !z-[9999] flex flex-col items-center justify-center bg-black bg-opacity-40 bastrop-form">
                 <div class={` flex-col-reverse md:flex-row w-fit" animate-zoomIn flex `}>
                   <div class="flex p-4 flex-wrap overflow-hidden items-center justify-center ">
                     <FormBastrop 
                       lang={isES ? 'es' : 'en'}
+                      service_type={coverageFlag.value}
                       bastrop_address={selectedAddress.value}
                     />;
                   </div>

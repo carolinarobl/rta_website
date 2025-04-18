@@ -8,6 +8,7 @@ import {
 } from "@qwikest/icons/bootstrap";
 import { sendMail } from "~/routes/[...lang]/api/sendmail";
 import { Spinner } from "../Spinner";
+import { Markdown } from "../Markdown";
 
 export const FormContact = component$(({ templateID, mailto, subject, lang }: { templateID: any, subject: string, mailto: string, lang: string}) => {
 
@@ -104,8 +105,14 @@ export const FormContact = component$(({ templateID, mailto, subject, lang }: { 
   
   });
 
+  const paragraph = isSpanish ? `### **¿Tienes alguna pregunta o necesitas ayuda?**
+Rellena el formulario y nos pondremos en contacto contigo lo antes posible.`
+  :
+   `### **Have a question or need help?**
+Fill out the form and we'll get back to you as soon as possible.`
+
   return (
-    <div class="flex flex-col rounded-3xl bg-white p-6 text-start  md:w-full w-[90vw] md:m-0">
+    <div class="flex flex-col rounded-3xl bg-white p-6 text-start  md:w-full w-[90vw] md:m-0 m-2 max-h-[80vh] overflow-y-auto">
     <form
       class="mt-2 "
       id={formId}
@@ -114,7 +121,14 @@ export const FormContact = component$(({ templateID, mailto, subject, lang }: { 
         handleSubmit;
       }}
     >
-      <div class="flex flex-col md:flex-row gap-4 z-30">
+      <div class="flex flex-col mb-2">
+        <div class="w-full">
+          <Markdown text= {paragraph}  classN="!text-center items-center leading-none !text-[14px] "/>
+        </div>
+      </div>
+
+      <div class="flex flex-row gap-4 !z-[9999]">
+
         <div class="mb-4 w-full">
           <label
             for="from_name"
@@ -133,6 +147,7 @@ export const FormContact = component$(({ templateID, mailto, subject, lang }: { 
             />
           </div>
         </div>
+
         <div class="mb-4 w-full  md:w-2/3">
           <label
             for="from_zip_code"
@@ -156,7 +171,7 @@ export const FormContact = component$(({ templateID, mailto, subject, lang }: { 
           </div>
         </div>
       </div>
-      <div class="flex flex-col items-center gap-2">
+      <div class="flex flex-col md:flex-row gap-4 !z-[9999]">
         <div class="mb-4 w-full">
           <label
             for="from_email"

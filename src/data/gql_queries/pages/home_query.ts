@@ -176,6 +176,19 @@ export const homeQuery = (locale: string) => {
           }
         }
       }
+
+  generalMarquee(locale:"${locale}"){
+      data{
+        attributes{
+          Text
+          Button{
+            Text
+            Link
+          }
+          Display            
+        }
+      }
+    }
         
   sectionNetwork {
     data {
