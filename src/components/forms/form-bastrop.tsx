@@ -353,7 +353,7 @@ export const FormBastrop = component$(({ lang, bastrop_address, service_type }: 
           <label for="tel"
             class="flex flex-row py-1 font-regular tracking-[0.5px] text-[14px] gap-2"
           >
-          {isSpanish ? "Número de teléfono": "Mobile Phone Number"} <span class={`text-red-300 ${checkMailState.value ? 'flex':'hidden'}`}>*</span>
+          {isSpanish ? "Número de teléfono": "Mobile Phone Number"} <span class={`text-red-300 ${checkPhoneState.value ? 'flex':'hidden'}`}>*</span>
           </label>
           <div class="flex items-center p-2 bg-white rounded-full border border-[#2e5899] border-opacity-40">
             <div class="mr-2">
