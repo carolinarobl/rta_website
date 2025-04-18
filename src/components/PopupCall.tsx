@@ -131,7 +131,7 @@ export const PopupCall = component$(
         )}
 
         {showModal.value && (
-          <div class="fixed inset-0 !z-[999999] flex flex-col items-center justify-center bg-black bg-opacity-40">
+          <div class="fixed inset-0 z-[999999] !z-[999999] pointer-events-auto flex flex-col items-center justify-center bg-black bg-opacity-40">
           <div class={` ${link.includes(configurator) ? "w-full h-full flex-row-reverse " : "flex-col-reverse md:flex-row w-fit"} animate-zoomIn flex `}>
             <div class="flex p-4 flex-wrap overflow-hidden items-center justify-center ">
               {child}

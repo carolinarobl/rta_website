@@ -3,9 +3,10 @@ import { Navbar } from "./Navbar";
 import { Footer } from "./Footer";
 import { Header } from "./Header";
 import { MenuMobile } from "./MenuMobile";
+import { Button } from "./Button";
 
 export const MainLayout = component$(
-  ({ data, showMenus = true, showHeader=true }: { data: any; showMenus?: boolean; showHeader?: boolean;}) => {
+  ({ data, showMenus = true, showHeader=true, showMarquee=false , marqueeData}: { data: any; showMenus?: boolean; showHeader?: boolean; showMarquee?: boolean; marqueeData?:any}) => {
     const mobMenuOpen = useSignal(false);
 
     return (
@@ -49,6 +50,19 @@ export const MainLayout = component$(
           }
 
           <div class={`${mobMenuOpen.value ? "overflow-y-hidden" : ""}`}>
+
+          {showMarquee && marqueeData &&
+            (
+              <div class={`${marqueeData['Display'] ? 'flex flex-wrap':'hidden'} p-1  w-full items-center text-center justify-center bg-[#f1eb3f] w-full text-black flex flex-row text-[12px] font-semibold gap-2`}>
+               <p class="animate-pulse">{marqueeData['Text']}</p>
+               <Button
+                style={'basic'}
+                text={marqueeData['Button']['Text']}
+                link={marqueeData['Button']['Link']}
+               />
+              </div>
+            )}
+
             {showHeader &&
             (
               <div class="flex w-full items-center justify-center">
@@ -57,6 +71,7 @@ export const MainLayout = component$(
                 />
               </div>
             )}
+
             <div class="relative">
             <Slot />
             </div>

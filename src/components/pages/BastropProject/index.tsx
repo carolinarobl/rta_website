@@ -39,7 +39,7 @@ const contactPar = pageData['ContactPar'];
 return  <div class="flex flex-col items-center justify-center">
 
           {headerDekstop &&
-            <div class="bg-white w-full !max-h-[250px] md:flex hidden">
+            <div class="bg-white w-full !max-h-[250px] min-[600px]:flex hidden">
               <StrapiAsset
                 media={headerDekstop}
                 width={900}
@@ -49,7 +49,7 @@ return  <div class="flex flex-col items-center justify-center">
           }
           
           {headerMobile &&
-            <div class="bg-white w-full !max-h-[250px] md:hidden flex">
+            <div class="bg-white w-full !max-h-[250px] min-[600px]:hidden flex">
               <StrapiAsset
                 media={headerMobile}
                 width={650}
@@ -75,10 +75,10 @@ return  <div class="flex flex-col items-center justify-center">
                 text={isES?'Dale un vistazo a las ofertas disponibles en esta área':'Take a look of the available offers in this area'}
                 backgroundColor='transparent'/>
 
-                <div class="flex justify-evenly gap-4 max-[1400px]:flex-wrap">
+                <div class="flex justify-evenly gap-4 max-[1400px]:flex-wrap ">
                   {plansTables &&
                   plansTables.map((table:any, i:any) => (
-                    <div class={`relative ${i%2==0 ? 'bg-blue-500' : 'bg-primary-blue'} text-white px-4 py-8 w-48 h-40 rounded-xl overflow-hidden shadow-lg`}>
+                    <div class={`relative ${i%2==0 ? 'bg-blue-500' : 'bg-primary-blue'} text-white px-4 py-8 w-48 h-40 rounded-xl overflow-hidden shadow-lg !-z-[10]`}>
                       <div class={`absolute -top-5 -right-5 w-14 h-14 ${i%2==0 ? 'bg-primary-blue' : 'bg-blue-500'} rounded-full`}></div>
                         
                       <h2 class="text-2xl font-bold">{table['ColumnOne']}</h2>

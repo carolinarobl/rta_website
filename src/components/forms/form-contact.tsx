@@ -112,7 +112,7 @@ Rellena el formulario y nos pondremos en contacto contigo lo antes posible.`
 Fill out the form and we'll get back to you as soon as possible.`
 
   return (
-    <div class="flex flex-col rounded-3xl bg-white p-6 text-start  md:w-full w-[90vw] md:m-0">
+    <div class="flex flex-col rounded-3xl bg-white p-6 text-start  md:w-full w-[90vw] md:m-0 m-2 max-h-[80vh] overflow-y-auto">
     <form
       class="mt-2 "
       id={formId}
@@ -121,13 +121,13 @@ Fill out the form and we'll get back to you as soon as possible.`
         handleSubmit;
       }}
     >
-      <div class="flex flex-col mb-4">
+      <div class="flex flex-col mb-2">
         <div class="w-full">
-          <Markdown text= {paragraph}  classN="!text-center items-center leading-none "/>
+          <Markdown text= {paragraph}  classN="!text-center items-center leading-none !text-[14px] "/>
         </div>
       </div>
 
-      <div class="flex flex-col md:flex-row gap-4 !z-[9999]">
+      <div class="flex flex-row gap-4 !z-[9999]">
 
         <div class="mb-4 w-full">
           <label
@@ -147,6 +147,7 @@ Fill out the form and we'll get back to you as soon as possible.`
             />
           </div>
         </div>
+
         <div class="mb-4 w-full  md:w-2/3">
           <label
             for="from_zip_code"
@@ -170,7 +171,7 @@ Fill out the form and we'll get back to you as soon as possible.`
           </div>
         </div>
       </div>
-      <div class="flex flex-col items-center gap-2">
+      <div class="flex flex-col md:flex-row gap-4 !z-[9999]">
         <div class="mb-4 w-full">
           <label
             for="from_email"
