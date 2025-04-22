@@ -2,7 +2,7 @@ import { component$ } from '@builder.io/qwik';
 import { useLocation } from '@builder.io/qwik-city';
 import SectionHero from './SectionHero';
 // import SectionNumbers from './SectionNumbers';
-import { Paragraph } from '~/components/Paragraph';
+import { ListedParagraphs, Paragraph } from '~/components/Paragraph';
 import { StrapiAsset } from '~/components/StrapiAsset';
 
 export default component$(({ data }: { data: any }) => {
@@ -31,8 +31,9 @@ export default component$(({ data }: { data: any }) => {
   // const numbersTitle = isES ? 'Brindando oportunidades en Bastrop': 'Bringing Online Opportunities to Bastrop';
   // const numbersParagraph = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. '
 
-// CONTACT SECTION
-const contactPar = pageData['ContactPar'];
+// BOTTOM PARAGRAPHS SECTION
+// const contactPar = pageData['ContactPar'];
+  const bottomPars = pageData['BottomPars'];
 
 
 
@@ -96,14 +97,23 @@ return  <div class="flex flex-col items-center justify-center">
                 isES={isES}
               /> */}
 
-              <Paragraph
+              {/* <Paragraph
                 backgroundColor='transparent'
                 title={contactPar.Title}
                 text={contactPar.Paragraph}
                 image={contactPar.Media.data.attributes}
-              />
+              /> */}
+
+            
 
     </div>
+
+    <div class="w-full justify-center bg-[#ebf4fc]">
+              <ListedParagraphs
+              data={bottomPars}
+              />
+            </div>
+
   </div>
 
 });
