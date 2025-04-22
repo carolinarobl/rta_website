@@ -54,7 +54,7 @@ export const bastropProjectQuery = (locale:string)=>{
                                 }
                             }
 
-                            ContactPar{
+                            BottomPars{
               	                Title
                                 Paragraph
                                 Media{
