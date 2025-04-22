@@ -178,6 +178,10 @@
         <loc>https://rtatel.com/services-broadbandlabels/</loc>
         <priority>0.90</priority>
     </url>
+    <url>
+        <loc>https://rtatel.com/bastrop-project/</loc>
+        <priority>0.90</priority>
+    </url>
     <!-- END | MAIN UNIQUE PAGES (ENGLISH) -->
     <!-- END | MAIN UNIQUE PAGES (ENGLISH) -->
     <!-- START | MAIN UNIQUE PAGES (SPANISH) -->
@@ -356,6 +360,10 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/services-broadbandlabels/</loc>
+        <priority>0.90</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/bastrop-project/</loc>
         <priority>0.90</priority>
     </url>
     <!-- END | MAIN UNIQUE PAGES (SPANISH) -->
