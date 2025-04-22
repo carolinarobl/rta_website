@@ -53,7 +53,7 @@ export const MainLayout = component$(
 
           {showMarquee && marqueeData &&
             (
-              <div class={`${marqueeData['Display'] ? 'flex flex-wrap':'hidden'} p-1  w-full items-center text-center justify-center bg-[#f1eb3f] w-full text-black flex flex-row text-[12px] font-semibold gap-2`}>
+              <div class={`${marqueeData['Display'] ? 'flex flex-wrap':'hidden'} p-1  w-full items-center text-center justify-center bg-[#f1eb3f] w-full text-black flex flex-row md:text-[15px] text-[13px] font-semibold gap-2`}>
                <p class="animate-pulse">{marqueeData['Text']}</p>
                <Button
                 style={'basic'}
