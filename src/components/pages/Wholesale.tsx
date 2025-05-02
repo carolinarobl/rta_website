@@ -25,7 +25,8 @@ export const Wholesale = component$(({ data }: { data: any }) => {
 
   return (
     <div class="flex flex-col items-center justify-center">
-      <div class="my-8 flex w-full flex-col items-center justify-center px-4 md:w-1/2">
+      <div class="my-8 flex w-full max-w-[1200px] flex-col items-center justify-center px-4 ">
+        <h1 class='text-primary-blue min-[1000px]:text-[45px] text-[30px] !font-bold'>{pageData['Introduction']['Title']}</h1>
         <Markdown
           classN="text-center my-4"
           text={pageData["Introduction"]["Paragraph"]}

@@ -41,7 +41,7 @@ export const MainLayout = component$(
               : {}
           }
         >
-          <div class="absolute bottom-0 left-0 right-0 top-0 -z-10 bg-gradient-to-l from-[#FFFFFF] to-[#C8D8ED]"></div>
+          <div class={`absolute bottom-0 left-0 right-0 top-0 -z-10 bg-gradient-to-l from-[#FFFFFF] to-[#C8D8ED]`}></div>
           {showMenus &&
           <Navbar
             data={data["data"]["generalMenu"]["data"]["attributes"]}
@@ -55,11 +55,13 @@ export const MainLayout = component$(
             (
               <div class={`${marqueeData['Display'] ? 'flex flex-wrap':'hidden'} p-1  w-full items-center text-center justify-center bg-[#f1eb3f] w-full text-black flex flex-row md:text-[15px] text-[13px] font-semibold gap-2`}>
                <p class="animate-pulse">{marqueeData['Text']}</p>
+               <div class="z-[8]">
                <Button
                 style={'basic'}
                 text={marqueeData['Button']['Text']}
                 link={marqueeData['Button']['Link']}
                />
+               </div>
               </div>
             )}
 

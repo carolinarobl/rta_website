@@ -2,6 +2,10 @@ import { component$ } from "@builder.io/qwik";
 import { StrapiImage } from "~/components/StrapiImage";
 
 export const SectionCareersHeader = component$(({ data }: { data: any }) => {
+
+  console.log(data);
+  const headerTitles= data['HeaderTitle'];
+
   return (
     <div class="relative flex w-full items-center justify-center z-0">
       <div
@@ -23,13 +27,18 @@ export const SectionCareersHeader = component$(({ data }: { data: any }) => {
           clasN="w-[300px] max-[1000px]:hidden"
           media={data["HeaderPictures"]["data"][0]["attributes"]}
         />
-        <div class="flex flex-col">
-          <span>Join the</span>
+        <div class="flex flex-col items-center justify-center max-w-[400px]">
+          {/* <span>Join the</span> */}
           <StrapiImage
             clasN="w-[200px]"
             media={data["HeaderLogo"]["data"]["attributes"]}
           />
-          <span>Family</span>
+          {
+            headerTitles && 
+            headerTitles.map((title: any) => (
+              <span>{title['Text']}</span>
+            ))
+          }
         </div>
         <StrapiImage
           clasN="w-[300px]"
