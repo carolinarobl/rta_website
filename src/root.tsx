@@ -20,6 +20,7 @@ export default component$(() => {
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
     gtag('config', 'G-19EN0CY127');
+    gtag('config', 'AW-10839619766');
   `;
 
   const pixelScript = `
@@ -34,6 +35,12 @@ export default component$(() => {
     fbq('init', '427875699033893');
     fbq('track', 'PageView');
    `;
+
+   const gaBuyNowConvertionScript = `gtag('event', 'conversion', {'send_to': 'AW-10839619766/-Dq5CMql-4EZELbx3bAo'});`;
+   const gaShopNowConvertionScript = `gtag('event', 'conversion', {'send_to': 'AW-10839619766/W5eSCPyt_YEZELbx3bAo'});`;
+   const gaCheckNowConvertionScript = `gtag('event', 'conversion', {'send_to': 'AW-10839619766/GhmOCOGU_IEZELbx3bAo'});`;
+   const gaTrackPhoneScript = `gtag('config', 'AW-10839619766/y_U4CJmFl5QDELbx3bAo', { 'phone_conversion_number': '(844) 648-2048' });`;
+ 
    
   /**
    * The root of a QwikCity site always start with the <QwikCityProvider> component,
@@ -54,10 +61,20 @@ export default component$(() => {
           <link rel="icon" href="/favicon.ico" />
           <RouterHead />
 
+          {/*Google Analytics Scripts */}
           <script defer async src={analyticsScriptP1} ></script>
           <script defer async dangerouslySetInnerHTML={analyticsScriptP2}></script>
           {/* <script defer async dangerouslySetInnerHTML={gtmScriptP1}></script> */}
+
+          {/*Facebook Pixel Scripts */}
           <script defer async dangerouslySetInnerHTML={pixelScript}></script>
+          
+          {/*Google Ads Scripts */}
+          <script dangerouslySetInnerHTML={gaBuyNowConvertionScript} />
+          <script dangerouslySetInnerHTML={gaShopNowConvertionScript} />
+          <script dangerouslySetInnerHTML={gaCheckNowConvertionScript} />
+          <script dangerouslySetInnerHTML={gaTrackPhoneScript} />
+
           <ServiceWorkerRegister />
         </head>
         <body lang="en" class="max-h-screen overflow-x-hidden">
