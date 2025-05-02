@@ -135,7 +135,7 @@ sectionNetwork (locale:"${locale}"){
           ${mediaUrl}
         }
         ServersTitle
-        Servers {
+        Servers (pagination:{limit:50}){
           Text
           Link
           Icon{
