@@ -35,7 +35,7 @@ export const bastropProjectQuery = (locale:string)=>{
                                 }
                             }
                             
-                            FaqList{
+                            FaqList(pagination:{limit:50}){
                                 Title
                                 Paragraph
                                 Disclaimer{

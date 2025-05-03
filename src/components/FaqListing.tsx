@@ -2,17 +2,29 @@ import { $, component$, useStore, useVisibleTask$ } from "@builder.io/qwik";
 import { BsArrowDownShort, BsInfoCircleFill } from "@qwikest/icons/bootstrap";
 import { Markdown } from "~/components/Markdown";
 import { Button } from "./Button";
+import { useLocation } from "@builder.io/qwik-city";
 
 
-export default component$(({ faqs }: { faqs: any }) => {
+export default component$(({ faqs, listall=true }: { faqs: any, listall?: boolean }) => {
 
-  const state = useStore({ openIndex: -1, heights: {} as Record<number, number> });
+      const location = useLocation();
+      const isES = location.prevUrl?.pathname.includes("/es/");
+
+  const state = useStore({
+    openIndex: -1,
+    heights: {} as Record<number, number>,
+    showAll: listall, // nuevo estado
+  });
 
   // Identifica la altura de cada sección de contenido
-  useVisibleTask$(() => {
-    document.querySelectorAll(".faq-content").forEach((el, index) => {
-      state.heights[index] = (el as HTMLElement).scrollHeight;
-    });
+  useVisibleTask$(({ track }) => {
+    track(() => state.showAll); // Recalcula cada vez que cambia showAll
+  
+    setTimeout(() => {
+      document.querySelectorAll(".faq-content").forEach((el, index) => {
+        state.heights[index] = (el as HTMLElement).scrollHeight;
+      });
+    }, 50); // le damos un poco de tiempo a que aparezcan en el DOM
   });
 
   const toggleFAQ = $((index: number) => {
@@ -20,12 +32,14 @@ export default component$(({ faqs }: { faqs: any }) => {
   });
 
   return (
-    <div class="w-full mx-auto p-4">
+    <div class="w-full mx-auto p-4 flex flex-col">
       
       {faqs.map((faq:any, index:number) => {
-        
-        const isOpen = state.openIndex === index;
-        
+        const isVisible = state.showAll || index < 8;
+          if (!isVisible) return null;
+  
+            const isOpen = state.openIndex === index;
+          
         const linkRegex = /\[([^\]]+)\]\((=p[^)]+)\)/g;
         const matches = [...faq.Paragraph.matchAll(linkRegex)];
 
@@ -119,6 +133,17 @@ export default component$(({ faqs }: { faqs: any }) => {
           </div>
         );
       })}
+
+<div class={`${listall ? 'hidden' : 'flex'} justify-center mt-4`}>
+  <button
+    onClick$={() => (state.showAll = !state.showAll)}
+    class="text-primary-blue underline hover:text-primary-blue/70 transition"
+  >
+    {state.showAll
+      ? isES ? 'Ver menos preguntas' : 'View fewer questions'
+      : isES ? 'Ver más preguntas' : 'View more questions'}
+  </button>
+</div>
     </div>
   );
 });

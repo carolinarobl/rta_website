@@ -69,34 +69,7 @@ export default component$(({ introPar, faqPar, faqs, isES }: { introPar:any, faq
                     </div>
                 }
 
-                <FaqListing faqs={faqs}/>
-
-                {/* { faqPar.Paragraph &&
-                    <div class="px-4 flex flex-col">
-                        <Markdown text={faqPar.Paragraph} classN=''/>
-
-                        <div class="flex flex-wrap gap-2 py-4">
-                        {faqPar.Buttons &&
-                            faqPar.Buttons.map((button: any, i: number) => (
-                                <Button
-                                    key={i}
-                                    text={button["Text"]}
-                                    link={button["Link"]}
-                                    type={button['Link'].startsWith("tel:") ? "action" : "link"}
-                                >
-                                    <FaCircleArrowRightSolid
-                                        color="#13B295"
-                                        class="text-[21px] opacity-60"
-                                    />
-                                </Button>
-                            ))}
-
-                        </div>
-                       
-                    </div>
-
-
-                } */}
+                <FaqListing faqs={faqs} listall={false}/>
 
             </section>
         </div>});
