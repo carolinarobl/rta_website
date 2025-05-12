@@ -69,7 +69,7 @@ export default component$(({ introPar, faqPar, faqs, isES }: { introPar:any, faq
                     </div>
                 }
 
-                <FaqListing faqs={faqs} listall={false}/>
+                <FaqListing faqs={faqs} listall={false} analyticsOrigin='bastrop_faq'/>
 
             </section>
         </div>});
