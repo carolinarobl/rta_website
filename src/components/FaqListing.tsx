@@ -3,9 +3,11 @@ import { BsArrowDownShort, BsInfoCircleFill } from "@qwikest/icons/bootstrap";
 import { Markdown } from "~/components/Markdown";
 import { Button } from "./Button";
 import { useLocation } from "@builder.io/qwik-city";
+import { gtag } from '~/utils/gtag';
 
 
-export default component$(({ faqs, listall=true }: { faqs: any, listall?: boolean }) => {
+
+export default component$(({ faqs, listall = true, analyticsOrigin }: { faqs: any, listall?: boolean, analyticsOrigin?: string }) => {
 
       const location = useLocation();
       const isES = location.prevUrl?.pathname.includes("/es/");
@@ -136,7 +138,18 @@ export default component$(({ faqs, listall=true }: { faqs: any, listall?: boolea
 
 <div class={`${listall ? 'hidden' : 'flex'} justify-center mt-4`}>
   <button
-    onClick$={() => (state.showAll = !state.showAll)}
+    onClick$={() => {
+      state.showAll = !state.showAll;
+
+      if (analyticsOrigin && !state.showAll) {
+        gtag('event', 'click_more_bastrop_faq', {
+          event_category: 'bastrop_faq',
+          event_label: analyticsOrigin,
+          value: 1
+        });
+      }
+    }}
+
     class="text-primary-blue underline hover:text-primary-blue/70 transition"
   >
     {state.showAll
