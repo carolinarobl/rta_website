@@ -139,8 +139,6 @@ export default component$(({ faqs, listall = true, analyticsOrigin }: { faqs: an
 <div class={`${listall ? 'hidden' : 'flex'} justify-center mt-4`}>
   <button
     onClick$={() => {
-      state.showAll = !state.showAll;
-
       if (analyticsOrigin && !state.showAll) {
         gtag('event', 'click_more_bastrop_faq', {
           event_category: 'bastrop_faq',
@@ -148,6 +146,10 @@ export default component$(({ faqs, listall = true, analyticsOrigin }: { faqs: an
           value: 1
         });
       }
+      
+      state.showAll = !state.showAll;
+
+    
     }}
 
     class="text-primary-blue underline hover:text-primary-blue/70 transition"
