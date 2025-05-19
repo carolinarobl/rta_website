@@ -12,8 +12,6 @@ export default component$(({ data }: { data: any }) => {
   const pageData = data['pageBastropP']['data']['attributes'];
   const configuratorRoute = data['pageHome']['data']['attributes']['HeroForm']['ActionButton']['Link'];
 
-  console.log(configuratorRoute);
-
 // INTRO SECTION
   const headerDekstop = pageData['HeaderDesktop']['data']['attributes'];
   const headerMobile = pageData['HeaderMobile']['data']['attributes'];
