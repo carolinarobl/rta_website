@@ -129,7 +129,7 @@ const handleCheck = $(async () => {
 
 
       {/* Botón condicional según el tipo de popup */}
-      {!(coverageFlag.value === 'notbastrop' || coverageFlag.value === 'bastrop_nocoverage') && ((
+      {!(coverageFlag.value === 'notbastrop') && ((
         <button
           aria-label="Close popup"
           onClick$={() => { isFormOpen.value = false }}
@@ -141,8 +141,9 @@ const handleCheck = $(async () => {
 
       <div class="flex p-4 flex-wrap overflow-hidden items-center justify-center">
         {
-          coverageFlag.value === 'notbastrop' || coverageFlag.value === 'bastrop_nocoverage'
-            ? <PopupConfigurator route={configuratorRoute.value} />
+          coverageFlag.value === 'notbastrop'
+            ?
+            <PopupConfigurator route={configuratorRoute.value} />
             : <FormBastrop 
                 lang={isES ? 'es' : 'en'}
                 service_type={coverageFlag.value}
