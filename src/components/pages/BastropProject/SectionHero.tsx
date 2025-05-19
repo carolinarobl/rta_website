@@ -6,7 +6,7 @@ import FaqListing from '../../FaqListing';
 
 
 
-export default component$(({ introPar, faqPar, faqs, isES }: { introPar:any, faqPar: any, faqs: any, isES?: boolean }) => {  
+export default component$(({ introPar, faqPar, faqs, isES, confLink }: { introPar:any, faqPar: any, faqs: any, isES?: boolean, confLink:string }) => {  
         
   return <div class="md:min-h-[85vh] flex md:flex-row flex-col items-start justify-center w-full bg-white rounded-[30px] gap-4 p-2 ">
             
@@ -44,7 +44,10 @@ export default component$(({ introPar, faqPar, faqs, isES }: { introPar:any, faq
                                     </div>
                                 }
 
-                                <SearchAddressBox isES={isES}/> 
+                                <SearchAddressBox
+                                    isES={isES}
+                                    confLink={confLink}
+                                /> 
                                 
                                 <div class='max-w-2xl'>
                                         <Markdown
