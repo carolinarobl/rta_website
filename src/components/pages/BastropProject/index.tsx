@@ -10,6 +10,7 @@ export default component$(({ data }: { data: any }) => {
   const isES = location.prevUrl?.pathname.includes("/es/");
 
   const pageData = data['pageBastropP']['data']['attributes'];
+  const configuratorRoute = data['pageHome']['data']['attributes']['HeroForm']['ActionButton']['Link'];
 
 // INTRO SECTION
   const headerDekstop = pageData['HeaderDesktop']['data']['attributes'];
@@ -65,7 +66,7 @@ return  <div class="flex flex-col items-center justify-center">
                 faqPar={faqPar}
                 faqs={faqList}
                 isES={isES}
-                
+                confLink={configuratorRoute}
               />
 
               <div class="flex flex-col w-full">

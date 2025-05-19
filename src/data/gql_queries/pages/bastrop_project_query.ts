@@ -70,5 +70,17 @@ export const bastropProjectQuery = (locale:string)=>{
                         }
                     }
                 }
+
+                pageHome(locale:"${locale}"){
+                    data{
+                        attributes{
+                            HeroForm{
+                                ActionButton{
+                                    Link
+                                }
+                            }
+                        }
+                    }
+                }
             }`
 }
