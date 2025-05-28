@@ -39,8 +39,13 @@ export default component$(() => {
   const signalData = usePageData();
   const data = signalData.value;
 
+  const showMarquee = data.type !== "home";
+  const marqueeData = showMarquee
+  ? data?.pageData?.data?.generalMarquee?.data?.attributes
+  : undefined;
+
   return (
-    <MainLayout data={data["layoutData"]} marqueeData={data['pageData']['data']['generalMarquee']['data']['attributes']} showHeader={false} showMarquee={true}>
+    <MainLayout data={data["layoutData"]} marqueeData={marqueeData} showHeader={false} showMarquee={showMarquee}>
       {data.type == "home" && (
         <h1 class="absolute opacity-0">
           Rural Telecommunications of America Inc.
