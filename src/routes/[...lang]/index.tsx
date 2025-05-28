@@ -39,7 +39,8 @@ export default component$(() => {
   const signalData = usePageData();
   const data = signalData.value;
 
-  const showMarquee = data.type !== "home";
+  const showMarquee = data.type == "home";
+
   const marqueeData = showMarquee
   ? data?.pageData?.data?.generalMarquee?.data?.attributes
   : undefined;
