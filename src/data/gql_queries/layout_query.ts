@@ -112,7 +112,7 @@ query QueryLayout {
         }
       }
     }
-    generalHeader {
+    generalHeader(locale: "${locale}")  {
       data {
         attributes {
           Slide {

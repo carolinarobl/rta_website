@@ -8,10 +8,13 @@ export const Support = component$(({ data }: { data: any }) => {
     const sectionContact = data['data']['sectionContactBoxes']['data'];
 
     return <div class="flex flex-col px-8 justify-center items-center">
-        <div class="h-[100px] p-6 flex flex-row justify-evenly items-center shadow-2xl rounded-full w-[350px] mb-5 bg-blue-100">
-            <p class="text-primary-blue font-semibold text-xl">{pageData['WTTTitle']}</p>
-            <Button text={pageData['WTTButton']['Text']} link={pageData['WTTButton']['Link']}></Button>
-        </div>
+            
+            <div class="flex flex-row gap-3 p-3 items-center shadow-2xl rounded-full bg-primary-blue">
+                <p class="text-white font-semibold text-md">{pageData['WTTTitle']}</p>
+                <Button text={pageData['WTTButton']['Text']} link={pageData['WTTButton']['Link']}></Button>
+            </div>
+
+
         <div class="text-center">
             <h2 class="text-3xl md:text-[40px] my-4 font-bold text-primary-blue">{pageData['Introduction']['Title']}</h2>
             <h3 class="text-secondary-red my-4 text-2xl font-semibold">{pageData['Introduction']['Subtitle']}</h3>

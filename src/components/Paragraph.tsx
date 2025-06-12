@@ -73,7 +73,7 @@ export const Paragraph = component$(
               } justify-center gap-2 text-${color}`}
             >
               {title && (
-                <h2 class="text-center text-[38px]  font-bold max-sm:text-[28px]">
+                <h2 class="text-center !text-[32px]  font-semibold max-sm:text-[28px]">
                   {title}
                 </h2>
               )}
@@ -89,7 +89,7 @@ export const Paragraph = component$(
             </div>
             <Markdown
               text={text}
-              classN={`text-[18px] max-sm:text-[15px] text-${color}`}
+              classN={`text-[16px] max-sm:text-[15px] text-${color}`}
             ></Markdown>
             <div class="flex gap-4">
               {buttons &&

@@ -80,6 +80,8 @@ export const PopupLeaving = component$(({ signalPopupLeaving,
 
     const textboxAnswer: Signal<string> = useSignal("");
 
+    const emailInput: Signal<string> = useSignal('');
+
 
     useTask$(async () => {
         const questions = await getQuestions();
@@ -136,6 +138,13 @@ export const PopupLeaving = component$(({ signalPopupLeaving,
                     const surveyAnswer = await insertSurveyAnswers();
                     await insertAnswers(surveyAnswer[0]['id'], questionId ?? 0, answer)
                 
+                    const emailQuestionId = (questions.find(q => q.question ===  'email'))?.id;
+                    
+                    if(emailInput.value != '' && emailQuestionId){
+                    await insertAnswers(surveyAnswer[0]['id'], emailQuestionId ?? 0, emailInput.value)
+                    }
+                    
+
                 signalPopupLeaving.value = false;
                 signalMainPopup.value = false;
                 window.localStorage.setItem('sendform_leaving', "true");
@@ -150,34 +159,41 @@ export const PopupLeaving = component$(({ signalPopupLeaving,
     return  <div class={`fixed flex items-center justify-center h-full w-full bottom-0 left-0 right-0 bg-blue-300 bg-opacity-50 top-0 z-[700]`}>
                 
                 {/* Contenedor | Caja de survey */}
-                <div class="flex flex-col items-center justify-evenly md:h-fit md:w-1/2 w-[80%] max-w-[600px] bg-[#DFEDFF] rounded-3xl p-5 pb-4 transition-all duration-1000 ease-in-out">
+                <div class="flex flex-col items-center justify-evenly md:h-fit h-[90vh] md:w-1/2 w-[80%] max-w-[600px] bg-[#DFEDFF] rounded-3xl p-5 pb-4 transition-all duration-1000 ease-in-out">
 
                     {/* Form */}
-                    <form id="form-leaving" class="flex flex-col items-center justify-between w-full ">
-                        {optionsState.map((questionState: any, index: number) => (
-                            
-                            <div class="w-full" key={index}>
+                    <form id="form-leaving" class="flex flex-col flex-1 overflow-hidden items-center w-full">
+                    
+                        <div class="flex flex-col gap-4 flex-1 w-full overflow-y-auto pr-2">
+                            {optionsState.map((questionState: any, index: number) => (
+                            <div class="w-full shrink-0" key={index}>
                                 
-                                {/* Contenedor | Área de título y descripción */}
-                                <div  class={`w-full  ${index == 0 ? "h-[20%] min-h-[100px]" : ""}  flex flex-col items-center justify-center bg-gradient-to-tr from-primary-blue to-primary-light-blue rounded-2xl text-white mb-6 p-4 text-center`}>
-                                    { index == 0 ? <h2 class="font-bold sm:text-[35px] text-[24px]">Leaving so soon?</h2>: ""}
+                                {/* Contenedor de título */}
+                                <div class={`w-full ${index == 0 ? "min-h-[100px]" : ""} flex flex-col items-center justify-center bg-gradient-to-tr from-primary-blue to-primary-light-blue rounded-2xl text-white mb-4 p-4 text-center`}>
+                                    {index == 0 ? <h2 class="font-bold sm:text-[35px] text-[24px]">Leaving so soon?</h2> : ""}
                                     <p>{questionState.question}</p>
                                 </div>
 
+                                {/* Respuestas */}
                                 <div class="flex flex-col gap-2">
                                     {questionState.answers.map((answer: string, index: number) => {
                                         const followupQuestion = followupsState.find(followup => followup.answers[0] === answer);
-                                        return followupQuestion ? <CheckboxWithInput key={index} id={followupQuestion.id} text={answer} description={followupQuestion.question} textareaSignal={textboxAnswer} /> : <Checkbox key={index} classN="w-full" text={answer} id={questionState.id+"-"+index}/>
+                                    
+                                        return followupQuestion
+                                            ? <CheckboxWithInput key={index} id={followupQuestion.id} text={answer} description={followupQuestion.question} textareaSignal={textboxAnswer} emailInputSignal={emailInput} />
+                                            : <Checkbox key={index} classN="w-full" text={answer} id={questionState.id + "-" + index} />
                                     })}
                                 </div>
-
+                            
                             </div>
-                        ))}
+                            ))}
+                        </div>
+
                     </form>
 
                     {/* Message | Área mensaje de aviso en caso de querer mandar el survey vacío */}
-                    <div class={`w-full rounded-3xl bg-secondary-red bg-opacity-70 text-center mt-1 ${clickButtonSend.value && selectReason.value == false ? "" : "hidden"}`}>
-                        Please, fill the following:
+                    <div class={`w-full rounded-3xl bg-white outline outline-secondary-red bg-opacity-60 text-center mt-1 p-1 text-[12px] text-secondary-red ${clickButtonSend.value && selectReason.value == false ? "" : "hidden"}`}>
+                        Please ensure all required fields have been confirmed or completed.
                     </div>
 
                     

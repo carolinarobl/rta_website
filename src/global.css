@@ -22,14 +22,14 @@ input[type="number"] {
 
 /* width */
 ::-webkit-scrollbar {
-  width: 18px;
+  width: 15px;
   height: 12px;
   background: transparent;
 }
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: linear-gradient(0deg, #25b193,  #2e5899 100%);
+  background: #2e5899;
   border-radius: 10px;
 
 }
