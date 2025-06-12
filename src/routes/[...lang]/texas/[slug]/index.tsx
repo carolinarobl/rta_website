@@ -57,7 +57,7 @@ export default component$(() => {
   );
 
   return (
-    <MainLayout data={layoutData} showHeader={false}>
+    <MainLayout data={layoutData} showHeader={true}>
       {pageContent}
     </MainLayout>
   );

@@ -13,10 +13,10 @@ export const SectionGFVIntro = component$(({ data }: { data: any }) => {
           clasN="mb-6"
         />
         <Markdown text={data["Paragraph"]} />
-        <Button
+        {/* <Button
           text={data["Buttons"][0]["Text"]}
           link={data["Buttons"][0]["Link"]}
-        />
+        /> */}
       </div>
     </div>
   );
