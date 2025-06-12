@@ -80,7 +80,7 @@ export const CheckboxWithInput = component$(({
                             name={`mailinput`}
                             id={`mailinput`}
                             onInput$={(event) => emailInputSignal.value = (event.target as HTMLInputElement).value}
-                            class={`appearance-none border rounded-full text-primary-dark-blue p-1`} />
+                            class={`appearance-none border rounded-full text-primary-dark-blue p-1 text-[15px]`} />
                     </div>
                 </div>
 
