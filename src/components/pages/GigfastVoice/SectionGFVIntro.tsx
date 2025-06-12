@@ -1,5 +1,4 @@
 import { component$ } from "@builder.io/qwik";
-import { Button } from "~/components/Button";
 import { Markdown } from "~/components/Markdown";
 import { StrapiImage } from "~/components/StrapiImage";
 
