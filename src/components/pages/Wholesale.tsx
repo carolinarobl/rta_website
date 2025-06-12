@@ -11,6 +11,9 @@ export const Wholesale = component$(({ data }: { data: any }) => {
 
   const features = pageData["NetworkDIA"]["Features"];
 
+  const introParagraph = pageData["Introduction"]["Paragraph"] || "";
+  const [introTop, introBottom] = introParagraph.split("+++", 2);
+
   const index = useSignal(0);
   // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(async (taskCtx) => {
@@ -25,18 +28,29 @@ export const Wholesale = component$(({ data }: { data: any }) => {
 
   return (
     <div class="flex flex-col items-center justify-center">
-      <div class="my-8 flex w-full max-w-[1200px] flex-col items-center justify-center px-4 ">
-        <h1 class='text-primary-blue min-[1000px]:text-[45px] text-[30px] !font-bold'>{pageData['Introduction']['Title']}</h1>
-        <Markdown
-          classN="text-center my-4"
-          text={pageData["Introduction"]["Paragraph"]}
-        ></Markdown>
-        <Button
-          text={pageData["Introduction"]["Buttons"][0]["Text"]}
-          link={pageData["Introduction"]["Buttons"][0]["Link"]}
-          type="action"
-        ></Button>
-      </div>
+      
+<div class="p-8 flex md:flex-row flex-col w-full max-w-[1200px] items-stretch justify-center gap-8">
+  
+  {/* Parte 1 del párrafo */}
+  <div class='flex flex-col gap-4 md:flex-1 w-full items-center justify-center'>
+    <h1 class='text-primary-blue min-[1000px]:text-[45px] text-[30px] !font-bold md:text-start text-center'>{pageData['Introduction']['Title']}</h1>
+      <Markdown classN="md:text-start text-center" text={introTop.trim()} />
+  </div>
+
+  {/* Parte 2 del párrafo */}
+  <div
+    class="relative bg-primary-blue border-[30px] border-solid border-blue-500 text-white rounded-full p-2 flex flex-col items-center justify-center w-full md:w-auto md:aspect-square md:h-auto md:min-h-[120px] md:min-w-[120px] gap-4 grow-0"
+  >
+    <Markdown classN="text-center text-white md:max-w-[350px]" text={introBottom?.trim() || ""} />
+
+    <Button
+      text={pageData["Introduction"]["Buttons"][0]["Text"]}
+      link={pageData["Introduction"]["Buttons"][0]["Link"]}
+      type="action"
+    />
+  </div>
+</div>
+
       <StrapiImage
         media={pageData["NetworkLogo"]["data"]["attributes"]}
         height={180}

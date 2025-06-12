@@ -9,8 +9,8 @@ export const SectionGFVPacks = component$(({ data }: { data: any }) => {
           <SimpleTable
             key={i}
             title={pack["Title"]}
-            btnText={pack["Button"]["Text"]}
-            btnLink={pack["Button"]["Link"]}
+            btnText={pack["Button"]?.["Text"]}
+            btnLink={pack["Button"]?.["Link"]}
             description={pack["Description"]}
             price={pack["Price"].toString()}
             features={pack["Features"]}

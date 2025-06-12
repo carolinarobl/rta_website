@@ -50,8 +50,11 @@ const handleCheck = $(async () => {
       selectedAddress.value = addressInput.value.value;
 
       try {
-        const res = await searchBastropCoverage(lat.value, lng.value);
+        const street = addressInput.value.value.split(", ")[0];
+
+        const res = await searchBastropCoverage(lat.value, lng.value, street, zip.value);
         coverageFlag.value = res['serviceType'];
+
 
         // Si es bastrop_nocoverage, verificamos si tiene cobertura especial
         if (coverageFlag.value === 'bastrop_nocoverage') {
@@ -62,7 +65,6 @@ const handleCheck = $(async () => {
         }
 
         if(coverageFlag.value == 'notbastrop'){
-          const street = addressInput.value.value.split(", ")[0];
           configuratorRoute.value = generateConfiguratorRoute(confLink, street, zip.value)
         }
 

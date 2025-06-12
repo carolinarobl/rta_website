@@ -25,7 +25,7 @@ export const Footer = component$(({ data }: { data: any }) => {
               media={data["CorpInfo"]["Media"]["data"]["attributes"]}
             />
           </div>
-          <Markdown text={data["CorpInfo"]["Paragraph"]} classN={"text-white text-center mb-4 max-w-sm text-center"}/>
+          <Markdown text={data["CorpInfo"]["Paragraph"]} classN={"text-white font-extralight mb-4 max-w-sm text-center text-[14px]"}/>
           <Button
             type="action"
             link={data["CorpInfo"]["Buttons"][0]["Link"]}
@@ -34,21 +34,21 @@ export const Footer = component$(({ data }: { data: any }) => {
         </div>
         <div class="container sm:hidden">
           {data["Menus"].map((menu: any, i: any) => (
-            <AccordionItem key={i} inFooter={true} title={menu["Text"]} classContainer="text-xl text-primary-light-blue font-semibold border-b-2 border-t-2 border-primary-light-blue">
+            <AccordionItem key={i} inFooter={true} title={menu["Text"]} classContainer="text-md text-primary-light-blue font-semibold border-b-2 border-t-2 border-primary-light-blue">
               {menu["SubOption"].map((subOption: any, index: any) => (
                 <Link
                   key={index}
                   href={subOption["Link"]}
                   class="mb-4 hover:text-blue-600"
                 >
-                  <p>{subOption["Text"]}</p>
+                  <p class="font-light text-[14px]">{subOption["Text"]}</p>
                 </Link>
               ))}
             </AccordionItem>
           ))}
         </div>
 
-        <div class="flex justify-around">
+        <div class="flex justify-around gap-6">
           {data["Menus"].map((menu: any, i: any) => (
             <div key={i} class="hidden w-1/4 sm:block">
               <p class="text-2xl text-primary-light-blue font-semibold">{menu["Text"]}</p>
@@ -58,7 +58,7 @@ export const Footer = component$(({ data }: { data: any }) => {
                   href={subOption["Link"]}
                   class="hover:text-blue-600"
                 >
-                  <p>{subOption["Text"]}</p>
+                  <p class="font-light text-[14px] py-1">{subOption["Text"]}</p>
                 </Link>
               ))}
             </div>

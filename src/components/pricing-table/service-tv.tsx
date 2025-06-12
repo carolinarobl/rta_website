@@ -14,8 +14,8 @@ interface Props {
   btnSeeMoreText: string;
   btnSeeMoreLink: string;
   features: Array<any>;
-  btnText: string;
-  btnLink: string;
+  btnText?: string;
+  btnLink?: string;
   dataChannels: any;
 }
 
@@ -88,7 +88,7 @@ export const ServiceTv = component$(({
           {features.map((feature: any, key: any) => (
             <span
               key={key}
-              class="my-1 flex flex-row items-center justify-start"
+              class="my-1 flex flex-row items-center justify-start gap-2"
             >
               <div><BsCheckCircleFill class="mx-2 h-[20px] w-[20px] fill-primary-blue text-primary-blue"></BsCheckCircleFill></div>
               
@@ -100,8 +100,9 @@ export const ServiceTv = component$(({
         </div>
       </div>
 
-      <PopupCall link={btnLink} text={btnText}></PopupCall>
-
+     { btnLink && btnText &&
+       <PopupCall link={btnLink} text={btnText}></PopupCall>
+     }
     </div>
   );
 });

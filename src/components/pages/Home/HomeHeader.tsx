@@ -45,7 +45,6 @@ export const HomeHeader = component$(({ data, bannerData }: { data: any, bannerD
   const handleModal = $((): void => {
 
     modalIsOpen.value = !modalIsOpen.value;
-    // var finalStreetValue= streetRef.value.value.split(", ")[0];
     const finalStreetValue= streetRef.value.value.split(", ")[0];
 
     if (!modalIsOpen.value) return;

@@ -15,14 +15,16 @@ export const GigfastInternet = component$(({ data }: { data: any }) => {
                 {data['Introduction']["Title"]}
             </span>
             <Markdown classN={"text-center"} text={data['Introduction']["Paragraph"]} />
-            <Button text={data['Introduction']["Buttons"][0]['Text']} link={data['Introduction']["Buttons"][0]['Link']}></Button>
+            {/* <Button text={data['Introduction']["Buttons"][0]['Text']} link={data['Introduction']["Buttons"][0]['Link']}></Button> */}
         </div>
         <div class="flex flex-wrap gap-10 justify-center mx-4 my-8 items-start">
             {data['PackTables'].map((item: any, index: any) => (
-                <SimpleTable key={index} title={item['Title']} logo={item['Logo']['data']['attributes']}
-                description={item['Description']}
-                features={item['Features']}
-                btnLink={item['Button']['Link']} btnText={item['Button']['Text']}></SimpleTable>
+                <SimpleTable
+                    key={index} title={item['Title']}
+                    logo={item['Logo']['data']['attributes']}
+                    description={item['Description']}
+                    features={item['Features']}
+                />
             ))}
         </div>
         <Button text={data['ButtonConfig']['Text']} link={data['ButtonConfig']['Link']}/>

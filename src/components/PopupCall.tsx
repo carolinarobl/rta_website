@@ -104,12 +104,12 @@ export const PopupCall = component$(
               showModal.value = true;
               console.log(showModal.value);
             }}
-            class={`flex w-fit items-center justify-center rounded-full border-2 border-teal-500 border-opacity-70 bg-white p-0.5 px-1  opacity-90 shadow-md transition-all delay-150 ease-in-out hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white`}
+            class={`flex w-fit items-center justify-center rounded-full outline outline-teal-500 bg-white p-1 transition-all delay-150 ease-in-out hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white text-btn-green`}
           >
-            <p class="min-sm:text-[13px] mx-2 text-[15px] font-[600] tracking-wide max-md:text-[14px] text-btn-green ">
+            <p class="min-sm:text-[13px] mx-2 text-[15px] font-[600] tracking-wide max-md:text-[14px] ">
               {text}
             </p>
-            <div class="flex h-[25px] w-[25px] items-center justify-center rounded-full bg-teal-500 p-0 opacity-70 text-white">
+            <div class="flex h-[30px] w-[30px] items-center justify-center rounded-full bg-teal-500 p-0 text-white">
               <BsTagFill class="fill-white text-white font-bold" />
             </div>
           </div>
@@ -121,7 +121,7 @@ export const PopupCall = component$(
           <button
             class={`flex w-fit items-center justify-center gap-2 ${link.includes(channelLineup)
               ? ""
-              : "rounded-full border-2 border-teal-500 p-1 px-7 shadow-md transition-all  hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white"
+              : "rounded-full outline outline-teal-500 p-1 px-7 transition-all  hover:cursor-pointer hover:border-transparent hover:bg-teal-500 hover:text-white"
               }  bg-white  text-[15px] font-[600]  text-btn-green opacity-80 max-md:text-[14px] max-sm:text-[13px] `}
             onClick$={() => (showModal.value = true)
             }
@@ -143,9 +143,7 @@ export const PopupCall = component$(
             <button aria-label="Close popup"
               onClick$={() => {
                 if (link.includes(configurator) && window.localStorage.getItem("sendform_leaving") != "true") {
-                  console.log(showPopupLeaving.value);
                   showPopupLeaving.value = true;
-                  console.log(showPopupLeaving.value);
                 }
                 else {
                   showModal.value = false;

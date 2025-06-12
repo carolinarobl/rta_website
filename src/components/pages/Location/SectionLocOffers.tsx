@@ -38,8 +38,8 @@ export const SectionLocOffers = component$(({ data }: { data: any }) => {
               {tables.map((table:any, i:any) => (
                 <SimpleTable
                   key={i}
-                  btnText={table["Button"]["Text"]}
-                  btnLink={table["Button"]["Link"]}
+                  btnText={table["Button"]?.["Text"]}
+                  btnLink={table["Button"]?.["Link"]}
                   description={table["Description"]}
                   logo={table["Logo"]["data"]["attributes"]}
                   features={table["Features"]}

@@ -11,8 +11,8 @@ interface Props {
   priceTime?: string;
   description: string;
   features: Array<any>;
-  btnLink: string;
-  btnText: string;
+  btnLink?: string;
+  btnText?: string;
   isFullLogo?: boolean;
 }
 export const SimpleTable = component$(
@@ -28,7 +28,7 @@ export const SimpleTable = component$(
     isFullLogo = false,
   }: Props) => {
     return (
-      <div class="flex min-h-[600px] w-fit max-w-[300px] flex-col items-center justify-between rounded-[35px] bg-white px-5">
+      <div class="flex w-fit max-w-[300px] flex-col items-center justify-between rounded-[35px] bg-white px-5">
         <div class="mt-8 flex w-fit max-w-full flex-col items-center self-center">
           {isFullLogo ?
             <div class="flex flex-col justify-center items-center self-center gap-2 ">
@@ -74,7 +74,7 @@ export const SimpleTable = component$(
             {features.map((item: any, index: any) => (
               <span
                 key={index}
-                class="my-1 flex flex-row items-center justify-start"
+                class="my-1 flex flex-row items-center justify-start gap-2"
               >
                 <div>
                   <BsCheckCircleFill class="mx-2 h-[20px] w-[20px] fill-primary-blue text-primary-blue"></BsCheckCircleFill>
@@ -88,17 +88,9 @@ export const SimpleTable = component$(
           </div>
         </div>
 
-        <div class="my-4 flex h-[80px] w-full flex-col items-center justify-center">
+        <div class="my-4 flex w-full flex-col items-center justify-center">
           <div class="border-gary-500 my-4 h-[1px] w-full border-t-2"></div>
-          <Button text={btnText} link={btnLink} />
-          {/* <a href={btnLink} class="w-full">
-            <div class="flex h-[50px] w-full flex-row items-center justify-center rounded-full border-2 border-teal-500 bg-transparent p-1 px-6 text-btn-green hover:bg-teal-500 hover:text-white">
-              <p class="mx-4 font-bold">{btnText}</p>
-              <div class="flex h-[25px] w-[25px] items-center justify-center rounded-full bg-teal-500 ">
-                <BsTagFill class="fill-white" />
-              </div>
-            </div>
-          </a> */}
+          {btnText && btnLink && <Button text={btnText} link={btnLink} />}
         </div>
       </div>
     );

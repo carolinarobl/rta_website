@@ -18,8 +18,8 @@ export const SectionChpack = component$(({data, dataChannels, title}:{data:any, 
       btnSeeMoreLink={table['LineupButton']['Link']}
       btnSeeMoreText={table['LineupButton']['Text']}
       features={table['Features']}
-      btnLink={table['Button']['Link']}
-      btnText={table['Button']['Text']}
+      btnLink={table['Button']?.['Link']}
+      btnText={table['Button']?.['Text']}
       dataChannels ={dataChannels}
       ></ServiceTv>
 ))}

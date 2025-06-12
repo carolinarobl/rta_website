@@ -46,9 +46,9 @@ export const LocalWeatherStations = component$(({ data }: { data: any }) => {
                     )[0]
                   }
                 </span>
-                <span class="text-[12px]">
+                {/* <span class="text-[12px]">
                   {formatDate(weather["data"]["days"][0]["datetime"], false)}
-                </span>
+                </span> */}
                 <div class="mt-2 flex items-center gap-3">
                   <FaLocationArrowSolid class="text-[15px] text-white" />
                   <span class="text-[17px] font-[600] max-[1200px]:text-[15px]">

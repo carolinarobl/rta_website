@@ -6,15 +6,15 @@ export const CheckboxWithInput = component$(({
     classN,
     id,
     description = "",
-    // signal
-    textareaSignal
+    textareaSignal,
+    emailInputSignal
 }: {
     text: string,
     classN?: string,
     id: any,
     description?: string,
-    // signal: Signal<boolean>
-    textareaSignal: Signal<string>
+    textareaSignal: Signal<string>,
+    emailInputSignal: Signal<string>
 }) => {
 
     const isSelected = useSignal(false);
@@ -52,21 +52,36 @@ export const CheckboxWithInput = component$(({
                 </div>
 
                 {/* Container | Contenedor para textbox area opcional */}
-                <div class={`${isSelected.value ? "flex flex-col" : "hidden"}`}>
+                <div class={`${isSelected.value ? "flex flex-col gap-2" : "hidden"}`}>
 
-                    {/* Texto | Descripción de opción/input */}
-                    <span>{description != "" ? `(${description})`:null}</span>
+                    <div class='flex flex-col'>
+                        {/* Texto | Descripción de opción/input */}
+                        <span class='text-[12px]'>{description != "" ? `(${description})`:null}</span>
 
-                    {/* Input | Textarea */}
-                    <textarea
-                        rows={3}
-                        name={`${id}-textarea`}
-                        id={`${id}-textarea`}
-                        required={isSelected.value}
-                        onInput$={(event) => textareaSignal.value = (event.target as HTMLTextAreaElement).value}
-                        class={`appearance-none border rounded-2xl text-primary-dark-blue px-1
+                        {/* Input | Textarea */}
+                        <textarea
+                            rows={3}
+                            name={`${id}-textarea`}
+                            id={`${id}-textarea`}
+                            required={isSelected.value}
+                            onInput$={(event) => textareaSignal.value = (event.target as HTMLTextAreaElement).value}
+                            class={`appearance-none border rounded-2xl text-primary-dark-blue px-1 text-[15px]
                                 ${isSelected.value && textEmpty.value ? "border-secondary-red" : "border-primary-dark-blue"}`} />
+                        </div>
 
+                    <div class='flex flex-col'>
+                        {/* Texto | Título descriptivo de campo para correo */}
+                        <span class='font-semibold text-md'>E-mail</span>
+                        <span class='text-[12px]'>Add your e-mail in case you want us to reach to you.</span>
+                        
+                        {/* Input | Textarea */}
+                        <input
+                            type="email"
+                            name={`mailinput`}
+                            id={`mailinput`}
+                            onInput$={(event) => emailInputSignal.value = (event.target as HTMLInputElement).value}
+                            class={`appearance-none border rounded-full text-primary-dark-blue p-1 text-[15px]`} />
+                    </div>
                 </div>
 
                
