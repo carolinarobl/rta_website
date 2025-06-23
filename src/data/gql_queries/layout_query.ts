@@ -123,6 +123,10 @@ query QueryLayout {
               Link
             }
           }
+          CallButton{
+            Text
+            Link
+          }
         }
       }
     }

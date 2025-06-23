@@ -3,8 +3,10 @@ import { Button } from "./Button";
 // import Carousel from "./Carousel";
 import { PopupConfigurator } from "./popups/popup_configurator";
 import { PopupLeaving } from "./popups/popup_leaving";
-import { BsGeoAltFill, BsHouseFill, BsSearch } from "@qwikest/icons/bootstrap";
+import { BsGeoAltFill, BsHouseFill, BsSearch, BsTelephoneFill } from "@qwikest/icons/bootstrap";
 import { FaLocationPinSolid } from "@qwikest/icons/font-awesome";
+import { Markdown } from "./Markdown";
+import { Link } from "@builder.io/qwik-city";
 
 
 export const Header = component$(({ data }: { data: any }) => {
@@ -35,6 +37,9 @@ export const Header = component$(({ data }: { data: any }) => {
   const isloading = useSignal(false);
   const isAddressMissing = useSignal(false);
   const zip = useSignal('');
+
+  // V a r i a b l e s   |   C a l l   B u t t o n
+  const callButtonData = data['CallButton'];
 
   // H A N D L E R S
   // H a n d l e r   |   A d d r e s s   s u g g e s t i o n s
@@ -97,6 +102,22 @@ export const Header = component$(({ data }: { data: any }) => {
   return (
 
     <div class={`flex flex-col items-center justify-center p-4 gap-2 w-full`}>     
+      
+      {/* F I X E D   B U T T O N | C A L L   B U T T O N */}
+      { callButtonData &&
+        <Link href={callButtonData['Link']}>
+          <div class="bg-teal-500 fixed flex flex-row right-0 md:bottom-auto bottom-10 rounded-full rounded-r-none !z-[999] p-2 shadow-xl shadow-primary-blue/30 items-center gap-2">
+            <div class="flex h-[25px] w-[25px] items-center justify-center rounded-full bg-white p-0 opacity-70 text-btn-green">
+              <BsTelephoneFill />
+            </div>
+
+            <Markdown
+              text={callButtonData['Text']}
+              classN="!text-white text-[12px] !tracking-wider"
+            />
+          </div>
+        </Link>
+      }
      
       {/* F O R M   A R E A | T I T L E S */}
       <div class="flex flex-row gap-2 items-center justify-center animate-fade-in">
@@ -136,6 +157,7 @@ export const Header = component$(({ data }: { data: any }) => {
            </div>
                
         </form>
+
       
                 <div class={`absolute left-0 top-full mt-2 w-full z-10 flex max-h-[200px] flex-col gap-3 overflow-y-auto rounded-xl bg-white p-4 text-primary-blue shadow-lg
   ${suggStatus.value === "none" || suggStatus.value === "selected" ? "hidden" : ""}`}>
