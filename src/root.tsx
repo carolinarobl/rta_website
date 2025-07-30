@@ -13,6 +13,7 @@ import { translationFn } from "./speak-functions";
 import "./global.css";
 
 export default component$(() => {
+
   const analyticsScriptP1 = `https://www.googletagmanager.com/gtag/js?id=G-19EN0CY127`;
 
   const analyticsScriptP2 = `
@@ -22,6 +23,13 @@ export default component$(() => {
     gtag('config', 'G-19EN0CY127');
     gtag('config', 'AW-10839619766');
   `;
+
+  const gtmScriptP1 = 
+  `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-W5BJSW4');`;
 
   const pixelScript = `
   !function(f,b,e,v,n,t,s)
@@ -66,6 +74,10 @@ export default component$(() => {
           <script defer async dangerouslySetInnerHTML={analyticsScriptP2}></script>
           {/* <script defer async dangerouslySetInnerHTML={gtmScriptP1}></script> */}
 
+          {/* Google Tag Manager Scripts */}
+          <script defer async dangerouslySetInnerHTML={gtmScriptP1}></script>
+
+
           {/*Facebook Pixel Scripts */}
           <script defer async dangerouslySetInnerHTML={pixelScript}></script>
           
@@ -74,6 +86,8 @@ export default component$(() => {
           <script dangerouslySetInnerHTML={gaShopNowConvertionScript} />
           <script dangerouslySetInnerHTML={gaCheckNowConvertionScript} />
           <script dangerouslySetInnerHTML={gaTrackPhoneScript} />
+
+
 
           <ServiceWorkerRegister />
         </head>

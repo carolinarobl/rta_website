@@ -4,7 +4,7 @@ import { type DocumentHeadValue } from "@builder.io/qwik-city";
 export const strapiURL = "https://strapi.rtatel.com";
 
 // Strapi por ip interna
-export const strapiGQLURL = "http://10.5.24.41:1337";
+export const strapiGQLURL = "http://10.5.24.40:1337";
 
 export const gqlURL = `${strapiGQLURL}/graphql`;
 // export const gqlURL = `${strapiURL}/graphql`;
