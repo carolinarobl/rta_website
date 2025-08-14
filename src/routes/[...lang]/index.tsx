@@ -42,7 +42,7 @@ export default component$(() => {
   const showMarquee = data.type == "home";
 
   const marqueeData = showMarquee
-  ? data?.pageData?.data?.generalMarquee?.data?.attributes
+  ? data.pageData?.data?.generalMarquee?.data?.attributes
   : undefined;
 
   return (

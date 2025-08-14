@@ -80,8 +80,10 @@ export const Paragraph = component$(
               {subtitle && (
                 <h3
                   class={`text-[28px] font-bold
-                  ${ backgroundColor && backgroundColor.trim() !== ("" || "transparent")  ? "text-white": "text-secondary-red"}
-                  ${ hasPricing ? "" : "text-center "} max-sm:text-[20px]`}
+                        ${backgroundColor && !["", "transparent"].includes(backgroundColor.trim())
+                        ? "text-white"
+                        : "text-secondary-red"}
+                        ${hasPricing ? "" : "text-center "} max-sm:text-[20px]`}
                 >
                   {subtitle}
                 </h3>

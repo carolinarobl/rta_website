@@ -85,15 +85,15 @@ export const FormBastrop = component$(({ lang, bastrop_address, service_type }: 
       isFocusEmail.value = true;
     });
 
-    checkPhone?.addEventListener("change", () => {
+    checkPhone.addEventListener("change", () => {
       checkPhoneState.value = checkPhone.checked;
     });
 
-    checkEmail?.addEventListener("change", () => {
+    checkEmail.addEventListener("change", () => {
       checkMailState.value = checkEmail.checked;
     });
 
-    checkEmail?.addEventListener('invalid', (event) => {
+    checkEmail.addEventListener('invalid', (event) => {
       const target = event.target as HTMLInputElement;
       if (!target.validity.valid) {
         if (target.validity.valueMissing) {
