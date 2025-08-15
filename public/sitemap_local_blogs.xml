@@ -158,6 +158,10 @@
         <loc>https://rtatel.com/supporting-the-energy-sector-in-odessa-with-advanced-telecommunications/</loc>
         <priority>0.85</priority>
     </url>
+    <url>
+        <loc>https://rtatel.com/how-rta-s-business-fiber-supports-golden-girls-boutique-in-smithville-tx/</loc>
+        <priority>0.85</priority>
+    </url>
     <!-- END | LOCAL BLOG POSTS (ENGLISH) -->
     <!-- END | LOCAL BLOG POSTS (ENGLISH) -->
     <!-- START | LOCAL BLOG POSTS (SPANISH) -->
@@ -264,6 +268,10 @@
     </url>
     <url>
         <loc>https://rtatel.com/es/supporting-the-energy-sector-in-odessa-with-advanced-telecommunications/</loc>
+        <priority>0.85</priority>
+    </url>
+    <url>
+        <loc>https://rtatel.com/es/how-rta-s-business-fiber-supports-golden-girls-boutique-in-smithville-tx/</loc>
         <priority>0.85</priority>
     </url>
     <!-- END | LOCATION POSTS (SPANISH) -->

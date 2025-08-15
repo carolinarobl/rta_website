@@ -14,15 +14,15 @@ import "./global.css";
 
 export default component$(() => {
 
-  const analyticsScriptP1 = `https://www.googletagmanager.com/gtag/js?id=G-19EN0CY127`;
+  // const analyticsScriptP1 = `https://www.googletagmanager.com/gtag/js?id=G-19EN0CY127`;
 
-  const analyticsScriptP2 = `
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-19EN0CY127');
-    gtag('config', 'AW-10839619766');
-  `;
+  // const analyticsScriptP2 = `
+  //   window.dataLayer = window.dataLayer || [];
+  //   function gtag(){dataLayer.push(arguments);}
+  //   gtag('js', new Date());
+  //   gtag('config', 'G-19EN0CY127');
+  //   gtag('config', 'AW-10839619766');
+  // `;
 
   const gtmScriptP1 = 
   `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -70,9 +70,8 @@ export default component$(() => {
           <RouterHead />
 
           {/*Google Analytics Scripts */}
-          <script defer async src={analyticsScriptP1} ></script>
-          <script defer async dangerouslySetInnerHTML={analyticsScriptP2}></script>
-          {/* <script defer async dangerouslySetInnerHTML={gtmScriptP1}></script> */}
+          {/* <script defer async src={analyticsScriptP1} ></script>
+          <script defer async dangerouslySetInnerHTML={analyticsScriptP2}></script> */}
 
           {/* Google Tag Manager Scripts */}
           <script defer async dangerouslySetInnerHTML={gtmScriptP1}></script>
