@@ -8,7 +8,7 @@ export default component$(({title, totalData, progressData, maxWidth, color}: {t
   const chartColor = color ?? '#2e5899'
 
   const percentage = ((progress / total) * 100).toFixed(1) + "%";
-
+// eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(() => {
     const ctx = document.getElementById(title) as HTMLCanvasElement;
     if (!ctx) return;

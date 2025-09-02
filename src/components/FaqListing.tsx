@@ -19,6 +19,7 @@ export default component$(({ faqs, listall = true, analyticsOrigin }: { faqs: an
   });
 
   // Identifica la altura de cada sección de contenido
+  // eslint-disable-next-line qwik/no-use-visible-task
   useVisibleTask$(({ track }) => {
     track(() => state.showAll); // Recalcula cada vez que cambia showAll
   
@@ -86,6 +87,7 @@ export default component$(({ faqs, listall = true, analyticsOrigin }: { faqs: an
             {specialLinks.map((link) => (
               // <CustomLink key={link.id} id={link.id} label={link.text} />
               <Button
+              key={link.id}
               text={link.text}
               link={link.id}
               />
@@ -104,7 +106,7 @@ export default component$(({ faqs, listall = true, analyticsOrigin }: { faqs: an
                   <table class="border-collapse border rounded-2xl border-gray-200 w-full">
                     <tbody class="bg-purple-300 m-2">
                       {faq.Table.map((column: any, index: any) => (
-                        <div class=''>
+                        <div class='' key={index}>
                           {
                             column['ColumnThree'].includes("Title")
                               ? 

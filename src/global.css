@@ -289,3 +289,16 @@ input:invalid::-webkit-validation-bubble,
 input:invalid::-moz-validation-bubble {
   display: none;
 }
+
+.leaflet-tooltip {
+  background-color: transparent !important;   /* fondo blanco */
+  border:0 !important;
+  border-color: transparent !important;  /* sin borde */
+  box-shadow: none !important;  /* sin sombra */
+  font-weight: 500;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  padding: 8px 12px;
+  border-radius: 15px;
+  pointer-events: none;
+}
+

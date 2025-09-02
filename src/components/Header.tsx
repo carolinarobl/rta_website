@@ -23,7 +23,7 @@ export const Header = component$(({ data, showForm=true, showCallButton = true }
   // V a r i a b l e s   |   P o p u p s
   const showPopupLeaving = useSignal(false);
   const showPopupConfigurator = useSignal(false);
-  const slideData = (data['Slide'] as any[])?.find((slide) => slide?.Buttons?.[0]?.Link?.includes('=pConf='));
+  const slideData = (data['Slide'] as any[]).find((slide) => slide?.Buttons?.[0]?.Link?.includes('=pConf='));
   const formButton = slideData?.Buttons?.[0];
   const fullFrameSource = useSignal<string>(
   formButton?.Link || '=pConf=https://ecom.rtatel.com/#/prefill/?address=streetInput&zipcode=zipInput');

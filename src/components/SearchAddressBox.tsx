@@ -30,9 +30,12 @@ export default component$(({ isES, formData, confLink }: { isES: any, formData?:
   const isFormOpen = useSignal(false);
   const isAddressMissing = useSignal(false);
 
-  const lat = useSignal("");
-  const lng = useSignal("");
+  const lat = useSignal('');
+  const lng = useSignal('');
   const zip = useSignal('');
+
+  const formLat = useSignal("");
+  const formLng = useSignal("");
 
   const typingTimer = useSignal<any>();
   const suggestions = useSignal([]);
@@ -68,7 +71,8 @@ const handleCheck = $(async () => {
           configuratorRoute.value = generateConfiguratorRoute(confLink, street, zip.value)
         }
 
-        // ✅ Ahora que coverageFlag ya está actualizado, abrimos el modal
+        formLat.value = lat.value;
+        formLng.value = lng.value;
         isFormOpen.value = true;
 
       } catch (error) {
@@ -150,6 +154,8 @@ const handleCheck = $(async () => {
                 lang={isES ? 'es' : 'en'}
                 service_type={coverageFlag.value}
                 bastrop_address={selectedAddress.value}
+                lat={formLat.value}
+                long={formLng.value}
               />
         }
       </div>

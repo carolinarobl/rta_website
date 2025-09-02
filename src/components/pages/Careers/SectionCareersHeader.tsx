@@ -35,8 +35,8 @@ export const SectionCareersHeader = component$(({ data }: { data: any }) => {
           />
           {
             headerTitles && 
-            headerTitles.map((title: any) => (
-              <span>{title['Text']}</span>
+            headerTitles.map((title: any, index: any) => (
+              <span key={index}>{title['Text']}</span>
             ))
           }
         </div>

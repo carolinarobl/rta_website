@@ -1,4 +1,4 @@
-import { component$ } from '@builder.io/qwik';
+import { component$, useSignal, useVisibleTask$ } from '@builder.io/qwik';
 import { useLocation } from '@builder.io/qwik-city';
 import SectionHero from './SectionHero';
 // import SectionNumbers from './SectionNumbers';
@@ -35,6 +35,24 @@ export default component$(({ data }: { data: any }) => {
 // BOTTOM PARAGRAPHS SECTION
 // const contactPar = pageData['ContactPar'];
   const bottomPars = pageData['BottomPars'];
+
+    const QSectionMap = useSignal<any>(null); // Usamos useSignal para guardar el componente
+
+
+    // Con useVisibleTask$, el código solo se ejecuta una vez que
+  // el componente es visible en el navegador (en el cliente).
+  // eslint-disable-next-line qwik/no-use-visible-task
+  useVisibleTask$(({ cleanup }) => {
+    // Importación dinámica
+    import('../../../components/pages/BastropProject/SectionMapReact').then((mod) => {
+      QSectionMap.value = mod.QSectionMap;
+    });
+
+    // Cleanup si es necesario
+    cleanup(() => {
+      // Código de limpieza
+    });
+  });
 
 
 
@@ -80,7 +98,7 @@ return  <div class="flex flex-col items-center justify-center">
                 <div class="flex justify-evenly gap-4 max-[1400px]:flex-wrap ">
                   {plansTables &&
                   plansTables.map((table:any, i:any) => (
-                    <div class={`relative ${i%2==0 ? 'bg-blue-500' : 'bg-primary-blue'} text-white px-4 py-8 w-48 h-40 rounded-xl overflow-hidden shadow-lg !-z-[10]`}>
+                    <div key={i} class={`relative ${i%2==0 ? 'bg-blue-500' : 'bg-primary-blue'} text-white px-4 py-8 w-48 h-40 rounded-xl overflow-hidden shadow-lg !-z-[10]`}>
                       <div class={`absolute -top-5 -right-5 w-14 h-14 ${i%2==0 ? 'bg-primary-blue' : 'bg-blue-500'} rounded-full`}></div>
                         
                       <h2 class="text-2xl font-bold">{table['ColumnOne']}</h2>
@@ -109,6 +127,12 @@ return  <div class="flex flex-col items-center justify-center">
 
     </div>
 
+      {QSectionMap.value ? (
+        <QSectionMap.value />
+      ) : (
+        <div>Loading Map...</div>
+      )}
+    
     <div class="w-full justify-center bg-[#ebf4fc]">
               <ListedParagraphs
               data={bottomPars}

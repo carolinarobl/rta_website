@@ -39,7 +39,7 @@ export const Location = component$(({ data }: { data: any }) => {
         </h3>
         
         <div class="flex flex-wrap w-full items-top justify-center gap-10 my-5">
-          {lastPosts.map((post: any, i:number) => (<div class="m-4"><Post key={i} post={post} id={`post-${i.toString()}`} /></div>))}
+          {lastPosts.map((post: any, i:number) => (<div key={i} class="m-4"><Post key={i} post={post} id={`post-${i.toString()}`} /></div>))}
         </div>
 
         <p class="p-4 text-center text-[16px] text-primary-blue max-[800px]:text-[13px]">
