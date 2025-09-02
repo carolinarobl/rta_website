@@ -74,11 +74,11 @@
 
 .mapWrapper {
   height: 75vh;
-  width: 100%;
+  width: 100% !important;
   border-radius: 16px;
   overflow: hidden;
   position: relative;
-  z-index: 10 !important
+  z-index: 1 !important
 }
 
 /* Personalización de capas de mapa */
@@ -120,10 +120,21 @@
   margin-bottom: 4px;
 }
 
+
+
 .legendColorBox {
   display: inline-block;
   width: 14px;
   height: 14px;
   border-radius: 4px;
   border: 1px solid #222;
+}
+
+
+.leaflet-tooltip {
+  z-index: 50 !important;  /* menor que el menú */
+}
+
+.leaflet-popup {
+  z-index: 75 !important;  /* menor que el menú */
 }

@@ -9,7 +9,7 @@ import { Spinner } from "../Spinner";
 import { Markdown } from "../Markdown";
 import { supabase } from "~/utils/supabase";
 
-export const FormBastrop = component$(({ lang, bastrop_address, service_type }: {lang: string, bastrop_address:string, service_type: string}) => {
+export const FormBastrop = component$(({ lat, long, lang, bastrop_address, service_type }: {lat: string, long: string, lang: string, bastrop_address:string, service_type: string}) => {
 
   const isSpanish = (lang == 'es');
   
@@ -107,7 +107,7 @@ export const FormBastrop = component$(({ lang, bastrop_address, service_type }: 
     // SEARCH ADDRESS SECTION
     
     // FUNCIÓN | Consulta para guardar los datos del usuario
-    const registerUser = $(async (first_name: string, last_name: string, address: string, email: string, phone_number: string, receive_txt: boolean, receive_mail: boolean, has_service: any) => {
+    const registerUser = $(async (first_name: string, last_name: string, address: string, email: string, phone_number: string, receive_txt: boolean, receive_mail: boolean, has_service: any, lat: string, long: string) => {
 
       const { error } = await supabase
         .schema('rta_surveys')
@@ -122,7 +122,9 @@ export const FormBastrop = component$(({ lang, bastrop_address, service_type }: 
             phone_number,
             receive_txt,
             receive_mail,
-            has_service
+            has_service,
+            lat,
+            long
           }
         ]);
     
@@ -169,7 +171,9 @@ export const FormBastrop = component$(({ lang, bastrop_address, service_type }: 
           phone_number,
           receive_txt,
           receive_mail,
-          service_available
+          service_available,
+          lat,
+          long
         );
     
         if (submitted) {

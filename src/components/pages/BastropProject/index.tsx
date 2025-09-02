@@ -127,11 +127,11 @@ return  <div class="flex flex-col items-center justify-center">
 
     </div>
 
-      {/* {QSectionMap.value ? (
+      {QSectionMap.value ? (
         <QSectionMap.value />
       ) : (
         <div>Loading Map...</div>
-      )} */}
+      )}
     
     <div class="w-full justify-center bg-[#ebf4fc]">
               <ListedParagraphs
