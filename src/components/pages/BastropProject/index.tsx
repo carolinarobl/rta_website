@@ -3,7 +3,8 @@ import { useLocation } from '@builder.io/qwik-city';
 import SectionHero from './SectionHero';
 // import SectionNumbers from './SectionNumbers';
 import { ListedParagraphs, Paragraph } from '~/components/Paragraph';
-import { StrapiAsset } from '~/components/StrapiAsset';
+import { Markdown } from '~/components/Markdown';
+import FaqListing from '~/components/FaqListing';
 
 export default component$(({ data }: { data: any }) => {
   const location = useLocation();
@@ -14,8 +15,9 @@ export default component$(({ data }: { data: any }) => {
 
 // INTRO SECTION
   const headerDekstop = pageData['HeaderDesktop']['data']['attributes'];
-  const headerMobile = pageData['HeaderMobile']['data']['attributes'];
+  // const headerMobile = pageData['HeaderMobile']['data']['attributes'];
   const introPar = pageData['IntroPar'];
+  const showMap = pageData['showMap'];
 
 // FAQ SECTION
   const faqPar = pageData['FaqPar'];
@@ -58,17 +60,17 @@ export default component$(({ data }: { data: any }) => {
 
 return  <div class="flex flex-col items-center justify-center">
 
-          {headerDekstop &&
-            <div class="bg-white w-full !max-h-[250px] min-[600px]:flex hidden">
+          {/* {headerDekstop &&
+            <div class=" !max-h-[250px] flex">
               <StrapiAsset
                 media={headerDekstop}
                 width={900}
                 height={924}
               />
             </div>
-          }
+          } */}
           
-          {headerMobile &&
+          {/* {headerMobile &&
             <div class="bg-white w-full !max-h-[250px] min-[600px]:hidden flex">
               <StrapiAsset
                 media={headerMobile}
@@ -76,39 +78,75 @@ return  <div class="flex flex-col items-center justify-center">
                 height={650}
               />
             </div>
-          }
+          } */}
+
             <div class="max-w-[1200px] flex flex-col text-primary-blue items-center justify-center gap-10">
+            
+<div class="flex md:flex-row flex-col items-start justify-center w-full gap-4 relative">
+  <div class={`${showMap ? 'flex-1' : ''}`}>
+    <SectionHero
+      banner={headerDekstop}
+      introPar={introPar}
+      isES={isES}
+      confLink={configuratorRoute}
+    />
+  </div>
 
-              <SectionHero
-                introPar={introPar}
-                faqPar={faqPar}
-                faqs={faqList}
-                isES={isES}
-                confLink={configuratorRoute}
-              />
+  <div class={`${showMap ? 'flex-1 relative z-0 w-full':'hidden'}`}>
+    {QSectionMap.value ? (
+      <div class="w-full h-[50vh] md:h-[80vh] mb-6"> {/* 🔹 menor altura en mobile */}
+        <QSectionMap.value />
+      </div>
+    ) : (
+      <div>Loading Map...</div>
+    )}
+  </div>
+</div>
 
-              <div class="flex flex-col w-full">
+
+              <section class="flex md:flex-row flex-col items-start justify-center w-full gap-2">
+                
+                <div class="flex-1 w-full md:w-1/2 min-w-0 !z-0 flex-col bg-white rounded-[30px]">
+                  {faqPar &&
+                    <div class="px-4 flex flex-col">
+                        <Markdown text={faqPar.Title} classN='md:!text-[35px] !text-[20px] mt-4 md:text-start text-center'/>        
+                    </div>
+                  }
+
+                  <FaqListing faqs={faqList} listall={false} analyticsOrigin='bastrop_faq'/>
+                </div>
+
+              <div class="flex-1 w-full md:w-1/2 min-w-0 !z-0 flex-col">
 
                 <Paragraph
                 title={isES ? 'Nuestros planes':'Our Plans'}
-                logo={{'url':'/uploads/gig_FAST_Internet_0253314cce.webp'}}
+                // logo={{'url':'/uploads/gig_FAST_Internet_0253314cce.webp'}}
                 text={isES?'Dale un vistazo a las ofertas disponibles en esta área':'Take a look of the available offers in this area'}
-                backgroundColor='transparent'/>
+                backgroundColor='transparent'
+                />
 
-                <div class="flex justify-evenly gap-4 max-[1400px]:flex-wrap ">
+                <div class="flex justify-evenly gap-4 flex-col mx-4 ">
                   {plansTables &&
                   plansTables.map((table:any, i:any) => (
-                    <div key={i} class={`relative ${i%2==0 ? 'bg-blue-500' : 'bg-primary-blue'} text-white px-4 py-8 w-48 h-40 rounded-xl overflow-hidden shadow-lg !-z-[10]`}>
-                      <div class={`absolute -top-5 -right-5 w-14 h-14 ${i%2==0 ? 'bg-primary-blue' : 'bg-blue-500'} rounded-full`}></div>
-                        
-                      <h2 class="text-2xl font-bold">{table['ColumnOne']}</h2>
+                    <div key={i} class={` ${i%2==0 ? 'bg-blue-500' : 'bg-primary-blue'} text-white p-3 w-full rounded-full overflow-hidden shadow-lg !-z-[10] flex flex-row items-center justify-between`}>
+                      {/* <div class={`absolute -top-5 -right-5 w-14 h-14 ${i%2==0 ? 'bg-primary-blue' : 'bg-blue-500'} rounded-full`}></div> */}
                       
-                      <p class="text-sm">{table['ColumnTwo']}</p>
-                      <p class="text-xl py-4 font-bold">{table['ColumnThree']}<span class='text-sm font-thin'>/mo</span></p>
+                      <div class="flex flex-col gap-1">
+                        <h2 class="text-2xl font-bold">{table['ColumnOne']}</h2>
+                        <p class="text-sm">{table['ColumnTwo']}</p>
+                      </div>
+
+
+                      <div class={`${i%2==0 ? 'bg-primary-blue' : 'bg-blue-500'} rounded-full flex items-center justify-center p-2`}>
+                        <p class="text-xl py-4 font-bold">{table['ColumnThree']}<span class='text-sm font-thin'>/mo</span></p>
+                      </div>
                     </div>
                   ))}
                 </div>
               </div>
+
+              </section>
+
                 
               {/* <SectionNumbers
                 title={numbersTitle}
@@ -126,12 +164,6 @@ return  <div class="flex flex-col items-center justify-center">
             
 
     </div>
-
-      {QSectionMap.value ? (
-        <QSectionMap.value />
-      ) : (
-        <div>Loading Map...</div>
-      )}
     
     <div class="w-full justify-center bg-[#ebf4fc]">
               <ListedParagraphs

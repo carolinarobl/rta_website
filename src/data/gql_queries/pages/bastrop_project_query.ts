@@ -4,7 +4,8 @@ export const bastropProjectQuery = (locale:string)=>{
     return `query QueryBastropProject {
                 pageBastropP(locale:"${locale}") {
                     data{
-                        attributes{    
+                        attributes{ 
+                            showMap   
 
                             HeaderDesktop{
                                 ${mediaUrl}
