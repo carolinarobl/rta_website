@@ -3,7 +3,7 @@ export const searchStreets = async (
   atLat: number,
   atLng: number,
 ) => {
-  const apiKey = "IbuSA9oJnZ_SSAN3hiD9EFv0fxE0mijeZF2QQjcjl6Y";
+  const apiKey = "7Bjb7NlgbyFq2tgXhZsANgwpDRgh8RJlxqD9gn4WN44";
   const resp = await fetch(
     
     `https://autosuggest.search.hereapi.com/v1/autosuggest?apiKey=${apiKey}&q=${q}&at=${atLat},${atLng}&in=countryCode:USA`,
