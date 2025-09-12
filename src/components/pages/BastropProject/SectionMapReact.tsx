@@ -14,6 +14,7 @@ interface FeatureProperties {
   id?: string;
   start?: string;
   end?: string;
+  serviceDate?: string;
 }
 
 interface Feature {
@@ -55,11 +56,11 @@ const MAP_TYPES: { [key: string]: MapType } = {
 
 // Colores de cuadrantes
 const QUADRANT_COLORS: { [key: string]: string } = {
-  'QUADRANT - 1': '#2063e0ff',
-  'QUADRANT - 2': '#ffc800ff',
-  'QUADRANT - 3': '#ff5714ff',
-  'QUADRANT - 4': '#77bc00ff',
-  'Habitat': '#5b00bcff',
+  'QUADRANT - 1': '#1f86edff',
+  'QUADRANT - 2': '#d1bb86ff',
+  'QUADRANT - 3': '#848698ff',
+  'QUADRANT - 4': '#cf083aff',
+  'Habitat': '#003cbcff',
 };
 
 // Formateo de fechas
@@ -104,7 +105,7 @@ function SectionMap() {
   const [boundary, setBoundary] = useState<GeoJSON.GeoJsonObject | null>(null);
   const [enriched, setEnriched] = useState<FeatureCollection | null>(null);
   const [err, setErr] = useState<string | null>(null);
-  const [mapType, setMapType] = useState<string>('light');
+  const [mapType] = useState<string>('light');
 
   const mapRef = useRef<LeafletMap | null>(null);
   const geoJsonRef = useRef<L.GeoJSON<any> | null>(null);
@@ -132,6 +133,7 @@ function SectionMap() {
                 quadrant: match?.quadrant ?? null,
                 start: match?.constr_start_date ?? null,
                 end: match?.constr_end_date ?? null,
+                serviceDate: match?.service_start_date ?? 'TBD',
               },
             };
           }),
@@ -156,7 +158,7 @@ function SectionMap() {
     if (!feature) return { color: '#2b2b2b', weight: 1.2, opacity: 1, fillColor: '#A1A1A1', fillOpacity: 0.45 };
     const q = feature.properties.quadrant;
     const color = (q && QUADRANT_COLORS[q]) || '#A1A1A1';
-    return { color, weight: 1.25, opacity: 1, fillColor: color, fillOpacity: 0.30, dashArray: '4,4' };
+    return { color, weight: 1.25, opacity: 1, fillColor: color, fillOpacity: 0.30, dashArray: '1,3' };
   };
 
   // Tooltips y hover
@@ -175,7 +177,7 @@ function SectionMap() {
          padding: 8px;
          border-radius: 15px;
        ">
-         ${name}<br/>Construction: ${start} → ${end}
+        <b>${name}</b><br/>Construction: ${start} → ${end}<br/>Service start date: ${props.serviceDate}
        </div>`,
       { sticky: true, direction: 'top', opacity: 0.95 }
     );
@@ -205,13 +207,13 @@ function SectionMap() {
   return (
     <section aria-label="Bastrop Project Map – Coverage and Calendar" className={styles.sectionContainer}>
       <div className={styles.headerContainer}>
-        <h2 className={styles.sectionTitle}>Bastrop – Coverage and Calendar</h2>
-        <div className={styles.mapControls}>
+        {/* <h2 className={styles.sectionTitle}>Bastrop – Coverage and Calendar</h2> */}
+        {/* <div className={styles.mapControls}>
           <label htmlFor="mapTypeSelector" className={styles.controlLabel}>Map Type:</label>
           <select id="mapTypeSelector" value={mapType} onChange={(e) => setMapType(e.target.value)} className={styles.mapSelector}>
             {Object.entries(MAP_TYPES).map(([key, config]) => (<option key={key} value={key}>{config.name}</option>))}
           </select>
-        </div>
+        </div> */}
       </div>
 
       {err && <div className={styles.errorMsg}>{err}</div>}

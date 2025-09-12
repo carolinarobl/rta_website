@@ -1,6 +1,7 @@
 .sectionContainer {
   position: relative;
   padding: 1rem;
+  width: 100%;
 }
 
 .headerContainer {
@@ -106,6 +107,7 @@
   border-radius: 12px;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
   font-size: 12px;
+  
 }
 
 .legendTitle {
