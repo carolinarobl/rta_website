@@ -34,7 +34,6 @@ export default component$(({ isES, formData, confLink }: { isES: any, formData?:
   const lng = useSignal('');
   const zip = useSignal('');
   const section = useSignal('');
-  const quadrant = useSignal('');
 
   const formLat = useSignal("");
   const formLng = useSignal("");
