@@ -1,9 +1,8 @@
-
 export async function generateLead(first_name: string, last_name: string, email: string, phone_number:string, receive_txt:boolean, receive_mail:boolean, lat:string, long:string, customerNotes:string, splitAddress: string[]) {
 
     const apiKey = "3cBEFVR4qQleIRO2yWu0FcOCDdyZbuaU";
 
-    const payload = {
+    const payload:any = {
       apiKey: apiKey,
       action: "createServiceOrder",
       customerType: "residential",
@@ -50,7 +49,7 @@ export async function generateLead(first_name: string, last_name: string, email:
     const data = await response.json();
 
     if (response.ok) {
-        const successMsg = "Successfully Sent!";
+        const successMsg = "PW Lead created successfully";
         console.log(successMsg);
       }
 

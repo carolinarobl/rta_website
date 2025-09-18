@@ -346,9 +346,7 @@ export const FormBastrop = component$(({ lat, long, lang, bastrop_address, secti
             phone_number,
             receive_txt,
             receive_mail
-          );
-
-          alert(isSpanish ? "¡Información guardada con éxito!" : "Information saved successfully!");
+          ).then(() => {alert(isSpanish ? "¡Información guardada con éxito!" : "Information saved successfully!");})
 
           location.reload(); // Recargar página
         } else {
