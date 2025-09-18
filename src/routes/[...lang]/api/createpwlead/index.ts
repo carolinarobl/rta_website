@@ -39,7 +39,7 @@ export async function generateLead(first_name: string, last_name: string, email:
 
     try {
     
-    const response = await fetch('https://apps.cblsrv42.rtatel.com/planbuilder/api', {
+    const response = await fetch('https://cblsrvr1.rtatel.com/planbuilder/api', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
