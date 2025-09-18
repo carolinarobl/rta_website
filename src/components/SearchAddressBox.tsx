@@ -33,6 +33,7 @@ export default component$(({ isES, formData, confLink }: { isES: any, formData?:
   const lat = useSignal('');
   const lng = useSignal('');
   const zip = useSignal('');
+  const section = useSignal('');
 
   const formLat = useSignal("");
   const formLng = useSignal("");
@@ -57,7 +58,7 @@ const handleCheck = $(async () => {
 
         const res = await searchBastropCoverage(lat.value, lng.value, street, zip.value);
         coverageFlag.value = res['serviceType'];
-
+        section.value = res['section'] || '';
 
         // Si es bastrop_nocoverage, verificamos si tiene cobertura especial
         if (coverageFlag.value === 'bastrop_nocoverage') {
@@ -154,6 +155,7 @@ const handleCheck = $(async () => {
                 lang={isES ? 'es' : 'en'}
                 service_type={coverageFlag.value}
                 bastrop_address={selectedAddress.value}
+                section={section.value}
                 lat={formLat.value}
                 long={formLng.value}
               />
