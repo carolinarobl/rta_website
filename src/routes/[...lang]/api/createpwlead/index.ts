@@ -1,20 +1,5 @@
-import type { RequestHandler } from '@builder.io/qwik-city';
 
-export const onPost: RequestHandler = async ({ request, json }) => {
- try {
-    // Desestructuramos solo los campos que necesitas
-    const {
-      first_name,
-      last_name,
-      email,
-      phone_number,
-      receive_txt,
-      receive_mail,
-      lat,
-      long,
-      customerNotes,
-      splitAddress
-    } = await request.json();
+export async function generateLead(first_name: string, last_name: string, email: string, phone_number:string, receive_txt:boolean, receive_mail:boolean, lat:string, long:string, customerNotes:string, splitAddress: string[]) {
 
     const apiKey = "3cBEFVR4qQleIRO2yWu0FcOCDdyZbuaU";
 
@@ -52,6 +37,8 @@ export const onPost: RequestHandler = async ({ request, json }) => {
       engageOption: ""
     };
 
+    try {
+    
     const response = await fetch('https://apps.cblsrv42.rtatel.com/planbuilder/api', {
       method: 'POST',
       headers: {
@@ -62,14 +49,17 @@ export const onPost: RequestHandler = async ({ request, json }) => {
 
     const data = await response.json();
 
-    if (!response.ok) {
+    if (response.ok) {
+        const successMsg = "Successfully Sent!";
+        console.log(successMsg);
+      }
+
+    else{
       throw new Error(data?.message || 'Error while creating PW Lead');
     }
 
-    json(200, { success: true });
 
   } catch (error: any) {
     console.error('Error in generatePWLead API route:', error);
-    json(500, { success: false, error: error.message });
   }
-};
+}

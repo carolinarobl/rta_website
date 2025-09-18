@@ -4,10 +4,10 @@ import {
   BsEnvelopeAtFill,
   BsTelephoneFill,
 } from "@qwikest/icons/bootstrap";
-// import { sendMail } from "~/routes/[...lang]/api/sendmail";
 import { Spinner } from "../Spinner";
 import { Markdown } from "../Markdown";
 import { supabase } from "~/utils/supabase";
+import { generateLead } from "~/routes/[...lang]/api/createpwlead";
 
 export const FormBastrop = component$(({ lat, long, lang, bastrop_address, section, service_type }: {lat: string, long: string, lang: string, bastrop_address:string, section: string, service_type: string}) => {
 
@@ -185,6 +185,71 @@ export const FormBastrop = component$(({ lat, long, lang, bastrop_address, secti
     });
 
     // FUNCIÓN | Generación de lead en Powercode
+    //   const generatePWLead = $(async (
+    //       first_name: string,
+    //       last_name: string,
+    //       email:string,
+    //       phone_number:string,
+    //       receive_txt:boolean,
+    //       receive_mail:boolean,
+    //     ) => {
+
+    //     const { quadrantCode, quadrantNumber } = await getSectionAndQuadrantInfo(section);
+
+    //     const service = (service_type == 'bastrop_elegible') ? 'Served' : 'No Served';
+    //     const customerNotes = service === "Served"
+    //       ? `${service} ${section} ${quadrantCode}-${quadrantNumber}`
+    //       : `${service}`;
+    //     const splitAddress = bastrop_address.split(',').map((e) => e.trim());
+
+    //     const body = {
+    //         "apiKey": "3cBEFVR4qQleIRO2yWu0FcOCDdyZbuaU",
+    //         "action": "createServiceOrder",
+    //         "customerType": "residential",
+    //         "networkType": "fiber",
+    //         "locationGroup": "bas",
+    //         "customer": {
+    //             "firstName": first_name,
+    //             "lastName": last_name,
+    //             "emailAddress": email,
+    //             "phone": phone_number ? [{ "Type": "Mobile", "Number": phone_number }] : [],
+    //             "customerNotes": customerNotes,
+    //             "physicalStreet": splitAddress[0],
+    //             "physicalCity": splitAddress[1],
+    //             "physicalState": splitAddress[2].split(' ')[0],
+    //             "physicalZip": splitAddress[2].split(' ')[1],
+    //             "physicalLatitude": lat,
+    //             "physicalLongitude": long
+    //         },
+    //         "contactPreference": {
+    //             "phone": receive_txt,
+    //             "email": receive_mail,
+    //             "rangeTime": "Any time",
+    //             "promoInfobyEmail": false,
+    //             "promoInfobySMS": false
+    //         },
+    //         "services": [],
+    //         "additionalServices": [],
+    //         "devices": [],
+    //         "fees": [],
+    //         "discounts": [],
+    //         "engageOption": ""
+    //     };
+
+    //     try {
+    //         const response = await fetch('https://apps.cblsrv42.rtatel.com/planbuilder/api', {
+    //             method: 'POST',
+    //             headers: { 'Content-Type': 'application/json' },
+    //             body: JSON.stringify(body),
+    //         });
+    //         if (!response.ok) {
+    //             console.error('Error al llamar a la API externa:', response.status);
+    //         }
+    //     } catch (error) {
+    //         console.error('Error en la llamada a la API externa:', error);
+    //     }
+    // });
+    
       const generatePWLead = $(async (
           first_name: string,
           last_name: string,
@@ -202,24 +267,37 @@ export const FormBastrop = component$(({ lat, long, lang, bastrop_address, secti
           : `${service}`;
         const splitAddress = bastrop_address.split(',').map((e) => e.trim());
 
-        await fetch('/api/createpwlead', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            first_name: first_name,
-            last_name: last_name,
-            email: email,
-            phone_number: phone_number,
-            receive_txt: receive_txt,
-            receive_mail: receive_mail,
-            lat,
-            long,
-            splitAddress,
-            customerNotes
-          }),
-        });
+        generateLead(
+          first_name,
+          last_name,
+          email,
+          phone_number,
+          receive_txt,
+          receive_mail,
+          lat,
+          long,
+          customerNotes,
+          splitAddress
+        );
+
+        // await fetch('/api/createpwlead', {
+        //   method: 'POST',
+        //   headers: { 'Content-Type': 'application/json' },
+        //   body: JSON.stringify({
+        //     first_name: first_name,
+        //     last_name: last_name,
+        //     email: email,
+        //     phone_number: phone_number,
+        //     receive_txt: receive_txt,
+        //     receive_mail: receive_mail,
+        //     lat,
+        //     long,
+        //     splitAddress,
+        //     customerNotes
+        //   }),
+        // });
     });
-    
+
     // FUNCIÓN | Submit Form
     formulario?.addEventListener("submit", async (e) => {  
       e.preventDefault();
