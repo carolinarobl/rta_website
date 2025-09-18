@@ -75,6 +75,9 @@ export const doubleCheckBastrop = async (
   
   export const searchBastropCoverage = async (Lat: string, Lng: string, Address: string, Zipcode: string ) => {
     
+    let serviceType: 'bastrop_nofiber' | 'bastrop_elegible' | 'bastrop_nocoverage' | 'notbastrop' | 'unknown' = 'unknown';
+    let section = '';
+
     const getFeatures = async (geometry: 'point' | 'polygon', radius: string, limit: string) =>
       (await consultMap(Lat, Lng, radius, limit, geometry, access_token)).features;
 
@@ -82,12 +85,22 @@ export const doubleCheckBastrop = async (
     const polygonFeatures = await getFeatures('polygon', '0', '5');
 
     const isBastrop = polygonFeatures.some((f: { properties: { folder: string; }; }) => f.properties.folder === 'bastrop_county_outline');
-
-    let serviceType: 'bastrop_nofiber' | 'bastrop_elegible' | 'bastrop_nocoverage' | 'notbastrop' | 'unknown' = 'unknown';
     
+
+
+    if(polygonFeatures.length >= 5){
+      const lastFeature = polygonFeatures[polygonFeatures.length - 1];
+            // Extraer el nombre de la sección de la propiedad 'folder'
+            const folderName = lastFeature.properties.folder;
+const match = folderName.match(/Section \d+[a-zA-Z]?/);
+if (match) {
+    section = match[0];
+}
+    }
+
 serviceType = isBastrop
   ? await doubleCheckBastrop(Lat, Lng, Address, Zipcode)
   : 'notbastrop';
 
-    return { serviceType };
+    return { serviceType, section };
   };
