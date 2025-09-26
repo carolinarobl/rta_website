@@ -259,12 +259,17 @@ export const FormBastrop = component$(({ lat, long, lang, bastrop_address, secti
           receive_mail:boolean,
         ) => {
 
-        const { quadrantCode, quadrantNumber } = await getSectionAndQuadrantInfo(section);
+        const { quadrantCode } = await getSectionAndQuadrantInfo(section);
 
-        const service = (service_type == 'bastrop_elegible') ? 'Served' : 'No Served';
-        const customerNotes = service === "Served"
-          ? `${service} ${section} ${quadrantCode}-${quadrantNumber}`
-          : `${service}`;
+        const service = (service_type == 'bastrop_elegible') ? 'Served' : 'Unserved';
+
+        const tags = [service];
+        if (service === 'Served') tags.push(`${quadrantCode} – ${section.slice(0, -1)}${section.slice(-1).toLowerCase()}`);
+
+        // const customerNotes = service === "Served"
+        //   ? `${service} ${section} ${quadrantCode}-${quadrantNumber}`
+        //   : `${service}`;
+
         const splitAddress = bastrop_address.split(',').map((e) => e.trim());
 
         generateLead(
@@ -276,7 +281,7 @@ export const FormBastrop = component$(({ lat, long, lang, bastrop_address, secti
           receive_mail,
           lat,
           long,
-          customerNotes,
+          tags,
           splitAddress
         );
 

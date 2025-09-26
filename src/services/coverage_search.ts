@@ -90,12 +90,13 @@ export const doubleCheckBastrop = async (
 
     if(polygonFeatures.length >= 5){
       const lastFeature = polygonFeatures[polygonFeatures.length - 1];
-            // Extraer el nombre de la sección de la propiedad 'folder'
-            const folderName = lastFeature.properties.folder;
-const match = folderName.match(/Section \d+[a-zA-Z]?/);
-if (match) {
-    section = match[0];
-}
+      // Extraer el nombre de la sección de la propiedad 'folder'
+      const folderName = lastFeature.properties.folder;
+      const match = folderName.match(/Section \d+[a-zA-Z]?/);
+      
+      if (match) {
+        section = match[0];
+      }
     }
 
 serviceType = isBastrop
