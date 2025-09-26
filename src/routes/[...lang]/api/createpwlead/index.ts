@@ -1,4 +1,4 @@
-export async function generateLead(first_name: string, last_name: string, email: string, phone_number:string, receive_txt:boolean, receive_mail:boolean, lat:string, long:string, customerNotes:string, splitAddress: string[]) {
+export async function generateLead(first_name: string, last_name: string, email: string, phone_number:string, receive_txt:boolean, receive_mail:boolean, lat:string, long:string, tags:string[], splitAddress: string[]) {
 
     const apiKey = "3cBEFVR4qQleIRO2yWu0FcOCDdyZbuaU";
 
@@ -13,7 +13,8 @@ export async function generateLead(first_name: string, last_name: string, email:
         lastName: last_name,
         emailAddress: email,
         phone: phone_number ? [{ Type: "Mobile", Number: phone_number }] : [],
-        customerNotes,
+        customerNotes: '',
+        tags,
         physicalStreet: splitAddress[0] || "",
         physicalCity: splitAddress[1] || "",
         physicalState: splitAddress[2]?.split(' ')[0] || "",
