@@ -33,8 +33,7 @@ export async function generateLead(first_name: string, last_name: string, email:
       additionalServices: [],
       devices: [],
       fees: [],
-      discounts: [],
-      engageOption: ""
+      discounts: []
     };
 
     try {
