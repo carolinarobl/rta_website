@@ -52,7 +52,7 @@ export default component$(() => {
 
 
     const dataBroadbandLabels = useAllBroadbandLabels();
-    const dataGigfastVoice = dataBroadbandLabels.value.gigfastVoice;
+    // const dataGigfastVoice = dataBroadbandLabels.value.gigfastVoice;
     const dataGigfastInternet = dataBroadbandLabels.value.gigfastInternet;
 
 
@@ -62,7 +62,7 @@ export default component$(() => {
             <SEOh1 SEOdata={data['pageData']['data']['pageAllBroadbandlabel']['data']['attributes']['SEO']}>
             </SEOh1>
             <AllBroadbandLabels pageData={data['pageData']['data']['pageAllBroadbandlabel']}
-                braodbandlabelVoice={dataGigfastVoice}
+                // braodbandlabelVoice={dataGigfastVoice}
                 broadbandlabelnternet={dataGigfastInternet} />
         </MainLayout>
     </>

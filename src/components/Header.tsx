@@ -9,7 +9,7 @@ import { Markdown } from "./Markdown";
 import { Link } from "@builder.io/qwik-city";
 
 
-export const Header = component$(({ data }: { data: any }) => {
+export const Header = component$(({ data, isHeroMode }: { data: any; isHeroMode?: boolean }) => {
 
   // V A R I A B L E S
 
@@ -104,7 +104,7 @@ export const Header = component$(({ data }: { data: any }) => {
     <div class={`flex flex-col items-center justify-center p-4 gap-2 w-full`}>     
       
       {/* F I X E D   B U T T O N | C A L L   B U T T O N */}
-      { callButtonData &&
+      { callButtonData && !isHeroMode &&
         <Link href={callButtonData['Link']}>
           <div class="bg-teal-500 fixed flex flex-row right-0 md:bottom-auto bottom-10 rounded-full rounded-r-none !z-[999] p-2 shadow-xl shadow-primary-blue/30 items-center gap-2">
             <div class="flex h-[25px] w-[25px] items-center justify-center rounded-full bg-white p-0 opacity-70 text-btn-green">
@@ -121,9 +121,9 @@ export const Header = component$(({ data }: { data: any }) => {
      
       {/* F O R M   A R E A | T I T L E S */}
       <div class="flex flex-row gap-2 items-center justify-center animate-fade-in">
-        <BsGeoAltFill style={{ color: "#d20053", width:"14px" }}/>
+        <BsGeoAltFill style={{ color: isHeroMode ? "#ffffff" : "#d20053", width:"14px" }}/>
         <p
-          class="text-primary-blue font-semibold md:text-[18px] text-[15px]">
+          class={`font-semibold md:text-[18px] text-[15px] ${isHeroMode ? "text-white drop-shadow-lg" : "text-primary-blue"}`}>
             {slideData?.Title ?? 'Explore coverage in your service area:'}
         </p>
 

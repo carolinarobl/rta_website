@@ -1,12 +1,12 @@
 import { component$ } from "@builder.io/qwik";
-import { HomeHeader } from "./HomeHeader";
+import { HeroSection } from "./HeroSection";
 import { ListedParagraphs, SerializedParagraph } from "~/components/Paragraph";
 import { ProsSection } from "./ProsSection";
 
 import { SectionGFInternetHome } from "./SectionGFInternetHome";
 import { SectionSugHome } from "./SectionSugHome";
 
-export const Home = component$(({ data }: { data: any }) => {
+export const Home = component$(({ data, layoutData }: { data: any; layoutData?: any }) => {
   // full data
   const pageData = data["pageHome"]["data"]["attributes"];
 
@@ -18,7 +18,10 @@ export const Home = component$(({ data }: { data: any }) => {
 
   const prosMap = pageData["ProsPicture"]["data"]["attributes"]
 
-  const promoBannerData = data['generalPromoBanner']['data']['attributes'];
+  const promoBannerData = data['generalPromoBanner']?.['data']?.['attributes'];
+
+  // Header data para el formulario - viene del layoutData
+  const headerData = layoutData?.["data"]?.["generalHeader"]?.["data"]?.["attributes"];
 
 
   // const prosMap =
@@ -28,12 +31,15 @@ export const Home = component$(({ data }: { data: any }) => {
 
   return (
     <div
-      class="relative "
+      class="relative"
       onClick$={() => {
       }}
     >
-      <div class="absolute bottom-0 left-0 right-0 top-[100vh] -z-10 bg-white" />
-      <HomeHeader data={pageData} bannerData={promoBannerData}/>
+      {/* Nuevo Hero Section con video de fondo y formulario integrado */}
+      <HeroSection data={pageData} headerData={headerData} />
+      
+      {/* Hero anterior comentado por si se necesita referencia */}
+      {/* <HomeHeader data={pageData} bannerData={promoBannerData}/> */}
       <ProsSection
         data={{
           prosPar: pageData["ProsPar"],
@@ -41,13 +47,13 @@ export const Home = component$(({ data }: { data: any }) => {
           prosMap,
         }}
       />
-      <SerializedParagraph
+      {/* <SerializedParagraph
         data={pageData["ParACP"]}
         reverse
         textPercentage={60}
       />
-      
-      <div class="flex w-full justify-center bg-[#ebf4fc]">
+       */}
+      <div class="flex w-full justify-center py-10">
         <SectionGFInternetHome
           data={pageData["ParGFServices"][0]}
           parGFIPlans={pageData["ParGFIPlans"]}
@@ -59,8 +65,8 @@ export const Home = component$(({ data }: { data: any }) => {
           pageData["ParGFServices"].length,
         )}
       />
-      <div class="bg-[#ebf4fc]">
-      <SectionSugHome data={pageData["SugsPages"]} />
+      <div class="mx-4 my-8 rounded-3xl bg-primary-blue shadow-xl shadow-primary-blue/30 md:mx-8">
+        <SectionSugHome data={pageData["SugsPages"]} />
       </div>
     </div>
   );

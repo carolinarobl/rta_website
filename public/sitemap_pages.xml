@@ -39,39 +39,7 @@
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/gigfast-voice/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/gigfast-tv/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/gigfast-cloud/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/gigfast-iot/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
         <loc>https://website42.rtatel.com/gigfast-internet-support/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/gigfast-voice-support/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/gigfast-tv-support/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/gfsn/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/portability/</loc>
         <priority>0.80</priority>
     </url>
     <url>
@@ -93,14 +61,6 @@
     <url>
         <loc>https://website42.rtatel.com/winners-circle/</loc>
         <priority>0.70</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/appreciation-lead/</loc>
-        <priority>0.60</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/appreciation-giveaway/</loc>
-        <priority>0.60</priority>
     </url>
     <url>
         <loc>https://website42.rtatel.com/faq/</loc>
@@ -144,10 +104,6 @@
     </url>
     <url>
         <loc>https://website42.rtatel.com/privacy-policy/</loc>
-        <priority>0.30</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/gigfast-tv-privacy-policy/</loc>
         <priority>0.30</priority>
     </url>
     <url>
@@ -195,39 +151,7 @@
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://website42.rtatel.com/es/gigfast-voice/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/es/gigfast-tv/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/es/gigfast-cloud/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/es/gigfast-iot/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
         <loc>https://website42.rtatel.com/es/gigfast-internet-support/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/es/gigfast-voice-support/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/es/gigfast-tv-support/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/es/gfsn/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/es/portability/</loc>
         <priority>0.80</priority>
     </url>
     <url>
@@ -249,14 +173,6 @@
     <url>
         <loc>https://website42.rtatel.com/es/winners-circle/</loc>
         <priority>0.70</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/es/appreciation-lead/</loc>
-        <priority>0.60</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/es/appreciation-giveaway/</loc>
-        <priority>0.60</priority>
     </url>
     <url>
         <loc>https://website42.rtatel.com/es/faq/</loc>
@@ -300,10 +216,6 @@
     </url>
     <url>
         <loc>https://website42.rtatel.com/es/privacy-policy/</loc>
-        <priority>0.30</priority>
-    </url>
-    <url>
-        <loc>https://website42.rtatel.com/es/gigfast-tv-privacy-policy/</loc>
         <priority>0.30</priority>
     </url>
     <url>

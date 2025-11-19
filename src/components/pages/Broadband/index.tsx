@@ -202,7 +202,7 @@ export default component$(({ data }: { data: any }) => {
             />
 
           {/* PLANES DE GIGFASTVOICE */}
-          <BroadbandPlans
+          {/* <BroadbandPlans
             isVisible={!isBusiness.value}
             plans={packagesVoiceResidential.value}
             broadbandPageData={broadbandPageData}
@@ -218,7 +218,7 @@ export default component$(({ data }: { data: any }) => {
             index={1}
             customerTypeIndex={1}
             isVoice
-            />
+            /> */}
         </>
       )
     }
