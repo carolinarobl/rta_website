@@ -6,7 +6,7 @@ import { NotFound } from "~/components/pages/NotFound";
 
 import { customLocale, headSEO } from "~/data/constants";
 import { locationQuery } from "~/data/gql_queries/pages/local_page_query";
-import { getPageCustomData, getPageData } from "~/services/graphql";
+import { getPageCustomData } from "~/services/graphql";
 
 export const usePageData = routeLoader$(async (req) => {
   const lang =
@@ -28,7 +28,7 @@ export const usePageData = routeLoader$(async (req) => {
 
 export default component$(() => {
   const signalData = usePageData();
-  const { type, layoutData, pageData } = signalData.value;
+  const {layoutData, pageData } = signalData.value;
 
 
   const found = pageData.data.locations.data.length > 0;

@@ -4,7 +4,7 @@ import { Markdown } from "~/components/Markdown";
 import { StrapiImage } from "~/components/StrapiImage";
 
 export const ProsSection = component$(({ data }: { data: any }) => {
-  const { prosData, prosPar, prosMap } = data;
+  const { prosData, prosPar} = data;
   return (
     <>
       <style>

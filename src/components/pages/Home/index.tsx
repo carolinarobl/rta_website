@@ -1,6 +1,6 @@
 import { component$ } from "@builder.io/qwik";
 import { HeroSection } from "./HeroSection";
-import { ListedParagraphs, SerializedParagraph } from "~/components/Paragraph";
+import { ListedParagraphs} from "~/components/Paragraph";
 import { ProsSection } from "./ProsSection";
 
 import { SectionGFInternetHome } from "./SectionGFInternetHome";
@@ -18,7 +18,7 @@ export const Home = component$(({ data, layoutData }: { data: any; layoutData?: 
 
   const prosMap = pageData["ProsPicture"]["data"]["attributes"]
 
-  const promoBannerData = data['generalPromoBanner']?.['data']?.['attributes'];
+  // const promoBannerData = data['generalPromoBanner']?.['data']?.['attributes'];
 
   // Header data para el formulario - viene del layoutData
   const headerData = layoutData?.["data"]?.["generalHeader"]?.["data"]?.["attributes"];
