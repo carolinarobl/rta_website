@@ -5,7 +5,7 @@ import { setURL } from '~/data/constants';
 interface Props {
     pageData: any,
     broadbandlabelnternet: any,
-    braodbandlabelVoice: any
+    braodbandlabelVoice?: any
 }
 
 
@@ -85,8 +85,10 @@ export default component$((props: Props) => {
 
                 {/* gigFastVoice */}
 
+        
         <div class={`w-full flex-col gap-2 flex px-4`}>
-            <div class="my-8 max-w-[350px] sm:max-w-[500px] mx-auto">
+            { pageData['data']['attributes']['Services'][1] && 
+             <div class="my-8 max-w-[350px] sm:max-w-[500px] mx-auto">
                 <img
                     src={setURL(pageData['data']['attributes']['Services'][1]['Picture']['data']['attributes']['url'])}
                     width={1230}
@@ -94,7 +96,9 @@ export default component$((props: Props) => {
                     alt={pageData['data']['attributes']['Services'][1]['Picture']['data']['attributes']['alternativeText']}
                     />
             </div>
-
+            }
+           
+           { braodbandlabelVoice && 
             <div class={`flex w-full overflow-x-auto gap-1 flex-row justify-start mb-4 pb-4 px-4`} style={"scrollbar-width: thin; scrollbar-color: #2E5698 #f1f1f1;"}>
                 {braodbandlabelVoice.map((plan: any, idx: number) => (
                     <BroadbandLabel
@@ -132,6 +136,7 @@ export default component$((props: Props) => {
                     />
                 ))}
             </div>
+            }
         </div>
 
 

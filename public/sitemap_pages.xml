@@ -20,7 +20,7 @@
     </url>
     <url>
         <loc>https://rtatel.com/support/</loc>
-        <priority>0.90</priority>
+        <priority>0.70</priority>
     </url>
     <url>
         <loc>https://rtatel.com/business/</loc>
@@ -39,39 +39,7 @@
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://rtatel.com/gigfast-voice/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/gigfast-tv/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/gigfast-cloud/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/gigfast-iot/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
         <loc>https://rtatel.com/gigfast-internet-support/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/gigfast-voice-support/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/gigfast-tv-support/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/gfsn/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/portability/</loc>
         <priority>0.80</priority>
     </url>
     <url>
@@ -93,26 +61,6 @@
     <url>
         <loc>https://rtatel.com/winners-circle/</loc>
         <priority>0.70</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/appreciation-lead/</loc>
-        <priority>0.60</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/appreciation-giveaway/</loc>
-        <priority>0.60</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/free-install/</loc>
-        <priority>0.60</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/pumptopper/</loc>
-        <priority>0.60</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/goldsmith-tt/</loc>
-        <priority>0.60</priority>
     </url>
     <url>
         <loc>https://rtatel.com/faq/</loc>
@@ -155,33 +103,13 @@
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://rtatel.com/aup/</loc>
-        <priority>0.30</priority>
-    </url>
-    <url>
         <loc>https://rtatel.com/privacy-policy/</loc>
-        <priority>0.30</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/gigfast-tv-privacy-policy/</loc>
         <priority>0.30</priority>
     </url>
     <url>
         <loc>https://rtatel.com/local-weather-stations/</loc>
         <priority>0.20</priority>
     </url>
-    <url>
-        <loc>https://rtatel.com/broadbandlabels/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/services-broadbandlabels/</loc>
-        <priority>0.90</priority>
-    </url>
-    <!-- <url>
-        <loc>https://rtatel.com/bastrop-project/</loc>
-        <priority>0.90</priority>
-    </url> -->
     <!-- END | MAIN UNIQUE PAGES (ENGLISH) -->
     <!-- END | MAIN UNIQUE PAGES (ENGLISH) -->
     <!-- START | MAIN UNIQUE PAGES (SPANISH) -->
@@ -223,39 +151,7 @@
         <priority>0.90</priority>
     </url>
     <url>
-        <loc>https://rtatel.com/es/gigfast-voice/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/es/gigfast-tv/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/es/gigfast-cloud/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/es/gigfast-iot/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
         <loc>https://rtatel.com/es/gigfast-internet-support/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/es/gigfast-voice-support/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/es/gigfast-tv-support/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/es/gfsn/</loc>
-        <priority>0.80</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/es/portability/</loc>
         <priority>0.80</priority>
     </url>
     <url>
@@ -277,26 +173,6 @@
     <url>
         <loc>https://rtatel.com/es/winners-circle/</loc>
         <priority>0.70</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/es/appreciation-lead/</loc>
-        <priority>0.60</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/es/appreciation-giveaway/</loc>
-        <priority>0.60</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/es/free-install/</loc>
-        <priority>0.60</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/es/pumptopper/</loc>
-        <priority>0.60</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/es/goldsmith-tt/</loc>
-        <priority>0.60</priority>
     </url>
     <url>
         <loc>https://rtatel.com/es/faq/</loc>
@@ -339,33 +215,13 @@
         <priority>0.30</priority>
     </url>
     <url>
-        <loc>https://rtatel.com/es/aup/</loc>
-        <priority>0.30</priority>
-    </url>
-    <url>
         <loc>https://rtatel.com/es/privacy-policy/</loc>
-        <priority>0.30</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/es/gigfast-tv-privacy-policy/</loc>
         <priority>0.30</priority>
     </url>
     <url>
         <loc>https://rtatel.com/es/local-weather-stations/</loc>
         <priority>0.20</priority>
     </url>
-    <url>
-        <loc>https://rtatel.com/es/broadbandlabels/</loc>
-        <priority>0.90</priority>
-    </url>
-    <url>
-        <loc>https://rtatel.com/es/services-broadbandlabels/</loc>
-        <priority>0.90</priority>
-    </url>
-    <!-- <url>
-        <loc>https://rtatel.com/es/bastrop-project/</loc>
-        <priority>0.90</priority>
-    </url> -->
     <!-- END | MAIN UNIQUE PAGES (SPANISH) -->
     <!-- END | MAIN UNIQUE PAGES (SPANISH) -->
 </urlset>

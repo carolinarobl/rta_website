@@ -65,12 +65,11 @@ export const MainLayout = component$(
               </div>
             )}
 
-            {
+            {showHeader &&
             (
               <div class="flex w-full items-center justify-center">
                 <Header
                   data={data["data"]["generalHeader"]["data"]["attributes"]}
-                  showForm={showHeader}
                 />
               </div>
             )}

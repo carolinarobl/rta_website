@@ -15,6 +15,8 @@ export const TexasPage = component$(({ data }: { data: any }) => {
             </thead>
             <tbody>
                 {data.map((location: any, index: any) => (
+
+                    location['attributes']['office']['data'] && 
                     <tr key={index} class={`text-center text-primary-dark-blue w-full h-full ${index % 2 == 0 ? "bg-blue-100" : "bg-blue-200"}`}>
                         <td class="hover:text-secondary-red">
                             <a href={isES? ('/es/texas/'+location['attributes']['Slug']).replace('-es', '/') :  (location['attributes']['Slug']+'/')}>
@@ -24,9 +26,13 @@ export const TexasPage = component$(({ data }: { data: any }) => {
                         <td>
                                 {location['attributes']['ZipCode']}
                         </td>
-                        <td>
+                      
+                        {location['attributes']['office']['data'] &&
+                            <td>
                                 {location['attributes']['office']['data']['attributes']['Location']}
-                        </td>
+                            </td>
+                        }
+                       
                     </tr>
                 ))}
             </tbody>

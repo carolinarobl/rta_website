@@ -64,7 +64,19 @@ export const Navbar = component$(
               </div>
             </div>
             {/* Main options */}
+           
             <div class="flex items-center justify-center gap-4 px-3 text-[15px] max-[1200px]:text-[13px] max-[800px]:hidden">
+                {data["gigfastOptions"].map((e: any, i: any) => (
+            <ActionLink key={i} link={e["Link"]}>
+              <div class="w-[130px] rounded-md p-1 hover:bg-slate-50">
+                <StrapiImage
+                  media={e["Icon"]["data"]["attributes"]}
+                  width="311"
+                  height="60"
+                />
+              </div>
+            </ActionLink>
+          ))}
               {data["MainOptions"].map(function (e: any, i: any) {
                 const hasSubOptions = e["SubOption"].length > 0;
                 if (hasSubOptions) {
@@ -135,7 +147,7 @@ export const Navbar = component$(
             </ActionLink>
           ))}
         </div>
-        <div class="flex flex-row items-center justify-evenly bg-white py-1 max-[800px]:hidden">
+        {/* <div class="flex flex-row items-center justify-evenly bg-white py-1 max-[800px]:hidden">
           {data["gigfastOptions"].map((e: any, i: any) => (
             <ActionLink key={i} link={e["Link"]}>
               <div class="w-[130px] rounded-md p-1 hover:bg-slate-50">
@@ -147,7 +159,7 @@ export const Navbar = component$(
               </div>
             </ActionLink>
           ))}
-        </div>
+        </div> */}
       </div>
     );
   },
