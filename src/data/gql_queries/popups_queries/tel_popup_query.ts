@@ -1,6 +1,6 @@
-export const telPopupQuery = (zipCode:string)=>{
+export const telPopupQuery = (locationKey: string) => {
     return `query {
-        offices(filters: { locations: { ZipCode: { eq: ${zipCode} } } }) {
+        offices(filters: { LocationKey: { eq: "${locationKey}" } }) {
           data {
             attributes {
               Location
