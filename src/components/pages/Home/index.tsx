@@ -65,7 +65,7 @@ export const Home = component$(({ data, layoutData }: { data: any; layoutData?: 
           pageData["ParGFServices"].length,
         )}
       />
-      <div class="mx-4 my-8 rounded-3xl bg-primary-blue shadow-xl shadow-primary-blue/30 md:mx-8">
+      <div class="mx-4 my-8 rounded-3xl bg-primary-blue shadow-xl shadow-primary-blue/30 ">
         <SectionSugHome data={pageData["SugsPages"]} />
       </div>
     </div>

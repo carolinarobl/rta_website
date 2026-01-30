@@ -1,5 +1,5 @@
-export const loginPopupQuery = (zipCode:string) => `query {
-        offices (filters:{locations:{ZipCode:{eq:${zipCode}}}}) {
+export const loginPopupQuery = (locationKey: string) => `query {
+        offices (filters: { LocationKey: { eq: "${locationKey}" } }) {
           data {
             attributes {
               InstanceLink

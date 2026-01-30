@@ -1,4 +1,4 @@
-import { Slot, component$, useSignal } from "@builder.io/qwik";
+import { Slot, component$, useSignal} from "@builder.io/qwik";
 import { PortabilityRequest } from "./popups/portabilityRequest";
 import { FormContact } from "./forms/form-contact";
 import { PopupChannelsLineup } from "./popups/popup_channels_lineup";
@@ -33,6 +33,9 @@ export const PopupCall = component$(
 
     const location = useLocation();
     const isES = location.prevUrl?.pathname.includes("/es/");
+
+    const showModal = useSignal(false);
+    const showPopupLeaving = useSignal(false);
 
     // var popupCall = link;
     let child = null;
@@ -70,6 +73,7 @@ export const PopupCall = component$(
           }
           btnText={isES ? "Ir ahora" : "Go Now"}
           popup="login"
+          showModal={showModal}
         ></PopupLoginForm>
       );
     } else if (link.includes(locationNumber)) {
@@ -88,15 +92,13 @@ export const PopupCall = component$(
               : "Find out exactly what services RTA has to offer in your hometown. Input your zip code for your local office phone number."
           }
           btnText={isES ? "Comprobar ahora" : "Check Now"}
+          showModal={showModal}
         ></PopupLoginForm>
       );
     }
 
-    const showModal = useSignal(false);
-    const showPopupLeaving = useSignal(false);
-
     return (
-      <div class={`relative flex`}>
+      <div class={`relative flex h-full`}>
         {link.includes(configurator) &&
           (!text?.includes("Check") || !text.includes("Buscar")) ? (
           <div
@@ -140,16 +142,18 @@ export const PopupCall = component$(
                 && window.localStorage.getItem("sendform_leaving") != "true" ? <PopupLeaving signalMainPopup={showModal} signalPopupLeaving={showPopupLeaving} /> : null
               }
             </div>
-            <button aria-label="Close popup"
-              onClick$={() => {
-                if (link.includes(configurator) && window.localStorage.getItem("sendform_leaving") != "true") {
-                  showPopupLeaving.value = true;
-                }
-                else {
-                  showModal.value = false;
-                }
-              }}
-              class={`${link.includes(configurator) ? "mt-2 mx-0" : "w-[30px] p-4"} bg-secondary-red flex items-center justify-center text-white rounded-full h-[30px] focus:outline-none z-[600]`} >{link.includes(configurator) ? <div class="px-3 flex flex-row items-center text-xs gap-2">Back to site <BsHouseFill /></div> : <div><BsXLg /></div>}</button>
+            {!link.includes(login) && !link.includes(locationNumber) && (
+              <button aria-label="Close popup"
+                onClick$={() => {
+                  if (link.includes(configurator) && window.localStorage.getItem("sendform_leaving") != "true") {
+                    showPopupLeaving.value = true;
+                  }
+                  else {
+                    showModal.value = false;
+                  }
+                }}
+                class={`${link.includes(configurator) ? "mt-2 mx-0" : "w-[30px] p-4"} bg-secondary-red flex items-center justify-center text-white rounded-full h-[30px] focus:outline-none z-[600]`} >{link.includes(configurator) ? <div class="px-3 flex flex-row items-center text-xs gap-2">Back to site <BsHouseFill /></div> : <div><BsXLg /></div>}</button>
+            )}
           </div>
         </div>
         )}
