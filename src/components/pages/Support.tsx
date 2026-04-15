@@ -50,15 +50,21 @@ export const Support = component$(({ data }: { data: any }) => {
                 </div>
             ))}
         </div>
-        <div class="flex flex-col my-4 md:flex-row gap-5">
+        <div class="flex w-full flex-col my-4 md:flex-row md:flex-wrap md:justify-center gap-5">
             {pageData['SelfSupport'].map((support: any, index: any) => (
-                <div key={index} class="h-[290px] w-full md:w-[305px] rounded-3xl shadow-2xl flex p-6 flex-col items-center justify-between">
-                    <StrapiImage media={support['Media']['data']['attributes']}
-                        height={150}
-                        width={310} />
-                    <p class="text-2xl md:text-3xl text-center font-semibold text-primary-blue">{support['Title']}</p>
-                    <Markdown classN="text-center" text={support['Paragraph']}></Markdown>
-                    <Button text={support['Buttons'][0]['Text']} link={support['Buttons'][0]['Link']}></Button>
+                <div key={index} class="min-h-[290px] w-full md:w-[360px] lg:w-[390px] rounded-3xl shadow-2xl flex p-6 flex-col justify-between gap-6">
+                    <div class="flex flex-col items-center gap-4">
+                        <StrapiImage media={support['Media']['data']['attributes']}
+                            height={150}
+                            width={310} />
+                        <p class="text-2xl md:text-3xl text-center font-semibold text-primary-blue">{support['Title']}</p>
+                        <Markdown classN="text-center" text={support['Paragraph']}></Markdown>
+                    </div>
+                    <div class="flex w-full flex-col items-stretch justify-center gap-2">
+                        {support['Buttons']?.map((button: any, key: any) => (
+                            <Button key={key} text={button['Text']} link={button['Link']} fullWidth={true}></Button>
+                        ))}
+                    </div>
                 </div>
             ))}
         </div>
