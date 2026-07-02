@@ -11,6 +11,8 @@ export default component$(({ faqs, listall = true, analyticsOrigin }: { faqs: an
 
       const location = useLocation();
       const isES = location.prevUrl?.pathname.includes("/es/");
+      const initialFaqCount = 8;
+      const shouldShowToggle = !listall && faqs.length > initialFaqCount;
 
   const state = useStore({
     openIndex: -1,
@@ -38,7 +40,7 @@ export default component$(({ faqs, listall = true, analyticsOrigin }: { faqs: an
     <div class="w-full mx-auto p-4 flex flex-col">
       
       {faqs.map((faq:any, index:number) => {
-        const isVisible = state.showAll || index < 8;
+        const isVisible = state.showAll || index < initialFaqCount;
           if (!isVisible) return null;
   
             const isOpen = state.openIndex === index;
@@ -138,7 +140,7 @@ export default component$(({ faqs, listall = true, analyticsOrigin }: { faqs: an
         );
       })}
 
-<div class={`${listall ? 'hidden' : 'flex'} justify-center mt-4`}>
+<div class={`${shouldShowToggle ? 'flex' : 'hidden'} justify-center mt-4`}>
   <button
     onClick$={() => {
       if (analyticsOrigin && !state.showAll) {

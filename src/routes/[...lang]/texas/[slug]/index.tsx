@@ -3,11 +3,11 @@ import { type DocumentHead, routeLoader$ } from "@builder.io/qwik-city";
 import { MainLayout } from "~/components/MainLayout";
 import { Location } from "~/components/pages/Location";
 import { NotFound } from "~/components/pages/NotFound";
-import BastropProject from '~/components/pages/BastropProject';
+import CbAndCfProject from '~/components/pages/CbAndCfProject';
 
 import { customLocale, headSEO } from "~/data/constants";
 import { locationQuery } from "~/data/gql_queries/pages/local_page_query";
-import { bastropProjectQuery } from "~/data/gql_queries/pages/bastrop_project_query";
+import { cbAndCfProjectQuery } from "~/data/gql_queries/pages/cb_and_cf_project_query";
 import { getPageCustomData, getPageData } from "~/services/graphql";
 
 export const usePageData = routeLoader$(async (req) => {
@@ -20,10 +20,10 @@ export const usePageData = routeLoader$(async (req) => {
 
   const slug = req.params["slug"];
 
-  if (slug === 'gigfast-internet-in-bastrop') {
-    const pageData = await getPageData(bastropProjectQuery, lang);
+  if (slug === 'crystal-beach-chambers-fiber') {
+    const pageData = await getPageData(cbAndCfProjectQuery, lang);
     return {
-      type: 'bastrop',
+      type: 'cb-and-cf',
       layoutData: pageData.layoutData,
       pageData: pageData.pageData
     };
@@ -41,10 +41,10 @@ export default component$(() => {
   const signalData = usePageData();
   const { type, layoutData, pageData } = signalData.value;
 
-  if (type === 'bastrop') {
+  if (type === 'cb-and-cf') {
     return (
       <MainLayout data={layoutData} showHeader={false}>
-        <BastropProject data={pageData.data} />
+        <CbAndCfProject data={pageData.data} />
       </MainLayout>
     );
   }
@@ -67,8 +67,8 @@ export default component$(() => {
 export const head: DocumentHead = ({ resolveValue }) => {
   const data = resolveValue(usePageData);
 
-  if (data.type === 'bastrop') {
-    const seoData = data.pageData.data.pageBastropP.data.attributes.SEO;
+  if (data.type === 'cb-and-cf') {
+    const seoData = data.pageData.data.pageCbAndCf.data.attributes.SEO;
     return headSEO(seoData);
   }
 

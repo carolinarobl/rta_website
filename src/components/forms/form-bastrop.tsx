@@ -394,18 +394,18 @@ export const FormBastrop = component$(({ lat, long, lang, bastrop_address, secti
       serviceType: 'bastrop_nocoverage',
       title: isSpanish ? 'Gracias por contactarnos' : 'Thank You for Contacting Us',
       paragraph: isSpanish
-        ? `Tu dirección está en el Condado de Bastrop, pero aún no está en nuestra red.
+        ? `Tu dirección está en el área del proyecto, pero aún no está en nuestra red.
   Nos pondremos en contacto contigo para informarte si podremos ofrecerte servicio.`
-        : `Your address is in Bastrop County, but not yet on our network.
+        : `Your address is in the project area, but not yet on our network.
   We will reach out to let you know if and when we will be able to offer service.`
     },
     {
       serviceType: 'notbastrop',
       title: isSpanish ? 'Dirección fuera de cobertura' : 'Out of Coverage Area',
       paragraph: isSpanish
-        ? `Lo sentimos, esta dirección no aparece dentro del Condado de Bastrop, Texas.
+        ? `Lo sentimos, esta dirección no aparece dentro del área del proyecto.
   Si crees que esto es un error, intenta ingresar tu dirección nuevamente o llama a nuestra oficina para verificar la cobertura.`
-        : `Sorry, this address does not appear to be in Bastrop County, Texas.
+        : `Sorry, this address does not appear to be in the project area.
   If you believe this is an error, please try entering your address again or call our office to verify service availability.`
     }
   ];
@@ -627,4 +627,3 @@ export const FormBastrop = component$(({ lat, long, lang, bastrop_address, secti
   </div>
   );
 });
-
